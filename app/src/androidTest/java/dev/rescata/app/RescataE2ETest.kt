@@ -180,9 +180,11 @@ class RescataE2ETest {
                 vm(scenario) { s -> s.filter == Finding.Category.WHATSAPP_BACKUP && s.visibleRows.size == 1 }
             }
             compose.waitForIdle()
-            compose.onNodeWithText("Copia de WhatsApp (1)").assertExists()
-            compose.onNodeWithText("Cómo recuperar chats con una copia").assertExists()
-            compose.onNodeWithText("Copia de los chats de WhatsApp del 29/10/2026", substring = true).assertExists()
+            compose.onNodeWithTag("resultados").performScrollToNode(hasText("Cómo recuperar chats con una copia"))
+            compose.onNodeWithText("Cómo recuperar chats con una copia").assertIsDisplayed()
+            compose.onNodeWithTag("resultados")
+                .performScrollToNode(hasText("Copia de los chats de WhatsApp del 29/10/2026", substring = true))
+            compose.onNodeWithText("Copia de los chats de WhatsApp del 29/10/2026", substring = true).assertIsDisplayed()
             shot("03c_copias_whatsapp")
             setFilter(scenario, null)
             waitFor(10_000, "volver a «Todos»") { vm(scenario) { s -> s.filter == null } }
