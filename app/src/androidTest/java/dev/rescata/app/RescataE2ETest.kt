@@ -5,6 +5,8 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.media.ExifInterface
+import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -40,7 +42,12 @@ import org.junit.runner.RunWith
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.security.MessageDigest
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import java.util.Random
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 import java.util.regex.Pattern
 
 /**
@@ -64,12 +71,18 @@ class RescataE2ETest {
     private val dl = File(root, "Download/RescataTest")
     private val thumb = File(root, "Pictures/.thumbnails/999999.jpg")
     private val shots = File(root, "Download/rescata-capturas")
+    private val album = File(root, "Pictures/Rescata")
+    private val albumThumbs = File(root, "Pictures/Rescata – Miniaturas")
+    private val othersDir = File(root, "Download/Rescata")
     private val trashSupported = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
+    private val orphanSupported = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+    private var pngHiddenMtime = 0L
 
     private val jpegTrash = image(Color.rgb(200, 40, 40), Bitmap.CompressFormat.JPEG, "papelera")
     private val jpegThumb = image(Color.rgb(40, 160, 60), Bitmap.CompressFormat.JPEG, "miniatura")
     private val pngHidden = image(Color.rgb(40, 80, 200), Bitmap.CompressFormat.PNG, "oculta")
-    private val jpegVendorTrash = image(Color.rgb(220, 180, 20), Bitmap.CompressFormat.JPEG, "app")
+    // Con fecha EXIF: debe aparecer en la galería el 1 de mayo de 2021, no el día de la exportación
+    private val jpegVendorTrash = withExifDate(image(Color.rgb(220, 180, 20), Bitmap.CompressFormat.JPEG, "app"), "2021:05:01 10:00:00")
     private val pngEmbedded = image(Color.rgb(180, 40, 180), Bitmap.CompressFormat.PNG, "carving")
 
     @Before
@@ -83,7 +96,7 @@ class RescataE2ETest {
         }
         assertTrue("La app no tiene acceso al almacenamiento", StorageAccess.hasFullAccess(ctx))
 
-        listOf(pics, dl, thumb, shots, File(root, "Download/Rescata")).forEach { it.deleteRecursively() }
+        listOf(pics, dl, thumb, shots, album, albumThumbs, othersDir).forEach { it.deleteRecursively() }
         assertTrue("No se pudo crear la carpeta de capturas", shots.mkdirs())
 
         // Una foto normal en MediaStore (viva: no debe aparecer). Garantiza que MediaStore tiene IDs.
@@ -104,7 +117,11 @@ class RescataE2ETest {
         }
 
         write(thumb, jpegThumb)                                   // miniatura cuyo original no existe
-        write(File(dl, ".oculta/sin_extension"), pngHidden)       // PNG oculto y sin extensión
+        // PNG oculto y sin extensión; sin EXIF, así que su fecha en la galería debe ser la del archivo (15/01/2020)
+        val hidden = File(dl, ".oculta/sin_extension")
+        write(hidden, pngHidden)
+        hidden.setLastModified(1579089600000L)
+        pngHiddenMtime = hidden.lastModified()
         write(File(dl, ".Trash/borrada.jpg"), jpegVendorTrash)    // papelera de una app
         write(File(dl, "rescata_cache.bin"), junk(6000) + pngEmbedded + junk(4000)) // imagen dentro de una caché
         write(File(dl, "visible.jpg"), image(Color.DKGRAY, Bitmap.CompressFormat.JPEG, "visible")) // viva
@@ -133,12 +150,14 @@ class RescataE2ETest {
                 compose.onNodeWithTag("resultados").performScrollToNode(hasText(t, substring = true))
                 compose.onNodeWithText(t, substring = true).assertIsDisplayed()
             }
-            compose.onNodeWithTag("resultados").performScrollToNode(hasText("miniatura_999999.jpg", substring = true))
-            compose.onNode(
-                hasText("miniatura_999999.jpg", substring = true) and
-                    hasText("No queda ningún elemento en MediaStore", substring = true)
-            ).assertIsDisplayed()
-            shot("03_miniatura_huerfana")
+            if (orphanSupported) {
+                compose.onNodeWithTag("resultados").performScrollToNode(hasText("miniatura_999999.jpg", substring = true))
+                compose.onNode(
+                    hasText("miniatura_999999.jpg", substring = true) and
+                        hasText("No queda ningún elemento en MediaStore", substring = true)
+                ).assertIsDisplayed()
+                shot("03_miniatura_huerfana")
+            }
 
             // Exportar todo
             compose.onNodeWithText("Todos").performClick()
@@ -147,12 +166,25 @@ class RescataE2ETest {
                 val label = StorageAccess.exportVolumes(ctx).first { it.primary }.label
                 compose.onNodeWithText(label, substring = true).performClick()
             }
-            waitFor(120_000, "fin de la exportación") {
-                vm(scenario) { s -> !s.exporting } && exportReport() != null
-            }
+            waitFor(120_000, "fin de la exportación") { vm(scenario) { s -> !s.exporting } && reports().size == 1 }
             compose.waitForIdle()
             shot("04_exportado")
-            verifyExport()
+            verifyExport(reports().single())
+
+            // Exportar otra vez lo mismo: no debe duplicar nada en la galería
+            val inAlbum = album.list()?.size ?: 0
+            compose.onNodeWithText("Exportar", substring = true).performClick()
+            if (compose.onAllNodesWithText("¿Dónde exportar?").fetchSemanticsNodes().isNotEmpty()) {
+                val label = StorageAccess.exportVolumes(ctx).first { it.primary }.label
+                compose.onNodeWithText(label, substring = true).performClick()
+            }
+            waitFor(120_000, "fin de la segunda exportación") { vm(scenario) { s -> !s.exporting } && reports().size == 2 }
+            compose.waitForIdle()
+            shot("04b_sin_duplicados")
+            val second = readRows(reports().last())
+            assertTrue(second.isNotEmpty())
+            second.forEach { assertEquals("Segunda exportación de ${it[3]}", "ya existía", it[10]) }
+            assertEquals("La segunda exportación creó copias nuevas", inAlbum, album.list()?.size ?: 0)
 
             // Restaurar en su sitio la foto de la papelera (diálogo del sistema)
             if (trashSupported) {
@@ -200,38 +232,89 @@ class RescataE2ETest {
         }
     }
 
-    private fun exportReport(): File? =
-        File(root, "Download/Rescata").listFiles()?.firstOrNull { it.isDirectory }
-            ?.let { File(it, "informe.csv") }?.takeIf { it.isFile }
+    private fun reports(): List<File> =
+        othersDir.listFiles()?.filter { it.name.startsWith("informe_") && it.name.endsWith(".csv") }
+            ?.sortedBy { it.name }.orEmpty()
 
-    private fun verifyExport() {
-        val outDirs = File(root, "Download/Rescata").listFiles()?.filter { it.isDirectory }.orEmpty()
-        assertEquals("Debe haber una carpeta de exportación", 1, outDirs.size)
-        val outDir = outDirs.single()
-        val report = File(outDir, "informe.csv").readText(Charsets.UTF_8).removePrefix("﻿")
-        val rows = report.split("\r\n").filter { it.isNotBlank() }.drop(1)
+    private fun readRows(report: File): List<List<String>> =
+        report.readText(Charsets.UTF_8).removePrefix("﻿").split("\r\n")
+            .filter { it.isNotBlank() }.drop(1).map { it.split(";") }
+
+    private fun verifyExport(report: File) {
+        val rows = readRows(report)
         assertTrue("El informe está vacío", rows.isNotEmpty())
-        for (row in rows) {
-            val cols = row.split(";")
-            val copy = File(outDir, cols[10])
-            assertTrue("Falta el archivo exportado ${cols[10]}", copy.isFile)
+        for (cols in rows) {
+            assertEquals("Estado de ${cols[3]}: ${cols.getOrNull(14)}", "exportado", cols[10])
+            val copy = File(cols[12])
+            assertTrue("Falta la copia ${cols[12]}", copy.isFile)
             assertEquals("SHA-256 de ${copy.name}", cols[6], sha256(copy.readBytes()))
             assertFalse("Se exportó un archivo vivo: ${cols[3]}", cols[3].endsWith("visible.jpg"))
             assertFalse("Se exportó un archivo vivo: ${cols[3]}", cols[3].endsWith("/foto_viva.jpg"))
         }
-        fun exported(match: (String) -> Boolean): ByteArray {
-            val f = outDir.listFiles().orEmpty().filter { match(it.name) }
-            assertEquals("Esperaba un único archivo exportado: ${f.map { it.name }}", 1, f.size)
-            return f.single().readBytes()
+        // Fotos en el álbum «Rescata», miniatura en «Rescata – Miniaturas», byte a byte
+        assertArrayEquals(jpegVendorTrash, File(album, "borrada.jpg").readBytes())
+        assertArrayEquals(pngHidden, File(album, "sin_extension.png").readBytes())
+        assertArrayEquals(pngEmbedded, File(album, "rescata_cache_0x1770.png").readBytes())
+        assertArrayEquals(jpegThumb, File(albumThumbs, "miniatura_999999.jpg").readBytes())
+        if (trashSupported) assertArrayEquals(jpegTrash, File(album, "foto_papelera.jpg").readBytes())
+        assertFalse("La miniatura no debe ir al álbum principal", File(album, "miniatura_999999.jpg").exists())
+
+        // Indexadas en la galería y con su fecha original (EXIF o fecha del archivo)
+        assertEquals("Fecha en la galería de borrada.jpg", "2021-05-01", galleryDay(File(album, "borrada.jpg")))
+        assertEquals("Fecha en la galería de sin_extension.png", day(pngHiddenMtime), galleryDay(File(album, "sin_extension.png")))
+        assertNotNull("La miniatura no está en la galería", galleryDay(File(albumThumbs, "miniatura_999999.jpg")))
+    }
+
+    /** Día (yyyy-MM-dd, hora local) con el que la galería ordenará el archivo según MediaStore. */
+    @Suppress("DEPRECATION")
+    private fun galleryDay(file: File): String? {
+        val uri = MediaStore.Files.getContentUri("external")
+        val projection = arrayOf(MediaStore.Images.ImageColumns.DATE_TAKEN, MediaStore.MediaColumns.DATE_MODIFIED)
+        val deadline = System.currentTimeMillis() + 20_000
+        while (System.currentTimeMillis() < deadline) {
+            ctx.contentResolver.query(uri, projection, "${MediaStore.MediaColumns.DATA}=?", arrayOf(file.absolutePath), null)
+                ?.use { c ->
+                    if (c.moveToFirst()) {
+                        val taken = if (c.isNull(0)) 0L else c.getLong(0)
+                        val millis = if (taken > 0) taken else c.getLong(1) * 1000
+                        return day(millis)
+                    }
+                }
+            Thread.sleep(500) // en Android 8-9 el indexado es asíncrono
         }
-        assertArrayEquals(jpegVendorTrash, exported { it.endsWith("_borrada.jpg") })
-        assertArrayEquals(jpegThumb, exported { it.endsWith("_miniatura_999999.jpg") })
-        assertArrayEquals(pngHidden, exported { it.endsWith("_sin_extension.png") })
-        assertArrayEquals(pngEmbedded, exported { it.contains("rescata_cache_0x") && it.endsWith(".png") })
-        if (trashSupported) assertArrayEquals(jpegTrash, exported { it.endsWith("_foto_papelera.jpg") })
+        return null
+    }
+
+    private fun day(millis: Long): String = SimpleDateFormat("yyyy-MM-dd", Locale.ROOT).format(Date(millis))
+
+    private fun withExifDate(jpeg: ByteArray, date: String): ByteArray {
+        val tmp = File.createTempFile("exif", ".jpg", ctx.cacheDir)
+        try {
+            tmp.writeBytes(jpeg)
+            ExifInterface(tmp.absolutePath).apply {
+                setAttribute(ExifInterface.TAG_DATETIME_ORIGINAL, date)
+                saveAttributes()
+            }
+            return tmp.readBytes()
+        } finally {
+            tmp.delete()
+        }
     }
 
     private fun insertPhoto(name: String, bytes: ByteArray): Uri {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            // Android 8-9: sin RELATIVE_PATH; se escribe el archivo y se indexa
+            val f = File(pics, name)
+            write(f, bytes)
+            val latch = CountDownLatch(1)
+            var scanned: Uri? = null
+            MediaScannerConnection.scanFile(ctx, arrayOf(f.absolutePath), arrayOf("image/jpeg")) { _, u ->
+                scanned = u
+                latch.countDown()
+            }
+            assertTrue("No se indexó $name", latch.await(30, TimeUnit.SECONDS))
+            return scanned ?: throw AssertionError("Sin URI para $name")
+        }
         val values = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, name)
             put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")

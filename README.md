@@ -42,10 +42,15 @@ Android 11+), la papelera en la nube de Google Fotos y todo lo que ya se borró 
    ```
    adb shell appops set --uid dev.rescata.app MANAGE_EXTERNAL_STORAGE allow
    ```
-4. Elige qué buscar, pulsa **Escanear**, marca lo que te interese y pulsa **Exportar**.
-   Se copia a `Download/Rescata/<fecha>/` junto con `informe.csv`, que lleva el origen, el
-   offset, el SHA-256 y la fecha de caducidad de cada archivo. Si hay tarjeta SD o USB OTG, la
-   app ofrece exportar allí para no escribir en la memoria interna.
+4. Elige qué buscar, pulsa **Escanear**, marca lo que te interese y pulsa **Exportar**:
+   - Fotos y vídeos → álbum **Rescata** de la galería (`Pictures/Rescata`), que se va acumulando.
+   - Miniaturas → álbum aparte **Rescata – Miniaturas**.
+   - Todo lo demás (documentos, audio, desconocidos) → `Download/Rescata`.
+   - Cada exportación deja un `informe_<fecha>.csv` en `Download/Rescata` con el origen, el
+     destino, el SHA-256 y la fecha de caducidad de cada archivo.
+   Las fotos conservan su fecha original (EXIF o fecha del archivo), así que la galería las coloca
+   en su día. Si vuelves a exportar algo que ya está, no se duplica. Si hay tarjeta SD o USB OTG,
+   la app ofrece guardar allí para no escribir en la memoria interna.
 5. Los elementos de la papelera del sistema también se pueden **Restaurar** en su ubicación
    original. Android pide confirmación al usuario en un diálogo del sistema.
 
@@ -102,7 +107,7 @@ clasificación sobre un árbol de carpetas que imita `/storage/emulated/0` y la 
 verificación de hashes.
 
 Prueba de extremo a extremo (`app/src/androidTest`), que GitHub Actions ejecuta en emuladores con
-Android 10, 13 y 16 en cada cambio. Crea archivos borrados reales en el emulador (incluida una
+Android 9, 10, 13 y 16 en cada cambio. Crea archivos borrados reales en el emulador (incluida una
 foto enviada a la papelera del sistema mediante MediaStore), abre la app, escanea, exporta,
 comprueba byte a byte y por SHA-256 lo recuperado, restaura la foto desde la papelera con el
 diálogo del sistema y guarda capturas de pantalla. El APK solo se publica en Releases si todo pasa.

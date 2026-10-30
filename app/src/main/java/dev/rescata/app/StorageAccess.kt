@@ -15,7 +15,20 @@ import java.io.File
 /** Permisos y volúmenes de almacenamiento accesibles sin root. */
 object StorageAccess {
 
-    data class Volume(val label: String, val dir: File, val removable: Boolean, val primary: Boolean)
+    /** [mediaStoreName]: nombre del volumen para MediaStore ("external_primary" en la memoria interna). */
+    data class Volume(
+        val label: String,
+        val dir: File,
+        val removable: Boolean,
+        val primary: Boolean,
+        val mediaStoreName: String = PRIMARY_MEDIA_VOLUME,
+    )
+
+    private const val PRIMARY_MEDIA_VOLUME = "external_primary" // MediaStore.VOLUME_EXTERNAL_PRIMARY
+
+    /** Álbumes de la galería donde se guardan fotos y vídeos recuperados (se acumulan). */
+    const val ALBUM = "Rescata"
+    const val ALBUM_THUMBNAILS = "Rescata – Miniaturas"
 
     /** Subcarpeta (dentro de cada volumen) donde se exporta lo recuperado; se excluye del escaneo. */
     val EXPORT_SUBDIR = Environment.DIRECTORY_DOWNLOADS + "/Rescata"
@@ -51,7 +64,10 @@ object StorageAccess {
             return sm.storageVolumes
                 .filter { it.state == Environment.MEDIA_MOUNTED || it.state == Environment.MEDIA_MOUNTED_READ_ONLY }
                 .mapNotNull { v ->
-                    v.directory?.let { Volume(v.getDescription(ctx), it, v.isRemovable, v.isPrimary) }
+                    v.directory?.let {
+                        Volume(v.getDescription(ctx), it, v.isRemovable, v.isPrimary,
+                            v.mediaStoreVolumeName ?: PRIMARY_MEDIA_VOLUME)
+                    }
                 }
                 .sortedByDescending { it.primary }
         }
@@ -65,6 +81,13 @@ object StorageAccess {
         }
         return listOf(primary) + others
     }
+
+    /** Carpetas que crea la propia app (se excluyen del escaneo). */
+    fun ownFolders(v: Volume): List<File> = listOf(
+        File(v.dir, EXPORT_SUBDIR),
+        File(v.dir, Environment.DIRECTORY_PICTURES + "/" + ALBUM),
+        File(v.dir, Environment.DIRECTORY_PICTURES + "/" + ALBUM_THUMBNAILS),
+    )
 
     /**
      * Volúmenes donde se puede escribir la exportación. Antes de Android 11 una app sin root

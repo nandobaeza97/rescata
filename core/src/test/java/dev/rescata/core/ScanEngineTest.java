@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 import org.junit.Test;
 
 public class ScanEngineTest {
@@ -168,25 +167,24 @@ public class ScanEngineTest {
         assertTrue(res.report.isFile());
 
         // Cada copia tiene exactamente los bytes del original y el informe lleva su SHA-256
-        String csv = new Scanner(res.report, "UTF-8").useDelimiter("\\A").next();
-        String[] lines = csv.split("\r\n");
+        String[] lines = readReport(res.report);
         assertEquals(all.size() + 1, lines.length);
         for (int i = 1; i < lines.length; i++) {
             String[] cols = lines[i].split(";", -1);
-            File copy = new File(out, cols[10]);
+            assertEquals(Exporter.STATUS_EXPORTED, cols[10]);
+            File copy = new File(cols[12]);
             assertTrue("falta " + copy, copy.isFile());
             assertEquals(cols[6], sha256(copy));
         }
 
         // El de la papelera conserva su nombre original y los bytes exactos
-        File restored = null;
-        for (File f : out.listFiles()) if (f.getName().endsWith("_IMG_0002.jpg")) restored = f;
-        assertNotNull(restored);
+        File restored = new File(out, "IMG_0002.jpg");
+        assertTrue(restored.isFile());
         assertArrayEquals(t.trashedJpeg, readAll(restored));
 
         // El extraído por carving recibe la extensión correcta y es idéntico
         File carvedPng = null;
-        for (File f : out.listFiles()) if (f.getName().contains("cache_0x") && f.getName().endsWith(".png")) carvedPng = f;
+        for (File f : out.listFiles()) if (f.getName().startsWith("cache_0x") && f.getName().endsWith(".png")) carvedPng = f;
         assertNotNull(carvedPng);
         assertArrayEquals(t.embeddedPng, readAll(carvedPng));
 
@@ -195,10 +193,65 @@ public class ScanEngineTest {
     }
 
     @Test
+    public void reexportarNoDuplica() throws Exception {
+        Tree t = buildTree();
+        List<Finding> all = scan(t.root, baseOptions(t));
+        File out = new File(TestData.tempDir(), "album");
+        Exporter.Result first = new Exporter().export(all, out, null, null);
+        int files = out.listFiles().length;
+        Exporter.Result second = new Exporter().export(all, out, null, null);
+
+        assertEquals(all.size(), first.exported);
+        assertEquals(0, second.exported);
+        assertEquals(all.size(), second.alreadyPresent);
+        assertEquals(files, out.listFiles().length); // el informe se sobrescribe; ninguna copia nueva
+        String[] lines = readReport(second.report);
+        for (int i = 1; i < lines.length; i++) assertEquals(Exporter.STATUS_ALREADY, lines[i].split(";", -1)[10]);
+    }
+
+    @Test
+    public void mismoNombreDistintoContenidoNoSePisa() throws Exception {
+        File dir = TestData.tempDir();
+        File a = TestData.write(new File(dir, "a/foto.jpg"), TestData.jpeg(20, 20, 1));
+        File b = TestData.write(new File(dir, "b/foto.jpg"), TestData.jpeg(20, 20, 2));
+        List<Finding> two = new ArrayList<>();
+        two.add(new Finding(1, Finding.Category.TRASH_FOLDER, FileType.JPEG, a.getPath(), -1, a.length(), 0, "foto.jpg", 0, -1, ""));
+        two.add(new Finding(2, Finding.Category.TRASH_FOLDER, FileType.JPEG, b.getPath(), -1, b.length(), 0, "foto.jpg", 0, -1, ""));
+        File out = new File(dir, "salida");
+        new Exporter().export(two, out, null, null);
+        assertArrayEquals(readAll(a), readAll(new File(out, "foto.jpg")));
+        assertArrayEquals(readAll(b), readAll(new File(out, "foto (1).jpg")));
+    }
+
+    @Test
+    public void enrutaPorDestino() throws Exception {
+        Tree t = buildTree();
+        List<Finding> all = scan(t.root, baseOptions(t));
+        File base = TestData.tempDir();
+        final DirectoryDestination thumbs = new DirectoryDestination(new File(base, "Miniaturas"), "Miniaturas");
+        final DirectoryDestination media = new DirectoryDestination(new File(base, "Rescata"), "Rescata");
+        Exporter.Result res = new Exporter().export(all, new Exporter.Router() {
+            @Override public Destination destinationFor(Finding f) {
+                return f.getCategory() == Finding.Category.THUMBNAIL ? thumbs : media;
+            }
+        }, new File(base, "informes/informe.csv"), null, null);
+        assertEquals(Integer.valueOf(3), res.exportedByDestination.get("Miniaturas"));
+        assertEquals(3, thumbs.getDir().listFiles().length);
+        assertEquals(all.size() - 3, media.getDir().listFiles().length);
+        assertTrue(res.report.isFile());
+    }
+
+    @Test
     public void nombresDeSalidaSeguros() {
         Finding f = new Finding(7, Finding.Category.HIDDEN_MEDIA, FileType.PNG, "/x/a:b", -1, 1, 0,
                 "a:b*c?.dat", 0, -1, "");
-        assertEquals("00007_a_b_c_.dat.png", Exporter.targetName(f));
+        assertEquals("a_b_c_.dat.png", Exporter.targetName(f));
+    }
+
+    private static String[] readReport(File report) throws Exception {
+        String csv = new String(readAll(report), "UTF-8");
+        if (csv.startsWith("\uFEFF")) csv = csv.substring(1);
+        return csv.split("\r\n");
     }
 
     private static byte[] readAll(File f) throws Exception {

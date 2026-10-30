@@ -200,7 +200,8 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
             text = {
                 Column {
                     Text(
-                        "Si tienes tarjeta SD o memoria USB, mejor exporta ahí: así no escribes en la " +
+                        "Las fotos y vídeos irán al álbum «Rescata» de la galería y el resto a Download/Rescata. " +
+                            "Si tienes tarjeta SD o memoria USB, mejor elige esa: así no escribes en la " +
                             "memoria interna de la que intentas recuperar.",
                         style = MaterialTheme.typography.bodySmall,
                     )
@@ -244,7 +245,7 @@ private fun AccessCard(onRequest: () -> Unit) {
             Text(
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
                     "Activa «Permitir acceso para gestionar todos los archivos». La app solo lee; " +
-                        "únicamente escribe en Download/Rescata cuando exportas."
+                        "únicamente escribe cuando exportas (álbum «Rescata» de la galería y Download/Rescata)."
                 else "Concede el permiso de almacenamiento. La app solo lee; únicamente escribe al exportar.",
                 style = MaterialTheme.typography.bodySmall,
             )

@@ -7,7 +7,9 @@ import android.os.Build
 import android.os.SystemClock
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import dev.rescata.core.DirectoryDestination
 import dev.rescata.core.Exporter
+import dev.rescata.core.FileType
 import dev.rescata.core.Finding
 import dev.rescata.core.ScanEngine
 import dev.rescata.core.ScanListener
@@ -98,7 +100,7 @@ class ScanViewModel(app: Application) : AndroidViewModel(app) {
                 thumbnails = o.thumbnails
                 hiddenMedia = o.hiddenMedia
                 carving = o.carving
-                volumes.forEach { v -> excludedPaths.add(File(v.dir, StorageAccess.EXPORT_SUBDIR).absolutePath) }
+                volumes.forEach { v -> StorageAccess.ownFolders(v).forEach { excludedPaths.add(it.absolutePath) } }
             }
 
             // 1) Papelera del sistema según MediaStore (Android 11+), para poder restaurar en su sitio.
@@ -207,18 +209,41 @@ class ScanViewModel(app: Application) : AndroidViewModel(app) {
         val ctx = getApplication<Application>()
         _state.update { it.copy(exporting = true, exportProgress = "Exportando…") }
         viewModelScope.launch(Dispatchers.IO) {
+            // Fotos y vídeos → álbum «Rescata» de la galería; miniaturas → «Rescata – Miniaturas»;
+            // el resto (documentos, audio, desconocidos) y el informe → Download/Rescata.
+            val album = GalleryDestination(ctx, volume, StorageAccess.ALBUM)
+            val thumbs = GalleryDestination(ctx, volume, StorageAccess.ALBUM_THUMBNAILS)
+            val othersDir = File(volume.dir, StorageAccess.EXPORT_SUBDIR)
+            val others = object : DirectoryDestination(othersDir, "Download › Rescata") {
+                override fun afterWrite(finding: Finding, out: File) {
+                    super.afterWrite(finding, out)
+                    MediaScannerConnection.scanFile(ctx, arrayOf(out.absolutePath), null, null)
+                }
+            }
+            val router = Exporter.Router { f ->
+                when {
+                    f.category == Finding.Category.THUMBNAIL && f.type.isImage -> thumbs
+                    f.type.kind == FileType.Kind.IMAGE || f.type.kind == FileType.Kind.VIDEO -> album
+                    else -> others
+                }
+            }
             val stamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ROOT).format(Date())
-            val outDir = File(File(volume.dir, StorageAccess.EXPORT_SUBDIR), stamp)
+            val report = DirectoryDestination.uniqueFile(othersDir, "informe_$stamp.csv")
             val msg = try {
-                val res = Exporter().export(selected, outDir, { done, total, _ ->
+                val res = Exporter().export(selected, router, report, { done, total, _ ->
                     _state.update { it.copy(exportProgress = "Exportando $done de $total…") }
                 }, null)
-                val paths = outDir.listFiles()?.map { it.absolutePath }?.toTypedArray()
-                if (paths != null) MediaScannerConnection.scanFile(ctx, paths, null, null)
+                MediaScannerConnection.scanFile(ctx, arrayOf(report.absolutePath), null, null)
                 buildString {
-                    append(n(res.exported, "archivo exportado", "archivos exportados"))
-                    if (res.failed > 0) append(" (fallaron ${res.failed})")
-                    append(" en ${outDir.absolutePath}. El informe con los SHA-256 está en ${res.report.name}.")
+                    if (res.exported == 0 && res.alreadyPresent > 0) {
+                        append("Nada nuevo: ya estaba todo exportado")
+                    } else {
+                        append("Guardado: ")
+                        append(res.exportedByDestination.entries.joinToString(" · ") { (dest, count) -> "$count en $dest" })
+                        if (res.alreadyPresent > 0) append(" · ${n(res.alreadyPresent, "ya estaba", "ya estaban")}")
+                    }
+                    if (res.failed > 0) append(" · ${n(res.failed, "falló", "fallaron")}")
+                    append(". Informe: Download/Rescata/${report.name}")
                 }
             } catch (e: Exception) {
                 "No se pudo exportar: ${e.message}"
