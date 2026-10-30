@@ -20,6 +20,7 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performSemanticsAction
+import androidx.lifecycle.ViewModelProvider
 import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -110,7 +111,7 @@ class RescataE2ETest {
 
     @Test
     fun escaneaExportaYRestaura() {
-        ActivityScenario.launch(MainActivity::class.java).use {
+        ActivityScenario.launch(MainActivity::class.java).use { scenario ->
             compose.waitForIdle()
             shot("01_inicio")
 
@@ -118,10 +119,10 @@ class RescataE2ETest {
             compose.onNodeWithText("Carving (lento)").performClick()
             compose.onNodeWithTag("resultados").performScrollToNode(hasText("Escanear"))
             compose.onNodeWithText("Escanear").performClick()
-            compose.waitUntil(180_000) {
-                compose.onAllNodesWithText("hallazgos", substring = true).fetchSemanticsNodes().isNotEmpty()
-            }
+            // Se espera al estado de la app (no se sondea el árbol de la UI en bucle: provoca carreras con Espresso)
+            waitFor(180_000, "fin del escaneo") { vm(scenario) { s -> !s.scanning && s.summary != null } }
             compose.waitForIdle()
+            compose.onNodeWithText("hallazgos", substring = true).assertIsDisplayed()
             shot("02_resultados")
 
             // Cada caso aparece en la lista
@@ -145,9 +146,10 @@ class RescataE2ETest {
                 val label = StorageAccess.exportVolumes(ctx).first { it.primary }.label
                 compose.onNodeWithText(label, substring = true).performClick()
             }
-            compose.waitUntil(120_000) {
-                compose.onAllNodesWithText("Exportados", substring = true).fetchSemanticsNodes().isNotEmpty()
+            waitFor(120_000, "fin de la exportación") {
+                vm(scenario) { s -> !s.exporting } && exportReport() != null
             }
+            compose.waitForIdle()
             shot("04_exportado")
             verifyExport()
 
@@ -175,6 +177,26 @@ class RescataE2ETest {
             }
         }
     }
+
+    private fun <T> vm(scenario: ActivityScenario<MainActivity>, read: (UiState) -> T): T {
+        var result: Result<T>? = null
+        scenario.onActivity { act ->
+            result = runCatching { read(ViewModelProvider(act)[ScanViewModel::class.java].state.value) }
+        }
+        return result!!.getOrThrow()
+    }
+
+    private fun waitFor(timeoutMs: Long, what: String, condition: () -> Boolean) {
+        val end = System.currentTimeMillis() + timeoutMs
+        while (!condition()) {
+            if (System.currentTimeMillis() > end) throw AssertionError("Tiempo agotado esperando: $what")
+            Thread.sleep(200)
+        }
+    }
+
+    private fun exportReport(): File? =
+        File(root, "Download/Rescata").listFiles()?.firstOrNull { it.isDirectory }
+            ?.let { File(it, "informe.csv") }?.takeIf { it.isFile }
 
     private fun verifyExport() {
         val outDirs = File(root, "Download/Rescata").listFiles()?.filter { it.isDirectory }.orEmpty()
