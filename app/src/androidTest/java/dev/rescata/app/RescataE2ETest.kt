@@ -232,7 +232,7 @@ class RescataE2ETest {
                 val allow = findSystemButton(Pattern.compile("(?i)^(allow|permitir)$"), 30_000)
                 shot("05_dialogo_restaurar")
                 assertNotNull("No apareció el diálogo del sistema para restaurar", allow)
-                allow.click()
+                allow!!.click()
                 val restored = File(pics, "foto_papelera.jpg")
                 val deadline = System.currentTimeMillis() + 20_000
                 while (!restored.exists() && System.currentTimeMillis() < deadline) Thread.sleep(250)
