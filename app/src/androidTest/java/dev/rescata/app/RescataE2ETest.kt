@@ -74,6 +74,9 @@ class RescataE2ETest {
     private val album = File(root, "Pictures/Rescata")
     private val albumThumbs = File(root, "Pictures/Rescata – Miniaturas")
     private val othersDir = File(root, "Download/Rescata")
+    private val waRoot = File(root, "Android/media/com.whatsapp/WhatsApp")
+    private val waBackupName = "msgstore-2026-10-29.1.db.crypt15"
+    private val waImageName = "IMG-20261029-WA0001.jpg"
     private val trashSupported = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
     private val orphanSupported = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
     private var pngHiddenMtime = 0L
@@ -84,6 +87,8 @@ class RescataE2ETest {
     // Con fecha EXIF: debe aparecer en la galería el 1 de mayo de 2021, no el día de la exportación
     private val jpegVendorTrash = withExifDate(image(Color.rgb(220, 180, 20), Bitmap.CompressFormat.JPEG, "app"), "2021:05:01 10:00:00")
     private val pngEmbedded = image(Color.rgb(180, 40, 180), Bitmap.CompressFormat.PNG, "carving")
+    private val jpegWa = image(Color.rgb(37, 211, 102), Bitmap.CompressFormat.JPEG, "whatsapp")
+    private val waBackup = junk(3000)
 
     @Before
     fun prepare() {
@@ -96,7 +101,8 @@ class RescataE2ETest {
         }
         assertTrue("La app no tiene acceso al almacenamiento", StorageAccess.hasFullAccess(ctx))
 
-        listOf(pics, dl, thumb, shots, album, albumThumbs, othersDir).forEach { it.deleteRecursively() }
+        listOf(pics, dl, thumb, shots, album, albumThumbs, othersDir, waRoot).forEach { it.deleteRecursively() }
+        shell("rm -r ${waRoot.absolutePath}")
         assertTrue("No se pudo crear la carpeta de capturas", shots.mkdirs())
 
         // Una foto normal en MediaStore (viva: no debe aparecer). Garantiza que MediaStore tiene IDs.
@@ -125,6 +131,10 @@ class RescataE2ETest {
         write(File(dl, ".Trash/borrada.jpg"), jpegVendorTrash)    // papelera de una app
         write(File(dl, "rescata_cache.bin"), junk(6000) + pngEmbedded + junk(4000)) // imagen dentro de una caché
         write(File(dl, "visible.jpg"), image(Color.DKGRAY, Bitmap.CompressFormat.JPEG, "visible")) // viva
+
+        // WhatsApp: una copia local de chats y una foto guardada por WhatsApp
+        writeShared(File(waRoot, "Databases/$waBackupName"), waBackup)
+        writeShared(File(waRoot, "Media/WhatsApp Images/$waImageName"), jpegWa)
     }
 
     @Test
@@ -133,8 +143,10 @@ class RescataE2ETest {
             compose.waitForIdle()
             shot("01_inicio")
 
-            // Activar carving pulsando la fila de la opción
+            // Activar carving y multimedia de WhatsApp pulsando la fila de cada opción
             compose.onNodeWithText("Carving (lento)").performClick()
+            compose.onNodeWithTag("resultados").performScrollToNode(hasText("Multimedia de WhatsApp"))
+            compose.onNodeWithText("Multimedia de WhatsApp").performClick()
             compose.onNodeWithTag("resultados").performScrollToNode(hasText("Escanear"))
             compose.onNodeWithText("Escanear").performClick()
             // Se espera al estado de la app (no se sondea el árbol de la UI en bucle: provoca carreras con Espresso)
@@ -144,7 +156,8 @@ class RescataE2ETest {
             shot("02_resultados")
 
             // Cada caso aparece en la lista
-            val expected = mutableListOf("borrada.jpg", "miniatura_999999.jpg", "sin_extension", "rescata_cache_0x")
+            val expected = mutableListOf("borrada.jpg", "miniatura_999999.jpg", "sin_extension", "rescata_cache_0x",
+                waImageName, waBackupName)
             if (trashSupported) expected += "foto_papelera.jpg"
             for (t in expected) {
                 compose.onNodeWithTag("resultados").performScrollToNode(hasText(t, substring = true))
@@ -158,6 +171,16 @@ class RescataE2ETest {
                 ).assertIsDisplayed()
                 shot("03_miniatura_huerfana")
             }
+
+            // Filtro «Copia de WhatsApp» con las instrucciones para restaurar, y vuelta a «Todos»
+            compose.onNodeWithTag("categorias").performScrollToNode(hasText("Copia de WhatsApp (1)"))
+            compose.onNodeWithText("Copia de WhatsApp (1)").performClick()
+            compose.onNodeWithTag("resultados").performScrollToNode(hasText("Cómo recuperar chats con una copia"))
+            compose.onNodeWithText("Cómo recuperar chats con una copia").assertIsDisplayed()
+            compose.onNodeWithText("Copia de los chats de WhatsApp del 29/10/2026", substring = true).assertIsDisplayed()
+            shot("03c_copias_whatsapp")
+            compose.onNodeWithTag("categorias").performScrollToNode(hasText("Todos (", substring = true))
+            compose.onNodeWithText("Todos (", substring = true).performClick()
 
             // Exportar todo
             compose.onNodeWithText("Todos").performClick()
@@ -258,6 +281,8 @@ class RescataE2ETest {
         assertArrayEquals(jpegThumb, File(albumThumbs, "miniatura_999999.jpg").readBytes())
         if (trashSupported) assertArrayEquals(jpegTrash, File(album, "foto_papelera.jpg").readBytes())
         assertFalse("La miniatura no debe ir al álbum principal", File(album, "miniatura_999999.jpg").exists())
+        assertArrayEquals(jpegWa, File(album, waImageName).readBytes())
+        assertArrayEquals(waBackup, File(othersDir, waBackupName).readBytes())
 
         // Indexadas en la galería y con su fecha original (EXIF o fecha del archivo)
         assertEquals("Fecha en la galería de borrada.jpg", "2021-05-01", galleryDay(File(album, "borrada.jpg")))
@@ -337,6 +362,29 @@ class RescataE2ETest {
     private fun shell(cmd: String) {
         val pfd = instr.uiAutomation.executeShellCommand(cmd)
         ParcelFileDescriptor.AutoCloseInputStream(pfd).use { it.readBytes() }
+    }
+
+    /**
+     * Escribe en una carpeta de otra app dentro de Android/media. Si el sistema no deja a la app,
+     * se usa el shell (como haría adb push) en una ruta sin espacios.
+     */
+    private fun writeShared(f: File, bytes: ByteArray) {
+        var target = f
+        try {
+            f.parentFile?.mkdirs()
+            f.writeBytes(bytes)
+        } catch (e: Exception) {
+            // se intenta con el shell
+        }
+        if (!(f.isFile && f.length() == bytes.size.toLong())) {
+            target = File(f.parentFile!!.parentFile, f.parentFile!!.name.replace(" ", "") + "/" + f.name)
+            val tmp = File(dl, "tmp_" + f.name)
+            write(tmp, bytes)
+            shell("mkdir -p ${target.parentFile!!.absolutePath}")
+            shell("cp ${tmp.absolutePath} ${target.absolutePath}")
+            tmp.delete()
+        }
+        assertTrue("No se pudo preparar $target", target.isFile && target.length() == bytes.size.toLong())
     }
 
     private fun write(f: File, bytes: ByteArray) {

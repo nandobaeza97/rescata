@@ -57,6 +57,17 @@ Android 11+), la papelera en la nube de Google Fotos y todo lo que ya se borró 
 La app solo lee el origen: abre los archivos en modo lectura y nunca mueve ni borra nada. Solo
 escribe al exportar.
 
+### WhatsApp
+
+- **Copias de chats** (activado por defecto): lista las copias locales que guarda WhatsApp
+  (`WhatsApp/Databases/msgstore*.db.crypt*`) con su fecha. Están cifradas y solo WhatsApp puede
+  abrirlas, pero exportarlas las conserva (WhatsApp solo guarda las de los últimos 7 días). Al
+  filtrar por «Copia de WhatsApp» la app muestra los pasos oficiales para restaurar una: renombrarla
+  a `msgstore.db.cryptNN`, reinstalar WhatsApp y pulsar «Restaurar».
+- **Multimedia de WhatsApp** (desactivado por defecto): muestra todas las fotos, vídeos y audios que
+  guarda WhatsApp, con su propio filtro. Las fotos y vídeos se exportan al álbum «Rescata».
+- La app nunca modifica la carpeta de WhatsApp: solo lee y copia.
+
 ### Sin Android Studio: compilar el APK en GitHub
 
 El proyecto incluye `.github/workflows/compilar-apk.yml`. Sube la carpeta a un repositorio de

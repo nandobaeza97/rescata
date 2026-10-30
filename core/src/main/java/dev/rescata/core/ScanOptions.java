@@ -15,6 +15,10 @@ public final class ScanOptions {
     public boolean hiddenMedia = true;
     /** Carving de imágenes dentro de archivos no multimedia (lento). */
     public boolean carving = false;
+    /** Copias locales de los chats de WhatsApp (WhatsApp/Databases/msgstore*.db.crypt*). */
+    public boolean whatsappBackups = true;
+    /** Todo el multimedia guardado por WhatsApp (puede ser mucho; desactivado por defecto). */
+    public boolean whatsappMedia = false;
 
     public long carveMaxFileBytes = 1024L * 1024 * 1024;
     public long carveMinFileBytes = 1024;

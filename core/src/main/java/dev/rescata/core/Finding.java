@@ -15,7 +15,11 @@ public final class Finding {
         /** Archivo multimedia oculto, sin extensión o con extensión engañosa. */
         HIDDEN_MEDIA,
         /** Imagen incrustada extraída por carving de un archivo contenedor. */
-        CARVED
+        CARVED,
+        /** Copia local (cifrada) de los chats de WhatsApp: msgstore*.db.crypt*. */
+        WHATSAPP_BACKUP,
+        /** Foto, vídeo o audio guardado por WhatsApp (opcional). */
+        WHATSAPP_MEDIA
     }
 
     private final long id;

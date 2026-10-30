@@ -73,6 +73,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import dev.rescata.core.FileType
 import dev.rescata.core.Finding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -185,6 +186,7 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
             }
             if (state.rows.isNotEmpty()) {
                 item { CategoryChips(state, onFilter = vm::setFilter) }
+                if (state.filter == Finding.Category.WHATSAPP_BACKUP) item { WhatsAppRestoreHelp() }
             }
             items(state.visibleRows, key = { it.finding.id }) { row ->
                 FindingItem(row, row.finding.id in state.selected, previews) { vm.toggle(row.finding.id) }
@@ -273,6 +275,32 @@ private fun OptionsCard(o: Options, enabled: Boolean, onChange: (Options) -> Uni
         OptionRow("Carving (lento)", "Busca imágenes dentro de cachés y bases de datos", o.carving, enabled) {
             onChange(o.copy(carving = it))
         }
+        OptionRow("Copias de chats de WhatsApp", "Copias locales para guardarlas o restaurarlas", o.whatsappBackups, enabled) {
+            onChange(o.copy(whatsappBackups = it))
+        }
+        OptionRow("Multimedia de WhatsApp", "Todas las fotos, vídeos y audios que guarda WhatsApp", o.whatsappMedia, enabled) {
+            onChange(o.copy(whatsappMedia = it))
+        }
+    }
+}
+
+/** Pasos oficiales de WhatsApp para restaurar una copia local (faq.whatsapp.com). */
+@Composable
+private fun WhatsAppRestoreHelp() {
+    Card(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp)) {
+        Column(Modifier.padding(16.dp)) {
+            Text("Cómo recuperar chats con una copia", fontWeight = FontWeight.Bold)
+            Spacer(Modifier.height(4.dp))
+            Text(
+                "Estas copias están cifradas: solo WhatsApp puede abrirlas. WhatsApp guarda las de los " +
+                    "últimos 7 días, así que exporta las que te interesen para no perderlas.\n\n" +
+                    "Para restaurar una: con un gestor de archivos, en WhatsApp › Databases, renombra la copia " +
+                    "del día anterior al borrado a msgstore.db.cryptNN (sin cambiar el número), desinstala y " +
+                    "reinstala WhatsApp y pulsa «Restaurar». Perderás lo recibido después de esa fecha y, si " +
+                    "tienes copia en la nube, WhatsApp puede ofrecerte esa en su lugar.",
+                style = MaterialTheme.typography.bodySmall,
+            )
+        }
     }
 }
 
@@ -322,6 +350,7 @@ private fun ScanControls(state: UiState, onScan: () -> Unit, onCancel: () -> Uni
 private fun CategoryChips(state: UiState, onFilter: (Finding.Category?) -> Unit) {
     val counts = state.rows.groupingBy { it.finding.category }.eachCount()
     LazyRow(
+        modifier = Modifier.testTag("categorias"),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp),
     ) {
@@ -350,7 +379,11 @@ private fun FindingItem(row: FindingRow, selected: Boolean, cache: Previews.Cach
         Column(Modifier.weight(1f)) {
             Text(f.suggestedName ?: "", style = MaterialTheme.typography.bodyLarge, maxLines = 1, overflow = TextOverflow.Ellipsis)
             Text(
-                "${label(f.category)} · ${f.type.name} · ${Formatter.formatShortFileSize(ctx, f.length)}",
+                listOfNotNull(
+                    label(f.category),
+                    f.type.name.takeIf { f.type != FileType.UNKNOWN },
+                    Formatter.formatShortFileSize(ctx, f.length),
+                ).joinToString(" · "),
                 style = MaterialTheme.typography.bodySmall,
             )
             if (f.expiresEpochSeconds > 0) {
@@ -386,7 +419,8 @@ private fun Thumb(f: Finding, cache: Previews.Cache) {
         if (b != null) {
             Image(b.asImageBitmap(), contentDescription = null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
         } else {
-            Text(f.type.defaultExtension.uppercase(Locale.ROOT), style = MaterialTheme.typography.labelSmall)
+            val tag = if (f.category == Finding.Category.WHATSAPP_BACKUP) "CHATS" else f.type.defaultExtension.uppercase(Locale.ROOT)
+            Text(tag, style = MaterialTheme.typography.labelSmall)
         }
     }
 }
@@ -400,6 +434,8 @@ private fun label(c: Finding.Category): String = when (c) {
     Finding.Category.THUMBNAIL -> "Miniatura"
     Finding.Category.HIDDEN_MEDIA -> "Oculto"
     Finding.Category.CARVED -> "Carving"
+    Finding.Category.WHATSAPP_BACKUP -> "Copia de WhatsApp"
+    Finding.Category.WHATSAPP_MEDIA -> "WhatsApp"
 }
 
 private fun formatDate(millis: Long): String =

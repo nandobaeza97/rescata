@@ -24,6 +24,15 @@ public final class ScanEngine {
     private static final Pattern THUMB_ID =
             Pattern.compile("^(\\d{1,18})\\.(jpe?g|png|webp)$", Pattern.CASE_INSENSITIVE);
 
+    /** Carpetas de WhatsApp y WhatsApp Business (antigua /WhatsApp o Android/media/com.whatsapp/WhatsApp). */
+    private static final Pattern WA_MEDIA =
+            Pattern.compile("(?i)/(WhatsApp|WhatsApp Business)/Media/");
+    private static final Pattern WA_DATABASES =
+            Pattern.compile("(?i)/(WhatsApp|WhatsApp Business)/(Databases|Backups)/");
+    /** msgstore.db.crypt15 (la más reciente) o msgstore-AAAA-MM-DD.1.db.crypt15 (diarias). */
+    static final Pattern WA_BACKUP_NAME =
+            Pattern.compile("(?i)^msgstore(?:-(\\d{4})-(\\d{2})-(\\d{2})(?:\\.\\d+)?)?\\.db\\.crypt\\d+$");
+
     private final ScanOptions opt;
     private final Carver carver;
     private final AtomicLong ids = new AtomicLong();
@@ -119,8 +128,21 @@ public final class ScanEngine {
         boolean thumbDir = parent.getName().equalsIgnoreCase(".thumbnails");
         boolean thumbContainer = lower.startsWith(".thumbdata") || lower.startsWith("thumbdata");
         boolean dotFile = name.startsWith(".");
+        String unixPath = f.getAbsolutePath().replace('\\', '/');
+        boolean waMedia = opt.whatsappMedia && WA_MEDIA.matcher(unixPath).find();
+        Matcher waBackup = WA_BACKUP_NAME.matcher(name);
+        boolean isWaBackup = opt.whatsappBackups && WA_DATABASES.matcher(unixPath).find() && waBackup.matches();
 
-        boolean needHead = tn != null || trash || thumbDir || thumbContainer || hidden || dotFile
+        if (isWaBackup) {
+            String day = waBackup.group(1) == null ? null
+                    : waBackup.group(3) + "/" + waBackup.group(2) + "/" + waBackup.group(1);
+            emit(c, Finding.Category.WHATSAPP_BACKUP, FileType.UNKNOWN, f, -1, size, name, 0, -1,
+                    (day == null ? "Copia más reciente de los chats de WhatsApp" : "Copia de los chats de WhatsApp del " + day)
+                            + " · cifrada: solo WhatsApp puede restaurarla");
+            return;
+        }
+
+        boolean needHead = tn != null || trash || thumbDir || thumbContainer || hidden || dotFile || waMedia
                 || !FileType.isKnownExtension(ext) || opt.carving;
         if (!needHead) return; // archivo visible con extensión normal: está vivo, no interesa
         FileType type = Signatures.identify(f);
@@ -132,6 +154,11 @@ public final class ScanEngine {
                     tn.getOriginalName(), tn.getExpiresEpochSeconds(), -1,
                     trashed ? "En la papelera del sistema; se borrará al caducar"
                             : "Archivo pendiente (escritura no finalizada)");
+            return;
+        }
+        if (waMedia && type.isMedia()) {
+            emit(c, Finding.Category.WHATSAPP_MEDIA, type, f, -1, size, stripLeadingDots(name), 0, -1,
+                    "Guardado por WhatsApp: " + parent.getName());
             return;
         }
         if (thumbContainer && opt.thumbnails) {

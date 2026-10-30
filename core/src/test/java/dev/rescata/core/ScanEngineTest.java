@@ -241,6 +241,67 @@ public class ScanEngineTest {
         assertTrue(res.report.isFile());
     }
 
+    /** Carpeta de WhatsApp como en Android 11+ (y la de WhatsApp Business en la ruta antigua). */
+    private static File buildWhatsApp(File r) throws Exception {
+        File wa = new File(r, "Android/media/com.whatsapp/WhatsApp");
+        TestData.write(new File(wa, "Databases/msgstore-2026-10-29.1.db.crypt15"), TestData.junk(3000, 1));
+        TestData.write(new File(wa, "Databases/msgstore.db.crypt15"), TestData.junk(3100, 2));
+        TestData.write(new File(wa, "Databases/wa.db"), TestData.junk(500, 3));           // no es una copia de chats
+        TestData.write(new File(wa, "Media/WhatsApp Images/IMG-20261029-WA0001.jpg"), TestData.jpeg(30, 20, 4));
+        TestData.write(new File(wa, "Media/WhatsApp Images/Sent/.nomedia"), new byte[0]);
+        TestData.write(new File(wa, "Media/WhatsApp Images/Sent/IMG-20261029-WA0002.jpg"), TestData.jpeg(30, 20, 5));
+        TestData.write(new File(r, "WhatsApp Business/Databases/msgstore-2026-10-28.1.db.crypt14"), TestData.junk(2000, 6));
+        TestData.write(new File(r, "Otra/Databases/msgstore.db.crypt15"), TestData.junk(100, 7)); // fuera de WhatsApp
+        return wa;
+    }
+
+    @Test
+    public void whatsappPorDefectoSoloCopiasDeChats() throws Exception {
+        File r = TestData.tempDir();
+        buildWhatsApp(r);
+        List<Finding> all = scan(r, new ScanOptions());
+
+        List<Finding> backups = of(all, Finding.Category.WHATSAPP_BACKUP);
+        assertEquals(3, backups.size());
+        List<String> notes = new ArrayList<>();
+        for (Finding f : backups) notes.add(f.getSuggestedName() + " | " + f.getNote());
+        String joined = String.join("\n", notes);
+        assertTrue(joined, joined.contains("msgstore-2026-10-29.1.db.crypt15 | Copia de los chats de WhatsApp del 29/10/2026"));
+        assertTrue(joined, joined.contains("msgstore.db.crypt15 | Copia más reciente"));
+        assertTrue(joined, joined.contains("msgstore-2026-10-28.1.db.crypt14 | Copia de los chats de WhatsApp del 28/10/2026"));
+
+        // Sin la opción, el multimedia de WhatsApp se comporta como antes: solo lo oculto (Sent con .nomedia)
+        assertEquals(0, of(all, Finding.Category.WHATSAPP_MEDIA).size());
+        List<Finding> hidden = of(all, Finding.Category.HIDDEN_MEDIA);
+        assertEquals(1, hidden.size());
+        assertTrue(hidden.get(0).getSourcePath().endsWith("IMG-20261029-WA0002.jpg"));
+        assertEquals(4, all.size());
+    }
+
+    @Test
+    public void whatsappConMultimedia() throws Exception {
+        File r = TestData.tempDir();
+        buildWhatsApp(r);
+        ScanOptions o = new ScanOptions();
+        o.whatsappMedia = true;
+        List<Finding> all = scan(r, o);
+        List<Finding> media = of(all, Finding.Category.WHATSAPP_MEDIA);
+        assertEquals(2, media.size());
+        for (Finding f : media) assertEquals(FileType.JPEG, f.getType());
+        assertEquals(0, of(all, Finding.Category.HIDDEN_MEDIA).size()); // pasan a «WhatsApp»
+        assertEquals(3, of(all, Finding.Category.WHATSAPP_BACKUP).size());
+    }
+
+    @Test
+    public void sinOpcionesDeWhatsappNoAparece() throws Exception {
+        File r = TestData.tempDir();
+        buildWhatsApp(r);
+        ScanOptions o = new ScanOptions();
+        o.whatsappBackups = false;
+        o.hiddenMedia = false;
+        assertEquals(0, scan(r, o).size());
+    }
+
     @Test
     public void nombresDeSalidaSeguros() {
         Finding f = new Finding(7, Finding.Category.HIDDEN_MEDIA, FileType.PNG, "/x/a:b", -1, 1, 0,

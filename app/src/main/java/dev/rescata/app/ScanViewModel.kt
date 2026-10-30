@@ -35,6 +35,8 @@ data class Options(
     val thumbnails: Boolean = true,
     val hiddenMedia: Boolean = true,
     val carving: Boolean = false,
+    val whatsappBackups: Boolean = true,
+    val whatsappMedia: Boolean = false,
 )
 
 data class FindingRow(val finding: Finding, val orphanThumbnail: Boolean = false)
@@ -100,6 +102,8 @@ class ScanViewModel(app: Application) : AndroidViewModel(app) {
                 thumbnails = o.thumbnails
                 hiddenMedia = o.hiddenMedia
                 carving = o.carving
+                whatsappBackups = o.whatsappBackups
+                whatsappMedia = o.whatsappMedia
                 volumes.forEach { v -> StorageAccess.ownFolders(v).forEach { excludedPaths.add(it.absolutePath) } }
             }
 
