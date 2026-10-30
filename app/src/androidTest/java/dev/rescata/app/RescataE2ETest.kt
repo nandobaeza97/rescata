@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.Environment
 import android.os.ParcelFileDescriptor
 import android.provider.MediaStore
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
@@ -18,6 +19,7 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollToNode
+import androidx.compose.ui.test.performSemanticsAction
 import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -153,7 +155,9 @@ class RescataE2ETest {
             if (trashSupported) {
                 compose.onNodeWithText("Ninguno").performClick()
                 compose.onNodeWithTag("resultados").performScrollToNode(hasText("foto_papelera.jpg", substring = true))
-                compose.onNodeWithText("foto_papelera.jpg", substring = true).performClick()
+                // Acción semántica de clic: no depende de que el centro de la fila quede bajo la barra superior
+                compose.onNodeWithText("foto_papelera.jpg", substring = true)
+                    .performSemanticsAction(SemanticsActions.OnClick)
                 compose.onNodeWithText("Restaurar").performClick()
                 val allow = device.wait(
                     Until.findObject(By.text(Pattern.compile("(?i)^(allow|permitir|restore|restaurar)$"))), 20_000

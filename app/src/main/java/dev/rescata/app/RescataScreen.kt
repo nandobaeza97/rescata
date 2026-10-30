@@ -151,17 +151,24 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
                 val anyTrash = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R &&
                     state.rows.any { it.finding.id in state.selected && it.finding.externalRef != null }
                 BottomAppBar {
-                    TextButton(onClick = vm::selectVisible) { Text("Todos") }
-                    TextButton(onClick = vm::clearSelection) { Text("Ninguno") }
+                    // Un solo botón que alterna: ocupa menos y la barra cabe en pantallas estrechas.
+                    val allSelected = state.visibleRows.isNotEmpty() &&
+                        state.visibleRows.all { it.finding.id in state.selected }
+                    TextButton(onClick = if (allSelected) vm::clearSelection else vm::selectVisible) {
+                        Text(if (allSelected) "Ninguno" else "Todos", maxLines = 1)
+                    }
                     Spacer(Modifier.weight(1f))
                     if (anyTrash) {
-                        OutlinedButton(onClick = ::restoreSelected) { Text("Restaurar") }
+                        OutlinedButton(onClick = ::restoreSelected, contentPadding = compactPadding) {
+                            Text("Restaurar", maxLines = 1)
+                        }
                         Spacer(Modifier.width(8.dp))
                     }
                     Button(
                         onClick = ::exportSelected,
                         enabled = state.selected.isNotEmpty() && !state.exporting,
-                    ) { Text("Exportar (${state.selected.size})") }
+                        contentPadding = compactPadding,
+                    ) { Text("Exportar (${state.selected.size})", maxLines = 1) }
                     Spacer(Modifier.width(8.dp))
                 }
             }
@@ -382,6 +389,8 @@ private fun Thumb(f: Finding, cache: Previews.Cache) {
         }
     }
 }
+
+private val compactPadding = PaddingValues(horizontal = 14.dp, vertical = 8.dp)
 
 private fun label(c: Finding.Category): String = when (c) {
     Finding.Category.SYSTEM_TRASH -> "Papelera del sistema"
