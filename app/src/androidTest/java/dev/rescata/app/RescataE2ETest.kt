@@ -100,6 +100,9 @@ class RescataE2ETest {
             shell("pm grant $pkg android.permission.WRITE_EXTERNAL_STORAGE")
         }
         assertTrue("La app no tiene acceso al almacenamiento", StorageAccess.hasFullAccess(ctx))
+        // El emulador de CI es lento: que no tape la pantalla con avisos de «X no responde» de otras apps
+        shell("settings put global hide_error_dialogs 1")
+        shell("settings put secure anr_show_background 0")
 
         listOf(pics, dl, thumb, shots, album, albumThumbs, othersDir, waRoot).forEach { it.deleteRecursively() }
         shell("rm -r ${waRoot.absolutePath}")
@@ -226,8 +229,7 @@ class RescataE2ETest {
                     .performSemanticsAction(SemanticsActions.OnClick)
                 compose.onNodeWithText("Restaurar").performClick()
                 // Botón del diálogo del sistema (no el «Restaurar» de la propia app)
-                val allow = device.wait(Until.findObject(By.text(Pattern.compile("(?i)^(allow|permitir)$"))), 20_000)
-                device.waitForIdle()
+                val allow = findSystemButton(Pattern.compile("(?i)^(allow|permitir)$"), 30_000)
                 shot("05_dialogo_restaurar")
                 assertNotNull("No apareció el diálogo del sistema para restaurar", allow)
                 allow.click()
@@ -253,6 +255,27 @@ class RescataE2ETest {
             result = runCatching { read(ViewModelProvider(act)[ScanViewModel::class.java].state.value) }
         }
         return result!!.getOrThrow()
+    }
+
+    /** Busca un botón de un diálogo del sistema, apartando antes los avisos de «no responde» del emulador. */
+    private fun findSystemButton(text: Pattern, timeoutMs: Long): androidx.test.uiautomator.UiObject2? {
+        val end = System.currentTimeMillis() + timeoutMs
+        while (System.currentTimeMillis() < end) {
+            device.findObject(By.text(Pattern.compile("(?i)^(wait|esperar)$")))?.let {
+                if (device.findObject(By.textContains("responding")) != null ||
+                    device.findObject(By.textContains("responde")) != null) {
+                    it.click()
+                    device.waitForIdle()
+                }
+            }
+            val button = device.findObject(By.text(text))
+            if (button != null) {
+                device.waitForIdle()
+                return device.findObject(By.text(text))
+            }
+            Thread.sleep(300)
+        }
+        return null
     }
 
     private fun setFilter(scenario: ActivityScenario<MainActivity>, c: Finding.Category?) {
