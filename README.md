@@ -101,6 +101,12 @@ límite del búfer, contenedores de miniaturas antiguos y miniaturas EXIF intern
 clasificación sobre un árbol de carpetas que imita `/storage/emulated/0` y la exportación con
 verificación de hashes.
 
+Prueba de extremo a extremo (`app/src/androidTest`), que GitHub Actions ejecuta en emuladores con
+Android 10, 13 y 16 en cada cambio. Crea archivos borrados reales en el emulador (incluida una
+foto enviada a la papelera del sistema mediante MediaStore), abre la app, escanea, exporta,
+comprueba byte a byte y por SHA-256 lo recuperado, restaura la foto desde la papelera con el
+diálogo del sistema y guarda capturas de pantalla. El APK solo se publica en Releases si todo pasa.
+
 ## Notas
 
 - **Google Play**: `MANAGE_EXTERNAL_STORAGE` está restringido en Play y requiere justificación.

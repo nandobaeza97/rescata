@@ -54,6 +54,9 @@ data class UiState(
         get() = if (filter == null) rows else rows.filter { it.finding.category == filter }
 }
 
+private fun n(count: Number, one: String, many: String) =
+    "$count ${if (count.toLong() == 1L) one else many}"
+
 class ScanViewModel(app: Application) : AndroidViewModel(app) {
 
     private val _state = MutableStateFlow(UiState(hasAccess = StorageAccess.hasFullAccess(app)))
@@ -155,30 +158,46 @@ class ScanViewModel(app: Application) : AndroidViewModel(app) {
                 }
 
             val text = buildString {
-                append("${summary.filesVisited} archivos en ${summary.dirsVisited} carpetas · ")
-                append("${rows.size} hallazgos")
+                append("${n(summary.filesVisited, "archivo", "archivos")} en ${n(summary.dirsVisited, "carpeta", "carpetas")} · ")
+                append(n(rows.size, "hallazgo", "hallazgos"))
                 val orphans = rows.count { it.orphanThumbnail }
-                if (orphans > 0) append(" · $orphans miniaturas sin original")
+                if (orphans > 0) append(" · ${n(orphans, "miniatura sin original", "miniaturas sin original")}")
                 if (summary.unreadableDirs > 0) {
-                    append("\n${summary.unreadableDirs} carpetas sin acceso (p. ej. Android/data, protegida por el sistema)")
+                    append("\n${n(summary.unreadableDirs, "carpeta sin acceso", "carpetas sin acceso")} (p. ej. Android/data, protegida por el sistema)")
                 }
                 val noPath = trash.count { it.path == null }
-                if (noPath > 0) append("\n$noPath elementos de la papelera sin ruta accesible")
+                if (noPath > 0) append("\n${n(noPath, "elemento", "elementos")} de la papelera sin ruta accesible")
                 if (summary.cancelled) append("\nEscaneo cancelado: resultados parciales")
             }
             _state.update { it.copy(scanning = false, rows = rows, summary = text, progressText = "") }
         }
     }
 
+    private var pendingRestore: Set<Long> = emptySet()
+
     /** URIs de MediaStore de los elementos seleccionados que están en la papelera del sistema. */
     fun selectedTrashUris(): List<Uri> {
         val s = _state.value
-        return s.rows.filter { it.finding.id in s.selected }.mapNotNull { r -> r.finding.externalRef?.let(Uri::parse) }
+        val rows = s.rows.filter { it.finding.id in s.selected && it.finding.externalRef != null }
+        pendingRestore = rows.map { it.finding.id }.toSet()
+        return rows.map { Uri.parse(it.finding.externalRef) }
     }
 
     fun onRestoreResult(ok: Boolean) {
-        showMessage(if (ok) "Restaurados en su ubicación original. Vuelve a escanear para actualizar la lista."
-        else "Restauración cancelada")
+        val ids = pendingRestore
+        pendingRestore = emptySet()
+        if (!ok) {
+            showMessage("Restauración cancelada")
+            return
+        }
+        // Ya no están en la papelera: se quitan de la lista.
+        _state.update { s ->
+            s.copy(
+                rows = s.rows.filterNot { it.finding.id in ids },
+                selected = s.selected - ids,
+                message = "${n(ids.size, "elemento restaurado", "elementos restaurados")} en su ubicación original",
+            )
+        }
     }
 
     fun export(volume: StorageAccess.Volume) {
@@ -197,7 +216,7 @@ class ScanViewModel(app: Application) : AndroidViewModel(app) {
                 val paths = outDir.listFiles()?.map { it.absolutePath }?.toTypedArray()
                 if (paths != null) MediaScannerConnection.scanFile(ctx, paths, null, null)
                 buildString {
-                    append("Exportados ${res.exported}")
+                    append(n(res.exported, "archivo exportado", "archivos exportados"))
                     if (res.failed > 0) append(" (fallaron ${res.failed})")
                     append(" en ${outDir.absolutePath}. El informe con los SHA-256 está en ${res.report.name}.")
                 }

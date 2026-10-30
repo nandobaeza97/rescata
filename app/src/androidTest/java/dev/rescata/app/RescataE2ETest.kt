@@ -27,6 +27,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.Until
+import dev.rescata.core.Finding
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -122,7 +123,7 @@ class RescataE2ETest {
             // Se espera al estado de la app (no se sondea el árbol de la UI en bucle: provoca carreras con Espresso)
             waitFor(180_000, "fin del escaneo") { vm(scenario) { s -> !s.scanning && s.summary != null } }
             compose.waitForIdle()
-            compose.onNodeWithText("hallazgos", substring = true).assertIsDisplayed()
+            compose.onNodeWithText("hallazgo", substring = true).assertIsDisplayed()
             shot("02_resultados")
 
             // Cada caso aparece en la lista
@@ -174,6 +175,11 @@ class RescataE2ETest {
                 shot("06_restaurado")
                 assertTrue("La foto no volvió a su ubicación original", restored.exists())
                 assertArrayEquals(jpegTrash, restored.readBytes())
+                waitFor(10_000, "que la foto restaurada salga de la lista") {
+                    vm(scenario) { s -> s.rows.none { it.finding.category == Finding.Category.SYSTEM_TRASH } }
+                }
+                compose.waitForIdle()
+                shot("07_lista_actualizada")
             }
         }
     }
