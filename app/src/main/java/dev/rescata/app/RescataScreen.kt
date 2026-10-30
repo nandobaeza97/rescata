@@ -29,6 +29,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomAppBar
@@ -63,6 +64,8 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -164,7 +167,7 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
             }
         },
     ) { padding ->
-        LazyColumn(contentPadding = padding, modifier = Modifier.fillMaxSize()) {
+        LazyColumn(contentPadding = padding, modifier = Modifier.fillMaxSize().testTag("resultados")) {
             item { LimitsCard() }
             if (!state.hasAccess) item { AccessCard(onRequest = ::requestAccess) }
             item {
@@ -267,12 +270,19 @@ private fun OptionsCard(o: Options, enabled: Boolean, onChange: (Options) -> Uni
 
 @Composable
 private fun OptionRow(title: String, subtitle: String, checked: Boolean, enabled: Boolean, onChange: (Boolean) -> Unit) {
-    Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+    // Toda la fila es pulsable (no solo el interruptor), más cómodo en el móvil.
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .toggleable(value = checked, enabled = enabled, role = Role.Switch, onValueChange = onChange)
+            .padding(vertical = 4.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
         Column(Modifier.weight(1f)) {
             Text(title)
             Text(subtitle, style = MaterialTheme.typography.bodySmall)
         }
-        Switch(checked = checked, onCheckedChange = onChange, enabled = enabled)
+        Switch(checked = checked, onCheckedChange = null, enabled = enabled)
     }
 }
 
