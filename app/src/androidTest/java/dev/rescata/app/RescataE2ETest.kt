@@ -225,9 +225,9 @@ class RescataE2ETest {
                 compose.onNodeWithText("foto_papelera.jpg", substring = true)
                     .performSemanticsAction(SemanticsActions.OnClick)
                 compose.onNodeWithText("Restaurar").performClick()
-                val allow = device.wait(
-                    Until.findObject(By.text(Pattern.compile("(?i)^(allow|permitir|restore|restaurar)$"))), 20_000
-                )
+                // Botón del diálogo del sistema (no el «Restaurar» de la propia app)
+                val allow = device.wait(Until.findObject(By.text(Pattern.compile("(?i)^(allow|permitir)$"))), 20_000)
+                device.waitForIdle()
                 shot("05_dialogo_restaurar")
                 assertNotNull("No apareció el diálogo del sistema para restaurar", allow)
                 allow.click()
