@@ -173,14 +173,22 @@ class RescataE2ETest {
             }
 
             // Filtro «Copia de WhatsApp» con las instrucciones para restaurar, y vuelta a «Todos»
+            // (clic semántico: el chip puede quedar medio fuera de la pantalla)
             compose.onNodeWithTag("categorias").performScrollToNode(hasText("Copia de WhatsApp (1)"))
-            compose.onNodeWithText("Copia de WhatsApp (1)").performClick()
+            compose.onNodeWithText("Copia de WhatsApp (1)").performSemanticsAction(SemanticsActions.OnClick)
+            waitFor(10_000, "filtro «Copia de WhatsApp»") {
+                vm(scenario) { s -> s.filter == Finding.Category.WHATSAPP_BACKUP && s.visibleRows.size == 1 }
+            }
+            compose.waitForIdle()
             compose.onNodeWithTag("resultados").performScrollToNode(hasText("Cómo recuperar chats con una copia"))
             compose.onNodeWithText("Cómo recuperar chats con una copia").assertIsDisplayed()
-            compose.onNodeWithText("Copia de los chats de WhatsApp del 29/10/2026", substring = true).assertIsDisplayed()
+            compose.onNodeWithTag("resultados")
+                .performScrollToNode(hasText("Copia de los chats de WhatsApp del 29/10/2026", substring = true))
             shot("03c_copias_whatsapp")
             compose.onNodeWithTag("categorias").performScrollToNode(hasText("Todos (", substring = true))
-            compose.onNodeWithText("Todos (", substring = true).performClick()
+            compose.onNodeWithText("Todos (", substring = true).performSemanticsAction(SemanticsActions.OnClick)
+            waitFor(10_000, "volver a «Todos»") { vm(scenario) { s -> s.filter == null } }
+            compose.waitForIdle()
 
             // Exportar todo
             compose.onNodeWithText("Todos").performClick()
