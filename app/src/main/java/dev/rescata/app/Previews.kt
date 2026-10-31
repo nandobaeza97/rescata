@@ -16,7 +16,10 @@ object Previews {
 
     private const val MAX_CARVED_BYTES = 40L * 1024 * 1024
 
-    class Cache : LruCache<Long, Bitmap>(16 * 1024 * 1024) {
+    // Hasta 1/8 de la memoria de la app (máx. 64 MB) para las miniaturas de la cuadrícula
+    class Cache : LruCache<Long, Bitmap>(
+        (Runtime.getRuntime().maxMemory() / 8).coerceAtMost(64L * 1024 * 1024).toInt()
+    ) {
         override fun sizeOf(key: Long, value: Bitmap): Int = value.byteCount
     }
 

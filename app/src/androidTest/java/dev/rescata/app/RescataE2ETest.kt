@@ -14,6 +14,7 @@ import android.os.ParcelFileDescriptor
 import android.provider.MediaStore
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
@@ -146,12 +147,16 @@ class RescataE2ETest {
             compose.waitForIdle()
             shot("01_inicio")
 
-            // Activar carving y multimedia de WhatsApp pulsando la fila de cada opción
+            // Abrir «Ajustes de búsqueda» y activar carving y multimedia de WhatsApp
+            compose.onNodeWithText("Ajustes de búsqueda").performClick()
+            compose.waitForIdle()
+            shot("01b_ajustes")
+            compose.onNodeWithTag("resultados").performScrollToNode(hasText("Carving (lento)"))
             compose.onNodeWithText("Carving (lento)").performClick()
             compose.onNodeWithTag("resultados").performScrollToNode(hasText("Multimedia de WhatsApp"))
             compose.onNodeWithText("Multimedia de WhatsApp").performClick()
-            compose.onNodeWithTag("resultados").performScrollToNode(hasText("Escanear"))
-            compose.onNodeWithText("Escanear").performClick()
+            compose.onNodeWithTag("resultados").performScrollToNode(hasText("Buscar archivos borrados"))
+            compose.onNodeWithText("Buscar archivos borrados").performClick()
             // Se espera al estado de la app (no se sondea el árbol de la UI en bucle: provoca carreras con Espresso)
             waitFor(180_000, "fin del escaneo") { vm(scenario) { s -> !s.scanning && s.summary != null } }
             compose.waitForIdle()
@@ -162,18 +167,30 @@ class RescataE2ETest {
             val expected = mutableListOf("borrada.jpg", "miniatura_999999.jpg", "sin_extension", "rescata_cache_0x",
                 waImageName, waBackupName)
             if (trashSupported) expected += "foto_papelera.jpg"
+            // Fotos y vídeos se ven en la cuadrícula (nombre en la descripción); el resto, en la lista
             for (t in expected) {
-                compose.onNodeWithTag("resultados").performScrollToNode(hasText(t, substring = true))
-                compose.onNodeWithText(t, substring = true).assertIsDisplayed()
+                val m = hasText(t, substring = true) or hasContentDescription(t, substring = true)
+                compose.onNodeWithTag("resultados").performScrollToNode(m)
+                compose.onNode(m).assertIsDisplayed()
             }
             if (orphanSupported) {
-                compose.onNodeWithTag("resultados").performScrollToNode(hasText("miniatura_999999.jpg", substring = true))
-                compose.onNode(
-                    hasText("miniatura_999999.jpg", substring = true) and
-                        hasText("No queda ningún elemento en MediaStore", substring = true)
-                ).assertIsDisplayed()
+                val thumbTile = hasContentDescription("miniatura_999999.jpg", substring = true)
+                compose.onNodeWithTag("resultados").performScrollToNode(thumbTile)
+                compose.onNode(thumbTile and hasText("Sin original")).assertIsDisplayed()
                 shot("03_miniatura_huerfana")
+                assertTrue(vm(scenario) { s -> s.rows.any { it.orphanThumbnail } })
             }
+
+            // Hoja de detalles (pulsación larga en una foto) y cierre con «atrás»
+            val vendorTile = hasContentDescription("borrada.jpg", substring = true)
+            compose.onNodeWithTag("resultados").performScrollToNode(vendorTile)
+            compose.onNode(vendorTile).performSemanticsAction(SemanticsActions.OnLongClick)
+            compose.waitForIdle()
+            compose.onNodeWithText("Ubicación").assertIsDisplayed()
+            shot("03b_detalles")
+            device.pressBack()
+            compose.waitForIdle()
+            assertEquals(0, compose.onAllNodesWithText("Ubicación").fetchSemanticsNodes().size)
 
             // Filtro «Copia de WhatsApp» con las instrucciones para restaurar, y vuelta a «Todos»
             // Filtro «Copia de WhatsApp»: se aplica a través de la app (desplazar con el test la fila de chips,
@@ -185,9 +202,8 @@ class RescataE2ETest {
             compose.waitForIdle()
             compose.onNodeWithTag("resultados").performScrollToNode(hasText("Cómo recuperar chats con una copia"))
             compose.onNodeWithText("Cómo recuperar chats con una copia").assertIsDisplayed()
-            compose.onNodeWithTag("resultados")
-                .performScrollToNode(hasText("Copia de los chats de WhatsApp del 29/10/2026", substring = true))
-            compose.onNodeWithText("Copia de los chats de WhatsApp del 29/10/2026", substring = true).assertIsDisplayed()
+            compose.onNodeWithTag("resultados").performScrollToNode(hasText("Chats del 29/10/2026", substring = true))
+            compose.onNodeWithText("Chats del 29/10/2026", substring = true).assertIsDisplayed()
             shot("03c_copias_whatsapp")
             setFilter(scenario, null)
             waitFor(10_000, "volver a «Todos»") { vm(scenario) { s -> s.filter == null } }
@@ -195,8 +211,8 @@ class RescataE2ETest {
 
             // Exportar todo
             compose.onNodeWithText("Todos").performClick()
-            compose.onNodeWithText("Exportar", substring = true).performClick()
-            if (compose.onAllNodesWithText("¿Dónde exportar?").fetchSemanticsNodes().isNotEmpty()) {
+            compose.onNodeWithText("Guardar (", substring = true).performClick()
+            if (compose.onAllNodesWithText("¿Dónde guardar?").fetchSemanticsNodes().isNotEmpty()) {
                 val label = StorageAccess.exportVolumes(ctx).first { it.primary }.label
                 compose.onNodeWithText(label, substring = true).performClick()
             }
@@ -207,8 +223,8 @@ class RescataE2ETest {
 
             // Exportar otra vez lo mismo: no debe duplicar nada en la galería
             val inAlbum = album.list()?.size ?: 0
-            compose.onNodeWithText("Exportar", substring = true).performClick()
-            if (compose.onAllNodesWithText("¿Dónde exportar?").fetchSemanticsNodes().isNotEmpty()) {
+            compose.onNodeWithText("Guardar (", substring = true).performClick()
+            if (compose.onAllNodesWithText("¿Dónde guardar?").fetchSemanticsNodes().isNotEmpty()) {
                 val label = StorageAccess.exportVolumes(ctx).first { it.primary }.label
                 compose.onNodeWithText(label, substring = true).performClick()
             }
@@ -223,10 +239,10 @@ class RescataE2ETest {
             // Restaurar en su sitio la foto de la papelera (diálogo del sistema)
             if (trashSupported) {
                 compose.onNodeWithText("Ninguno").performClick()
-                compose.onNodeWithTag("resultados").performScrollToNode(hasText("foto_papelera.jpg", substring = true))
-                // Acción semántica de clic: no depende de que el centro de la fila quede bajo la barra superior
-                compose.onNodeWithText("foto_papelera.jpg", substring = true)
-                    .performSemanticsAction(SemanticsActions.OnClick)
+                val trashTile = hasContentDescription("foto_papelera.jpg", substring = true)
+                compose.onNodeWithTag("resultados").performScrollToNode(trashTile)
+                // Acción semántica de clic: no depende de que la foto quede bajo la barra superior
+                compose.onNode(trashTile).performSemanticsAction(SemanticsActions.OnClick)
                 compose.onNodeWithText("Restaurar").performClick()
                 // Botón del diálogo del sistema (no el «Restaurar» de la propia app)
                 val allow = findSystemButton(Pattern.compile("(?i)^(allow|permitir)$"), 30_000)
