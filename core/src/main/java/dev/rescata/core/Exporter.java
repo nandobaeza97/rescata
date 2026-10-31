@@ -1,5 +1,6 @@
 package dev.rescata.core;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -35,18 +36,47 @@ public final class Exporter {
         Destination destinationFor(Finding finding);
     }
 
+    /** ¿Queda sitio para copiar tantos bytes más? Si no, el guardado se detiene ahí. */
+    public interface SpaceGuard {
+        boolean hasRoomFor(long bytes);
+    }
+
     public static final class Result {
         public int exported;
         public int alreadyPresent;
         public int failed;
+        /** Copias de una versión anterior que se movieron al destino en lugar de copiarse otra vez. */
+        public int moved;
+        /** Se detuvo por falta de espacio; {@link #notAttempted} quedaron sin intentar. */
+        public boolean outOfSpace;
+        public int notAttempted;
         public File report;
+        /** Si no se pudo escribir el informe (el guardado sigue igualmente). */
+        public String reportError;
         /** Copias nuevas por destino (etiqueta → número), en orden de aparición. */
         public final Map<String, Integer> exportedByDestination = new LinkedHashMap<>();
     }
 
     public static final String STATUS_EXPORTED = "exportado";
     public static final String STATUS_ALREADY = "ya existía";
+    public static final String STATUS_MOVED = "movido";
+    public static final String STATUS_NO_SPACE = "sin espacio";
     public static final String STATUS_ERROR = "error";
+
+    private ContentIndex previousCopies;
+    private SpaceGuard spaceGuard;
+
+    /** Copias de versiones anteriores: si una es idéntica, se mueve al destino en vez de copiarse. */
+    public Exporter previousCopies(ContentIndex index) {
+        this.previousCopies = index;
+        return this;
+    }
+
+    /** Comprobación de espacio libre antes de cada copia. */
+    public Exporter spaceGuard(SpaceGuard guard) {
+        this.spaceGuard = guard;
+        return this;
+    }
 
     /** Atajo: todo a una carpeta y el informe dentro de ella como informe.csv. */
     public Result export(List<Finding> findings, File outDir, Listener listener, AtomicBoolean cancel)
@@ -60,89 +90,159 @@ public final class Exporter {
     public Result export(List<Finding> findings, Router router, File reportFile, Listener listener,
                          AtomicBoolean cancel) throws IOException {
         Result res = new Result();
-        StringBuilder csv = new StringBuilder();
-        csv.append("id;categoria;tipo;origen;offset;bytes;sha256;nombre_original;caduca_utc;modificado_utc;")
-           .append("estado;destino;ubicacion;nota;error\r\n");
-
-        int done = 0;
-        for (final Finding f : findings) {
-            if (cancel != null && cancel.get()) break;
-            if (listener != null) listener.onProgress(done, findings.size(), f);
-            String status;
-            String destLabel = "";
-            String location = "";
-            String sha = "";
-            String error = "";
-            long size = 0;
-            try {
-                long[] sizeOut = new long[1];
-                sha = hashSource(f, sizeOut);
-                size = sizeOut[0];
-                Destination d = router.destinationFor(f);
-                destLabel = d.label();
-                String existing = d.findExisting(f, sha, size);
-                if (existing != null) {
-                    status = STATUS_ALREADY;
-                    location = existing;
-                    res.alreadyPresent++;
-                } else {
-                    final String[] copySha = new String[1];
-                    final long[] copied = new long[1];
-                    location = d.write(f, targetName(f), new Destination.ContentWriter() {
-                        @Override public void writeTo(OutputStream out) throws IOException {
-                            copySha[0] = copy(f, out, copied);
-                        }
-                    });
-                    if (copied[0] != size || !sha.equals(copySha[0])) {
-                        throw new IOException("El origen cambió durante la copia");
-                    }
-                    d.written(location, sha, size);
-                    status = STATUS_EXPORTED;
-                    res.exported++;
-                    Integer n = res.exportedByDestination.get(destLabel);
-                    res.exportedByDestination.put(destLabel, n == null ? 1 : n + 1);
-                }
-            } catch (IOException | RuntimeException e) {
-                status = STATUS_ERROR;
-                res.failed++;
-                error = e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage();
-            }
-            csv.append(f.getId()).append(';')
-               .append(f.getCategory()).append(';')
-               .append(f.getType()).append(';')
-               .append(cell(f.getSourcePath())).append(';')
-               .append(f.isWholeFile() ? "" : String.valueOf(f.getOffset())).append(';')
-               .append(size).append(';')
-               .append(sha).append(';')
-               .append(cell(f.getSuggestedName())).append(';')
-               .append(f.getExpiresEpochSeconds() > 0 ? iso(f.getExpiresEpochSeconds() * 1000L) : "").append(';')
-               .append(f.getLastModified() > 0 ? iso(f.getLastModified()) : "").append(';')
-               .append(status).append(';')
-               .append(cell(destLabel)).append(';')
-               .append(cell(location)).append(';')
-               .append(cell(f.getNote())).append(';')
-               .append(cell(error)).append("\r\n");
-            done++;
-        }
-        if (listener != null) listener.onProgress(done, findings.size(), null);
-
+        // El informe se va escribiendo archivo a archivo: si el guardado se corta, queda lo hecho
+        Writer report = null;
         if (reportFile != null) {
-            File parent = reportFile.getParentFile();
-            if (parent != null && !parent.isDirectory() && !parent.mkdirs()) {
-                throw new IOException("No se pudo crear " + parent);
-            }
-            OutputStream os = new FileOutputStream(reportFile);
             try {
-                os.write(new byte[] {(byte) 0xEF, (byte) 0xBB, (byte) 0xBF}); // BOM: Excel abre bien los acentos
-                Writer w = new OutputStreamWriter(os, Charset.forName("UTF-8"));
-                w.write(csv.toString());
-                w.flush();
-            } finally {
-                os.close();
+                report = openReport(reportFile);
+                res.report = reportFile;
+            } catch (IOException e) {
+                res.reportError = e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage();
             }
-            res.report = reportFile;
+        }
+        try {
+            int done = 0;
+            for (final Finding f : findings) {
+                if (cancel != null && cancel.get()) break;
+                if (listener != null) listener.onProgress(done, findings.size(), f);
+                String status;
+                String destLabel = "";
+                String location = "";
+                String sha = "";
+                String error = "";
+                long size = 0;
+                boolean stop = false;
+                try {
+                    Destination d = router.destinationFor(f);
+                    destLabel = d.label();
+                    long expected = expectedSize(f);
+                    boolean maybeCopy = d.mayContain(expected)
+                            || (previousCopies != null && previousCopies.hasSize(expected));
+                    String existing = null;
+                    String movedTo = null;
+                    if (maybeCopy) {
+                        // Puede haber ya una copia idéntica: se calcula su huella antes de copiar
+                        long[] sizeOut = new long[1];
+                        sha = hashSource(f, sizeOut);
+                        size = sizeOut[0];
+                        existing = d.findExisting(f, sha, size);
+                        if (existing == null && previousCopies != null) {
+                            File old = previousCopies.take(sha, size);
+                            if (old != null) movedTo = d.moveIn(f, targetName(f), old);
+                        }
+                    }
+                    if (existing != null) {
+                        status = STATUS_ALREADY;
+                        location = existing;
+                        res.alreadyPresent++;
+                    } else if (movedTo != null) {
+                        d.written(movedTo, sha, size);
+                        status = STATUS_MOVED;
+                        location = movedTo;
+                        res.moved++;
+                    } else if (spaceGuard != null && !spaceGuard.hasRoomFor(maybeCopy ? size : expected)) {
+                        status = STATUS_NO_SPACE;
+                        error = "Queda poco espacio libre: se detiene el guardado";
+                        stop = true;
+                    } else {
+                        final String[] copySha = new String[1];
+                        final long[] copied = new long[1];
+                        location = d.write(f, targetName(f), new Destination.ContentWriter() {
+                            @Override public void writeTo(OutputStream out) throws IOException {
+                                copySha[0] = copy(f, out, copied);
+                            }
+                        });
+                        if (maybeCopy) {
+                            if (copied[0] != size || !sha.equals(copySha[0])) {
+                                throw new IOException("El origen cambió durante la copia");
+                            }
+                        } else {
+                            // Una sola lectura: la huella es la de los bytes copiados
+                            sha = copySha[0];
+                            size = copied[0];
+                        }
+                        d.written(location, sha, size);
+                        status = STATUS_EXPORTED;
+                        res.exported++;
+                        Integer n = res.exportedByDestination.get(destLabel);
+                        res.exportedByDestination.put(destLabel, n == null ? 1 : n + 1);
+                    }
+                } catch (IOException | RuntimeException e) {
+                    status = STATUS_ERROR;
+                    res.failed++;
+                    error = e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage();
+                }
+                if (report != null) {
+                    try {
+                        writeRow(report, f, size, sha, status, destLabel, location, error);
+                    } catch (IOException e) {
+                        res.reportError = e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage();
+                        closeQuietly(report);
+                        report = null;
+                    }
+                }
+                done++;
+                if (stop) {
+                    res.outOfSpace = true;
+                    res.notAttempted = findings.size() - done;
+                    break;
+                }
+            }
+            if (listener != null) listener.onProgress(done, findings.size(), null);
+        } finally {
+            if (report != null) closeQuietly(report);
         }
         return res;
+    }
+
+    /** Tamaño que se espera copiar (el del archivo ahora mismo, o el del tramo). */
+    private static long expectedSize(Finding f) {
+        if (!f.isWholeFile()) return f.getLength();
+        return new File(f.getSourcePath()).length();
+    }
+
+    private static Writer openReport(File reportFile) throws IOException {
+        File parent = reportFile.getParentFile();
+        if (parent != null && !parent.isDirectory() && !parent.mkdirs()) {
+            throw new IOException("No se pudo crear " + parent);
+        }
+        OutputStream os = new FileOutputStream(reportFile);
+        os.write(new byte[] {(byte) 0xEF, (byte) 0xBB, (byte) 0xBF}); // BOM: Excel abre bien los acentos
+        Writer w = new BufferedWriter(new OutputStreamWriter(os, Charset.forName("UTF-8")));
+        w.write("id;categoria;tipo;origen;offset;bytes;sha256;nombre_original;caduca_utc;modificado_utc;"
+                + "estado;destino;ubicacion;nota;error\r\n");
+        w.flush();
+        return w;
+    }
+
+    private static void writeRow(Writer w, Finding f, long size, String sha, String status, String destLabel,
+                                 String location, String error) throws IOException {
+        StringBuilder row = new StringBuilder(256);
+        row.append(f.getId()).append(';')
+           .append(f.getCategory()).append(';')
+           .append(f.getType()).append(';')
+           .append(cell(f.getSourcePath())).append(';')
+           .append(f.isWholeFile() ? "" : String.valueOf(f.getOffset())).append(';')
+           .append(size).append(';')
+           .append(sha).append(';')
+           .append(cell(f.getSuggestedName())).append(';')
+           .append(f.getExpiresEpochSeconds() > 0 ? iso(f.getExpiresEpochSeconds() * 1000L) : "").append(';')
+           .append(f.getLastModified() > 0 ? iso(f.getLastModified()) : "").append(';')
+           .append(status).append(';')
+           .append(cell(destLabel)).append(';')
+           .append(cell(location)).append(';')
+           .append(cell(f.getNote())).append(';')
+           .append(cell(error)).append("\r\n");
+        w.write(row.toString());
+        w.flush();
+    }
+
+    private static void closeQuietly(Writer w) {
+        try {
+            w.close();
+        } catch (IOException ignored) {
+            // nada más que hacer
+        }
     }
 
     /** SHA-256 del contenido del hallazgo (archivo entero o tramo), sin copiarlo. */

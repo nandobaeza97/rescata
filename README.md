@@ -51,11 +51,18 @@ Android 11+), la papelera en la nube de Google Fotos y todo lo que ya se borró 
    Las fotos conservan su fecha original (EXIF o fecha del archivo), así que la galería las coloca
    en su día. Si vuelves a exportar algo que ya está, no se duplica. Si hay tarjeta SD o USB OTG,
    la app ofrece guardar allí para no escribir en la memoria interna.
+   - Guardados grandes (miles de archivos, decenas de GB): el ritmo no cae a medida que se llena
+     el álbum, sigue con el móvil bloqueado y, si Android lo pausa por su límite de 6 h en
+     segundo plano (Android 15+), avisa y continúa al abrir la app. Antes de empezar compara lo
+     seleccionado con el espacio libre y se para dejando 1 GB libre. El informe se escribe sobre
+     la marcha y, al terminar con el móvil bloqueado, una notificación muestra el resumen.
+   - Lo guardado con versiones anteriores en `Download/Rescata/<fecha>` que sea idéntico se
+     **mueve** al álbum en lugar de copiarse otra vez (instantáneo y sin ocupar más espacio).
 5. Los elementos de la papelera del sistema también se pueden **Restaurar** en su ubicación
    original. Android pide confirmación al usuario en un diálogo del sistema.
 
 La app solo lee el origen: abre los archivos en modo lectura y nunca mueve ni borra nada. Solo
-escribe al exportar.
+escribe al exportar (y solo mueve sus propias copias antiguas de `Download/Rescata/<fecha>`).
 
 ### WhatsApp
 

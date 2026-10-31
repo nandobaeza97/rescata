@@ -44,7 +44,10 @@ class EscalaE2ETest {
 
     @Suppress("DEPRECATION")
     private val root: File = Environment.getExternalStorageDirectory()
-    private val source = File(root, "Download/RescataEscala/.escala")
+    private val testRoot = File(root, "Download/RescataEscala")
+    private val source = File(testRoot, ".escala")
+    private val docs = File(testRoot, ".Trash")
+    private val legacy = File(root, "Download/Rescata/20261030_221500") // como guardaba la versión anterior
     private val album = File(root, "Pictures/Rescata")
     private val othersDir = File(root, "Download/Rescata")
     private val shots = File(root, "Download/rescata-capturas")
@@ -68,15 +71,27 @@ class EscalaE2ETest {
         listOf("Download/RescataTest", "Pictures/RescataTest", "Pictures/.thumbnails/999999.jpg", "Pictures/Rescata – Miniaturas")
             .forEach { File(root, it).deleteRecursively() }
         shell("rm -r ${File(root, "Android/media/com.whatsapp/WhatsApp").absolutePath}")
-        listOf(source.parentFile!!, album, othersDir).forEach { it.deleteRecursively() }
+        listOf(testRoot, album, othersDir).forEach { it.deleteRecursively() }
         shots.mkdirs()
+        SharedState.resetForTests()
 
         // N fotos distintas y del mismo tamaño (el peor caso para detectar duplicados)
         val base = baseJpeg()
         val t0 = SystemClock.elapsedRealtime()
         assertTrue(source.mkdirs())
         for (i in 0 until N) File(source, "escala_%05d.jpg".format(i)).writeBytes(variant(base, i))
-        note("Preparadas $N fotos de ${variant(base, 0).size} bytes en ${(SystemClock.elapsedRealtime() - t0) / 1000} s")
+        // Documentos (van a Download/Rescata, no a la galería): miles de avisos a la galería
+        assertTrue(docs.mkdirs())
+        for (i in 0 until DOCS) File(docs, "doc_%05d.pdf".format(i)).writeBytes(pdf(i))
+        // Copias que dejó la versión anterior en Download/Rescata/<fecha>, ya indexadas en la galería
+        assertTrue(legacy.mkdirs())
+        val legacyPaths = (0 until LEGACY).map { i ->
+            File(legacy, "%05d_escala_%05d.jpg".format(i + 1, i)).also { it.writeBytes(variant(base, i)) }.absolutePath
+        }
+        File(legacy, "informe.csv").writeText("id;origen\r\n")
+        scanAndWait(legacyPaths)
+        note("Preparadas $N fotos de ${variant(base, 0).size} bytes, $DOCS documentos y $LEGACY copias antiguas " +
+            "en ${(SystemClock.elapsedRealtime() - t0) / 1000} s · libre: ${root.usableSpace shr 20} MB de ${root.totalSpace shr 20} MB")
 
         if (timeLimitTest) {
             // Límite de 6 h de los servicios dataSync acortado a 20 s (comando de la documentación de Android)
@@ -94,7 +109,7 @@ class EscalaE2ETest {
                 shell("device_config delete activity_manager data_sync_fgs_timeout_duration")
                 shell("device_config set_sync_disabled_for_tests none")
             }
-            listOf(source.parentFile!!, album, othersDir).forEach { it.deleteRecursively() }
+            listOf(testRoot, album, othersDir).forEach { it.deleteRecursively() }
         }
     }
 
@@ -107,15 +122,15 @@ class EscalaE2ETest {
             waitFor(15 * 60_000L, "fin de la búsqueda") { vm(scenario) { s -> !s.scanning && s.summary != null } }
             note("Búsqueda: ${(SystemClock.elapsedRealtime() - t) / 1000} s")
 
-            // Seleccionar exactamente las N fotos de la prueba
-            onVm(scenario) { it.setFilter(Finding.Category.HIDDEN_MEDIA) }
+            // Seleccionar exactamente las fotos y los documentos de la prueba
+            onVm(scenario) { it.setFilter(null) }
             onVm(scenario) { it.selectVisible() }
             val extra = vm(scenario) { s ->
-                s.rows.filter { it.finding.id in s.selected && !it.finding.sourcePath.startsWith(source.absolutePath) }
+                s.rows.filter { it.finding.id in s.selected && !it.finding.sourcePath.startsWith(testRoot.absolutePath) }
                     .map { it.finding.id }
             }
             extra.forEach { id -> onVm(scenario) { it.toggle(id) } }
-            assertEquals("Fotos de la prueba seleccionadas", N, vm(scenario) { s -> s.selected.size })
+            assertEquals("Archivos de la prueba seleccionados", TOTAL, vm(scenario) { s -> s.selected.size })
 
             // Guardar con el móvil bloqueado
             val volume = StorageAccess.exportVolumes(ctx).first { it.primary }
@@ -131,7 +146,7 @@ class EscalaE2ETest {
 
             waitFor(40 * 60_000L, "fin del guardado") {
                 progress.sample()
-                reports().size == 1 && BackgroundWork.status.value == null
+                reports().size == 1 && BackgroundWork.status.value == null && !SharedState.state.value.exporting
             }
             val total = (SystemClock.elapsedRealtime() - t) / 1000
             if (!power.isInteractive) {
@@ -141,17 +156,25 @@ class EscalaE2ETest {
             waitFor(30_000, "volver a la app") { scenario.state == Lifecycle.State.RESUMED }
             waitFor(30_000, "estado final") { vm(scenario) { s -> !s.exporting } }
 
-            // Ritmo: los últimos 2000 no deben tardar mucho más que 2000 del principio
-            val early = progress.at(4000) - progress.at(2000)
-            val late = progress.at(N) - progress.at(N - 2000)
+            // Ritmo de las fotos (van después de los documentos): las últimas 2000 no deben tardar
+            // mucho más que 2000 del principio
+            val early = progress.at(DOCS + 4000) - progress.at(DOCS + 2000)
+            val late = progress.at(TOTAL) - progress.at(TOTAL - 2000)
             note("Guardado: $total s · 2000-4000: ${early / 1000.0} s · últimos 2000: ${late / 1000.0} s")
             assertTrue("El guardado se ralentiza: ${early / 1000.0} s → ${late / 1000.0} s", late < 2.5 * early + 20_000)
 
-            // Todo copiado e íntegro
+            // Todo guardado e íntegro; las copias antiguas idénticas, movidas en lugar de copiadas
             val rows = readRows(reports().single())
-            assertEquals(N, rows.size)
-            rows.forEach { assertEquals("Estado de ${it[3]}: ${it.getOrNull(14)}", "exportado", it[10]) }
+            assertEquals(TOTAL, rows.size)
+            rows.forEach {
+                val expected = if (it[3].startsWith(source.absolutePath) && it[3].substringAfterLast('_').removeSuffix(".jpg").toInt() < LEGACY) "movido" else "exportado"
+                assertEquals("Estado de ${it[3]}: ${it.getOrNull(14)}", expected, it[10])
+            }
             assertEquals("Fotos en el álbum", N, album.listFiles { f -> !f.name.startsWith(".") }?.size ?: 0)
+            assertEquals("Documentos en Download/Rescata", DOCS, othersDir.listFiles { f -> f.name.endsWith(".pdf") }?.size ?: 0)
+            assertEquals("En la carpeta antigua solo debe quedar su informe", listOf("informe.csv"), legacy.list()?.toList())
+            assertEquals("La galería aún apunta a copias antiguas", 0, galleryRowsUnder(legacy))
+            note("Movidas $LEGACY copias de la versión anterior al álbum; la galería ya no apunta a la carpeta antigua")
             val rnd = Random(5)
             repeat(200) {
                 val r = rows[rnd.nextInt(rows.size)]
@@ -166,13 +189,13 @@ class EscalaE2ETest {
             val again = Progress()
             waitFor(30 * 60_000L, "fin del segundo guardado") {
                 again.sample()
-                reports().size == 2 && BackgroundWork.status.value == null && vm(scenario) { s -> !s.exporting }
+                reports().size == 2 && BackgroundWork.status.value == null && !SharedState.state.value.exporting
             }
-            val early2 = again.at(4000) - again.at(2000)
-            val late2 = again.at(N) - again.at(N - 2000)
+            val early2 = again.at(DOCS + 4000) - again.at(DOCS + 2000)
+            val late2 = again.at(TOTAL) - again.at(TOTAL - 2000)
             note("Segundo guardado: ${(SystemClock.elapsedRealtime() - t) / 1000} s · 2000-4000: ${early2 / 1000.0} s · últimos 2000: ${late2 / 1000.0} s")
             val second = readRows(reports().last())
-            assertEquals(N, second.size)
+            assertEquals(TOTAL, second.size)
             second.forEach { assertEquals("Segundo guardado de ${it[3]}", "ya existía", it[10]) }
             assertEquals("Se duplicaron fotos", N, album.listFiles { f -> !f.name.startsWith(".") }?.size ?: 0)
             assertTrue("El segundo guardado se ralentiza", late2 < 2.5 * early2 + 20_000)
@@ -221,17 +244,17 @@ class EscalaE2ETest {
 
     /** Momento (ms) en que el guardado pasó por cada número de archivos. */
     private inner class Progress {
-        private val times = LongArray(N + 1) { -1 }
+        private val times = LongArray(TOTAL + 1) { -1 }
         private var last = -1
         fun sample() {
             val now = SystemClock.elapsedRealtime()
             // Al terminar, el estado vuelve a null: se da por completado
-            val done = BackgroundWork.status.value?.done ?: if (reports().isNotEmpty()) N else last
-            for (k in (last + 1)..minOf(done, N)) if (k >= 0) times[k] = now
-            if (done > last) last = minOf(done, N)
+            val done = BackgroundWork.status.value?.done ?: if (reports().isNotEmpty()) TOTAL else last
+            for (k in (last + 1)..minOf(done, TOTAL)) if (k >= 0) times[k] = now
+            if (done > last) last = minOf(done, TOTAL)
         }
         fun at(k: Int): Long {
-            for (i in k..N) if (times[i] >= 0) return times[i]
+            for (i in k..TOTAL) if (times[i] >= 0) return times[i]
             throw AssertionError("Sin muestra de progreso para $k")
         }
     }
@@ -269,6 +292,29 @@ class EscalaE2ETest {
         report.readText(Charsets.UTF_8).removePrefix("﻿").split("\r\n")
             .filter { it.isNotBlank() }.drop(1).map { it.split(";") }
 
+    /** Indexa en la galería (como hacía la versión anterior) y espera a que termine. */
+    private fun scanAndWait(paths: List<String>) {
+        val latch = java.util.concurrent.CountDownLatch(paths.size)
+        android.media.MediaScannerConnection.scanFile(ctx, paths.toTypedArray(), null) { _, _ -> latch.countDown() }
+        assertTrue("No se indexaron las copias antiguas", latch.await(5, java.util.concurrent.TimeUnit.MINUTES))
+    }
+
+    /** Filas de la galería (MediaStore) que apuntan a archivos dentro de [dir]. */
+    @Suppress("DEPRECATION")
+    private fun galleryRowsUnder(dir: File): Int {
+        val uri = android.provider.MediaStore.Files.getContentUri("external")
+        var count = -1
+        val deadline = SystemClock.elapsedRealtime() + 60_000
+        while (SystemClock.elapsedRealtime() < deadline) {
+            count = ctx.contentResolver.query(uri, arrayOf(android.provider.MediaStore.MediaColumns.DATA),
+                "${android.provider.MediaStore.MediaColumns.DATA} LIKE ? AND ${android.provider.MediaStore.MediaColumns.DATA} LIKE '%.jpg'",
+                arrayOf(dir.absolutePath + "/%"), null)?.use { it.count } ?: 0
+            if (count == 0) return 0
+            Thread.sleep(1000) // la galería termina de procesar las tandas
+        }
+        return count
+    }
+
     private fun keepAliveInForeground(): Boolean {
         val pfd = instr.uiAutomation.executeShellCommand("dumpsys activity services ${ctx.packageName}/.KeepAliveService")
         val out = ParcelFileDescriptor.AutoCloseInputStream(pfd).use { String(it.readBytes()) }
@@ -285,6 +331,13 @@ class EscalaE2ETest {
 
     private companion object {
         const val N = 12_000
+        const val DOCS = 3_000
+        const val TOTAL = N + DOCS
+        const val LEGACY = 500
+
+        fun pdf(i: Int): ByteArray =
+            ("%PDF-1.4\n% documento de prueba $i\n1 0 obj << /Type /Catalog >> endobj\ntrailer << /Root 1 0 R >>\n%%EOF\n")
+                .toByteArray(Charsets.US_ASCII)
 
         fun baseJpeg(): ByteArray {
             val bmp = Bitmap.createBitmap(64, 48, Bitmap.Config.ARGB_8888)

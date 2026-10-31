@@ -90,6 +90,22 @@ object StorageAccess {
     )
 
     /**
+     * Carpetas de exportación de versiones anteriores de la app: Download/Rescata/<aaaaMMdd_HHmmss>.
+     * Lo que haya ahí idéntico a lo que se guarda ahora se mueve al álbum en vez de copiarse otra vez.
+     */
+    fun previousExportDirs(v: Volume): List<File> =
+        File(v.dir, EXPORT_SUBDIR).listFiles { f -> f.isDirectory && PREVIOUS_EXPORT.matches(f.name) }
+            ?.sortedBy { it.name }.orEmpty()
+
+    private val PREVIOUS_EXPORT = Regex("""\d{8}_\d{6}""")
+
+    /**
+     * Espacio que se deja libre al guardar: 1 GB (o el 10 % del almacenamiento si es muy pequeño),
+     * para no llenar el móvil.
+     */
+    fun freeSpaceMargin(v: Volume): Long = minOf(1L shl 30, v.dir.totalSpace / 10)
+
+    /**
      * Volúmenes donde se puede escribir la exportación. Antes de Android 11 una app sin root
      * no puede escribir en la raíz de la tarjeta SD, así que solo se ofrece el almacenamiento principal.
      */

@@ -37,6 +37,25 @@ public class DirectoryDestination implements Destination {
     }
 
     @Override
+    public boolean mayContain(long size) {
+        return index.hasSize(size);
+    }
+
+    @Override
+    public String moveIn(Finding finding, String fileName, File existing) throws IOException {
+        if (!dir.isDirectory() && !dir.mkdirs()) throw new IOException("No se pudo crear " + dir);
+        File out = uniqueFile(dir, fileName);
+        if (!existing.renameTo(out)) return null; // otro almacenamiento o sin permiso: se copiará
+        afterMove(finding, existing, out);
+        return out.getAbsolutePath();
+    }
+
+    /** Tras mover un archivo dentro de esta carpeta. Por defecto, igual que tras escribirlo. */
+    protected void afterMove(Finding finding, File from, File out) {
+        afterWrite(finding, out);
+    }
+
+    @Override
     public String write(Finding finding, String fileName, ContentWriter writer) throws IOException {
         if (!dir.isDirectory() && !dir.mkdirs()) throw new IOException("No se pudo crear " + dir);
         File out = uniqueFile(dir, fileName);

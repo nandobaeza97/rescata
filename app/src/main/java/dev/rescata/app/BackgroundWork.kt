@@ -2,7 +2,6 @@ package dev.rescata.app
 
 import android.content.Context
 import android.content.Intent
-import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,22 +33,38 @@ object BackgroundWork {
     private val running = AtomicInteger(0)
     @Volatile private var cancelFlag: AtomicBoolean? = null
 
-    fun launch(ctx: Context, title: String, cancel: AtomicBoolean, block: suspend () -> Unit): Job {
+    /** Pantallas de la app a la vista ahora mismo (para avisar al terminar solo si no se ve). */
+    private val visible = AtomicInteger(0)
+
+    fun onScreenVisible(shown: Boolean) {
+        if (shown) visible.incrementAndGet() else visible.decrementAndGet()
+    }
+
+    /** ¿Hay una búsqueda o un guardado en marcha? */
+    val isBusy: Boolean get() = running.get() > 0
+
+    /**
+     * [block] devuelve el resumen final; si la app no está a la vista al terminar, se muestra en una
+     * notificación con el título [doneTitle] (p. ej. con el móvil bloqueado).
+     */
+    fun launch(ctx: Context, title: String, doneTitle: String, cancel: AtomicBoolean, block: suspend () -> String?): Job {
         val app = ctx.applicationContext
         running.incrementAndGet()
         cancelFlag = cancel
         _status.value = Status(title)
         startService(app)
         return scope.launch {
+            var summary: String? = null
             try {
-                block()
+                summary = block()
             } finally {
                 if (running.decrementAndGet() == 0) {
                     cancelFlag = null
                     _status.value = null // el servicio se detiene solo al ver null
                     // Si Android lo había pausado y aun así terminó, el aviso de pausa ya no aplica
-                    NotificationManagerCompat.from(app).cancel(KeepAliveService.PAUSED_NOTIFICATION_ID)
+                    Notices.cancel(app, Notices.PAUSED_ID)
                 }
+                if (summary != null && visible.get() <= 0) Notices.done(app, doneTitle, summary)
             }
         }
     }

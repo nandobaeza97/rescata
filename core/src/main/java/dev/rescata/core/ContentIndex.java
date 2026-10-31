@@ -3,10 +3,13 @@ package dev.rescata.core;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Índice de lo que ya hay en una carpeta de destino, para saber si una copia ya existe sin
@@ -36,23 +39,30 @@ public final class ContentIndex {
         }
     }
 
-    private final File dir;
+    private final List<File> dirs;
     private final Filter filter;
     /** Archivos que ya estaban y cuyo hash aún no hizo falta calcular, por tamaño. */
     private Map<Long, List<File>> pendingBySize;
     /** Copias con el hash conocido: SHA-256 → copia. */
     private final Map<String, List<Known>> byHash = new HashMap<>();
+    private final Set<Long> knownSizes = new HashSet<>();
 
     public ContentIndex(File dir, Filter filter) {
-        this.dir = dir;
+        this(Collections.singletonList(dir), filter);
+    }
+
+    /** Índice de varias carpetas a la vez (sin entrar en subcarpetas). */
+    public ContentIndex(List<File> dirs, Filter filter) {
+        this.dirs = new ArrayList<>(dirs);
         this.filter = filter;
     }
 
     private Map<Long, List<File>> pending() {
         if (pendingBySize != null) return pendingBySize;
         pendingBySize = new HashMap<>();
-        File[] files = dir.listFiles();
-        if (files != null) {
+        for (File dir : dirs) {
+            File[] files = dir.listFiles();
+            if (files == null) continue;
             for (File f : files) {
                 if (!f.isFile() || (filter != null && !filter.accept(f))) continue;
                 long size = f.length();
@@ -65,6 +75,36 @@ public final class ContentIndex {
             }
         }
         return pendingBySize;
+    }
+
+    /**
+     * ¿Puede haber una copia de este tamaño? Si no, seguro que no hay ninguna igual y no hace falta
+     * leer el original antes de copiarlo.
+     */
+    public synchronized boolean hasSize(long size) {
+        if (knownSizes.contains(size)) return true;
+        List<File> l = pending().get(size);
+        return l != null && !l.isEmpty();
+    }
+
+    /**
+     * Como {@link #find}, pero además la saca del índice (para moverla a otro sitio): no se
+     * devuelve dos veces. Solo para archivos que ya estaban en la carpeta.
+     */
+    public synchronized File take(String sha256, long size) throws IOException {
+        String loc = find(sha256, size);
+        if (loc == null) return null;
+        List<Known> l = byHash.get(sha256);
+        if (l != null) {
+            for (Iterator<Known> it = l.iterator(); it.hasNext(); ) {
+                Known k = it.next();
+                if (k.location.equals(loc)) {
+                    it.remove();
+                    return k.file != null ? k.file : new File(loc);
+                }
+            }
+        }
+        return new File(loc);
     }
 
     /** Ubicación de una copia con este contenido exacto, o null si no hay. */
@@ -104,6 +144,7 @@ public final class ContentIndex {
     }
 
     private void remember(String sha256, Known k) {
+        knownSizes.add(k.size);
         List<Known> l = byHash.get(sha256);
         if (l == null) {
             l = new ArrayList<>(1);

@@ -1,5 +1,6 @@
 package dev.rescata.app
 
+import android.app.NotificationManager
 import android.content.ContentValues
 import android.content.Context
 import android.os.PowerManager
@@ -110,6 +111,11 @@ class RescataE2ETest {
         shell("settings put global hide_error_dialogs 1")
         shell("settings put secure anr_show_background 0")
         if (Build.VERSION.SDK_INT >= 33) shell("pm grant $pkg android.permission.POST_NOTIFICATIONS")
+        // Como una app recién instalada: sin estado previo y aún sin la exclusión del ahorro de batería
+        SharedState.resetForTests()
+        ctx.getSharedPreferences("rescata", Context.MODE_PRIVATE).edit().clear().commit()
+        shell("dumpsys deviceidle whitelist -$pkg")
+        (ctx.getSystemService(NotificationManager::class.java)).cancelAll()
 
         listOf(pics, dl, thumb, shots, album, albumThumbs, othersDir, waRoot).forEach { it.deleteRecursively() }
         shell("rm -r ${waRoot.absolutePath}")
@@ -165,6 +171,13 @@ class RescataE2ETest {
             compose.onNodeWithText("Multimedia de WhatsApp").performClick()
             compose.onNodeWithTag("resultados").performScrollToNode(hasText("Buscar archivos borrados"))
             compose.onNodeWithText("Buscar archivos borrados").performClick()
+            // La primera vez se pide (diálogo del sistema) que el ahorro de batería no cierre la app
+            val power0 = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
+            val allowBattery = findSystemButton(Pattern.compile("(?i)^(allow|permitir)$"), 30_000)
+            shot("01c_bateria")
+            assertNotNull("No apareció el aviso del ahorro de batería", allowBattery)
+            allowBattery!!.click()
+            waitFor(10_000, "exclusión del ahorro de batería") { power0.isIgnoringBatteryOptimizations(ctx.packageName) }
             // Se espera al estado de la app (no se sondea el árbol de la UI en bucle: provoca carreras con Espresso)
             waitFor(180_000, "fin del escaneo") { vm(scenario) { s -> !s.scanning && s.summary != null } }
             compose.waitForIdle()
@@ -227,15 +240,28 @@ class RescataE2ETest {
                 val label = StorageAccess.exportVolumes(ctx).first { it.primary }.label
                 compose.onNodeWithText(label, substring = true).performClick()
             }
+            acceptSpaceWarningIfShown()
+            // Mientras guarda no se puede lanzar una búsqueda (antes vaciaba la lista)
+            setFilter(scenario, null)
+            scenario.onActivity { act -> ViewModelProvider(act)[ScanViewModel::class.java].startScan() }
+            assertFalse("Se pudo buscar mientras se guardaba", vm(scenario) { s -> s.scanning })
             // Con el guardado en marcha: el servicio en primer plano debe estar activo; se apaga la pantalla
-            waitFor(60_000, "servicio en primer plano") { keepAliveInForeground() || reports().isNotEmpty() }
-            assertTrue("El guardado terminó antes de poder apagar la pantalla (la prueba no sería válida)", reports().isEmpty())
+            waitFor(60_000, "servicio en primer plano") { keepAliveInForeground() || BackgroundWork.status.value == null }
+            assertTrue("El guardado terminó antes de poder apagar la pantalla (la prueba no sería válida)",
+                BackgroundWork.status.value != null)
+            // El informe se escribe sobre la marcha: ya existe aunque el guardado no haya terminado
+            assertEquals(1, reports().size)
             device.sleep()
             val power = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
             waitFor(10_000, "pantalla apagada") { !power.isInteractive }
             // Solo se mira el disco: con la pantalla apagada no se toca la interfaz
-            waitFor(300_000, "fin del guardado con la pantalla apagada") { reports().size == 1 && !keepAliveInForeground() }
+            waitFor(300_000, "fin del guardado con la pantalla apagada") {
+                reports().size == 1 && !keepAliveInForeground() && BackgroundWork.status.value == null
+            }
             assertFalse("La pantalla se encendió durante la prueba", power.isInteractive)
+            // Con el móvil bloqueado, al terminar queda un aviso con el resumen
+            val nm = ctx.getSystemService(NotificationManager::class.java)
+            waitFor(10_000, "aviso de guardado terminado") { nm.activeNotifications.any { it.id == Notices.DONE_ID } }
             device.wakeUp()
             shell("wm dismiss-keyguard")
             waitFor(20_000, "volver a la app") { scenario.state == Lifecycle.State.RESUMED }
@@ -252,6 +278,7 @@ class RescataE2ETest {
                 val label = StorageAccess.exportVolumes(ctx).first { it.primary }.label
                 compose.onNodeWithText(label, substring = true).performClick()
             }
+            acceptSpaceWarningIfShown()
             waitFor(120_000, "fin de la segunda exportación") { vm(scenario) { s -> !s.exporting } && reports().size == 2 }
             compose.waitForIdle()
             shot("04b_sin_duplicados")
@@ -286,6 +313,15 @@ class RescataE2ETest {
                 compose.waitForIdle()
                 shot("07_lista_actualizada")
             }
+        }
+    }
+
+    /** Si el emulador anda justo de espacio, la app avisa antes de guardar: se acepta. */
+    private fun acceptSpaceWarningIfShown() {
+        compose.waitForIdle()
+        if (compose.onAllNodesWithText("Puede que no haya espacio").fetchSemanticsNodes().isNotEmpty()) {
+            shot("04_aviso_espacio")
+            compose.onNodeWithText("Guardar lo que quepa").performClick()
         }
     }
 

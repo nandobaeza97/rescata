@@ -18,6 +18,8 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Pedir (una vez) que el ahorro de batería no cierre la app durante un trabajo largo -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <!-- Android 13+: notificación con el progreso (si se deniega, el trabajo sigue igual). -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 

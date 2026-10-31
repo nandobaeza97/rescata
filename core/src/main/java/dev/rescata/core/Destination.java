@@ -34,4 +34,17 @@ public interface Destination {
      * destino la tenga en cuenta al buscar duplicados sin volver a leer la carpeta.
      */
     default void written(String location, String sha256, long size) { }
+
+    /**
+     * ¿Puede haber ya en el destino una copia de este tamaño? Si devuelve false, no hace falta leer
+     * el original antes de copiarlo para buscar duplicados (se lee una sola vez, al copiar).
+     */
+    default boolean mayContain(long size) { return true; }
+
+    /**
+     * Mueve al destino un archivo idéntico que ya existe en el mismo almacenamiento (p. ej. una copia
+     * de una versión anterior) en lugar de copiarlo otra vez. Devuelve su nueva ubicación, o null si
+     * no se puede mover (entonces se copia como siempre).
+     */
+    default String moveIn(Finding finding, String fileName, java.io.File existing) throws IOException { return null; }
 }

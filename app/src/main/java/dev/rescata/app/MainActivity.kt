@@ -29,8 +29,14 @@ class MainActivity : ComponentActivity() {
 
     override fun onStart() {
         super.onStart()
+        BackgroundWork.onScreenVisible(true)
         // Si Android pausó un trabajo largo (límite de 6 h de Android 15+), al volver se reanuda
         BackgroundWork.resumeIfNeeded(this)
+    }
+
+    override fun onStop() {
+        BackgroundWork.onScreenVisible(false)
+        super.onStop()
     }
 }
 

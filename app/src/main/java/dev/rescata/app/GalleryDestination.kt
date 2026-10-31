@@ -3,7 +3,6 @@ package dev.rescata.app
 import android.content.ContentValues
 import android.content.Context
 import android.media.ExifInterface
-import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -35,6 +34,7 @@ class GalleryDestination(
     private val ctx: Context,
     private val volume: StorageAccess.Volume,
     private val album: String,
+    private val scans: MediaScanBatch,
 ) : Destination {
 
     private val relativePath = Environment.DIRECTORY_PICTURES + "/" + album
@@ -48,6 +48,24 @@ class GalleryDestination(
     override fun findExisting(finding: Finding, sha256: String, size: Long): String? = index.find(sha256, size)
 
     override fun written(location: String, sha256: String, size: Long) = index.add(location, sha256, size)
+
+    override fun mayContain(size: Long): Boolean = index.hasSize(size)
+
+    /**
+     * Copia idéntica de una versión anterior (Download/Rescata/<fecha>): se mueve al álbum, con su
+     * fecha original, y se avisa a la galería de las dos rutas (la nueva y la que ya no existe).
+     */
+    override fun moveIn(finding: Finding, fileName: String, existing: File): String? {
+        if (!dir.isDirectory && !dir.mkdirs()) throw IOException("No se pudo crear $dir")
+        val out = DirectoryDestination.uniqueFile(dir, fileName)
+        if (!existing.renameTo(out)) return null // otro almacenamiento o sin permiso: se copiará
+        val taken = bestDateMillis(finding)
+        if (taken > 0) out.setLastModified(taken)
+        forgetOldPath(ctx, existing)
+        scans.add(existing.absolutePath, null)
+        scans.add(out.absolutePath, finding.type.mimeType)
+        return out.absolutePath
+    }
 
     override fun write(finding: Finding, fileName: String, writer: Destination.ContentWriter): String {
         val taken = bestDateMillis(finding)
@@ -104,7 +122,7 @@ class GalleryDestination(
             throw e
         }
         if (taken > 0) out.setLastModified(taken)
-        MediaScannerConnection.scanFile(ctx, arrayOf(out.absolutePath), arrayOf(f.type.mimeType), null)
+        scans.add(out.absolutePath, f.type.mimeType)
         return out.absolutePath
     }
 
@@ -119,6 +137,23 @@ class GalleryDestination(
 
     companion object {
         private const val MAX_EXIF_BYTES = 64L * 1024 * 1024
+
+        /**
+         * Android 8-10: la galería no se entera sola de que un archivo se movió, así que se borra su
+         * entrada antigua (el archivo ya no está en esa ruta). En Android 11+ lo actualiza el sistema.
+         */
+        @Suppress("DEPRECATION")
+        fun forgetOldPath(ctx: Context, old: File) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R || old.exists()) return
+            try {
+                ctx.contentResolver.delete(
+                    MediaStore.Files.getContentUri("external"),
+                    "${MediaStore.MediaColumns.DATA}=?", arrayOf(old.absolutePath),
+                )
+            } catch (e: RuntimeException) {
+                // no es grave: el escaneo de la ruta antigua también la limpia
+            }
+        }
 
         /** Fecha de la foto según EXIF (DateTimeOriginal) o, si no hay, la fecha del archivo original. */
         fun bestDateMillis(f: Finding): Long = exifDateMillis(f) ?: f.lastModified

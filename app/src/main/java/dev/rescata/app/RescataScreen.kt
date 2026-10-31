@@ -3,6 +3,12 @@
 package dev.rescata.app
 
 import android.Manifest
+import android.annotation.SuppressLint
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
+import android.os.PowerManager
+import android.provider.Settings
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
@@ -123,6 +129,8 @@ import kotlin.math.ceil
 // ScanViewModel y en el motor, y no cambia.
 // -------------------------------------------------------------------------------------------------
 
+private const val PREF_BATTERY_ASKED = "aviso_bateria"
+
 @Composable
 fun RescataScreen(vm: ScanViewModel = viewModel()) {
     val state by vm.state.collectAsStateWithLifecycle()
@@ -155,6 +163,33 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
         afterNotificationPrompt = null
     }
 
+    // Se pide una sola vez que el ahorro de batería no cierre la app en trabajos largos (algunas
+    // marcas lo hacen aunque haya un servicio en primer plano). Pase lo que pase, la acción sigue.
+    var afterBatteryPrompt by remember { mutableStateOf<(() -> Unit)?>(null) }
+    val batteryLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        afterBatteryPrompt?.invoke()
+        afterBatteryPrompt = null
+    }
+
+    fun withBatteryExemption(action: () -> Unit) {
+        val prefs = ctx.getSharedPreferences("rescata", Context.MODE_PRIVATE)
+        val pm = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
+        if (pm.isIgnoringBatteryOptimizations(ctx.packageName) || prefs.getBoolean(PREF_BATTERY_ASKED, false)) {
+            action()
+            return
+        }
+        prefs.edit().putBoolean(PREF_BATTERY_ASKED, true).apply()
+        @SuppressLint("BatteryLife") // app instalada fuera de Google Play; es su función principal
+        val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, Uri.parse("package:${ctx.packageName}"))
+        try {
+            afterBatteryPrompt = action
+            batteryLauncher.launch(intent)
+        } catch (e: ActivityNotFoundException) {
+            afterBatteryPrompt = null
+            action()
+        }
+    }
+
     fun withNotifications(action: () -> Unit) {
         val prefs = ctx.getSharedPreferences("rescata", Context.MODE_PRIVATE)
         val needsPrompt = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
@@ -162,10 +197,10 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
             !prefs.getBoolean("aviso_notificaciones", false)
         if (needsPrompt) {
             prefs.edit().putBoolean("aviso_notificaciones", true).apply()
-            afterNotificationPrompt = action
+            afterNotificationPrompt = { withBatteryExemption(action) }
             notificationLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
         } else {
-            action()
+            withBatteryExemption(action)
         }
     }
 
@@ -202,11 +237,28 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
         }
     }
 
+    var spaceWarning by remember { mutableStateOf<Pair<StorageAccess.Volume, String>?>(null) }
+
+    /** Antes de guardar se compara lo seleccionado con el espacio libre de ese almacenamiento. */
+    fun exportTo(v: StorageAccess.Volume) {
+        val needed = vm.selectedBytes()
+        val free = v.dir.usableSpace
+        val margin = StorageAccess.freeSpaceMargin(v)
+        if (needed <= free - margin) {
+            vm.export(v)
+        } else {
+            spaceWarning = v to "Lo seleccionado ocupa unos ${Formatter.formatShortFileSize(ctx, needed)} y en " +
+                "${v.label} hay ${Formatter.formatShortFileSize(ctx, free)} libres. Lo que ya esté guardado " +
+                "no ocupa espacio otra vez. Si sigues, Rescata se parará cuando queden " +
+                "${Formatter.formatShortFileSize(ctx, margin)} libres, para no llenar el móvil."
+        }
+    }
+
     fun exportSelected() = withNotifications {
         val vols = StorageAccess.exportVolumes(ctx)
         when {
             vols.isEmpty() -> vm.showMessage("No hay ningún almacenamiento disponible para guardar")
-            vols.size == 1 -> vm.export(vols.first())
+            vols.size == 1 -> exportTo(vols.first())
             else -> exportChoices = vols
         }
         Unit
@@ -278,7 +330,7 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
                     onToggle = { limitsOpen = !limitsOpen },
                 ) { LimitsText() }
             }
-            if (state.summary != null || state.exporting) item(key = "summary") { SummarySection(state) }
+            if (state.summary != null || state.exporting) item(key = "summary") { SummarySection(state, onCancelExport = vm::cancelExport) }
             if (state.summary != null && state.rows.isEmpty() && !state.scanning) item(key = "empty") { EmptyResults() }
             if (state.rows.isNotEmpty()) {
                 item(key = "chips") { CategoryChips(state, onFilter = vm::setFilter) }
@@ -316,7 +368,7 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
                     )
                     Spacer(Modifier.height(8.dp))
                     vols.forEach { v ->
-                        TextButton(onClick = { exportChoices = null; vm.export(v) }) {
+                        TextButton(onClick = { exportChoices = null; exportTo(v) }) {
                             Text(v.label + if (v.removable) " (extraíble)" else "")
                         }
                     }
@@ -324,6 +376,18 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
             },
             confirmButton = {},
             dismissButton = { TextButton(onClick = { exportChoices = null }) { Text("Cancelar") } },
+        )
+    }
+
+    spaceWarning?.let { (v, text) ->
+        AlertDialog(
+            onDismissRequest = { spaceWarning = null },
+            title = { Text("Puede que no haya espacio") },
+            text = { Text(text, style = MaterialTheme.typography.bodyMedium) },
+            confirmButton = {
+                TextButton(onClick = { spaceWarning = null; vm.export(v) }) { Text("Guardar lo que quepa") }
+            },
+            dismissButton = { TextButton(onClick = { spaceWarning = null }) { Text("Cancelar") } },
         )
     }
 
@@ -366,7 +430,7 @@ private fun Hero(state: UiState, onScan: () -> Unit, onCancel: () -> Unit) {
         } else {
             Button(
                 onClick = onScan,
-                enabled = state.hasAccess,
+                enabled = state.hasAccess && !state.exporting,
                 modifier = Modifier.fillMaxWidth().height(56.dp),
                 shape = CircleShape,
             ) {
@@ -520,7 +584,7 @@ private fun LimitsText() {
 // ------------------------------------------------------------------------------------ Resultados
 
 @Composable
-private fun SummarySection(state: UiState) {
+private fun SummarySection(state: UiState, onCancelExport: () -> Unit) {
     Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 10.dp)) {
         if (state.rows.isNotEmpty()) {
             val soon = state.rows.count {
@@ -542,7 +606,10 @@ private fun SummarySection(state: UiState) {
         if (state.exporting) {
             LinearProgressIndicator(Modifier.fillMaxWidth().clip(CircleShape))
             Spacer(Modifier.height(6.dp))
-            Text(state.exportProgress, style = MaterialTheme.typography.bodySmall)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(state.exportProgress, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
+                OutlinedButton(onClick = onCancelExport) { Text("Cancelar") }
+            }
             Spacer(Modifier.height(6.dp))
         }
         state.summary?.let {

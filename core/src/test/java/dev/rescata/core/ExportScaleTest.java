@@ -128,6 +128,110 @@ public class ExportScaleTest {
         assertEquals("/ruta/nueva.jpg", fresh.find("abc", 5));
     }
 
+    private static List<Finding> findingsFor(File... files) {
+        List<Finding> out = new ArrayList<>();
+        long id = 1;
+        for (File f : files) {
+            out.add(new Finding(id++, Finding.Category.TRASH_FOLDER, FileType.JPEG, f.getPath(), -1, f.length(), 0,
+                    f.getName(), 0, -1, ""));
+        }
+        return out;
+    }
+
+    private static String[] reportLines(File report) throws Exception {
+        String text = new String(readAll(report), "UTF-8").replace("\uFEFF", "");
+        return text.split("\r\n");
+    }
+
+    @Test
+    public void elInformeSeEscribeSobreLaMarcha() throws Exception {
+        File base = TestData.tempDir();
+        File[] src = new File[8];
+        for (int i = 0; i < src.length; i++) src[i] = TestData.write(new File(base, "o/f" + i + ".jpg"), TestData.jpeg(20, 20, 40 + i));
+        final DirectoryDestination d = new DirectoryDestination(new File(base, "salida"), "salida");
+        final int[] calls = {0};
+        File report = new File(base, "informe.csv");
+        try {
+            new Exporter().export(findingsFor(src), new Exporter.Router() {
+                @Override public Destination destinationFor(Finding f) {
+                    if (++calls[0] > 5) throw new AssertionError("corte brusco (p. ej. se apaga el móvil)");
+                    return d;
+                }
+            }, report, null, null);
+            throw new IllegalStateException("debía cortarse");
+        } catch (AssertionError expected) {
+            // lo que importa es lo que quedó escrito
+        }
+        String[] lines = reportLines(report);
+        assertEquals(6, lines.length); // cabecera + los 5 guardados antes del corte
+        for (int i = 1; i < lines.length; i++) assertEquals(Exporter.STATUS_EXPORTED, lines[i].split(";", -1)[10]);
+    }
+
+    @Test
+    public void sinEspacioSeDetieneYLoIndica() throws Exception {
+        File base = TestData.tempDir();
+        File[] src = new File[6];
+        for (int i = 0; i < src.length; i++) src[i] = TestData.write(new File(base, "o/f" + i + ".jpg"), TestData.jpeg(20, 20, 60 + i));
+        File out = new File(base, "salida");
+        final int[] room = {3};
+        Exporter.Result r = new Exporter().spaceGuard(new Exporter.SpaceGuard() {
+            @Override public boolean hasRoomFor(long bytes) { return room[0]-- > 0; }
+        }).export(findingsFor(src), out, null, null);
+        assertEquals(3, r.exported);
+        assertTrue(r.outOfSpace);
+        assertEquals(2, r.notAttempted);
+        String[] lines = reportLines(r.report);
+        assertEquals(5, lines.length);
+        assertEquals(Exporter.STATUS_NO_SPACE, lines[4].split(";", -1)[10]);
+        assertEquals(4, out.listFiles().length); // 3 copias + informe
+    }
+
+    @Test
+    public void mueveLasCopiasDeLaVersionAnterior() throws Exception {
+        File base = TestData.tempDir();
+        byte[] c0 = TestData.jpeg(20, 20, 80), c1 = TestData.jpeg(20, 20, 81), c2 = TestData.jpeg(20, 20, 82);
+        File a = TestData.write(new File(base, "o/a.jpg"), c0);
+        File b = TestData.write(new File(base, "o/b.jpg"), c1);
+        File c = TestData.write(new File(base, "o/c.jpg"), c2);
+        File legacy = new File(base, "Rescata/20261030_221500");
+        File oldA = TestData.write(new File(legacy, "00001_a.jpg"), c0);
+        File oldB = TestData.write(new File(legacy, "00002_b.jpg"), c1);
+        File other = TestData.write(new File(legacy, "informe.csv"), "id;x\r\n".getBytes("UTF-8"));
+        File album = new File(base, "album");
+
+        List<File> legacyDirs = new ArrayList<>();
+        legacyDirs.add(legacy);
+        Exporter.Result r = new Exporter().previousCopies(new ContentIndex(legacyDirs, null))
+                .export(findingsFor(a, b, c), album, null, null);
+        assertEquals(2, r.moved);
+        assertEquals(1, r.exported);
+        assertTrue(!oldA.exists() && !oldB.exists());
+        assertTrue(other.isFile()); // lo que no es una copia se queda donde está
+        assertArrayEquals(c0, readAll(new File(album, "a.jpg")));
+        assertArrayEquals(c1, readAll(new File(album, "b.jpg")));
+        assertArrayEquals(c2, readAll(new File(album, "c.jpg")));
+        String[] lines = reportLines(r.report);
+        assertEquals(Exporter.STATUS_MOVED, lines[1].split(";", -1)[10]);
+        assertEquals(Exporter.STATUS_MOVED, lines[2].split(";", -1)[10]);
+        assertEquals(Exporter.STATUS_EXPORTED, lines[3].split(";", -1)[10]);
+        // El original nunca se toca
+        assertArrayEquals(c0, readAll(a));
+
+        // Si no se puede mover (otro almacenamiento), se copia como siempre y la copia antigua se queda
+        File oldC = TestData.write(new File(legacy, "00003_c.jpg"), c2);
+        final DirectoryDestination noMove = new DirectoryDestination(new File(base, "album2"), "album2") {
+            @Override public String moveIn(Finding f, String name, File existing) { return null; }
+        };
+        Exporter.Result r2 = new Exporter().previousCopies(new ContentIndex(legacyDirs, null))
+                .export(findingsFor(c), new Exporter.Router() {
+                    @Override public Destination destinationFor(Finding f) { return noMove; }
+                }, null, null, null);
+        assertEquals(1, r2.exported);
+        assertEquals(0, r2.moved);
+        assertTrue(oldC.isFile());
+        assertArrayEquals(c2, readAll(new File(base, "album2/c.jpg")));
+    }
+
     private static byte[] readAll(File f) throws Exception {
         InputStream in = new FileInputStream(f);
         try {
