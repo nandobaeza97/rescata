@@ -1,0 +1,438 @@
+10-31 18:56:59.257  5776  5837 I TestRunner: started: escaneaExportaYRestaura(dev.rescata.app.RescataE2ETest)
+10-31 18:56:59.261  2038  5410 W GLSUser : [AppCertManager] IOException while requesting key:
+10-31 18:56:59.261  2038  5410 W GLSUser : java.io.IOException: Invalid device key response.
+10-31 18:56:59.261  2038  5410 W GLSUser : 	at hwy.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):49)
+10-31 18:56:59.261  2038  5410 W GLSUser : 	at hww.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):45)
+10-31 18:56:59.261  2038  5410 W GLSUser : 	at hwr.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:56:59.261  2038  5410 W GLSUser : 	at hwu.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):10)
+10-31 18:56:59.261  2038  5410 W GLSUser : 	at gbi.call(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:56:59.261  2038  5410 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+10-31 18:56:59.261  2038  5410 W GLSUser : 	at soy.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):12)
+10-31 18:56:59.261  2038  5410 W GLSUser : 	at soy.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):7)
+10-31 18:56:59.261  2038  5410 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+10-31 18:56:59.261  2038  5410 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+10-31 18:56:59.261  2038  5410 W GLSUser : 	at sux.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:56:59.261  2038  5410 W GLSUser : 	at java.lang.Thread.run(Thread.java:919)
+10-31 18:56:59.270  2038  4227 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-31 18:56:59.270  2038  4227 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 18:56:59.270  2038  4227 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:56:59.305  5776  5837 W FileTestStorage: Output properties is not supported.
+10-31 18:56:59.305  5776  5837 W dev.rescata.ap: Accessing hidden method Landroid/os/Trace;->setAppTracingAllowed(Z)V (greylist, reflection, allowed)
+10-31 18:56:59.305  5776  5837 I Tracing : Tracer added: class androidx.test.platform.tracing.AndroidXTracer
+10-31 18:56:59.316  2038  9218 W LogUtils: [Places]: ?: Failed to download inference model weights SLS
+10-31 18:56:59.316  2038  9218 W LogUtils: ckdr: NOT_FOUND: Requested entity was not found.
+10-31 18:56:59.316  2038  9218 W LogUtils: 	at ckdq.c(:com.google.android.gms@202414023@20.24.14 (040800-319035315):3)
+10-31 18:56:59.316  2038  9218 W LogUtils: 	at sjo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):57)
+10-31 18:56:59.316  2038  9218 W LogUtils: 	at bjxj.call(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:56:59.316  2038  9218 W LogUtils: 	at bjvu.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):1)
+10-31 18:56:59.316  2038  9218 W LogUtils: 	at soy.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):12)
+10-31 18:56:59.316  2038  9218 W LogUtils: 	at soy.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):7)
+10-31 18:56:59.316  2038  9218 W LogUtils: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+10-31 18:56:59.316  2038  9218 W LogUtils: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+10-31 18:56:59.316  2038  9218 W LogUtils: 	at sux.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:56:59.316  2038  9218 W LogUtils: 	at java.lang.Thread.run(Thread.java:919)
+10-31 18:56:59.316  2038  9218 W LogUtils:
+10-31 18:56:59.316  2038  9218 W LogUtils: [CONTEXT service_id=253 ]
+10-31 18:56:59.316  2038  9218 W PlacesLogger: [PlaceInferenceEngine]: Failed to download model weights. Status code: 7 [CONTEXT service_id=253 ]
+10-31 18:56:59.317  5776  5776 D EventInjectionStrategy: Creating injection strategy with input manager.
+10-31 18:56:59.318  5776  5776 W dev.rescata.ap: Accessing hidden method Landroid/hardware/input/InputManager;->getInstance()Landroid/hardware/input/InputManager; (greylist, reflection, allowed)
+10-31 18:56:59.318  5776  5776 W dev.rescata.ap: Accessing hidden method Landroid/hardware/input/InputManager;->injectInputEvent(Landroid/view/InputEvent;I)Z (greylist, reflection, allowed)
+10-31 18:56:59.318  5776  5776 W dev.rescata.ap: Accessing hidden field Landroid/hardware/input/InputManager;->INJECT_INPUT_EVENT_MODE_WAIT_FOR_FINISH:I (greylist, reflection, allowed)
+10-31 18:56:59.322  2038  5652 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:56:59.326  2038  9215 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:56:59.329  5776  5776 W dev.rescata.ap: Accessing hidden method Landroid/os/MessageQueue;->next()Landroid/os/Message; (greylist, reflection, allowed)
+10-31 18:56:59.329  5776  5776 W dev.rescata.ap: Accessing hidden field Landroid/os/MessageQueue;->mMessages:Landroid/os/Message; (greylist, reflection, allowed)
+10-31 18:56:59.329  5776  5776 W dev.rescata.ap: Accessing hidden method Landroid/os/Message;->recycleUnchecked()V (greylist, reflection, allowed)
+10-31 18:56:59.330  5776  5837 D IdlingRegistry: Registering idling resources: [androidx.compose.ui.test.EspressoLink@4f4be2f]
+10-31 18:56:59.332  5776  5837 W UiAutomation: UiAutomation.grantRuntimePermission() is more robust and should be used instead of 'pm grant'
+10-31 18:56:59.386  5776  5837 W UiAutomation: UiAutomation.grantRuntimePermission() is more robust and should be used instead of 'pm grant'
+10-31 18:57:00.001  2052  2052 D KeyguardClockSwitch: Updating clock: 657
+10-31 18:57:00.355  5776  5837 W Settings: Setting always_finish_activities has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+10-31 18:57:00.361  1901  1923 E system_server: Invalid ID 0x00000000.
+10-31 18:57:00.375  1901  4803 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:00.376  1901  4803 I chatty  : uid=1000(system) Binder:1901_1D identical 28 lines
+10-31 18:57:00.376  1901  4803 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:00.376  5776  5776 W ActivityThread: handleWindowVisibility: no activity for token android.os.BinderProxy@32482ed
+10-31 18:57:00.385  1901  4803 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:00.386  1901  4803 I chatty  : uid=1000(system) Binder:1901_1D identical 8 lines
+10-31 18:57:00.387  1901  4803 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:00.389  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:00.459  1901  1923 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:00.459  1901  1923 I chatty  : uid=1000(system) android.anim identical 8 lines
+10-31 18:57:00.459  1901  1923 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:00.473  5776  5776 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@c7822a5 in: PRE_ON_CREATE
+10-31 18:57:00.473  5776  5776 V ActivityScenario: Activity lifecycle changed event received but ignored because the reported transition was not ON_CREATE while the last known transition was PRE_ON_CREATE
+10-31 18:57:00.474  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:00.510  2797  3029 I MicroDetector: Keeping mic open: false
+10-31 18:57:00.510  2797  9202 I AudioController: internalShutdown
+10-31 18:57:00.510  2797  9198 I MicroRecognitionRunner: Stopping hotword detection.
+10-31 18:57:00.517  2797  9204 I DeviceStateChecker: DeviceStateChecker cancelled
+10-31 18:57:00.518  5776  5776 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@c7822a5 in: CREATED
+10-31 18:57:00.518  5776  5776 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=dev.rescata.app.MainActivity@c7822a5
+10-31 18:57:00.538  5776  5776 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@c7822a5 in: STARTED
+10-31 18:57:00.540  5776  5776 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=dev.rescata.app.MainActivity@c7822a5
+10-31 18:57:00.543  5776  5776 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@c7822a5 in: RESUMED
+10-31 18:57:00.543  5776  5776 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=dev.rescata.app.MainActivity@c7822a5
+10-31 18:57:00.561  2797  9202 I MicrophoneInputStream: mic_close  SR : 16000 CC : 16 SO : 1999
+10-31 18:57:00.561  2797  9202 E AudioSource: Stop listening is called on already closed AudioSource
+10-31 18:57:00.562  2797  3028 I MicroRecognitionRunner: Detection finished
+10-31 18:57:00.575  1566  1566 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.allocator@3.0::IAllocator/default in either framework or device manifest.
+10-31 18:57:00.575  1901  3227 W Gralloc3: allocator 3.x is not supported
+10-31 18:57:00.583  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 1662976
+10-31 18:57:00.586  2797  3131 D EGL_emulation: eglMakeCurrent: 0xdd91b260: ver 3 0 (tinfo 0xc0ca7100)
+10-31 18:57:00.602  2539  2981 D EGL_emulation: eglMakeCurrent: 0x78684064a100: ver 3 0 (tinfo 0x7868406c0b40)
+10-31 18:57:00.613  1901  9262 D HostConnection: HostConnection::get() New Host Connection established 0x7867e2be6120, tid 9262
+10-31 18:57:00.615  1901  9262 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 18:57:00.641  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:00.647  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:00.659  5776  6443 D EGL_emulation: eglMakeCurrent: 0x78683eb1c0c0: ver 3 0 (tinfo 0x7868d018f4e0)
+10-31 18:57:00.665  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:00.670  1901  9262 D EGL_emulation: eglCreateContext: 0x7867e2be61c0: maj 3 min 0 rcv 3
+10-31 18:57:00.671  1901  9262 D EGL_emulation: eglMakeCurrent: 0x7867e2be61c0: ver 3 0 (tinfo 0x7868407df240)
+10-31 18:57:00.674  1901  3227 D HostConnection: HostConnection::get() New Host Connection established 0x7867e2be4780, tid 3227
+10-31 18:57:00.685  1901  1927 I ActivityTaskManager: Displayed dev.rescata.app/.MainActivity: +320ms
+10-31 18:57:00.706  1901  3227 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 18:57:00.800  2797  9200 I PBSessionCacheImpl: Deleted sessionId[86654206920] from persistence.
+10-31 18:57:00.802  2052  2335 D EGL_emulation: eglMakeCurrent: 0x78683eb74d40: ver 3 0 (tinfo 0x7867f42e9b20)
+10-31 18:57:00.843  2797  3029 W SearchServiceCore: Abort, client detached.
+10-31 18:57:01.747  5776  5837 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/01_inicio.png.
+10-31 18:57:01.749  1716  2415 D PermissionCache: checking android.permission.READ_FRAME_BUFFER for uid=2000 => granted (226 us)
+10-31 18:57:01.749  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:01.751  1566  1566 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-31 18:57:01.751  5720  5842 W Gralloc3: mapper 3.x is not supported
+10-31 18:57:01.764  5720  5842 D HostConnection: createUnique: call
+10-31 18:57:01.765  5720  5842 D HostConnection: HostConnection::get() New Host Connection established 0x742745dc63a0, tid 5842
+10-31 18:57:01.765  5720  5842 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 18:57:01.765  5720  5842 D eglCodecCommon: allocate: Ask for block of size 0x1000
+10-31 18:57:01.766  5720  5842 D eglCodecCommon: allocate: ioctl allocate returned offset 0x3ff609000 size 0x2000
+10-31 18:57:01.770  1716  2415 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 18:57:01.771  1716  2415 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 18:57:01.771  5720  9263 D libEGL  : Emulator has host GPU support, qemu.gles is set to 1.
+10-31 18:57:01.780  5720  9263 W libc    : Unable to set property "qemu.gles" to "1": error code: 0x18
+10-31 18:57:01.780  5720  9263 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+10-31 18:57:01.781  5720  9263 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+10-31 18:57:01.782  5720  9263 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+10-31 18:57:01.785  5720  9263 D HostConnection: HostConnection::get() New Host Connection established 0x7426b44725a0, tid 9263
+10-31 18:57:01.786  5720  9263 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 18:57:01.788  5720  9263 D EGL_emulation: eglCreateContext: 0x7426b44726e0: maj 3 min 0 rcv 3
+10-31 18:57:01.789  5720  9263 D EGL_emulation: eglMakeCurrent: 0x7426b44726e0: ver 3 0 (tinfo 0x7426b44183e0)
+10-31 18:57:03.237  5776  5837 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/01b_ajustes.png.
+10-31 18:57:03.238  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:03.556  1901  1927 E memtrack: Couldn't load memtrack module
+10-31 18:57:03.557  1901  1927 W android.os.Debug: failed to get memory consumption info: -1
+10-31 18:57:03.674  5776  5837 D UiDevice: Retrieving node with selector: BySelector [TEXT='(?i)^(wait|esperar)$'].
+10-31 18:57:03.676  5776  5776 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@c7822a5 in: PAUSED
+10-31 18:57:03.676  5776  5776 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=dev.rescata.app.MainActivity@c7822a5
+10-31 18:57:03.677  1901  4803 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:03.677  1901  4803 I chatty  : uid=1000(system) Binder:1901_1D identical 8 lines
+10-31 18:57:03.677  1901  4803 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:03.723  1660  1660 D Zygote  : Forked child process 9264
+10-31 18:57:03.730  9264  9264 W ndroid.setting: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 18:57:03.749  1901  4803 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:03.752  1901  4803 I chatty  : uid=1000(system) Binder:1901_1D identical 28 lines
+10-31 18:57:03.752  1901  4803 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:03.760  9264  9264 I ndroid.setting: The ClassLoaderContext is a special shared library.
+10-31 18:57:03.762  9264  9264 I ndroid.setting: The ClassLoaderContext is a special shared library.
+10-31 18:57:03.807  1716  2415 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 18:57:03.808  1716  2415 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 18:57:03.809  9264  9285 D libEGL  : Emulator has host GPU support, qemu.gles is set to 1.
+10-31 18:57:03.819  9264  9285 W libc    : Unable to set property "qemu.gles" to "1": error code: 0x18
+10-31 18:57:03.825  9264  9285 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+10-31 18:57:03.829  9264  9285 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+10-31 18:57:03.829  9264  9285 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+10-31 18:57:03.859  9264  9283 D HostConnection: HostConnection::get() New Host Connection established 0x78683eb1cde0, tid 9283
+10-31 18:57:03.862  9264  9283 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 18:57:03.864  9264  9283 D EGL_emulation: eglCreateContext: 0x78683eb1cfc0: maj 3 min 0 rcv 3
+10-31 18:57:03.866  9264  9283 D EGL_emulation: eglMakeCurrent: 0x78683eb1cfc0: ver 3 0 (tinfo 0x78683eb46540)
+10-31 18:57:03.879  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 3817472
+10-31 18:57:03.890  1566  1566 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-31 18:57:03.890  9264  9283 W Gralloc3: mapper 3.x is not supported
+10-31 18:57:03.890  9264  9283 D HostConnection: createUnique: call
+10-31 18:57:03.891  9264  9283 D HostConnection: HostConnection::get() New Host Connection established 0x78683eb1d100, tid 9283
+10-31 18:57:03.892  9264  9283 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 18:57:03.893  9264  9283 D eglCodecCommon: allocate: Ask for block of size 0x1000
+10-31 18:57:03.893  9264  9283 D eglCodecCommon: allocate: ioctl allocate returned offset 0x3ff607000 size 0x2000
+10-31 18:57:03.894  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 3817472
+10-31 18:57:03.895  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 3817472
+10-31 18:57:03.896  9264  9283 D EGL_emulation: eglMakeCurrent: 0x78683eb1cfc0: ver 3 0 (tinfo 0x78683eb46540)
+10-31 18:57:04.062  1901  1923 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:04.062  1901  1923 I chatty  : uid=1000(system) android.anim identical 8 lines
+10-31 18:57:04.062  1901  1923 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:04.087  1901  1927 I ActivityTaskManager: Displayed com.android.settings/.fuelgauge.RequestIgnoreBatteryOptimizations: +447ms
+10-31 18:57:04.215  2052  2335 D EGL_emulation: eglMakeCurrent: 0x78683eb74d40: ver 3 0 (tinfo 0x7867f42e9b20)
+10-31 18:57:04.230  2052  2335 D EGL_emulation: eglMakeCurrent: 0x78683eb74d40: ver 3 0 (tinfo 0x7867f42e9b20)
+10-31 18:57:04.781  5776  5837 D UiDevice: Node not found with selector: BySelector [TEXT='(?i)^(wait|esperar)$'].
+10-31 18:57:04.781  5776  5837 D UiDevice: Retrieving node with selector: BySelector [TEXT='(?i)^(allow|permitir)$'].
+10-31 18:57:04.807  5776  5837 W dev.rescata.ap: Accessing hidden method Landroid/view/MotionEvent;->setDisplayId(I)V (greylist, reflection, allowed)
+10-31 18:57:04.807  5776  5837 D UiDevice: Retrieving node with selector: BySelector [TEXT='(?i)^(allow|permitir)$'].
+10-31 18:57:05.087  2192  9287 I Vision  : Requesting optional module download of ocr.
+10-31 18:57:05.087  2192  9287 I Vision  : Checking for download completion for 601162 -- ocr
+10-31 18:57:05.089  2192  9286 I Authzen : [DeviceStateSyncManager] Device state updated successfully.
+10-31 18:57:05.896  2038  9215 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:57:05.901  2038  4965 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:57:05.905  2038  9218 I LogUtils: [Places]: ?: PlacesBleScanner stop() [CONTEXT service_id=253 ]
+10-31 18:57:05.905  2038  2038 I BeaconBle: Scan : No clients left, canceling alarm. [CONTEXT service_id=111 ]
+10-31 18:57:05.905  2038  2038 I BeaconBle: Scan canceled successfully. [CONTEXT service_id=111 ]
+10-31 18:57:05.908  2038  9218 I PlacesLogger: [PlaceInferenceEngine]: [anon] Changed inference mode: 0 [CONTEXT service_id=253 ]
+10-31 18:57:05.911  2038  3266 W GCoreFlp: No location to return for getLastLocation()
+10-31 18:57:05.915  2038  9215 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:57:05.919  2038  5652 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:57:05.927  2038  2038 I GeofencerStateMachine: removeGeofences: removeRequest=RemoveGeofencingRequest[REMOVE_BY_PENDING_INTENT pendingIntent=PendingIntent[creatorPackage=com.google.android.gms], packageName=com.google.android.gms]
+10-31 18:57:07.466  5776  5837 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/01c_bateria.png.
+10-31 18:57:07.468  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:07.565  5776  5837 D UiObject2: Clicking on (889, 1344).
+10-31 18:57:07.585  1901  1989 V InputDispatcher: Asynchronous input event injection succeeded.
+10-31 18:57:07.601  1901  1989 V InputDispatcher: Asynchronous input event injection succeeded.
+10-31 18:57:07.631  1901  3227 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:07.631  1901  3227 I chatty  : uid=1000(system) Binder:1901_18 identical 8 lines
+10-31 18:57:07.631  1901  3227 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:07.634  1901  2279 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:07.639  1901  2279 I chatty  : uid=1000(system) Binder:1901_7 identical 38 lines
+10-31 18:57:07.639  1901  2279 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:07.669  5776  5837 W GestureController: Gestures took longer than expected (103ms >> 16ms), device might be in a busy state.
+10-31 18:57:07.671  1708  2015 D AF::TrackHandle: OpPlayAudio: track:57 usage:13 not muted
+10-31 18:57:07.673  1901  2012 W AudioTrack: createTrack_l(41943040): AUDIO_OUTPUT_FLAG_FAST denied by server; frameCount 0 -> 4512
+10-31 18:57:07.692  5776  5776 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@c7822a5 in: RESUMED
+10-31 18:57:07.692  5776  5776 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=dev.rescata.app.MainActivity@c7822a5
+10-31 18:57:07.762  2052  2335 D EGL_emulation: eglMakeCurrent: 0x78683eb74d40: ver 3 0 (tinfo 0x7867f42e9b20)
+10-31 18:57:07.771  1659  2221 I netd    : firewallReplaceUidChain("fw_standby", "false", []) -> {"true"} <1.58ms>
+10-31 18:57:07.883  2052  2335 D EGL_emulation: eglMakeCurrent: 0x78683eb74d40: ver 3 0 (tinfo 0x7867f42e9b20)
+10-31 18:57:08.025  9264  9283 D EGL_emulation: eglMakeCurrent: 0x78683eb1cfc0: ver 3 0 (tinfo 0x78683eb46540)
+10-31 18:57:08.128  2052  2335 D EGL_emulation: eglMakeCurrent: 0x78683eb74d40: ver 3 0 (tinfo 0x7867f42e9b20)
+10-31 18:57:09.064  1901  1916 D WificondControl: Scan result ready event
+10-31 18:57:09.420  5776  5837 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/02_resultados.png.
+10-31 18:57:09.422  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:09.717  1769  2170 E MPEG4Extractor: �F� atom has size 2085304257 (b/28615448)
+10-31 18:57:09.720  1769  2170 W Utils   : did not find mime type
+10-31 18:57:09.721  1769  2170 W Utils   : did not find mime type
+10-31 18:57:09.721  1773  3518 E MetadataRetrieverClient: failed to extract an album art
+10-31 18:57:09.721  5776  6492 E MediaMetadataRetrieverJNI: getEmbeddedPicture: Call to getEmbeddedPicture failed.
+10-31 18:57:10.015  5776  5788 I dev.rescata.ap: Background young concurrent copying GC freed 152916(4650KB) AllocSpace objects, 4(80KB) LOS objects, 43% free, 5701KB/10172KB, paused 5.660ms total 27.039ms
+10-31 18:57:10.615  5776  5837 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/03_miniatura_huerfana.png.
+10-31 18:57:10.617  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:10.796  2797  3029 I WorkerManager: dispose()
+10-31 18:57:10.802  2797  3029 W ThreadPoolDumper: Queue length for executor EventBus is now 11. Perhaps some tasks are too long, or the pool is too small.
+10-31 18:57:10.886  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:10.888  1691  1728 I chatty  : uid=1000(system) HwBinder:1691_2 identical 1 line
+10-31 18:57:10.888  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:10.893  5776  6443 D EGL_emulation: eglMakeCurrent: 0x78683eb1c0c0: ver 3 0 (tinfo 0x7868d018f4e0)
+10-31 18:57:10.914  2038  2038 I BeaconBle: Scan : No clients left, canceling alarm. [CONTEXT service_id=111 ]
+10-31 18:57:10.959  1667  1858 W audio_hw_generic: Not supplying enough data to HAL, expected position 273141 , only wrote 137488
+10-31 18:57:12.137  5776  5837 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/03b_detalles.png.
+10-31 18:57:12.139  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:12.247  5776  5837 D UiDevice: Pressing back button.
+10-31 18:57:13.297  5776  5837 W InteractionController: Timed out waiting 1000ms for command and events.
+10-31 18:57:13.305  5776  6443 D EGL_emulation: eglMakeCurrent: 0x78683eb1c0c0: ver 3 0 (tinfo 0x7868d018f4e0)
+10-31 18:57:13.315  1901  1916 E InputDispatcher: Window handle Window{fab807a u0 dev.rescata.app/dev.rescata.app.MainActivity} has no registered input channel
+10-31 18:57:13.327  5776  6443 D EGL_emulation: eglMakeCurrent: 0x78683eb1c0c0: ver 3 0 (tinfo 0x7868d018f4e0)
+10-31 18:57:14.410  5776  5837 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/03c_copias_whatsapp.png.
+10-31 18:57:14.411  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:14.843  5776  5837 D UiDevice: Turning off screen.
+10-31 18:57:14.856  3297  4693 E DatabaseUtils: Writing exception to parcel
+10-31 18:57:14.856  3297  4693 E DatabaseUtils: java.lang.IllegalArgumentException: Primary directory Pictures not allowed for content://media/external_primary/video/media; allowed directories are [DCIM, Movies]
+10-31 18:57:14.856  3297  4693 E DatabaseUtils: 	at com.android.providers.media.MediaProvider.ensureFileColumns(MediaProvider.java:2117)
+10-31 18:57:14.856  3297  4693 E DatabaseUtils: 	at com.android.providers.media.MediaProvider.ensureUniqueFileColumns(MediaProvider.java:1928)
+10-31 18:57:14.856  3297  4693 E DatabaseUtils: 	at com.android.providers.media.MediaProvider.insertFile(MediaProvider.java:2495)
+10-31 18:57:14.856  3297  4693 E DatabaseUtils: 	at com.android.providers.media.MediaProvider.insertInternal(MediaProvider.java:3191)
+10-31 18:57:14.856  3297  4693 E DatabaseUtils: 	at com.android.providers.media.MediaProvider.insert(MediaProvider.java:2903)
+10-31 18:57:14.856  3297  4693 E DatabaseUtils: 	at android.content.ContentProvider$Transport.insert(ContentProvider.java:309)
+10-31 18:57:14.856  3297  4693 E DatabaseUtils: 	at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:154)
+10-31 18:57:14.856  3297  4693 E DatabaseUtils: 	at android.os.Binder.execTransactInternal(Binder.java:1021)
+10-31 18:57:14.856  3297  4693 E DatabaseUtils: 	at android.os.Binder.execTransact(Binder.java:994)
+10-31 18:57:14.880  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:14.887  1901  1936 D EGL_emulation: eglMakeCurrent: 0x7867dbd03500: ver 3 0 (tinfo 0x7867f18fce00)
+10-31 18:57:14.896  1901  1936 E EGL_emulation: eglQueryContext 32c0  EGL_BAD_ATTRIBUTE
+10-31 18:57:14.896  1901  1936 E EGL_emulation: tid 1936: eglQueryContext(1903): error 0x3004 (EGL_BAD_ATTRIBUTE)
+10-31 18:57:14.897  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:14.918  1901  1936 D EGL_emulation: eglMakeCurrent: 0x7867dbd03500: ver 3 0 (tinfo 0x7867f18fce00)
+10-31 18:57:14.922  1901  1936 D EGL_emulation: eglMakeCurrent: 0x7867dbd03500: ver 3 0 (tinfo 0x7867f18fce00)
+10-31 18:57:14.990  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:14.998  1901  1936 D EGL_emulation: eglMakeCurrent: 0x7867dbd03500: ver 3 0 (tinfo 0x7867f18fce00)
+10-31 18:57:15.055  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:15.056  1901  1936 D EGL_emulation: eglMakeCurrent: 0x7867dbd03500: ver 3 0 (tinfo 0x7867f18fce00)
+10-31 18:57:15.094  2192  9309 I Vision  : Requesting optional module download of ocr.
+10-31 18:57:15.095  2192  9309 I Vision  : Checking for download completion for 611170 -- ocr
+10-31 18:57:15.099  1901  1936 D EGL_emulation: eglMakeCurrent: 0x7867dbd03500: ver 3 0 (tinfo 0x7867f18fce00)
+10-31 18:57:15.148  5776  5776 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@c7822a5 in: PAUSED
+10-31 18:57:15.148  5776  5776 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=dev.rescata.app.MainActivity@c7822a5
+10-31 18:57:15.149  1901  1936 D EGL_emulation: eglMakeCurrent: 0x7867dbd03500: ver 3 0 (tinfo 0x7867f18fce00)
+10-31 18:57:15.150  1901  1936 E Surface : getSlotFromBufferLocked: unknown buffer: 0x0
+10-31 18:57:15.152  1716  1716 D SurfaceFlinger: Setting power mode 0 on display 0
+10-31 18:57:15.156  5776  6443 D EGL_emulation: eglMakeCurrent: 0x78683eb1c0c0: ver 3 0 (tinfo 0x7868d018f4e0)
+10-31 18:57:15.161  5776  5776 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@c7822a5 in: STOPPED
+10-31 18:57:15.161  5776  5776 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=dev.rescata.app.MainActivity@c7822a5
+10-31 18:57:15.170  1716  1716 D SurfaceFlinger: Finished setting power mode 0 on display 0
+10-31 18:57:15.225  2494  2494 I DeviceStatusMonitor: onReceive() : Action = android.intent.action.SCREEN_OFF
+10-31 18:57:15.451  5776  6492 W ExifInterface: Invalid image: ExifInterface got an unsupported image format file(ExifInterface supports JPEG and some RAW image formats only) or a corrupted JPEG file to ExifInterface.
+10-31 18:57:15.451  5776  6492 W ExifInterface: java.io.IOException: Invalid byte order: ffff8950
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at android.media.ExifInterface.readByteOrder(ExifInterface.java:3121)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at android.media.ExifInterface.isOrfFormat(ExifInterface.java:2437)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at android.media.ExifInterface.getMimeType(ExifInterface.java:2315)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at android.media.ExifInterface.loadAttributes(ExifInterface.java:1753)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at android.media.ExifInterface.<init>(ExifInterface.java:1447)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at dev.rescata.app.GalleryDestination$Companion.exifDateMillis(GalleryDestination.kt:167)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at dev.rescata.app.GalleryDestination$Companion.bestDateMillis(GalleryDestination.kt:159)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at dev.rescata.app.GalleryDestination.write(GalleryDestination.kt:71)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at dev.rescata.core.Exporter.export(Exporter.java:150)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at dev.rescata.app.ScanViewModel$export$2.invokeSuspend(ScanViewModel.kt:282)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at dev.rescata.app.ScanViewModel$export$2.invoke(Unknown Source:8)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at dev.rescata.app.ScanViewModel$export$2.invoke(Unknown Source:2)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at dev.rescata.app.BackgroundWork$launch$1.invokeSuspend(BackgroundWork.kt:59)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+10-31 18:57:15.451  5776  6492 W ExifInterface: 	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+10-31 18:57:15.479  3297  3409 W ExifInterface: Invalid image: ExifInterface got an unsupported image format file(ExifInterface supports JPEG and some RAW image formats only) or a corrupted JPEG file to ExifInterface.
+10-31 18:57:15.479  3297  3409 W ExifInterface: java.io.IOException: Invalid byte order: ffff8950
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at android.media.ExifInterface.readByteOrder(ExifInterface.java:3121)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at android.media.ExifInterface.isOrfFormat(ExifInterface.java:2437)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at android.media.ExifInterface.getMimeType(ExifInterface.java:2315)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at android.media.ExifInterface.loadAttributes(ExifInterface.java:1753)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at android.media.ExifInterface.<init>(ExifInterface.java:1447)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner.scanItemImage(ModernMediaScanner.java:729)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner.scanItem(ModernMediaScanner.java:502)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner.access$500(ModernMediaScanner.java:118)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner$Scan.visitFile(ModernMediaScanner.java:406)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner$Scan.visitFile(ModernMediaScanner.java:207)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at java.nio.file.Files.walkFileTree(Files.java:2670)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at java.nio.file.Files.walkFileTree(Files.java:2742)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner$Scan.walkFileTree(ModernMediaScanner.java:267)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner$Scan.run(ModernMediaScanner.java:245)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner.scanFile(ModernMediaScanner.java:174)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at com.android.providers.media.MediaProvider.updateInternal(MediaProvider.java:5024)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at com.android.providers.media.MediaProvider.update(MediaProvider.java:4486)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at android.content.ContentProvider$Transport.update(ContentProvider.java:420)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:215)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at android.os.Binder.execTransactInternal(Binder.java:1021)
+10-31 18:57:15.479  3297  3409 W ExifInterface: 	at android.os.Binder.execTransact(Binder.java:994)
+10-31 18:57:15.488  5776  6492 W ExifInterface: Invalid image: ExifInterface got an unsupported image format file(ExifInterface supports JPEG and some RAW image formats only) or a corrupted JPEG file to ExifInterface.
+10-31 18:57:15.488  5776  6492 W ExifInterface: java.io.IOException: Invalid byte order: ffff8950
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at android.media.ExifInterface.readByteOrder(ExifInterface.java:3121)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at android.media.ExifInterface.isOrfFormat(ExifInterface.java:2437)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at android.media.ExifInterface.getMimeType(ExifInterface.java:2315)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at android.media.ExifInterface.loadAttributes(ExifInterface.java:1753)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at android.media.ExifInterface.<init>(ExifInterface.java:1447)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at dev.rescata.app.GalleryDestination$Companion.exifDateMillis(GalleryDestination.kt:167)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at dev.rescata.app.GalleryDestination$Companion.bestDateMillis(GalleryDestination.kt:159)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at dev.rescata.app.GalleryDestination.write(GalleryDestination.kt:71)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at dev.rescata.core.Exporter.export(Exporter.java:150)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at dev.rescata.app.ScanViewModel$export$2.invokeSuspend(ScanViewModel.kt:282)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at dev.rescata.app.ScanViewModel$export$2.invoke(Unknown Source:8)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at dev.rescata.app.ScanViewModel$export$2.invoke(Unknown Source:2)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at dev.rescata.app.BackgroundWork$launch$1.invokeSuspend(BackgroundWork.kt:59)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:115)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:103)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:584)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:793)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:697)
+10-31 18:57:15.488  5776  6492 W ExifInterface: 	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:684)
+10-31 18:57:15.506  3297  3409 W ExifInterface: Invalid image: ExifInterface got an unsupported image format file(ExifInterface supports JPEG and some RAW image formats only) or a corrupted JPEG file to ExifInterface.
+10-31 18:57:15.506  3297  3409 W ExifInterface: java.io.IOException: Invalid byte order: ffff8950
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at android.media.ExifInterface.readByteOrder(ExifInterface.java:3121)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at android.media.ExifInterface.isOrfFormat(ExifInterface.java:2437)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at android.media.ExifInterface.getMimeType(ExifInterface.java:2315)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at android.media.ExifInterface.loadAttributes(ExifInterface.java:1753)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at android.media.ExifInterface.<init>(ExifInterface.java:1447)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner.scanItemImage(ModernMediaScanner.java:729)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner.scanItem(ModernMediaScanner.java:502)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner.access$500(ModernMediaScanner.java:118)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner$Scan.visitFile(ModernMediaScanner.java:406)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner$Scan.visitFile(ModernMediaScanner.java:207)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at java.nio.file.Files.walkFileTree(Files.java:2670)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at java.nio.file.Files.walkFileTree(Files.java:2742)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner$Scan.walkFileTree(ModernMediaScanner.java:267)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner$Scan.run(ModernMediaScanner.java:245)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at com.android.providers.media.scan.ModernMediaScanner.scanFile(ModernMediaScanner.java:174)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at com.android.providers.media.MediaProvider.updateInternal(MediaProvider.java:5024)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at com.android.providers.media.MediaProvider.update(MediaProvider.java:4486)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at android.content.ContentProvider$Transport.update(ContentProvider.java:420)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:215)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at android.os.Binder.execTransactInternal(Binder.java:1021)
+10-31 18:57:15.506  3297  3409 W ExifInterface: 	at android.os.Binder.execTransact(Binder.java:994)
+10-31 18:57:15.550  1769  2170 E MPEG4Extractor: �F� atom has size 2085304257 (b/28615448)
+10-31 18:57:15.551  1769  2170 W Utils   : did not find mime type
+10-31 18:57:15.551  1769  2170 W Utils   : did not find mime type
+10-31 18:57:15.552  3297  6801 W IsoInterface: Invalid box at 24 of length 2085304265 reached beyond end of parent 167772160
+10-31 18:57:15.553  3297  6801 D MediaProvider: Scanned /storage/emulated/0/Pictures/Rescata/video_grande.mp4 as /storage/emulated/0/Pictures/Rescata/video_grande.mp4 for content://media/external_primary/video/media/15525
+10-31 18:57:15.555  3297  6801 D MediaProvider: Scanned /storage/emulated/0/Download/Rescata/msgstore-2026-10-29.1.db.crypt15 as /storage/emulated/0/Download/Rescata/msgstore-2026-10-29.1.db.crypt15 for content://media/external_primary/file/15526
+10-31 18:57:15.558  3297  6801 D MediaProvider: Scanned /storage/emulated/0/Download/Rescata/informe_20261031_185714.csv as /storage/emulated/0/Download/Rescata/informe_20261031_185714.csv for content://media/external_primary/file/15527
+10-31 18:57:15.687  2038  3440 I NetworkScheduler: ignoring stale queue check message
+10-31 18:57:15.795  5776  5837 D UiDevice: Turning on screen.
+10-31 18:57:15.817  1901  1936 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:15.817  1901  1936 I chatty  : uid=1000(system) PowerManagerSer identical 8 lines
+10-31 18:57:15.817  1901  1936 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:15.818  5776  5776 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@c7822a5 in: RESTARTED
+10-31 18:57:15.818  5776  5776 V ActivityScenario: Update currentActivityStage to RESTARTED, currentActivity=dev.rescata.app.MainActivity@c7822a5
+10-31 18:57:15.820  1716  1716 D SurfaceFlinger: Setting power mode 2 on display 0
+10-31 18:57:15.820  1716  1716 D SurfaceFlinger: Finished setting power mode 2 on display 0
+10-31 18:57:15.822  5776  5776 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@c7822a5 in: STARTED
+10-31 18:57:15.822  5776  5776 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=dev.rescata.app.MainActivity@c7822a5
+10-31 18:57:15.826  2648  2648 I GsaVoiceInteractionSrv: O received Intent { act=android.intent.action.USER_PRESENT flg=0x24200010 }
+10-31 18:57:15.826  2052  2052 D KeyguardClockSwitch: Updating clock: 657
+10-31 18:57:15.832  1695  2740 W EmuHWC2 : No layers, exit, buffer 0x0
+10-31 18:57:15.849  2052  2335 D EGL_emulation: eglMakeCurrent: 0x78683eb74d40: ver 3 0 (tinfo 0x7867f42e9b20)
+10-31 18:57:15.862  2052  2335 D EGL_emulation: eglMakeCurrent: 0x78683eb74d40: ver 3 0 (tinfo 0x7867f42e9b20)
+10-31 18:57:15.890  1691  1728 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:15.905  1691  1726 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:15.907  1691  1726 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:15.909  5776  6443 D EGL_emulation: eglMakeCurrent: 0x78683eb1c0c0: ver 3 0 (tinfo 0x7868d018f4e0)
+10-31 18:57:15.928  5776  5776 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@c7822a5 in: RESUMED
+10-31 18:57:15.928  5776  5776 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=dev.rescata.app.MainActivity@c7822a5
+10-31 18:57:15.989  2052  2052 D KeyguardClockSwitch: Updating clock: 657
+10-31 18:57:16.005  2494  2494 I DeviceStatusMonitor: onReceive() : Action = android.intent.action.SCREEN_ON
+10-31 18:57:16.029  2052  2335 D EGL_emulation: eglMakeCurrent: 0x78683eb74d40: ver 3 0 (tinfo 0x7867f42e9b20)
+10-31 18:57:17.092  5776  5837 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/04_exportado.png.
+10-31 18:57:17.094  1691  1726 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:17.966  2052  2335 D EGL_emulation: eglMakeCurrent: 0x78683eb74d40: ver 3 0 (tinfo 0x7867f42e9b20)
+10-31 18:57:18.602  1901  1927 E memtrack: Couldn't load memtrack module
+10-31 18:57:18.602  1901  1927 W android.os.Debug: failed to get memory consumption info: -1
+10-31 18:57:18.605  3297  6801 D MediaProvider: Scanned /storage/emulated/0/Download/Rescata/informe_20261031_185717.csv as /storage/emulated/0/Download/Rescata/informe_20261031_185717.csv for content://media/external_primary/file/15528
+10-31 18:57:19.432  5776  5837 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/04b_sin_duplicados.png.
+10-31 18:57:19.434  1691  1726 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:19.526  1901  1923 E system_server: Invalid ID 0x00000000.
+10-31 18:57:19.530  5776  5776 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@c7822a5 in: PAUSED
+10-31 18:57:19.530  5776  5776 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=dev.rescata.app.MainActivity@c7822a5
+10-31 18:57:19.540  1901  2279 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:19.542  1901  2279 I chatty  : uid=1000(system) Binder:1901_7 identical 48 lines
+10-31 18:57:19.542  1901  2279 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:19.544  9171  9171 W ActivityThread: handleWindowVisibility: no activity for token android.os.BinderProxy@2bb6063
+10-31 18:57:19.561  1691  1726 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:19.576  1901  1923 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:19.576  1901  1923 I chatty  : uid=1000(system) android.anim identical 18 lines
+10-31 18:57:19.576  1901  1923 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:19.577  1691  1726 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 6639616
+10-31 18:57:19.597  5776  6443 D EGL_emulation: eglMakeCurrent: 0x78683eb1c0c0: ver 3 0 (tinfo 0x7868d018f4e0)
+10-31 18:57:19.645  1691  1726 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:19.647  1691  1726 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:19.656  9171  9191 D EGL_emulation: eglMakeCurrent: 0x786840654960: ver 3 0 (tinfo 0x786840618660)
+10-31 18:57:19.673  2052  2335 D EGL_emulation: eglMakeCurrent: 0x78683eb74d40: ver 3 0 (tinfo 0x7867f42e9b20)
+10-31 18:57:19.689  1691  1726 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:19.697  1901  1927 I ActivityTaskManager: Displayed dev.rescata.app.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity: +174ms
+10-31 18:57:19.705  1901  6654 D HostConnection: HostConnection::get() New Host Connection established 0x7867dbd079c0, tid 6654
+10-31 18:57:19.711  1901  6654 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 18:57:19.712  1901  6654 D EGL_emulation: eglCreateContext: 0x7867dbd07a60: maj 3 min 0 rcv 3
+10-31 18:57:19.713  1901  6654 D EGL_emulation: eglMakeCurrent: 0x7867dbd07a60: ver 3 0 (tinfo 0x7867f19206a0)
+10-31 18:57:19.714  2539  2553 W System  : A resource failed to call release.
+10-31 18:57:19.714  2539  2553 W System  : A resource failed to call release.
+10-31 18:57:19.715  5776  5776 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@c7822a5 in: STOPPED
+10-31 18:57:19.715  5776  5776 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=dev.rescata.app.MainActivity@c7822a5
+10-31 18:57:19.727  1901  1912 I system_server: Background young concurrent copying GC freed 75392(4046KB) AllocSpace objects, 44(1552KB) LOS objects, 27% free, 13MB/19MB, paused 401us total 200.377ms
+10-31 18:57:19.787  5776  5776 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@c7822a5 in: DESTROYED
+10-31 18:57:19.787  5776  5776 V ActivityScenario: Update currentActivityStage to DESTROYED, currentActivity=null
+10-31 18:57:19.857  1901  5403 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:19.857  1901  5403 I chatty  : uid=1000(system) Binder:1901_1F identical 8 lines
+10-31 18:57:19.857  1901  5403 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:19.877  1901  4171 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:19.878  1901  4171 I chatty  : uid=1000(system) Binder:1901_1A identical 8 lines
+10-31 18:57:19.878  1901  4171 W InputReader: Device has associated, but no associated display id.
+10-31 18:57:19.893  1691  1726 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:19.914  1691  1726 I chatty  : uid=1000(system) HwBinder:1691_1 identical 1 line
+10-31 18:57:19.916  1691  1726 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:57:19.920  5776  5837 D IdlingRegistry: Unregistering idling resources: [androidx.compose.ui.test.EspressoLink@4f4be2f]
+10-31 18:57:19.920  5776  5837 I TestRunner: finished: escaneaExportaYRestaura(dev.rescata.app.RescataE2ETest)
