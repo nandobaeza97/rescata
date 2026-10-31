@@ -409,7 +409,9 @@ class RescataE2ETest {
     }
 
     private fun shot(name: String) {
+        compose.waitForIdle()
         device.waitForIdle()
+        Thread.sleep(600) // el emulador de CI tarda en pintar el último fotograma
         device.takeScreenshot(File(shots, "$name.png"))
     }
 

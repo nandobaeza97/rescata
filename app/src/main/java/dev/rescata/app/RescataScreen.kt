@@ -732,18 +732,21 @@ private fun FindingListItem(row: FindingRow, selected: Boolean, onToggle: (Long)
     val f = row.finding
     val ctx = LocalContext.current
     val size = Formatter.formatShortFileSize(ctx, f.length)
-    val headline: String
-    val support: String
-    if (f.category == Finding.Category.WHATSAPP_BACKUP) {
-        headline = whatsappBackupTitle(f)
-        support = "${f.suggestedName} · copia cifrada · $size"
-    } else {
-        headline = f.suggestedName ?: ""
-        support = listOfNotNull(typeName(f), size).joinToString(" · ")
-    }
+    val isBackup = f.category == Finding.Category.WHATSAPP_BACKUP
+    val headline = if (isBackup) whatsappBackupTitle(f) else f.suggestedName ?: ""
+    val support = if (isBackup) "Copia cifrada · $size" else listOfNotNull(typeName(f), size).joinToString(" · ")
     ListItem(
         headlineContent = { Text(headline, maxLines = 1, overflow = TextOverflow.Ellipsis) },
-        supportingContent = { Text(support, maxLines = 2, overflow = TextOverflow.Ellipsis) },
+        supportingContent = {
+            Column {
+                Text(support, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                // Nombre del archivo de la copia en una línea aparte (se recorta con «…» si no cabe)
+                if (isBackup) {
+                    Text(f.suggestedName ?: "", style = MaterialTheme.typography.labelSmall, maxLines = 1,
+                        overflow = TextOverflow.Ellipsis, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            }
+        },
         leadingContent = {
             Box(
                 Modifier.size(44.dp).clip(RoundedCornerShape(12.dp)).background(MaterialTheme.colorScheme.primaryContainer),

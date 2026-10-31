@@ -41,6 +41,19 @@ private val LightBrand = lightColorScheme(
     onTertiary = Color.White,
     tertiaryContainer = Color(0xFFFAECE7),
     onTertiaryContainer = Color(0xFF712B13),
+    // Superficies neutras con un toque verde (sin ellas, Material usa un tono lila por defecto)
+    background = Color(0xFFF6FBF8),
+    onBackground = Color(0xFF171D1A),
+    surface = Color(0xFFF6FBF8),
+    onSurface = Color(0xFF171D1A),
+    surfaceVariant = Color(0xFFDBE5DF),
+    onSurfaceVariant = Color(0xFF3F4945),
+    outline = Color(0xFF6F7975),
+    surfaceContainerLowest = Color(0xFFFFFFFF),
+    surfaceContainerLow = Color(0xFFF0F5F2),
+    surfaceContainer = Color(0xFFEAEFEC),
+    surfaceContainerHigh = Color(0xFFE4EAE6),
+    surfaceContainerHighest = Color(0xFFDFE4E1),
 )
 
 private val DarkBrand = darkColorScheme(
@@ -55,6 +68,18 @@ private val DarkBrand = darkColorScheme(
     onTertiary = Color(0xFF4A1B0C),
     tertiaryContainer = Color(0xFF712B13),
     onTertiaryContainer = Color(0xFFFAECE7),
+    background = Color(0xFF0F1512),
+    onBackground = Color(0xFFDEE4E0),
+    surface = Color(0xFF0F1512),
+    onSurface = Color(0xFFDEE4E0),
+    surfaceVariant = Color(0xFF3F4945),
+    onSurfaceVariant = Color(0xFFBFC9C3),
+    outline = Color(0xFF89938E),
+    surfaceContainerLowest = Color(0xFF0A0F0D),
+    surfaceContainerLow = Color(0xFF171D1A),
+    surfaceContainer = Color(0xFF1B211E),
+    surfaceContainerHigh = Color(0xFF252B28),
+    surfaceContainerHighest = Color(0xFF303633),
 )
 
 private val RescataShapes = Shapes(
