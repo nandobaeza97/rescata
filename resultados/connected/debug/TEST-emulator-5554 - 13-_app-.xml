@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="dev.rescata.app.EscalaE2ETest" tests="2" failures="0" errors="0" skipped="0" time="507.865" timestamp="2026-10-31T17:53:46" hostname="localhost">
+  <properties>
+    <property name="device" value="emulator-5554 - 13" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="guardaMasDeDiezMilSinRalentizarse" classname="dev.rescata.app.EscalaE2ETest" time="476.577" />
+  <testcase name="escaneaExportaYRestaura" classname="dev.rescata.app.RescataE2ETest" time="29.305" />
+</testsuite>
