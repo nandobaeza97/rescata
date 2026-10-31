@@ -2,6 +2,7 @@ package dev.rescata.app
 
 import android.content.Context
 import android.content.Intent
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,11 +39,7 @@ object BackgroundWork {
         running.incrementAndGet()
         cancelFlag = cancel
         _status.value = Status(title)
-        try {
-            ContextCompat.startForegroundService(app, Intent(app, KeepAliveService::class.java))
-        } catch (e: RuntimeException) {
-            // Si el sistema no deja iniciar el servicio, el trabajo se hace igual (como antes)
-        }
+        startService(app)
         return scope.launch {
             try {
                 block()
@@ -50,8 +47,26 @@ object BackgroundWork {
                 if (running.decrementAndGet() == 0) {
                     cancelFlag = null
                     _status.value = null // el servicio se detiene solo al ver null
+                    // Si Android lo había pausado y aun así terminó, el aviso de pausa ya no aplica
+                    NotificationManagerCompat.from(app).cancel(KeepAliveService.PAUSED_NOTIFICATION_ID)
                 }
             }
+        }
+    }
+
+    /**
+     * Al volver a la app: si hay un trabajo en marcha pero Android detuvo el servicio (límite de
+     * 6 h en segundo plano de Android 15+), se vuelve a iniciar. Abrir la app reinicia ese contador.
+     */
+    fun resumeIfNeeded(ctx: Context) {
+        if (running.get() > 0 && !KeepAliveService.isRunning) startService(ctx.applicationContext)
+    }
+
+    private fun startService(app: Context) {
+        try {
+            ContextCompat.startForegroundService(app, Intent(app, KeepAliveService::class.java))
+        } catch (e: RuntimeException) {
+            // Si el sistema no deja iniciar el servicio, el trabajo se hace igual (como antes)
         }
     }
 

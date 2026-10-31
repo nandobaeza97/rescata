@@ -28,4 +28,10 @@ public interface Destination {
      * y devuelve su ubicación final.
      */
     String write(Finding finding, String fileName, ContentWriter writer) throws IOException;
+
+    /**
+     * Aviso tras escribir una copia con éxito, con su contenido ya comprobado. Sirve para que el
+     * destino la tenga en cuenta al buscar duplicados sin volver a leer la carpeta.
+     */
+    default void written(String location, String sha256, long size) { }
 }

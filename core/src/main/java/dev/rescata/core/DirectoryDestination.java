@@ -12,10 +12,13 @@ public class DirectoryDestination implements Destination {
 
     private final File dir;
     private final String label;
+    /** Se lista la carpeta una vez por exportación, no una vez por archivo. */
+    private final ContentIndex index;
 
     public DirectoryDestination(File dir, String label) {
         this.dir = dir;
         this.label = label;
+        this.index = new ContentIndex(dir, null);
     }
 
     public File getDir() { return dir; }
@@ -25,12 +28,12 @@ public class DirectoryDestination implements Destination {
 
     @Override
     public String findExisting(Finding finding, String sha256, long size) throws IOException {
-        File[] files = dir.listFiles();
-        if (files == null) return null;
-        for (File f : files) {
-            if (f.isFile() && f.length() == size && sha256.equals(sha256(f))) return f.getAbsolutePath();
-        }
-        return null;
+        return index.find(sha256, size);
+    }
+
+    @Override
+    public void written(String location, String sha256, long size) {
+        index.add(location, sha256, size);
     }
 
     @Override

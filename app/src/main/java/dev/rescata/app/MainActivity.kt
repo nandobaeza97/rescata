@@ -26,6 +26,12 @@ class MainActivity : ComponentActivity() {
             RescataTheme { RescataScreen() }
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        // Si Android pausó un trabajo largo (límite de 6 h de Android 15+), al volver se reanuda
+        BackgroundWork.resumeIfNeeded(this)
+    }
 }
 
 /** Colores de la marca (verde del icono y coral de la insignia) para móviles sin colores dinámicos. */

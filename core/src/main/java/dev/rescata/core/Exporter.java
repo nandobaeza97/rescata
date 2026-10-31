@@ -96,6 +96,7 @@ public final class Exporter {
                     if (copied[0] != size || !sha.equals(copySha[0])) {
                         throw new IOException("El origen cambió durante la copia");
                     }
+                    d.written(location, sha, size);
                     status = STATUS_EXPORTED;
                     res.exported++;
                     Integer n = res.exportedByDestination.get(destLabel);

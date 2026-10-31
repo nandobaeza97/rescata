@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import androidx.annotation.RequiresApi
+import dev.rescata.core.ContentIndex
 import dev.rescata.core.Destination
 import dev.rescata.core.DirectoryDestination
 import dev.rescata.core.FileType
@@ -41,12 +42,12 @@ class GalleryDestination(
 
     override fun label(): String = "Galería › $album"
 
-    override fun findExisting(finding: Finding, sha256: String, size: Long): String? {
-        val files = dir.listFiles() ?: return null
-        return files.firstOrNull {
-            it.isFile && !it.name.startsWith(".") && it.length() == size && DirectoryDestination.sha256(it) == sha256
-        }?.absolutePath
-    }
+    /** El álbum se lista una vez por exportación, no una vez por archivo (los ocultos no cuentan). */
+    private val index = ContentIndex(dir) { !it.name.startsWith(".") }
+
+    override fun findExisting(finding: Finding, sha256: String, size: Long): String? = index.find(sha256, size)
+
+    override fun written(location: String, sha256: String, size: Long) = index.add(location, sha256, size)
 
     override fun write(finding: Finding, fileName: String, writer: Destination.ContentWriter): String {
         val taken = bestDateMillis(finding)
