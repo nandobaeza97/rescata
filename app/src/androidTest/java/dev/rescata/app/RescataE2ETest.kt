@@ -160,7 +160,10 @@ class RescataE2ETest {
             // Se espera al estado de la app (no se sondea el árbol de la UI en bucle: provoca carreras con Espresso)
             waitFor(180_000, "fin del escaneo") { vm(scenario) { s -> !s.scanning && s.summary != null } }
             compose.waitForIdle()
+            compose.onNodeWithTag("resultados").performScrollToNode(hasText("hallazgo", substring = true))
             compose.onNodeWithText("hallazgo", substring = true).assertIsDisplayed()
+            assertEquals("Los ajustes deben plegarse al buscar", 0,
+                compose.onAllNodesWithText("Carving (lento)").fetchSemanticsNodes().size)
             shot("02_resultados")
 
             // Cada caso aparece en la lista

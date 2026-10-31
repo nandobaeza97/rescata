@@ -224,7 +224,18 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
             contentPadding = padding,
             modifier = Modifier.fillMaxSize().testTag("resultados"),
         ) {
-            item(key = "hero") { Hero(state, onScan = vm::startScan, onCancel = vm::cancel) }
+            item(key = "hero") {
+                Hero(
+                    state,
+                    onScan = {
+                        // Se pliegan los ajustes para que los resultados aparezcan justo debajo
+                        settingsOpen = false
+                        limitsOpen = false
+                        vm.startScan()
+                    },
+                    onCancel = vm::cancel,
+                )
+            }
             if (!state.hasAccess) item(key = "access") { AccessCard(onRequest = ::requestAccess) }
             item(key = "settings") {
                 Expandable(
