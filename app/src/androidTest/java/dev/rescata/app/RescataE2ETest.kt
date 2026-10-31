@@ -1,6 +1,9 @@
 package dev.rescata.app
 
 import android.content.ContentValues
+import android.content.Context
+import android.os.PowerManager
+import androidx.lifecycle.Lifecycle
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
@@ -78,6 +81,8 @@ class RescataE2ETest {
     private val waRoot = File(root, "Android/media/com.whatsapp/WhatsApp")
     private val waBackupName = "msgstore-2026-10-29.1.db.crypt15"
     private val waImageName = "IMG-20261029-WA0001.jpg"
+    private val bigVideoName = "video_grande.mp4"
+    private var bigVideoSha = ""
     private val trashSupported = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
     private val orphanSupported = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
     private var pngHiddenMtime = 0L
@@ -104,6 +109,7 @@ class RescataE2ETest {
         // El emulador de CI es lento: que no tape la pantalla con avisos de «X no responde» de otras apps
         shell("settings put global hide_error_dialogs 1")
         shell("settings put secure anr_show_background 0")
+        if (Build.VERSION.SDK_INT >= 33) shell("pm grant $pkg android.permission.POST_NOTIFICATIONS")
 
         listOf(pics, dl, thumb, shots, album, albumThumbs, othersDir, waRoot).forEach { it.deleteRecursively() }
         shell("rm -r ${waRoot.absolutePath}")
@@ -135,6 +141,8 @@ class RescataE2ETest {
         write(File(dl, ".Trash/borrada.jpg"), jpegVendorTrash)    // papelera de una app
         write(File(dl, "rescata_cache.bin"), junk(6000) + pngEmbedded + junk(4000)) // imagen dentro de una caché
         write(File(dl, "visible.jpg"), image(Color.DKGRAY, Bitmap.CompressFormat.JPEG, "visible")) // viva
+        // Vídeo grande y oculto: hace que guardar dure varios segundos para poder apagar la pantalla a mitad
+        bigVideoSha = writeBigVideo(File(dl, ".grande/$bigVideoName"), 160)
 
         // WhatsApp: una copia local de chats y una foto guardada por WhatsApp
         writeShared(File(waRoot, "Databases/$waBackupName"), waBackup)
@@ -168,7 +176,7 @@ class RescataE2ETest {
 
             // Cada caso aparece en la lista
             val expected = mutableListOf("borrada.jpg", "miniatura_999999.jpg", "sin_extension", "rescata_cache_0x",
-                waImageName, waBackupName)
+                waImageName, waBackupName, bigVideoName)
             if (trashSupported) expected += "foto_papelera.jpg"
             // Fotos y vídeos se ven en la cuadrícula (nombre en la descripción); el resto, en la lista
             for (t in expected) {
@@ -219,9 +227,22 @@ class RescataE2ETest {
                 val label = StorageAccess.exportVolumes(ctx).first { it.primary }.label
                 compose.onNodeWithText(label, substring = true).performClick()
             }
-            waitFor(120_000, "fin de la exportación") { vm(scenario) { s -> !s.exporting } && reports().size == 1 }
+            // Con el guardado en marcha: el servicio en primer plano debe estar activo; se apaga la pantalla
+            waitFor(60_000, "servicio en primer plano") { keepAliveInForeground() || reports().isNotEmpty() }
+            assertTrue("El guardado terminó antes de poder apagar la pantalla (la prueba no sería válida)", reports().isEmpty())
+            device.sleep()
+            val power = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
+            waitFor(10_000, "pantalla apagada") { !power.isInteractive }
+            // Solo se mira el disco: con la pantalla apagada no se toca la interfaz
+            waitFor(300_000, "fin del guardado con la pantalla apagada") { reports().size == 1 && !keepAliveInForeground() }
+            assertFalse("La pantalla se encendió durante la prueba", power.isInteractive)
+            device.wakeUp()
+            shell("wm dismiss-keyguard")
+            waitFor(20_000, "volver a la app") { scenario.state == Lifecycle.State.RESUMED }
+            waitFor(30_000, "estado final de la app") { vm(scenario) { s -> !s.exporting } }
             compose.waitForIdle()
             shot("04_exportado")
+            assertEquals("El vídeo grande no se copió íntegro", bigVideoSha, sha256File(File(album, bigVideoName)))
             verifyExport(reports().single())
 
             // Exportar otra vez lo mismo: no debe duplicar nada en la galería
@@ -324,7 +345,7 @@ class RescataE2ETest {
             assertEquals("Estado de ${cols[3]}: ${cols.getOrNull(14)}", "exportado", cols[10])
             val copy = File(cols[12])
             assertTrue("Falta la copia ${cols[12]}", copy.isFile)
-            assertEquals("SHA-256 de ${copy.name}", cols[6], sha256(copy.readBytes()))
+            assertEquals("SHA-256 de ${copy.name}", cols[6], sha256File(copy))
             assertFalse("Se exportó un archivo vivo: ${cols[3]}", cols[3].endsWith("visible.jpg"))
             assertFalse("Se exportó un archivo vivo: ${cols[3]}", cols[3].endsWith("/foto_viva.jpg"))
         }
@@ -455,6 +476,47 @@ class RescataE2ETest {
             val v = b[i].toInt() and 0xFF
             if (v == 0xFF || v == 0x89 || v == 'G'.code || v == 'R'.code) b[i] = 0x11
         }
+    }
+
+    private fun sha256File(f: File): String {
+        val md = MessageDigest.getInstance("SHA-256")
+        f.inputStream().use { input ->
+            val buf = ByteArray(1 shl 20)
+            while (true) {
+                val r = input.read(buf)
+                if (r < 0) break
+                md.update(buf, 0, r)
+            }
+        }
+        return md.digest().joinToString("") { "%02x".format(it) }
+    }
+
+    /** Escribe un «vídeo» (cabecera MP4 + datos aleatorios) de [mb] MB y devuelve su SHA-256. */
+    private fun writeBigVideo(f: File, mb: Int): String {
+        f.parentFile?.mkdirs()
+        val md = MessageDigest.getInstance("SHA-256")
+        val rnd = Random(77)
+        val buf = ByteArray(1 shl 20)
+        f.outputStream().use { out ->
+            for (i in 0 until mb) {
+                rnd.nextBytes(buf)
+                if (i == 0) {
+                    val head = byteArrayOf(0, 0, 0, 24, 'f'.code.toByte(), 't'.code.toByte(), 'y'.code.toByte(),
+                        'p'.code.toByte(), 'i'.code.toByte(), 's'.code.toByte(), 'o'.code.toByte(), 'm'.code.toByte())
+                    head.copyInto(buf)
+                }
+                out.write(buf)
+                md.update(buf)
+            }
+        }
+        return md.digest().joinToString("") { "%02x".format(it) }
+    }
+
+    /** ¿Está el servicio de Rescata en primer plano ahora mismo? (según dumpsys) */
+    private fun keepAliveInForeground(): Boolean {
+        val pfd = instr.uiAutomation.executeShellCommand("dumpsys activity services ${ctx.packageName}/.KeepAliveService")
+        val out = ParcelFileDescriptor.AutoCloseInputStream(pfd).use { String(it.readBytes()) }
+        return out.contains("isForeground=true")
     }
 
     private fun sha256(b: ByteArray): String =

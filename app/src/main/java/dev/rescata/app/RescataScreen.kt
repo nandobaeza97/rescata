@@ -4,6 +4,8 @@ package dev.rescata.app
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Build
 import android.provider.MediaStore
@@ -102,6 +104,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -144,6 +147,27 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
     val restoreLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
         vm.onRestoreResult(it.resultCode == Activity.RESULT_OK)
     }
+    // Android 13+: se pide una sola vez el permiso para mostrar el progreso en una notificación.
+    // Pase lo que pase, la acción se ejecuta igual.
+    var afterNotificationPrompt by remember { mutableStateOf<(() -> Unit)?>(null) }
+    val notificationLauncher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {
+        afterNotificationPrompt?.invoke()
+        afterNotificationPrompt = null
+    }
+
+    fun withNotifications(action: () -> Unit) {
+        val prefs = ctx.getSharedPreferences("rescata", Context.MODE_PRIVATE)
+        val needsPrompt = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(ctx, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED &&
+            !prefs.getBoolean("aviso_notificaciones", false)
+        if (needsPrompt) {
+            prefs.edit().putBoolean("aviso_notificaciones", true).apply()
+            afterNotificationPrompt = action
+            notificationLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        } else {
+            action()
+        }
+    }
 
     LaunchedEffect(state.message) {
         val m = state.message ?: return@LaunchedEffect
@@ -178,13 +202,14 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
         }
     }
 
-    fun exportSelected() {
+    fun exportSelected() = withNotifications {
         val vols = StorageAccess.exportVolumes(ctx)
         when {
             vols.isEmpty() -> vm.showMessage("No hay ningún almacenamiento disponible para guardar")
             vols.size == 1 -> vm.export(vols.first())
             else -> exportChoices = vols
         }
+        Unit
     }
 
     // Secciones de resultados (cuadrícula para fotos y vídeos, lista para lo demás)
@@ -231,7 +256,7 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
                         // Se pliegan los ajustes para que los resultados aparezcan justo debajo
                         settingsOpen = false
                         limitsOpen = false
-                        vm.startScan()
+                        withNotifications { vm.startScan() }
                     },
                     onCancel = vm::cancel,
                 )

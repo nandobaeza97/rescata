@@ -6,7 +6,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.SystemClock
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.viewModelScope
 import dev.rescata.core.DirectoryDestination
 import dev.rescata.core.Exporter
 import dev.rescata.core.FileType
@@ -16,13 +15,11 @@ import dev.rescata.core.ScanListener
 import dev.rescata.core.ScanOptions
 import dev.rescata.core.Signatures
 import dev.rescata.core.TrashedName
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -68,6 +65,7 @@ class ScanViewModel(app: Application) : AndroidViewModel(app) {
 
     private var cancelFlag = AtomicBoolean(false)
     private var job: Job? = null
+    private var exportCancel = AtomicBoolean(false)
 
     fun refreshAccess() = _state.update { it.copy(hasAccess = StorageAccess.hasFullAccess(getApplication())) }
     fun setOptions(o: Options) = _state.update { it.copy(options = o) }
@@ -94,7 +92,8 @@ class ScanViewModel(app: Application) : AndroidViewModel(app) {
                 summary = null, progressText = "Preparando…")
         }
 
-        job = viewModelScope.launch(Dispatchers.IO) {
+        // Fuera de la pantalla y con servicio en primer plano: sigue aunque se bloquee el móvil
+        job = BackgroundWork.launch(ctx, "Buscando archivos borrados", cancel) {
             val volumes = StorageAccess.volumes(ctx)
             val opts = ScanOptions().apply {
                 systemTrash = o.systemTrash
@@ -122,6 +121,7 @@ class ScanViewModel(app: Application) : AndroidViewModel(app) {
                     if (now - lastPush < 250) return
                     lastPush = now
                     val snapshot = found.map { FindingRow(it) }
+                    BackgroundWork.update("$filesVisited archivos revisados · ${found.size} encontrados")
                     _state.update {
                         it.copy(progressText = "$filesVisited archivos · $dirsVisited carpetas\n$currentPath",
                             rows = snapshot)
@@ -212,7 +212,8 @@ class ScanViewModel(app: Application) : AndroidViewModel(app) {
         if (selected.isEmpty() || s.exporting) return
         val ctx = getApplication<Application>()
         _state.update { it.copy(exporting = true, exportProgress = "Exportando…") }
-        viewModelScope.launch(Dispatchers.IO) {
+        val cancel = AtomicBoolean(false).also { exportCancel = it }
+        BackgroundWork.launch(ctx, "Guardando archivos", cancel) {
             // Fotos y vídeos → álbum «Rescata» de la galería; miniaturas → «Rescata – Miniaturas»;
             // el resto (documentos, audio, desconocidos) y el informe → Download/Rescata.
             val album = GalleryDestination(ctx, volume, StorageAccess.ALBUM)
@@ -235,8 +236,9 @@ class ScanViewModel(app: Application) : AndroidViewModel(app) {
             val report = DirectoryDestination.uniqueFile(othersDir, "informe_$stamp.csv")
             val msg = try {
                 val res = Exporter().export(selected, router, report, { done, total, _ ->
-                    _state.update { it.copy(exportProgress = "Exportando $done de $total…") }
-                }, null)
+                    _state.update { it.copy(exportProgress = "Guardando $done de $total…") }
+                    BackgroundWork.update("$done de $total", done, total)
+                }, cancel)
                 MediaScannerConnection.scanFile(ctx, arrayOf(report.absolutePath), null, null)
                 buildString {
                     if (res.exported == 0 && res.alreadyPresent > 0) {
@@ -247,6 +249,7 @@ class ScanViewModel(app: Application) : AndroidViewModel(app) {
                         if (res.alreadyPresent > 0) append(" · ${n(res.alreadyPresent, "ya estaba", "ya estaban")}")
                     }
                     if (res.failed > 0) append(" · ${n(res.failed, "falló", "fallaron")}")
+                    if (cancel.get()) append(" · cancelado")
                     append(". Informe: Download/Rescata/${report.name}")
                 }
             } catch (e: Exception) {
