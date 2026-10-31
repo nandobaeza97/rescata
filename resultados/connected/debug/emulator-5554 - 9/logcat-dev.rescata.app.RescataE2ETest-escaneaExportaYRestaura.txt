@@ -1,0 +1,665 @@
+10-31 18:55:40.887  5724  5749 I TestRunner: started: escaneaExportaYRestaura(dev.rescata.app.RescataE2ETest)
+10-31 18:55:40.954  5724  5749 W FileTestStorage: Output properties is not supported.
+10-31 18:55:40.954  5724  5749 W dev.rescata.ap: Accessing hidden method Landroid/os/Trace;->setAppTracingAllowed(Z)V (light greylist, reflection)
+10-31 18:55:40.955  5724  5749 I Tracing : Tracer added: class androidx.test.platform.tracing.AndroidXTracer
+10-31 18:55:40.971  5724  5724 D EventInjectionStrategy: Creating injection strategy with input manager.
+10-31 18:55:40.971  5724  5724 W dev.rescata.ap: Accessing hidden method Landroid/hardware/input/InputManager;->getInstance()Landroid/hardware/input/InputManager; (light greylist, reflection)
+10-31 18:55:40.972  5724  5724 W dev.rescata.ap: Accessing hidden method Landroid/hardware/input/InputManager;->injectInputEvent(Landroid/view/InputEvent;I)Z (light greylist, reflection)
+10-31 18:55:40.972  5724  5724 W dev.rescata.ap: Accessing hidden field Landroid/hardware/input/InputManager;->INJECT_INPUT_EVENT_MODE_WAIT_FOR_FINISH:I (light greylist, reflection)
+10-31 18:55:40.994  5724  5724 W dev.rescata.ap: Accessing hidden method Landroid/os/MessageQueue;->next()Landroid/os/Message; (light greylist, reflection)
+10-31 18:55:40.994  5724  5724 W dev.rescata.ap: Accessing hidden field Landroid/os/MessageQueue;->mMessages:Landroid/os/Message; (light greylist, reflection)
+10-31 18:55:40.994  5724  5724 W dev.rescata.ap: Accessing hidden method Landroid/os/Message;->recycleUnchecked()V (light greylist, reflection)
+10-31 18:55:40.995  5724  5749 D IdlingRegistry: Registering idling resources: [androidx.compose.ui.test.EspressoLink@f52a62f]
+10-31 18:55:41.008  5724  5749 W UiAutomation: UiAutomation.grantRuntimePermission() is more robust and should be used instead of 'pm grant'
+10-31 18:55:41.024  2177  5902 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:55:41.041  5724  5749 W UiAutomation: UiAutomation.grantRuntimePermission() is more robust and should be used instead of 'pm grant'
+10-31 18:55:41.102  2177  3414 I PlacesLogger: [PlaceInferenceEngine]: [anon] Changed inference mode: 1 [CONTEXT service_id=253 ]
+10-31 18:55:41.103  2177  3414 I PlacesLogger: [PlaceInferenceEngine]: [account#-29786098] Changed inference mode: 1 [CONTEXT service_id=253 ]
+10-31 18:55:41.138  2973  8277 E PlaceStateUpdater: Received no places
+10-31 18:55:41.147  1800  1825 D hwcomposer: hw_composer sent 6 syncs in 112s
+10-31 18:55:41.220  2177  6017 I ctxmgr  : [ProducerStatusImpl] updateStateForNewContextData: inactive, contextName=7 [CONTEXT service_id=47 ]
+10-31 18:55:41.261  2177  8329 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:55:41.264  2177  8331 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:55:41.288  2177  3414 I LogUtils: [Places]: ?: PlacesBleScanner start() with priority 2 [CONTEXT service_id=253 ]
+10-31 18:55:41.299  2177  3414 I PlacesLogger: [PlaceInferenceEngine]: [anon] Changed inference mode: 1 [CONTEXT service_id=253 ]
+10-31 18:55:41.300  2177  3414 I PlacesLogger: [PlaceInferenceEngine]: [account#-29786098] Changed inference mode: 1 [CONTEXT service_id=253 ]
+10-31 18:55:41.320  2177  3414 I Places  : Converted 0 out of 1 WiFi scans
+10-31 18:55:41.323  2177  2177 E BeaconBle: Missing BluetoothAdapter [CONTEXT service_id=111 ]
+10-31 18:55:41.323  2177  2177 I BeaconBle: BLE 'KK+' software access layer enabled [CONTEXT service_id=111 ]
+10-31 18:55:41.334  2177  8330 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:55:41.345  2177  2177 I BeaconBle: Client requested scan, settings=BleSettings [scanMode=ZERO_POWER, callbackType=ALL_MATCHES, reportDelayMillis=0, 1 filters, 0 clients, callingClientName=Places] [CONTEXT service_id=111 ]
+10-31 18:55:41.347  2177  8329 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:55:41.353  2177  2177 I BeaconBle: Scan : No clients left, canceling alarm. [CONTEXT service_id=111 ]
+10-31 18:55:41.354  2177  2177 E BeaconBle: Scan couldn't start for Places [CONTEXT service_id=111 ]
+10-31 18:55:41.354  2177  2177 W Places  : BLE failure while scanning - code 5
+10-31 18:55:41.356  2177  3414 I PlacesLogger: [PlaceInferenceEngine]: [account#-29786098] Changed inference mode: 1 [CONTEXT service_id=253 ]
+10-31 18:55:41.356  2177  3414 I PlacesLogger: [PlaceInferenceEngine]: [anon] Changed inference mode: 1 [CONTEXT service_id=253 ]
+10-31 18:55:41.357  2177  8329 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:55:41.382  2177  3414 I LogUtils: [Places]: ?: PlacesBleScanner stop() [CONTEXT service_id=253 ]
+10-31 18:55:41.383  2177  2177 I BeaconBle: Scan : No clients left, canceling alarm. [CONTEXT service_id=111 ]
+10-31 18:55:41.383  2177  2177 I BeaconBle: Scan canceled successfully. [CONTEXT service_id=111 ]
+10-31 18:55:41.408  2177  3414 I PlacesLogger: [PlaceInferenceEngine]: [anon] Changed inference mode: 1 [CONTEXT service_id=253 ]
+10-31 18:55:41.408  2177  3414 I PlacesLogger: [PlaceInferenceEngine]: [account#-29786098] Changed inference mode: 1 [CONTEXT service_id=253 ]
+10-31 18:55:41.432  2177  3414 I PlacesLogger: [PlaceInferenceEngine]: Too few candidate results: percentageOfMissingArea 100 [CONTEXT service_id=253 ]
+10-31 18:55:41.441  2177  5902 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:55:41.441  2177  6017 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:55:41.442  2177  8331 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:55:41.479  2177  5903 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-31 18:55:41.479  2177  5903 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 18:55:41.479  2177  5903 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:55:41.495  2177  5903 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-31 18:55:41.495  2177  5903 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 18:55:41.495  2177  5903 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:55:41.520  2973  8279 E PlaceStateUpdater: Received no places
+10-31 18:55:41.563  2177  3414 W LogUtils: [Places]: ?: getPlaceInfos (SLS) failure
+10-31 18:55:41.563  2177  3414 W LogUtils: ckdr: NOT_FOUND: Requested entity was not found.
+10-31 18:55:41.563  2177  3414 W LogUtils: 	at ckdq.c(:com.google.android.gms@202414023@20.24.14 (040800-319035315):3)
+10-31 18:55:41.563  2177  3414 W LogUtils: 	at sjo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):57)
+10-31 18:55:41.563  2177  3414 W LogUtils: 	at bjxl.call(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:55:41.563  2177  3414 W LogUtils: 	at bjvu.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):1)
+10-31 18:55:41.563  2177  3414 W LogUtils: 	at soy.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):12)
+10-31 18:55:41.563  2177  3414 W LogUtils: 	at soy.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):7)
+10-31 18:55:41.563  2177  3414 W LogUtils: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+10-31 18:55:41.563  2177  3414 W LogUtils: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+10-31 18:55:41.563  2177  3414 W LogUtils: 	at sux.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:55:41.563  2177  3414 W LogUtils: 	at java.lang.Thread.run(Thread.java:764)
+10-31 18:55:41.563  2177  3414 W LogUtils:
+10-31 18:55:41.563  2177  3414 W LogUtils: [CONTEXT service_id=253 ]
+10-31 18:55:41.564  2177  6017 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:55:41.586  2177  3414 W LogUtils: [Places]: ?: Failed to download inference model weights SLS
+10-31 18:55:41.586  2177  3414 W LogUtils: ckdr: NOT_FOUND: Requested entity was not found.
+10-31 18:55:41.586  2177  3414 W LogUtils: 	at ckdq.c(:com.google.android.gms@202414023@20.24.14 (040800-319035315):3)
+10-31 18:55:41.586  2177  3414 W LogUtils: 	at sjo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):57)
+10-31 18:55:41.586  2177  3414 W LogUtils: 	at bjxj.call(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:55:41.586  2177  3414 W LogUtils: 	at bjvu.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):1)
+10-31 18:55:41.586  2177  3414 W LogUtils: 	at soy.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):12)
+10-31 18:55:41.586  2177  3414 W LogUtils: 	at soy.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):7)
+10-31 18:55:41.586  2177  3414 W LogUtils: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+10-31 18:55:41.586  2177  3414 W LogUtils: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+10-31 18:55:41.586  2177  3414 W LogUtils: 	at sux.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:55:41.586  2177  3414 W LogUtils: 	at java.lang.Thread.run(Thread.java:764)
+10-31 18:55:41.586  2177  3414 W LogUtils:
+10-31 18:55:41.586  2177  3414 W LogUtils: [CONTEXT service_id=253 ]
+10-31 18:55:41.586  2177  3414 W PlacesLogger: [PlaceInferenceEngine]: Failed to download model weights. Status code: 7 [CONTEXT service_id=253 ]
+10-31 18:55:41.590  2177  8329 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:55:41.596  2177  5902 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 18:55:41.770  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@98e1603)
+10-31 18:55:41.771  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@98e1603)
+10-31 18:55:42.772  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@5867980)
+10-31 18:55:42.772  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@5867980)
+10-31 18:55:42.784  5724  5749 W Settings: Setting always_finish_activities has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+10-31 18:55:42.801  5724  5724 W ActivityThread: handleWindowVisibility: no activity for token android.os.BinderProxy@26d764b
+10-31 18:55:42.957  1597  1642 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:42.963  5724  5724 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@3161440 in: PRE_ON_CREATE
+10-31 18:55:42.963  5724  5724 V ActivityScenario: Activity lifecycle changed event received but ignored because the reported transition was not ON_CREATE while the last known transition was PRE_ON_CREATE
+10-31 18:55:42.968  5724  5724 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@3161440 in: CREATED
+10-31 18:55:42.968  5724  5724 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=dev.rescata.app.MainActivity@3161440
+10-31 18:55:42.969  5724  5724 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@3161440 in: STARTED
+10-31 18:55:42.969  5724  5724 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=dev.rescata.app.MainActivity@3161440
+10-31 18:55:42.971  5724  5724 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@3161440 in: RESUMED
+10-31 18:55:42.971  5724  5724 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=dev.rescata.app.MainActivity@3161440
+10-31 18:55:43.072  1597  1642 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:43.170  1597  1642 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:43.175  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:43.196  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 2592768
+10-31 18:55:43.197  1597  1643 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:43.203  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:55:43.230  2921  3063 D EGL_emulation: eglMakeCurrent: 0x72c6d503df40: ver 3 0 (tinfo 0x72c6d50ae1c0)
+10-31 18:55:43.255  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:55:43.334  2973  3200 D EGL_emulation: eglMakeCurrent: 0xdcf85de0: ver 3 0 (tinfo 0xdcf83f30)
+10-31 18:55:43.335  5724  5888 D EGL_emulation: eglMakeCurrent: 0x72c6d503f020: ver 3 0 (tinfo 0x72c6d500de20)
+10-31 18:55:43.404  2005  2028 I ActivityManager: Displayed dev.rescata.app/.MainActivity: +603ms (total +5s758ms)
+10-31 18:55:43.455  2981  2981 I GoogleInputMethod: onFinishInput() : Dummy InputConnection bound
+10-31 18:55:43.456  2981  2981 I GoogleInputMethod: onStartInput() : Dummy InputConnection bound
+10-31 18:55:43.488  1957  2512 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen dev.rescata.app#0
+10-31 18:55:43.488  1957  2512 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen dev.rescata.app#0
+10-31 18:55:43.511  1957  1957 W SurfaceFlinger: couldn't log to binary event log: overflow.
+10-31 18:55:43.511  1957  1957 W SurfaceFlinger: couldn't log to binary event log: overflow.
+10-31 18:55:43.528  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:55:43.630  2973  2973 I StreamRenderer: cleanUpRendererScope(nowcards-6106231857249270401)
+10-31 18:55:43.664  2973  3160 I PBSessionCacheImpl: Deleted sessionId[86654205042] from persistence.
+10-31 18:55:43.667  2973  2973 W SearchService: Abort, client detached.
+10-31 18:55:43.668  2973  2973 I StreamController: cleanUpControllerScope(nowcards-6106231857249270401)
+10-31 18:55:43.771  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@eada2f8)
+10-31 18:55:43.771  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@eada2f8)
+10-31 18:55:44.540  5724  5749 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/01_inicio.png.
+10-31 18:55:44.543  1957  2490 D PermissionCache: checking android.permission.READ_FRAME_BUFFER for uid=2000 => granted (105 us)
+10-31 18:55:44.543  1597  1643 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:44.578  5710  5723 D HostConnection: createUnique: call
+10-31 18:55:44.578  5710  5723 D HostConnection: HostConnection::get() New Host Connection established 0x7695584a3f40, tid 5723
+10-31 18:55:44.581  5710  5723 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_YUV420_888_to_NV21 ANDROID_EMU_YUV_Cache ANDROID_EMU_sync_buffer_data ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 18:55:44.581  5710  5723 E eglCodecCommon: GoldfishAddressSpaceHostMemoryAllocator: ioctl_ping failed for device_type=5, ret=-1
+10-31 18:55:44.581  5710  5723 D OpenGLRenderer: Skia GL Pipeline
+10-31 18:55:44.593  1957  2490 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 18:55:44.594  5710  8348 D libEGL  : Emulator has host GPU support, qemu.gles is set to 1.
+10-31 18:55:44.619  5710  8348 W libc    : Unable to set property "qemu.gles" to "1": error code: 0x18
+10-31 18:55:44.620  5710  8348 E vndksupport: Could not load /vendor/lib64/egl/libGLES_emulation.so from sphal namespace: dlopen failed: library "/vendor/lib64/egl/libGLES_emulation.so" not found.
+10-31 18:55:44.620  5710  8348 E libEGL  : load_driver(/vendor/lib64/egl/libGLES_emulation.so): unknown
+10-31 18:55:44.620  5710  8348 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+10-31 18:55:44.622  5710  8348 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+10-31 18:55:44.631  5710  8348 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+10-31 18:55:44.639  5710  8348 D HostConnection: HostConnection::get() New Host Connection established 0x7695528363c0, tid 8348
+10-31 18:55:44.642  5710  8348 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_YUV420_888_to_NV21 ANDROID_EMU_YUV_Cache ANDROID_EMU_sync_buffer_data ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 18:55:44.644  5710  8348 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasWideColorDisplay retrieved: 0
+10-31 18:55:44.644  5710  8348 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasHDRDisplay retrieved: 0
+10-31 18:55:44.644  5710  8348 I OpenGLRenderer: Initialized EGL, version 1.4
+10-31 18:55:44.644  5710  8348 D OpenGLRenderer: Swap behavior 1
+10-31 18:55:44.645  5710  8348 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 0 0
+10-31 18:55:44.645  5710  8348 D EGL_emulation: eglCreateContext: 0x7695528365a0: maj 3 min 0 rcv 3
+10-31 18:55:44.646  5710  8348 D EGL_emulation: eglMakeCurrent: 0x7695528365a0: ver 3 0 (tinfo 0x769552817580)
+10-31 18:55:44.649  1957  2490 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 18:55:44.659  5710  8348 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 1 2
+10-31 18:55:44.773  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@b6623d1)
+10-31 18:55:44.773  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@b6623d1)
+10-31 18:55:44.928  2973  8279 I EventLogSendingHelper: Sending log events.
+10-31 18:55:45.246  2973  8277 W earchbox:searc: Long monitor contention with owner NonUserFacing18 (8279) at java.lang.String com.google.android.gms.internal.ahd.a(android.content.ContentResolver, java.lang.String)(SourceFile:22) waiters=0 in void com.google.android.apps.gsa.eventlogger.g.PM() for 209ms
+10-31 18:55:45.246  2973  8277 I EventLogSendingHelper: Sending log events.
+10-31 18:55:45.772  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8d82c0d)
+10-31 18:55:45.773  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8d82c0d)
+10-31 18:55:46.383  5724  5749 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/01b_ajustes.png.
+10-31 18:55:46.385  1597  1643 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:46.396  5710  8348 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 4 3
+10-31 18:55:46.405  2177  2177 I BeaconBle: Scan : No clients left, canceling alarm. [CONTEXT service_id=111 ]
+10-31 18:55:46.779  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@84e7c2)
+10-31 18:55:46.780  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@84e7c2)
+10-31 18:55:47.205  5724  5724 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@3161440 in: PAUSED
+10-31 18:55:47.205  5724  5724 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=dev.rescata.app.MainActivity@3161440
+10-31 18:55:47.219  5724  5749 D UiDevice: Retrieving node with selector: BySelector [TEXT='(?i)^(wait|esperar)$'].
+10-31 18:55:47.237  8349  8349 W ndroid.setting: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 18:55:47.338  8349  8349 I ndroid.setting: The ClassLoaderContext is a special shared library.
+10-31 18:55:47.353  8349  8349 I ndroid.setting: The ClassLoaderContext is a special shared library.
+10-31 18:55:47.414  8349  8349 D OpenGLRenderer: Skia GL Pipeline
+10-31 18:55:47.419  1957  2490 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 18:55:47.502  8349  8366 D HostConnection: HostConnection::get() New Host Connection established 0x72c6db0a5660, tid 8366
+10-31 18:55:47.504  8349  8366 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_YUV420_888_to_NV21 ANDROID_EMU_YUV_Cache ANDROID_EMU_sync_buffer_data ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 18:55:47.519  1597  1643 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 3817472
+10-31 18:55:47.531  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 3817472
+10-31 18:55:47.549  8349  8366 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasWideColorDisplay retrieved: 0
+10-31 18:55:47.549  8349  8366 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasHDRDisplay retrieved: 0
+10-31 18:55:47.549  8349  8366 I OpenGLRenderer: Initialized EGL, version 1.4
+10-31 18:55:47.549  8349  8366 D OpenGLRenderer: Swap behavior 1
+10-31 18:55:47.552  8349  8366 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 0 0
+10-31 18:55:47.552  8349  8366 D EGL_emulation: eglCreateContext: 0x72c6d3652320: maj 3 min 0 rcv 3
+10-31 18:55:47.553  8349  8366 D EGL_emulation: eglMakeCurrent: 0x72c6d3652320: ver 3 0 (tinfo 0x72c6d37cc340)
+10-31 18:55:47.555  1597  1642 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 3817472
+10-31 18:55:47.558  1957  1994 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 18:55:47.566  8349  8366 D HostConnection: createUnique: call
+10-31 18:55:47.566  8349  8366 D HostConnection: HostConnection::get() New Host Connection established 0x72c6d36526e0, tid 8366
+10-31 18:55:47.568  8349  8366 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_YUV420_888_to_NV21 ANDROID_EMU_YUV_Cache ANDROID_EMU_sync_buffer_data ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 18:55:47.568  8349  8366 E eglCodecCommon: GoldfishAddressSpaceHostMemoryAllocator: ioctl_ping failed for device_type=5, ret=-1
+10-31 18:55:47.573  8349  8366 D EGL_emulation: eglMakeCurrent: 0x72c6d3652320: ver 3 0 (tinfo 0x72c6d37cc340)
+10-31 18:55:47.577  8349  8366 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 3 2
+10-31 18:55:47.776  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@c4bba28)
+10-31 18:55:47.778  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@c4bba28)
+10-31 18:55:48.146  2005  5314 W system_server: Long monitor contention with owner Binder:2005_9 (2700) at void com.android.server.am.ActivityManagerService.activityIdle(android.os.IBinder, android.content.res.Configuration, boolean)(ActivityManagerService.java:7948) waiters=0 in boolean com.android.server.am.ActivityManagerService.refContentProvider(android.os.IBinder, int, int) for 213ms
+10-31 18:55:48.147  2005  4249 W system_server: Long monitor contention with owner Binder:2005_9 (2700) at void com.android.server.am.ActivityManagerService.activityIdle(android.os.IBinder, android.content.res.Configuration, boolean)(ActivityManagerService.java:7948) waiters=1 in int com.android.server.am.ActivityManagerService.getLastResumedActivityUserId() for 214ms
+10-31 18:55:48.148  2005  2028 I ActivityManager: Displayed com.android.settings/.fuelgauge.RequestIgnoreBatteryOptimizations: +721ms
+10-31 18:55:48.212  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:55:48.269  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:55:48.323  5724  5749 D UiDevice: Node not found with selector: BySelector [TEXT='(?i)^(wait|esperar)$'].
+10-31 18:55:48.323  5724  5749 D UiDevice: Retrieving node with selector: BySelector [TEXT='(?i)^(allow|permitir)$'].
+10-31 18:55:48.339  5724  5749 I GestureController: can't find MotionEvent#setDisplayId(int)
+10-31 18:55:48.339  5724  5749 I GestureController: java.lang.NoSuchMethodException: setDisplayId [int]
+10-31 18:55:48.339  5724  5749 I GestureController: 	at java.lang.Class.getMethod(Class.java:2068)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at java.lang.Class.getMethod(Class.java:1690)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.test.uiautomator.GestureController.<clinit>(GestureController.java:57)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.test.uiautomator.GestureController.getInstance(GestureController.java:81)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.test.uiautomator.UiObject2.<init>(UiObject2.java:95)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.test.uiautomator.UiObject2.create(UiObject2.java:114)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.test.uiautomator.UiDevice.findObject(UiDevice.java:159)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at dev.rescata.app.RescataE2ETest.findSystemButton(RescataE2ETest.kt:347)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at dev.rescata.app.RescataE2ETest.escaneaExportaYRestaura(RescataE2ETest.kt:176)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at java.lang.reflect.Method.invoke(Native Method)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.test.internal.runner.junit4.statement.RunBefores.evaluate(RunBefores.java:80)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.junit4.AndroidComposeTestRule$apply$1$evaluate$1.invoke(AndroidComposeTestRule.android.kt:295)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.junit4.AndroidComposeTestRule$apply$1$evaluate$1.invoke(AndroidComposeTestRule.android.kt:295)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.withDisposableContent(ComposeUiTest.android.kt:565)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1$1$1$1$1.invoke(ComposeUiTest.android.kt:370)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment.withComposeIdlingResource(ComposeUiTest.android.kt:439)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment.access$withComposeIdlingResource(ComposeUiTest.android.kt:235)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1$1$1$1.invoke(ComposeUiTest.android.kt:369)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment.withWindowRecomposer(ComposeUiTest.android.kt:413)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment.access$withWindowRecomposer(ComposeUiTest.android.kt:235)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1$1$1.invoke(ComposeUiTest.android.kt:368)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment.withTestCoroutines(ComposeUiTest.android.kt:426)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment.access$withTestCoroutines(ComposeUiTest.android.kt:235)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1$1.invoke(ComposeUiTest.android.kt:367)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.EspressoLink.withStrategy(EspressoLink.android.kt:69)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1.invoke(ComposeUiTest.android.kt:366)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.IdlingResourceRegistry.withRegistry(IdlingResourceRegistry.jvm.kt:148)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1.invoke(ComposeUiTest.android.kt:365)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.ComposeRootRegistry.withRegistry(ComposeRootRegistry.android.kt:139)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment.runTest(ComposeUiTest.android.kt:364)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at androidx.compose.ui.test.junit4.AndroidComposeTestRule$apply$1.evaluate(AndroidComposeTestRule.android.kt:295)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+10-31 18:55:48.339  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at androidx.test.ext.junit.runners.AndroidJUnit4.run(AndroidJUnit4.java:162)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runners.Suite.runChild(Suite.java:128)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runners.Suite.runChild(Suite.java:27)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at androidx.test.internal.runner.TestExecutor.execute(TestExecutor.java:68)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at androidx.test.internal.runner.TestExecutor.execute(TestExecutor.java:59)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at androidx.test.runner.AndroidJUnitRunner.onStart(AndroidJUnitRunner.java:463)
+10-31 18:55:48.340  5724  5749 I GestureController: 	at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:2145)
+10-31 18:55:48.340  5724  5749 D UiDevice: Retrieving node with selector: BySelector [TEXT='(?i)^(allow|permitir)$'].
+10-31 18:55:48.713  2005  4249 I GnssLocationProvider: WakeLock acquired by sendMessage(SET_REQUEST, 0, com.android.server.location.GnssLocationProvider$GpsRequest@d0ae66c)
+10-31 18:55:48.716  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(SET_REQUEST, 0, com.android.server.location.GnssLocationProvider$GpsRequest@d0ae66c)
+10-31 18:55:48.733  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:55:48.779  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@3613435)
+10-31 18:55:48.808  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@3613435)
+10-31 18:55:49.419  8231  8242 I escata.app.tes: WaitForGcToComplete blocked HeapTrim on None for 28.219ms
+10-31 18:55:49.776  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@44990ca)
+10-31 18:55:49.777  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@44990ca)
+10-31 18:55:49.927  2973  8275 I EventLogSendingHelper: Sending log events.
+10-31 18:55:49.943  2005  2019 E memtrack: Couldn't load memtrack module
+10-31 18:55:49.943  2005  2019 W android.os.Debug: failed to get memory consumption info: -1
+10-31 18:55:49.948  2973  8275 I EventLogSendingHelper: Sending log events.
+10-31 18:55:49.954  2973  2973 I MemoryTrimmer: Trimming objects from memory, since app is in the background.
+10-31 18:55:50.151  2519  8368 I Vision  : Requesting optional module download of ocr.
+10-31 18:55:50.153  2519  8368 I Vision  : Checking for download completion for 534816 -- ocr
+10-31 18:55:50.776  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@f4e717)
+10-31 18:55:50.776  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@f4e717)
+10-31 18:55:51.023  5724  5749 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/01c_bateria.png.
+10-31 18:55:51.024  1597  1643 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:51.042  5710  8348 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 4 3
+10-31 18:55:51.067  5565  5576 I oid.apps.photo: WaitForGcToComplete blocked Background on None for 22.648ms
+10-31 18:55:51.186  5724  5749 D UiObject2: Clicking on (880, 1344).
+10-31 18:55:51.313  2005  2151 I AudioTrack: AUDIO_OUTPUT_FLAG_FAST successful; frameCount 0 -> 4512
+10-31 18:55:51.463  2005  2021 W system_server: Long monitor contention with owner Binder:2005_1F (5314) at void com.android.server.am.ActivityManagerService.activityPaused(android.os.IBinder)(ActivityManagerService.java:8158) waiters=1 in void com.android.server.am.ActivityManagerService.dispatchUidsChanged() for 207ms
+10-31 18:55:51.474  2005  2058 W system_server: Long monitor contention with owner Binder:2005_1F (5314) at void com.android.server.wm.WindowManagerService.continueSurfaceLayout()(WindowManagerService.java:2882) waiters=1 in void com.android.server.wm.WindowAnimator.lambda$new$1(com.android.server.wm.WindowAnimator, long) for 219ms
+10-31 18:55:51.495  5724  5724 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@3161440 in: RESUMED
+10-31 18:55:51.495  5724  5724 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=dev.rescata.app.MainActivity@3161440
+10-31 18:55:51.514  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:55:51.629  8349  8366 D EGL_emulation: eglMakeCurrent: 0x72c6d3652320: ver 3 0 (tinfo 0x72c6d37cc340)
+10-31 18:55:51.667  1957  2490 W SurfaceFlinger: Attempting to set client state on removed layer: Dim Layer for - Task=8#0
+10-31 18:55:51.667  1957  2490 W SurfaceFlinger: Attempting to destroy on removed layer: Dim Layer for - Task=8#0
+10-31 18:55:51.776  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@7c407)
+10-31 18:55:51.779  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@7c407)
+10-31 18:55:51.888  1957  1957 W SurfaceFlinger: couldn't log to binary event log: overflow.
+10-31 18:55:52.249  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:55:52.776  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@7e1e4d2)
+10-31 18:55:52.777  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@7e1e4d2)
+10-31 18:55:53.557  5724  5749 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/02_resultados.png.
+10-31 18:55:53.559  1597  1643 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:53.571  5710  8348 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 4 3
+10-31 18:55:53.776  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@b5299a3)
+10-31 18:55:53.776  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@b5299a3)
+10-31 18:55:54.776  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@5d57c1e)
+10-31 18:55:54.777  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@5d57c1e)
+10-31 18:55:54.781  1957  1957 D SurfaceFlinger: duplicate layer name: changing dev.rescata.app/dev.rescata.app.MainActivity to dev.rescata.app/dev.rescata.app.MainActivity#1
+10-31 18:55:54.788  1597  1643 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:54.789  1597  1643 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:54.790  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:54.798  2981  2981 I GoogleInputMethod: onFinishInput() : Dummy InputConnection bound
+10-31 18:55:54.802  2981  2981 I GoogleInputMethod: onStartInput() : Dummy InputConnection bound
+10-31 18:55:54.807  1934  1952 W audio_hw_generic: Not supplying enough data to HAL, expected position 309237 , only wrote 155520
+10-31 18:55:54.846  5724  5888 D EGL_emulation: eglMakeCurrent: 0x72c6d503f020: ver 3 0 (tinfo 0x72c6d500de20)
+10-31 18:55:55.776  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@fbb07b8)
+10-31 18:55:55.777  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@fbb07b8)
+10-31 18:55:56.055  5724  5749 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/03b_detalles.png.
+10-31 18:55:56.057  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:56.073  5710  8348 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 4 3
+10-31 18:55:56.235  5724  5749 D UiDevice: Pressing back button.
+10-31 18:55:56.777  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@ca6f0f6)
+10-31 18:55:56.777  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@ca6f0f6)
+10-31 18:55:57.247  5724  5749 W InteractionController: Timed out waiting 1000ms for command and events.
+10-31 18:55:57.263  5724  5888 D EGL_emulation: eglMakeCurrent: 0x72c6d503f020: ver 3 0 (tinfo 0x72c6d500de20)
+10-31 18:55:57.270  2981  2981 I GoogleInputMethod: onFinishInput() : Dummy InputConnection bound
+10-31 18:55:57.271  2981  2981 I GoogleInputMethod: onStartInput() : Dummy InputConnection bound
+10-31 18:55:57.372  5724  5888 D EGL_emulation: eglMakeCurrent: 0x72c6d503f020: ver 3 0 (tinfo 0x72c6d500de20)
+10-31 18:55:57.777  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@1cb15d0)
+10-31 18:55:57.778  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@1cb15d0)
+10-31 18:55:58.691  5724  5749 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/03c_copias_whatsapp.png.
+10-31 18:55:58.693  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:58.706  5710  8348 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 4 3
+10-31 18:55:58.777  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@2fdd9c9)
+10-31 18:55:58.777  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@2fdd9c9)
+10-31 18:55:59.350  2005  2019 E memtrack: Couldn't load memtrack module
+10-31 18:55:59.350  2005  2019 W android.os.Debug: failed to get memory consumption info: -1
+10-31 18:55:59.371  5724  8374 W ExifInterface: Stop reading file since a wrong offset may cause an infinite loop: 0
+10-31 18:55:59.371  5724  8374 W ExifInterface: Stop reading file since a wrong offset may cause an infinite loop: 0
+10-31 18:55:59.607  5724  5749 D UiDevice: Turning off screen.
+10-31 18:55:59.617  2981  2981 I GoogleInputMethod: onFinishInput() : Dummy InputConnection bound
+10-31 18:55:59.618  2981  2981 I GoogleInputMethod: onStartInput() : Dummy InputConnection bound
+10-31 18:55:59.665  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:59.670  2005  2030 D EGL_emulation: eglMakeCurrent: 0x72c6b245f920: ver 3 0 (tinfo 0x72c6b6e877e0)
+10-31 18:55:59.673  2005  2030 E EGL_emulation: eglQueryContext 32c0  EGL_BAD_ATTRIBUTE
+10-31 18:55:59.673  2005  2030 E EGL_emulation: tid 2030: eglQueryContext(1902): error 0x3004 (EGL_BAD_ATTRIBUTE)
+10-31 18:55:59.674  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:59.687  2005  2030 D EGL_emulation: eglMakeCurrent: 0x72c6b245f920: ver 3 0 (tinfo 0x72c6b6e877e0)
+10-31 18:55:59.695  2005  2030 D EGL_emulation: eglMakeCurrent: 0x72c6b245f920: ver 3 0 (tinfo 0x72c6b6e877e0)
+10-31 18:55:59.724  2296  2296 I vol.Events: writeEvent dismiss_dialog volume_controller
+10-31 18:55:59.778  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@9a7d1e7)
+10-31 18:55:59.778  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@9a7d1e7)
+10-31 18:55:59.796  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:59.802  2005  2030 D EGL_emulation: eglMakeCurrent: 0x72c6b245f920: ver 3 0 (tinfo 0x72c6b6e877e0)
+10-31 18:55:59.844  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:59.850  2005  2030 D EGL_emulation: eglMakeCurrent: 0x72c6b245f920: ver 3 0 (tinfo 0x72c6b6e877e0)
+10-31 18:55:59.933  2005  2030 D EGL_emulation: eglMakeCurrent: 0x72c6b245f920: ver 3 0 (tinfo 0x72c6b6e877e0)
+10-31 18:55:59.987  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:55:59.991  5724  5724 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@3161440 in: PAUSED
+10-31 18:55:59.992  5724  5724 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=dev.rescata.app.MainActivity@3161440
+10-31 18:56:00.012  2005  2030 D EGL_emulation: eglMakeCurrent: 0x72c6b245f920: ver 3 0 (tinfo 0x72c6b6e877e0)
+10-31 18:56:00.014  2005  2030 E Surface : getSlotFromBufferLocked: unknown buffer: 0x0
+10-31 18:56:00.015  5724  5888 D EGL_emulation: eglMakeCurrent: 0x72c6d503f020: ver 3 0 (tinfo 0x72c6d500de20)
+10-31 18:56:00.018  1957  1957 D SurfaceFlinger: Set power mode=0, type=0 flinger=0x76ed11c58000
+10-31 18:56:00.023  1957  1957 D SurfaceFlinger: Finished set power mode=0, type=0
+10-31 18:56:00.024  2005  2081 I InputReader: Reconfiguring input devices.  changes=0x00000004
+10-31 18:56:00.028  5724  5724 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@3161440 in: STOPPED
+10-31 18:56:00.028  5724  5724 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=dev.rescata.app.MainActivity@3161440
+10-31 18:56:00.035  2005  6012 I OpenGLRenderer: Initialized EGL, version 1.4
+10-31 18:56:00.035  2005  6012 D OpenGLRenderer: Swap behavior 1
+10-31 18:56:00.035  2005  6012 D HostConnection: HostConnection::get() New Host Connection established 0x72c6b4caf440, tid 6012
+10-31 18:56:00.035  2005  6012 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_YUV420_888_to_NV21 ANDROID_EMU_YUV_Cache ANDROID_EMU_sync_buffer_data ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 18:56:00.036  2005  6012 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 0 0
+10-31 18:56:00.036  2005  6012 D EGL_emulation: eglCreateContext: 0x72c6b4caf4e0: maj 3 min 0 rcv 3
+10-31 18:56:00.037  2005  6012 D EGL_emulation: eglMakeCurrent: 0x72c6b4caf4e0: ver 3 0 (tinfo 0x72c6be3f6180)
+10-31 18:56:00.048  2005  6012 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 1 2
+10-31 18:56:00.093  2296  2296 I vol.Events: writeEvent dismiss_dialog screen_off
+10-31 18:56:00.120  2921  2956 W System  : A resource failed to call release.
+10-31 18:56:00.120  2921  2956 W System  : A resource failed to call release.
+10-31 18:56:00.134  2981  2981 I DeviceStatusMonitor: onReceive() : Action = android.intent.action.SCREEN_OFF
+10-31 18:56:00.139  2981  2981 I GoogleInputMethod: onReceive() : Action = android.intent.action.SCREEN_OFF
+10-31 18:56:00.169  2296  2346 I ndroid.systemu: NativeAlloc concurrent copying GC freed 24109(1494KB) AllocSpace objects, 0(0B) LOS objects, 49% free, 6MB/12MB, paused 514us total 153.984ms
+10-31 18:56:00.310  2005  2015 I system_server: NativeAlloc concurrent copying GC freed 45927(2MB) AllocSpace objects, 38(1416KB) LOS objects, 38% free, 9MB/15MB, paused 554us total 266.300ms
+10-31 18:56:00.748  2519  8227 W ChimeraConfigurator: Error syncing flags: qoq: COMMIT_TIMEOUT
+10-31 18:56:00.748  2519  8227 I ChmraDebugLogger: [79] COMMIT_TIMEOUT
+10-31 18:56:00.755  2519  8227 I ChmraDebugLogger: [52] null
+10-31 18:56:00.759  2519  8227 W ChimeraConfigService: Retry attempt was throttled.
+10-31 18:56:00.779  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@6c2df2c)
+10-31 18:56:00.781  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@6c2df2c)
+10-31 18:56:01.784  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@32c41fb)
+10-31 18:56:01.784  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@32c41fb)
+10-31 18:56:02.335  3440  8430 W ExifInterface: Stop reading file since a wrong offset may cause an infinite loop: 0
+10-31 18:56:02.335  3440  8430 W ExifInterface: Stop reading file since a wrong offset may cause an infinite loop: 0
+10-31 18:56:02.458  1748  1748 E MPEG4Extractor: �F� atom has size 2085304257 (b/28615448)
+10-31 18:56:02.780  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@dfaf573)
+10-31 18:56:02.780  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@dfaf573)
+10-31 18:56:02.816  2296  2296 W StaticLayout: maxLineHeight should not be -1.  maxLines:1 lineCount:1
+10-31 18:56:02.816  2296  2296 I chatty  : uid=10033(com.android.systemui) identical 1 line
+10-31 18:56:02.816  2296  2296 W StaticLayout: maxLineHeight should not be -1.  maxLines:1 lineCount:1
+10-31 18:56:02.816  2296  2296 W StaticLayout: maxLineHeight should not be -1.  maxLines:3 lineCount:3
+10-31 18:56:03.110  5724  5749 D UiDevice: Turning on screen.
+10-31 18:56:03.122  5724  5724 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@3161440 in: RESTARTED
+10-31 18:56:03.123  5724  5724 V ActivityScenario: Update currentActivityStage to RESTARTED, currentActivity=dev.rescata.app.MainActivity@3161440
+10-31 18:56:03.141  5724  5724 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@3161440 in: STARTED
+10-31 18:56:03.141  5724  5724 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=dev.rescata.app.MainActivity@3161440
+10-31 18:56:03.141  2005  2081 I InputReader: Reconfiguring input devices.  changes=0x00000004
+10-31 18:56:03.148  2981  2981 I GoogleInputMethod: onFinishInput() : Dummy InputConnection bound
+10-31 18:56:03.149  1957  1957 D SurfaceFlinger: Set power mode=2, type=0 flinger=0x76ed11c58000
+10-31 18:56:03.149  1957  1957 D SurfaceFlinger: Finished set power mode=2, type=0
+10-31 18:56:03.151  2005  2081 I InputReader: Reconfiguring input devices.  changes=0x00000004
+10-31 18:56:03.185  2981  2981 I GoogleInputMethod: onStartInput() : Dummy InputConnection bound
+10-31 18:56:03.189  5724  5724 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@3161440 in: RESUMED
+10-31 18:56:03.190  5724  5724 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=dev.rescata.app.MainActivity@3161440
+10-31 18:56:03.221  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:03.240  5724  5888 D EGL_emulation: eglMakeCurrent: 0x72c6d503f020: ver 3 0 (tinfo 0x72c6d500de20)
+10-31 18:56:03.258  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:03.312  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:03.343  2702  2702 I GsaVoiceInteractionSrv: O received Intent { act=android.intent.action.USER_PRESENT flg=0x24200010 }
+10-31 18:56:03.378  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:56:03.386  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:56:03.396  2519  8401 I Vision  : Requesting optional module download of ocr.
+10-31 18:56:03.403  2519  8401 I Vision  : Checking for download completion for 548065 -- ocr
+10-31 18:56:03.464  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:56:03.502  2981  2981 I DeviceStatusMonitor: onReceive() : Action = android.intent.action.SCREEN_ON
+10-31 18:56:03.548  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:56:03.636  2519  8223 I CastDatabase: Opening the database
+10-31 18:56:03.651  2005  2016 I WifiService: startScan uid=10031
+10-31 18:56:03.657  2177  3413 E ctxmgr  : [WorkManager] Ongoing task not found: PlacesProducer_receive [CONTEXT service_id=47 ]
+10-31 18:56:03.661  2519  3109 I DiscoveryManager: WifiGuestModeDeviceScanner enabled.
+10-31 18:56:03.692  2519  8223 I SQLiteCastStore: 0 CastNetworkInfo instances loaded, 0 CastDeviceInfo instances loaded, 0 paired guest mode devices loaded.
+10-31 18:56:03.786  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@2b183b6)
+10-31 18:56:03.788  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@2b183b6)
+10-31 18:56:04.781  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8416fcb)
+10-31 18:56:04.781  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8416fcb)
+10-31 18:56:04.880  5724  5749 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/04_exportado.png.
+10-31 18:56:04.882  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:04.894  5710  8348 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 4 3
+10-31 18:56:05.454  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:56:05.630  2005  4347 E memtrack: Couldn't load memtrack module
+10-31 18:56:05.630  2005  4347 W android.os.Debug: failed to get memory consumption info: -1
+10-31 18:56:05.782  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@5eea3a8)
+10-31 18:56:05.783  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@5eea3a8)
+10-31 18:56:06.781  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8690ec1)
+10-31 18:56:06.781  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8690ec1)
+10-31 18:56:06.959  2005  4347 D WificondControl: Scan result ready event
+10-31 18:56:07.733  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:56:07.783  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@d3a62f2)
+10-31 18:56:07.784  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@d3a62f2)
+10-31 18:56:08.783  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@21fd4f9)
+10-31 18:56:08.783  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@21fd4f9)
+10-31 18:56:09.783  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@571e1bb)
+10-31 18:56:09.786  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@571e1bb)
+10-31 18:56:09.955  2973  2973 I BgTaskExecutorImpl: Starting EXCLUSIVE background task send_gsa_home_request.
+10-31 18:56:10.062  2973  2973 I BgTaskExecutorImpl: Starting EXCLUSIVE background task bloblobber.velour_blob_client_task.
+10-31 18:56:10.189  2973  2973 W SearchService: Abort, client detached.
+10-31 18:56:10.222  2973  2973 W SearchService: Abort, client detached.
+10-31 18:56:10.689  2177  3154 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-31 18:56:10.695  2177  3154 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 18:56:10.695  2177  3154 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:56:10.724  2177  3154 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-31 18:56:10.724  2177  3154 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 18:56:10.724  2177  3154 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:56:10.783  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@b3e9e20)
+10-31 18:56:10.783  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@b3e9e20)
+10-31 18:56:11.117  2973  2973 I BgTaskExecutorImpl: Starting EXCLUSIVE background task fetch_configs_from_phenotype.
+10-31 18:56:11.168  2177  3154 I aopq    : Scheduling Phenotype for a PhenotypeSyncImmediately(15, com.google.android.googlequicksearchbox) one off with window [1, 2] in seconds [CONTEXT service_id=51 ]
+10-31 18:56:11.197  5724  5749 D UiDevice: Taking screenshot (scale=1.000000, quality=90) and storing at /storage/emulated/0/Download/rescata-capturas/04b_sin_duplicados.png.
+10-31 18:56:11.209  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:11.231  5710  8348 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 4 3
+10-31 18:56:11.298  2177  2202 I .gms.persisten: Background concurrent copying GC freed 134966(6MB) AllocSpace objects, 23(828KB) LOS objects, 33% free, 11MB/17MB, paused 3.347ms total 125.301ms
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: Error inserting period=2000 target_class=com.google.android.gms.phenotype.service.sync.PhenotypeConfigurator required_network_type=0 runtime=1793472971187 required_idleness_state=0 extras={"fetchReason":{"15":0},"fetchPackage":{"com.google.android.googlequicksearchbox":4}} source=16 service_kind=0 target_package=com.google.android.gms persistence_level=1 source_version=202414000 last_runtime=0 user_id=0 job_id=-1 requires_charging=0 tag=PhenotypeSyncImmediately flex_time=1000 task_type=0 retry_strategy={"maximum_backoff_seconds":{"3600":0},"initial_backoff_seconds":{"30":0},"retry_policy":{"0":0}}
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: pending_ops.tag, pending_ops.target_class, pending_ops.target_package, pending_ops.user_id (code 2067 SQLITE_CONSTRAINT_UNIQUE)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.nativeExecuteForLastInsertedRowId(Native Method)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.executeForLastInsertedRowId(SQLiteConnection.java:796)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at android.database.sqlite.SQLiteSession.executeForLastInsertedRowId(SQLiteSession.java:788)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at android.database.sqlite.SQLiteStatement.executeInsert(SQLiteStatement.java:86)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insertWithOnConflict(SQLiteDatabase.java:1564)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insert(SQLiteDatabase.java:1433)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at aqui.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):175)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at aqtk.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):182)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at aqtk.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):23)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at aqtk.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):177)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at aqpu.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):9)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at soy.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):12)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at soy.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):7)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at sux.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:56:11.299  2177  3413 E SQLiteDatabase: 	at java.lang.Thread.run(Thread.java:764)
+10-31 18:56:11.367  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_birthdaydoodle_jar__name to integer.
+10-31 18:56:11.367  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_call_jar__name to integer.
+10-31 18:56:11.367  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_canvas_jar__name to integer.
+10-31 18:56:11.367  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_chkpkg_jar__name to integer.
+10-31 18:56:11.367  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_crashtest_jar__name to integer.
+10-31 18:56:11.367  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_dining_jar__name to integer.
+10-31 18:56:11.367  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_doodle_notifications_jar__name to integer.
+10-31 18:56:11.367  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_imageviewer_jar__name to integer.
+10-31 18:56:11.367  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_ipa_jar__name to integer.
+10-31 18:56:11.368  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_jslocation_jar__name to integer.
+10-31 18:56:11.368  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_localintent_jar__name to integer.
+10-31 18:56:11.368  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_messaging_jar__name to integer.
+10-31 18:56:11.368  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_nativesrp_activity_jar__name to integer.
+10-31 18:56:11.368  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_nativesrp_presenter_jar__name to integer.
+10-31 18:56:11.368  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_nowcontent_jar__name to integer.
+10-31 18:56:11.368  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_recents_activity_jar__name to integer.
+10-31 18:56:11.368  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_save_jar__name to integer.
+10-31 18:56:11.368  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_searchresults_activity_jar__name to integer.
+10-31 18:56:11.368  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_test_jar__name to integer.
+10-31 18:56:11.368  2973  8279 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_weather_jar__name to integer.
+10-31 18:56:11.368  2973  8279 W PhenotypeToGsaConfigs: Can't format flag bindle_flags__bloblobber_blob to integer.
+10-31 18:56:11.368  2973  8279 W PhenotypeToGsaConfigs: Can't format flag bindle_flags__velour_jar to integer.
+10-31 18:56:11.415  5724  5735 I dev.rescata.ap: NativeAlloc concurrent copying GC freed 34888(1357KB) AllocSpace objects, 18(6MB) LOS objects, 49% free, 5MB/11MB, paused 738us total 130.626ms
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_birthdaydoodle_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_call_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_canvas_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_chkpkg_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_crashtest_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_dining_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_doodle_notifications_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_imageviewer_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_ipa_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_jslocation_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_localintent_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_messaging_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_nativesrp_activity_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_nativesrp_presenter_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_nowcontent_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_recents_activity_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_save_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_searchresults_activity_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_test_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag AndroidGsaVelourJars__velour_weather_jar__name to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag bindle_flags__bloblobber_blob to integer.
+10-31 18:56:11.425  2973  8277 W PhenotypeToGsaConfigs: Can't format flag bindle_flags__velour_jar to integer.
+10-31 18:56:11.482  2973  8275 I OpaEligibilityChecker: send OpaEligibilityChange broadcast to CommonBroadcastReceiver
+10-31 18:56:11.483  2973  3276 I OpaEligibilityChecker: send OpaEligibilityChange broadcast to CommonBroadcastReceiver
+10-31 18:56:11.484  2973  8279 I BlobLobber: Canceling downloads: []
+10-31 18:56:11.488  2973  8277 I BlobLobber: Canceling downloads: []
+10-31 18:56:11.489  2973  8277 I VelourConfigListener: Received new velour config
+10-31 18:56:11.554  5724  5724 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@3161440 in: PAUSED
+10-31 18:56:11.554  5724  5724 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=dev.rescata.app.MainActivity@3161440
+10-31 18:56:11.595  2973  8279 I VelourConfigListener: Received new velour config
+10-31 18:56:11.602  8231  8231 W ActivityThread: handleWindowVisibility: no activity for token android.os.BinderProxy@ae6d1f0
+10-31 18:56:11.605  2005  2005 W system_server: Long monitor contention with owner Binder:2005_D (2798) at boolean com.android.server.job.JobSchedulerService.cancelJob(int, int, int)(JobSchedulerService.java:1004) waiters=0 in void com.android.server.job.JobSchedulerService$JobHandler.handleMessage(android.os.Message) for 101ms
+10-31 18:56:11.611  2973  2973 I BgTaskExecutorImpl: Starting EXCLUSIVE background task velour_background_maintenance.
+10-31 18:56:11.623  2973  8272 I ThreadRunner: setContextAndRunner
+10-31 18:56:11.648  2973  2973 I BgTaskExecutorImpl: Starting EXCLUSIVE background task bloblobber_sync.
+10-31 18:56:11.757  2005  2081 W system_server: Long monitor contention with owner android.anim (2058) at android.content.res.Resources android.app.ResourcesManager.getOrCreateResources(android.os.IBinder, android.content.res.ResourcesKey, java.lang.ClassLoader)(ResourcesManager.java:736) waiters=0 in int android.app.ActivityThread.getIntCoreSetting(java.lang.String, int) for 134ms
+10-31 18:56:11.761  2005  2081 I InputReader: Reconfiguring input devices.  changes=0x00000004
+10-31 18:56:11.770  2177  3182 E aoob    : Phenotype API error. Event # ccoz@3e1f1a32, EventCode: 7 [CONTEXT service_id=51 ]
+10-31 18:56:11.770  2177  3182 E aoob    : aonf: 29505: No config packages for log source, or config package not registered
+10-31 18:56:11.770  2177  3182 E aoob    : 	at aooq.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):7)
+10-31 18:56:11.770  2177  3182 E aoob    : 	at aoon.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 18:56:11.770  2177  3182 E aoob    : 	at aoob.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):91)
+10-31 18:56:11.770  2177  3182 E aoob    : 	at aoob.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):86)
+10-31 18:56:11.770  2177  3182 E aoob    : 	at aabt.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):9)
+10-31 18:56:11.770  2177  3182 E aoob    : 	at bnin.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 18:56:11.770  2177  3182 E aoob    : 	at soy.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):12)
+10-31 18:56:11.770  2177  3182 E aoob    : 	at soy.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):7)
+10-31 18:56:11.770  2177  3182 E aoob    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+10-31 18:56:11.770  2177  3182 E aoob    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+10-31 18:56:11.770  2177  3182 E aoob    : 	at sux.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:56:11.770  2177  3182 E aoob    : 	at java.lang.Thread.run(Thread.java:764)
+10-31 18:56:11.770  2177  3182 E AsyncOperation: serviceID=51, operation=GetExperimentTokensOperationCall
+10-31 18:56:11.770  2177  3182 E AsyncOperation: OperationException[Status{statusCode=No config packages for log source, or config package not registered, resolution=null}]
+10-31 18:56:11.770  2177  3182 E AsyncOperation: 	at aoob.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):93)
+10-31 18:56:11.770  2177  3182 E AsyncOperation: 	at aoob.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):86)
+10-31 18:56:11.770  2177  3182 E AsyncOperation: 	at aabt.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):9)
+10-31 18:56:11.770  2177  3182 E AsyncOperation: 	at bnin.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 18:56:11.770  2177  3182 E AsyncOperation: 	at soy.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):12)
+10-31 18:56:11.770  2177  3182 E AsyncOperation: 	at soy.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):7)
+10-31 18:56:11.770  2177  3182 E AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+10-31 18:56:11.770  2177  3182 E AsyncOperation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+10-31 18:56:11.770  2177  3182 E AsyncOperation: 	at sux.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 18:56:11.770  2177  3182 E AsyncOperation: 	at java.lang.Thread.run(Thread.java:764)
+10-31 18:56:11.787  2973  8276 W earchbox:searc: Unsupported class loader
+10-31 18:56:11.802  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@c08c944)
+10-31 18:56:11.805  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@c08c944)
+10-31 18:56:11.826  2973  2973 W SearchService: Abort, client detached.
+10-31 18:56:11.827  2973  2973 I chatty  : uid=10025 com.google.android.googlequicksearchbox:search identical 9 lines
+10-31 18:56:11.827  2973  2973 W SearchService: Abort, client detached.
+10-31 18:56:11.838  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:11.899  2005  2019 E memtrack: Couldn't load memtrack module
+10-31 18:56:11.901  2005  2019 W android.os.Debug: failed to get memory consumption info: -1
+10-31 18:56:11.926  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:11.968  2005  6012 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 4 3
+10-31 18:56:11.991  2973  2973 W SearchService: Abort, client detached.
+10-31 18:56:11.994  2973  2973 I chatty  : uid=10025 com.google.android.googlequicksearchbox:search identical 5 lines
+10-31 18:56:11.994  2973  2973 W SearchService: Abort, client detached.
+10-31 18:56:12.024  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:12.025  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:12.025  8231  8249 D HostConnection: HostConnection::get() New Host Connection established 0x72c6db0a4080, tid 8249
+10-31 18:56:12.025  8231  8249 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_YUV420_888_to_NV21 ANDROID_EMU_YUV_Cache ANDROID_EMU_sync_buffer_data ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 18:56:12.026  1597  1643 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:12.031  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:56:12.033  8231  8249 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasWideColorDisplay retrieved: 0
+10-31 18:56:12.033  8231  8249 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasHDRDisplay retrieved: 0
+10-31 18:56:12.033  8231  8249 I OpenGLRenderer: Initialized EGL, version 1.4
+10-31 18:56:12.033  8231  8249 D OpenGLRenderer: Swap behavior 1
+10-31 18:56:12.036  8231  8249 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 0 0
+10-31 18:56:12.036  8231  8249 D EGL_emulation: eglCreateContext: 0x72c6db0a4440: maj 3 min 0 rcv 3
+10-31 18:56:12.037  8231  8249 D EGL_emulation: eglMakeCurrent: 0x72c6db0a4440: ver 3 0 (tinfo 0x72c6db0f3a00)
+10-31 18:56:12.037  5724  5888 D EGL_emulation: eglMakeCurrent: 0x72c6d503f020: ver 3 0 (tinfo 0x72c6d500de20)
+10-31 18:56:12.184  2921  2958 I s.nexuslaunche: NativeAlloc concurrent copying GC freed 1170(113KB) AllocSpace objects, 0(0B) LOS objects, 49% free, 3MB/6MB, paused 2.286ms total 200.619ms
+10-31 18:56:12.190  8231  8249 D EGL_emulation: eglMakeCurrent: 0x72c6db0a4440: ver 3 0 (tinfo 0x72c6db0f3a00)
+10-31 18:56:12.195  8231  8249 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 1 2
+10-31 18:56:12.208  2296  2346 I ndroid.systemu: NativeAlloc concurrent copying GC freed 66353(3MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 5MB/11MB, paused 723us total 151.596ms
+10-31 18:56:12.354  2005  2015 I system_server: NativeAlloc concurrent copying GC freed 38992(2020KB) AllocSpace objects, 16(336KB) LOS objects, 38% free, 9MB/15MB, paused 1.005ms total 264.541ms
+10-31 18:56:12.506  1957  2512 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen dev.rescata.app.test#0
+10-31 18:56:12.506  1957  2512 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen dev.rescata.app.test#0
+10-31 18:56:12.555  1597  1643 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:12.556  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:12.567  1597  1643 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:12.573  2973  3200 D HostConnection: HostConnection::get() New Host Connection established 0xdcf9ea00, tid 3200
+10-31 18:56:12.577  2973  3200 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_YUV420_888_to_NV21 ANDROID_EMU_YUV_Cache ANDROID_EMU_sync_buffer_data ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 18:56:12.600  2973  3200 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasWideColorDisplay retrieved: 0
+10-31 18:56:12.600  2973  3200 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasHDRDisplay retrieved: 0
+10-31 18:56:12.611  2973  3200 I OpenGLRenderer: Initialized EGL, version 1.4
+10-31 18:56:12.611  2973  3200 D OpenGLRenderer: Swap behavior 1
+10-31 18:56:12.630  2973  3200 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 0 0
+10-31 18:56:12.630  2973  3200 D EGL_emulation: eglCreateContext: 0xdcf85d20: maj 3 min 0 rcv 3
+10-31 18:56:12.631  2973  3200 D EGL_emulation: eglMakeCurrent: 0xdcf85d20: ver 3 0 (tinfo 0xdcf83f30)
+10-31 18:56:12.638  1957  1957 D SurfaceFlinger: duplicate layer name: changing com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity to com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#1
+10-31 18:56:12.642  1597  1643 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:12.643  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:12.643  1597  8250 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:12.670  2921  3063 D EGL_emulation: eglMakeCurrent: 0x72c6d503df40: ver 3 0 (tinfo 0x72c6d50ae1c0)
+10-31 18:56:12.784  2005  2377 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@76df037)
+10-31 18:56:12.785  2005  2019 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@76df037)
+10-31 18:56:12.804  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:56:12.837  2981  2981 I GoogleInputMethod: onFinishInput() : Dummy InputConnection bound
+10-31 18:56:12.839  2296  2497 D EGL_emulation: eglMakeCurrent: 0x72c6d503e1c0: ver 3 0 (tinfo 0x72c6d500dca0)
+10-31 18:56:12.911  2981  2981 I GoogleInputMethod: onStartInput() : Dummy InputConnection bound
+10-31 18:56:12.918  2973  3200 D EGL_emulation: eglMakeCurrent: 0xdcf85d20: ver 3 0 (tinfo 0xdcf83f30)
+10-31 18:56:12.974  8466  8466 W dex2oat : Unexpected CPU variant for X86 using defaults: x86_64
+10-31 18:56:12.987  8466  8466 I dex2oat : The ClassLoaderContext is a special shared library.
+10-31 18:56:12.988  8466  8466 W dex2oat : Mismatch between dex2oat instruction set features (ISA: X86 Feature string: -ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt) and those of dex2oat executable (ISA: X86 Feature string: ssse3,sse4.1,sse4.2,-avx,-avx2,popcnt) for the command line:
+10-31 18:56:12.988  8466  8466 W dex2oat : /system/bin/dex2oat --instruction-set=x86 --instruction-set-features=ssse3,sse4.1,sse4.2,-avx,-avx2,popcnt --runtime-arg -Xhidden-api-checks --runtime-arg -Xrelocate --boot-image=/system/framework/boot.art --runtime-arg -Xms64m --runtime-arg -Xmx512m --instruction-set-variant=x86_64 --instruction-set-features=default --dex-file=/data/user/0/com.google.android.googlequicksearchbox/files/velour/verified_jars/JfrMp1ozmvH0lZqSAUZxMVw_1.jar --output-vdex-fd=64 --oat-fd=67 --oat-location=/data/user/0/com.google.android.googlequicksearchbox/files/velour/verified_jars/oat/x86/JfrMp1ozmvH0lZqSAUZxMVw_1.odex --compiler-filter=quicken --class-loader-context=&
+10-31 18:56:13.016  2973  2973 W SessionLifecycleManager: Handover failed. Creating new session controller.
+10-31 18:56:12.988  8466  8466 I dex2oat : /system/bin/dex2oat --dex-file=/data/user/0/com.google.android.googlequicksearchbox/files/velour/verified_jars/JfrMp1ozmvH0lZqSAUZxMVw_1.jar --output-vdex-fd=64 --oat-fd=67 --oat-location=/data/user/0/com.google.android.googlequicksearchbox/files/velour/verified_jars/oat/x86/JfrMp1ozmvH0lZqSAUZxMVw_1.odex --compiler-filter=quicken --class-loader-context=&
+10-31 18:56:13.086  1597  1643 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 18:56:13.161  1957  2512 W ServiceManager: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10022 pid=2921
+10-31 18:56:13.161  1957  2512 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10022 => denied (152 us)
+10-31 18:56:13.163  8231  8249 D EGL_emulation: eglMakeCurrent: 0x72c6db0a4440: ver 3 0 (tinfo 0x72c6db0f3a00)
+10-31 18:56:13.315  5724  5724 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@3161440 in: STOPPED
+10-31 18:56:13.315  5724  5724 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=dev.rescata.app.MainActivity@3161440
+10-31 18:56:13.318  2005  6012 I OpenGLRenderer: Initialized EGL, version 1.4
+10-31 18:56:13.318  2005  6012 D OpenGLRenderer: Swap behavior 1
+10-31 18:56:13.319  2005  6012 D HostConnection: HostConnection::get() New Host Connection established 0x72c6b4caf440, tid 6012
+10-31 18:56:13.319  2005  6012 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_YUV420_888_to_NV21 ANDROID_EMU_YUV_Cache ANDROID_EMU_sync_buffer_data ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 18:56:13.320  2005  6012 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 0 0
+10-31 18:56:13.320  2005  6012 D EGL_emulation: eglCreateContext: 0x72c6b4caf4e0: maj 3 min 0 rcv 3
+10-31 18:56:13.321  2005  6012 D EGL_emulation: eglMakeCurrent: 0x72c6b4caf4e0: ver 3 0 (tinfo 0x72c6be3f6180)
+10-31 18:56:13.324  1957  1957 W SurfaceFlinger: couldn't log to binary event log: overflow.
+10-31 18:56:13.426  2005  6012 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 1 2
+10-31 18:56:13.442  5724  5724 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@3161440 in: DESTROYED
+10-31 18:56:13.442  5724  5724 V ActivityScenario: Update currentActivityStage to DESTROYED, currentActivity=null
+10-31 18:56:13.481  1957  2512 W SurfaceFlinger: Attempting to destroy on removed layer: AppWindowToken{399adac token=Token{3d20f5f ActivityRecord{1aebfe u0 dev.rescata.app/.MainActivity t8}}}#0
+10-31 18:56:13.487  2296  2346 I ndroid.systemu: NativeAlloc concurrent copying GC freed 10756(606KB) AllocSpace objects, 0(0B) LOS objects, 50% free, 5MB/11MB, paused 574us total 337.448ms
+10-31 18:56:13.609  2973  2973 I StreamController: registerScope: nowcards-6106231857249270401
+10-31 18:56:13.621  5724  5749 D IdlingRegistry: Unregistering idling resources: [androidx.compose.ui.test.EspressoLink@f52a62f]
+10-31 18:56:13.625  5724  5749 I TestRunner: finished: escaneaExportaYRestaura(dev.rescata.app.RescataE2ETest)
