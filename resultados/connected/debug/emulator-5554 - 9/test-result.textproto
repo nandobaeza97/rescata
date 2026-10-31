@@ -1,0 +1,77 @@
+# 2026-10-31T17:46:42.476416461Z:
+test_suite_meta_data {
+  scheduled_test_case_count: 2
+}
+test_status: FAILED
+test_result {
+  test_case {
+    test_class: "EscalaE2ETest"
+    test_package: "dev.rescata.app"
+    test_method: "guardaMasDeDiezMilSinRalentizarse"
+    start_time {
+      seconds: 1793468755
+      nanos: 960000000
+    }
+    end_time {
+      seconds: 1793468791
+      nanos: 91000000
+    }
+  }
+  test_status: FAILED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "/home/runner/work/rescata/rescata/app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 9/logcat-dev.rescata.app.EscalaE2ETest-guardaMasDeDiezMilSinRalentizarse.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "/home/runner/work/rescata/rescata/app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 9/device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/home/runner/work/rescata/rescata/app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 9/meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "/home/runner/work/rescata/rescata/app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 9/cpuinfo"
+    }
+  }
+}
+output_artifact {
+  label {
+    label: "test-results.log"
+    namespace: "com.google.testing.platform.runtime.android.driver.AndroidInstrumentationDriver"
+  }
+  source_path {
+    path: "/home/runner/work/rescata/rescata/app/build/outputs/androidTest-results/connected/debug/emulator-5554 - 9/testlog/test-results.log"
+  }
+  type: TEST_DATA
+  mime_type: "text/plain"
+}
+issue {
+  namespace {
+    namespace: "com.google.testing.platform.runtime.android.driver.AndroidInstrumentationDriver"
+  }
+  severity: SEVERE
+  code: 1
+  name: "INSTRUMENTATION_FAILED"
+  message: "Test run failed to complete. Instrumentation run failed due to Process crashed."
+}

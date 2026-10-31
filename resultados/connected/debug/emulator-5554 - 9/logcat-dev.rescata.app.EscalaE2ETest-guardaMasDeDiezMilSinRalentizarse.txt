@@ -1,0 +1,1224 @@
+10-31 17:45:54.997  5525  5565 I TestRunner: started: guardaMasDeDiezMilSinRalentizarse(dev.rescata.app.EscalaE2ETest)
+10-31 17:45:55.001  2461  5404 I MobileDataHub: Scheduling periodic tasks
+10-31 17:45:55.002  2461  5404 W MobileDataHub: [Service] appsupload-periodic periodic task disabled
+10-31 17:45:55.006  2141  5437 I PTCommittedOperation: Receive new configuration for com.google.android.gms.clearcut.public
+10-31 17:45:55.009  5525  5565 I UiDevice: Creating a new instance, old instance exists: false
+10-31 17:45:55.018  2461  5548 I ChromeSync: [Sync,SyncIntentOperation] Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+10-31 17:45:55.019  2461  5548 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-31 17:45:55.031  2461  5405 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-31 17:45:55.047  2461  5548 I ChromeSync: [Sync,SyncIntentOperation] Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+10-31 17:45:55.051  2461  5412 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-31 17:45:55.053  2461  5412 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-31 17:45:55.064  2461  5411 I ChromeSync: [Sync,SyncIntentOperation] Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+10-31 17:45:55.067  2461  5403 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-31 17:45:55.070  2461  5550 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-31 17:45:55.075  2461  5402 I ChromeSync: [Sync,SyncIntentOperation] Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+10-31 17:45:55.076  2461  5408 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-31 17:45:55.077  2461  5403 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-31 17:45:55.080  2461  5403 I ChromeSync: [Sync,SyncIntentOperation] Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+10-31 17:45:55.081  2461  5551 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-31 17:45:55.082  2461  5553 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-31 17:45:55.083  2461  5405 I ChromeSync: [Sync,SyncIntentOperation] Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+10-31 17:45:55.086  2461  5431 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-31 17:45:55.086  2461  5550 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-31 17:45:55.107  5525  5565 D UiDevice: Setting accessibility service flags: 65618
+10-31 17:45:55.121  2461  5412 I ChromeSync: [Sync,SyncIntentOperation] Handling the intent: Intent { act=com.google.android.gms.phenotype.COMMITTED flg=0x10 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+10-31 17:45:55.122  2461  5402 I MdiSyncModule: flag handling is skipping irrelevant intent.
+10-31 17:45:55.125  2461  5404 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+10-31 17:45:55.136  5525  5565 W UiAutomation: UiAutomation.grantRuntimePermission() is more robust and should be used instead of 'pm grant'
+10-31 17:45:55.235  1970  1970 I GnssLocationProvider: WakeLock acquired by sendMessage(SET_REQUEST, 0, com.android.server.location.GnssLocationProvider$GpsRequest@d958a96)
+10-31 17:45:55.235  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(SET_REQUEST, 0, com.android.server.location.GnssLocationProvider$GpsRequest@d958a96)
+10-31 17:45:55.254  2461  5563 W gle.android.gm: Long monitor contention with owner LIT-UnlimitedExecutor #1 (5564) at long java.util.concurrent.atomic.AtomicLong.addAndGet(long)(AtomicLong.java:222) waiters=0 in android.database.sqlite.SQLiteDatabase android.database.sqlite.SQLiteOpenHelper.getReadableDatabase() for 523ms
+10-31 17:45:55.272  2461  5563 I LT_PhenotypeApiImplV12: Retrieve experiment configurations for:
+10-31 17:45:55.323  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@12cb59c)
+10-31 17:45:55.323  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@12cb59c)
+10-31 17:45:55.346  2141  3140 I aopq    : Scheduling Phenotype for a PhenotypeSyncImmediately(6, com.google.lighter.android#com.google.android.gms) one off with window [1, 2] in seconds [CONTEXT service_id=51 ]
+10-31 17:45:55.358  5525  5565 W UiAutomation: UiAutomation.grantRuntimePermission() is more robust and should be used instead of 'pm grant'
+10-31 17:45:55.368  5581  5581 W oid.apps.photo: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 17:45:55.385  1970  1970 I GnssLocationProvider: WakeLock acquired by sendMessage(SET_REQUEST, 0, com.android.server.location.GnssLocationProvider$GpsRequest@381bd21)
+10-31 17:45:55.386  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(SET_REQUEST, 0, com.android.server.location.GnssLocationProvider$GpsRequest@381bd21)
+10-31 17:45:55.390  2461  2461 I LT_PhenotypeApiImplV12: Phenotype registration succeeded
+10-31 17:45:55.409  2141  3087 W GLSUser : [AppCertManager] Failed to get security token.
+10-31 17:45:55.409  2141  3087 W GLSUser : java.io.IOException: Invalid scope
+10-31 17:45:55.409  2141  3087 W GLSUser : 	at adiw.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):23)
+10-31 17:45:55.409  2141  3087 W GLSUser : 	at adiw.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):18)
+10-31 17:45:55.409  2141  3087 W GLSUser : 	at adiw.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):11)
+10-31 17:45:55.409  2141  3087 W GLSUser : 	at hwy.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):17)
+10-31 17:45:55.409  2141  3087 W GLSUser : 	at hww.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):5)
+10-31 17:45:55.409  2141  3087 W GLSUser : 	at hww.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):46)
+10-31 17:45:55.409  2141  3087 W GLSUser : 	at cpc.onTransact(:com.google.android.gms@202414023@20.24.14 (040800-319035315):5)
+10-31 17:45:55.409  2141  3087 W GLSUser : 	at android.os.Binder.transact(Binder.java:667)
+10-31 17:45:55.409  2141  3087 W GLSUser : 	at cta.onTransact(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 17:45:55.409  2141  3087 W GLSUser : 	at android.os.Binder.transact(Binder.java:667)
+10-31 17:45:55.409  2141  3087 W GLSUser : 	at aaeo.onTransact(:com.google.android.gms@202414023@20.24.14 (040800-319035315):17)
+10-31 17:45:55.409  2141  3087 W GLSUser : 	at android.os.Binder.execTransact(Binder.java:731)
+10-31 17:45:55.436  5581  5581 I oid.apps.photo: The ClassLoaderContext is a special shared library.
+10-31 17:45:55.444  2141  3087 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-31 17:45:55.444  2141  3087 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 17:45:55.444  2141  3087 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 17:45:55.453  2141  3087 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-31 17:45:55.453  2141  3087 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 17:45:55.453  2141  3087 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 17:45:55.513  2141  3087 W GLSUser : [AppCertManager] IOException while requesting key:
+10-31 17:45:55.513  2141  3087 W GLSUser : java.io.IOException: Invalid device key response.
+10-31 17:45:55.513  2141  3087 W GLSUser : 	at hwy.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):49)
+10-31 17:45:55.513  2141  3087 W GLSUser : 	at hww.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):5)
+10-31 17:45:55.513  2141  3087 W GLSUser : 	at hww.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):46)
+10-31 17:45:55.513  2141  3087 W GLSUser : 	at cpc.onTransact(:com.google.android.gms@202414023@20.24.14 (040800-319035315):5)
+10-31 17:45:55.513  2141  3087 W GLSUser : 	at android.os.Binder.transact(Binder.java:667)
+10-31 17:45:55.513  2141  3087 W GLSUser : 	at cta.onTransact(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 17:45:55.513  2141  3087 W GLSUser : 	at android.os.Binder.transact(Binder.java:667)
+10-31 17:45:55.513  2141  3087 W GLSUser : 	at aaeo.onTransact(:com.google.android.gms@202414023@20.24.14 (040800-319035315):17)
+10-31 17:45:55.513  2141  3087 W GLSUser : 	at android.os.Binder.execTransact(Binder.java:731)
+10-31 17:45:55.513  2141  3087 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+10-31 17:45:55.539  2461  2461 D LT_ClntIntrcptrFctryV12: Spatula header: CjYKFmNvbS5nb29nbGUuYW5kcm9pZC5nbXMaHFdPSEVFejkwUWV3OUxDY0NjS0ZJQXRwSHVnND0Y4+6Q0rff2ow/
+10-31 17:45:55.568  5525  5565 D OpenGLRenderer: Skia GL Pipeline
+10-31 17:45:55.811  5581  5592 I oid.apps.photo: Method exceeds compiler instruction limit: 17312 in void gen_binder.root.RootModule$Generated.a(android.content.Context, java.lang.Class, java.lang.Object, aeac)
+10-31 17:45:55.914  1970  1984 E memtrack: Couldn't load memtrack module
+10-31 17:45:55.914  1970  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:45:56.323  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@3243bf7)
+10-31 17:45:56.323  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@3243bf7)
+10-31 17:45:56.646  1970  1984 E memtrack: Couldn't load memtrack module
+10-31 17:45:56.646  1970  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:45:57.323  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8bcfa64)
+10-31 17:45:57.323  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8bcfa64)
+10-31 17:45:57.858  1970  1984 E memtrack: Couldn't load memtrack module
+10-31 17:45:57.858  1970  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:45:57.877  2141  3462 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-31 17:45:57.880  2141  3462 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 17:45:57.880  2141  3462 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 17:45:57.901  2141  3462 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+10-31 17:45:57.901  2141  3462 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 17:45:57.901  2141  3462 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 17:45:58.128  5640  5640 W .apps.wallpape: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 17:45:58.131  2907  2907 I BgTaskExecutorImpl: Starting EXCLUSIVE background task PeriodicTaskSyncTask.
+10-31 17:45:58.170  2907  2907 I BgTaskExecutorImpl: Starting PERIODIC background task update_launcher_shortcut.
+10-31 17:45:58.195  2907  2907 I BgTaskExecutorImpl: Starting PERIODIC background task clear_data_detector.
+10-31 17:45:58.232  5640  5640 I .apps.wallpape: The ClassLoaderContext is a special shared library.
+10-31 17:45:58.238  5640  5640 I .apps.wallpape: The ClassLoaderContext is a special shared library.
+10-31 17:45:58.323  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@7a04b71)
+10-31 17:45:58.323  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@7a04b71)
+10-31 17:45:58.422  2907  3244 I FirstRunClassifier: First run of com.google.android.googlequicksearchbox on this device detected
+10-31 17:45:58.443  2907  2907 I BgTaskExecutorImpl: Starting PERIODIC background task log_attempted_searches_to_kansas.
+10-31 17:45:58.501  2907  2907 I BgTaskExecutorImpl: Starting PERIODIC background task backgroundretry.cache_sweep.
+10-31 17:45:58.506  1918  1918 I Zygote  : Process 4493 exited due to signal (9)
+10-31 17:45:58.507  1970  1988 W libprocessgroup: kill(-4493, 9) failed: No such process
+10-31 17:45:58.507  1970  1988 I libprocessgroup: Successfully killed process cgroup uid 10033 pid 4493 in 0ms
+10-31 17:45:58.536  2907  2907 I BgTaskExecutorImpl: Starting PERIODIC background task mdh-forcedsync.
+10-31 17:45:58.563  2907  2907 I BgTaskExecutorImpl: Starting PERIODIC background task upload_audio_logs.
+10-31 17:45:58.584  2907  3244 I S3UtteranceSender: send account: %s, modelType: %d[null, OK_GOOGLE]
+10-31 17:45:58.631  2907  2907 I BgTaskExecutorImpl: Starting PERIODIC background task refresh_auth_tokens.
+10-31 17:45:58.637  2907  2907 I BgTaskExecutorImpl: Starting PERIODIC background task update_gservices_config.
+10-31 17:45:58.639  2907  3244 I GservicesUpdateTask: Updating Gservices keys
+10-31 17:45:58.658  2907  2907 I BgTaskExecutorImpl: Starting PERIODIC background task update_language_packs.
+10-31 17:45:58.703  2907  2907 I BgTaskExecutorImpl: Starting PERIODIC background task fetch_advertising_info.
+10-31 17:45:58.731  2907  2907 I BgTaskExecutorImpl: Starting PERIODIC background task mdh-wipeout.
+10-31 17:45:58.784  2907  2907 I BgTaskExecutorImpl: Starting PERIODIC background task fetch_opt_in_statuses.
+10-31 17:45:58.810  2907  2907 I BgTaskExecutorImpl: Starting PERIODIC background task restore_speaker_model.
+10-31 17:45:58.816  2907  3277 I RestoreSpeakerModelTask: Canceling restore - user account is null
+10-31 17:45:58.824  2907  2907 I BgTaskExecutorImpl: Starting PERIODIC background task refresh_now_configuration.
+10-31 17:45:58.836  2907  3276 I MDH     : [Storage] Creating database v1
+10-31 17:45:58.838  2907  3276 I MDH     : Creating MDH wipeout table.
+10-31 17:45:58.838  2907  3276 I MDH     : Creating MDH subscription table.
+10-31 17:45:58.838  2907  3276 V MDH     : Opening MDH wipeout table.
+10-31 17:45:59.129  2141  3462 I aopq    : Scheduling adaptive one off task with window [14400, 604800] in seconds [CONTEXT service_id=51 ]
+10-31 17:45:59.131  2141  2141 E BluetoothAdapter: Bluetooth binder is null
+10-31 17:45:59.150  2141  5444 I Auth    : [AuthManaged,PasswordComplexityHelperImpl] Updating password complexity components state.
+10-31 17:45:59.150  2141  5444 I Auth    : [AuthManaged,PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.admin.DeviceAdminReceiver
+10-31 17:45:59.150  2141  5444 I Auth    : [AuthManaged,PasswordComplexityHelperImpl] Disabling com.google.android.gms.auth.managed.ui.SetNewPasswordActivity
+10-31 17:45:59.323  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@62dda6f)
+10-31 17:45:59.323  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@62dda6f)
+10-31 17:45:59.551  5525  5565 I EscalaE2E: Preparadas 12000 fotos de 328 bytes en 3 s
+10-31 17:45:59.560  5525  5565 W Settings: Setting always_finish_activities has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+10-31 17:45:59.724  1970  2018 W System  : ClassLoader referenced unknown path:
+10-31 17:45:59.749  5525  5525 W ActivityThread: handleWindowVisibility: no activity for token android.os.BinderProxy@d4ad42c
+10-31 17:45:59.857  1596  1596 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 17:45:59.914  5525  5525 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@9e2ae2 in: PRE_ON_CREATE
+10-31 17:45:59.915  5525  5525 V ActivityScenario: Activity lifecycle changed event received but ignored because the reported transition was not ON_CREATE while the last known transition was PRE_ON_CREATE
+10-31 17:45:59.964  1918  1918 I Zygote  : Process 4518 exited due to signal (9)
+10-31 17:45:59.967  1918  1918 I Zygote  : Process 4565 exited due to signal (9)
+10-31 17:45:59.968  1970  1988 W libprocessgroup: kill(-4518, 9) failed: No such process
+10-31 17:45:59.968  1970  1988 I libprocessgroup: Successfully killed process cgroup uid 10025 pid 4518 in 0ms
+10-31 17:46:00.004  1970  1988 W libprocessgroup: kill(-4565, 9) failed: No such process
+10-31 17:46:00.004  1970  1988 I libprocessgroup: Successfully killed process cgroup uid 10061 pid 4565 in 0ms
+10-31 17:46:00.045  2890  3037 D EGL_emulation: eglMakeCurrent: 0x79ca0f9ee7c0: ver 3 0 (tinfo 0x79ca0f8ba780)
+10-31 17:46:00.073  2153  2399 D EGL_emulation: eglMakeCurrent: 0x79ca0d62b8c0: ver 3 0 (tinfo 0x79ca1b9255c0)
+10-31 17:46:00.084  2153  2399 D EGL_emulation: eglMakeCurrent: 0x79ca0d62b8c0: ver 3 0 (tinfo 0x79ca1b9255c0)
+10-31 17:46:00.110  5525  5525 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@9e2ae2 in: CREATED
+10-31 17:46:00.114  5525  5525 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=dev.rescata.app.MainActivity@9e2ae2
+10-31 17:46:00.163  2907  3175 D EGL_emulation: eglMakeCurrent: 0xe4c86200: ver 3 0 (tinfo 0xe4c83ac0)
+10-31 17:46:00.211  5525  5525 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@9e2ae2 in: STARTED
+10-31 17:46:00.211  5525  5525 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=dev.rescata.app.MainActivity@9e2ae2
+10-31 17:46:00.212  5525  5525 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@9e2ae2 in: RESUMED
+10-31 17:46:00.212  5525  5525 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=dev.rescata.app.MainActivity@9e2ae2
+10-31 17:46:00.219  1917  2037 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 17:46:00.257  1918  1918 I Zygote  : Process 4535 exited due to signal (9)
+10-31 17:46:00.258  1970  1988 W libprocessgroup: kill(-4535, 9) failed: No such process
+10-31 17:46:00.258  1970  1988 I libprocessgroup: Successfully killed process cgroup uid 10024 pid 4535 in 0ms
+10-31 17:46:00.258  1918  1918 I Zygote  : Process 4670 exited due to signal (9)
+10-31 17:46:00.261  5525  5669 D ProfileInstaller: Installing profile for dev.rescata.app
+10-31 17:46:00.279  1970  1988 W libprocessgroup: kill(-4670, 9) failed: No such process
+10-31 17:46:00.279  1970  1988 I libprocessgroup: Successfully killed process cgroup uid 10068 pid 4670 in 0ms
+10-31 17:46:00.284  1918  1918 I Zygote  : Process 4839 exited due to signal (9)
+10-31 17:46:00.285  1919  1919 I Zygote  : Process 4592 exited due to signal (9)
+10-31 17:46:00.289  1970  1988 W libprocessgroup: kill(-4592, 9) failed: No such process
+10-31 17:46:00.289  1970  1988 I libprocessgroup: Successfully killed process cgroup uid 10070 pid 4592 in 0ms
+10-31 17:46:00.299  1970  1988 W libprocessgroup: kill(-4839, 9) failed: No such process
+10-31 17:46:00.299  1970  1988 I libprocessgroup: Successfully killed process cgroup uid 10036 pid 4839 in 0ms
+10-31 17:46:00.323  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@9bd1fe3)
+10-31 17:46:00.324  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@9bd1fe3)
+10-31 17:46:00.373  2461  5401 I GmscoreIpa: how are you::
+10-31 17:46:00.386  3308  3363 V Bugle   : Reclaiming memory.
+10-31 17:46:00.484  5581  5605 I oid.apps.photo: Waiting for a blocking GC ProfileSaver
+10-31 17:46:00.489  2461  2470 W System  : A resource failed to call close.
+10-31 17:46:00.489  2461  2470 W System  : A resource failed to call close.
+10-31 17:46:00.489  2461  2470 W SQLiteConnectionPool: A SQLiteConnection object for database '/data/user/0/com.google.android.gms/databases/lighter_registration.db' was leaked!  Please fix your application to end transactions in progress properly and to close the database when it is no longer needed.
+10-31 17:46:00.489  2461  2470 W System  : A resource failed to call close.
+10-31 17:46:00.517  5581  5605 I oid.apps.photo: WaitForGcToComplete blocked ProfileSaver on HeapTrim for 33.045ms
+10-31 17:46:00.524  2461  5670 I LT_StubFactory: tachyonHostName = instantmessaging-pa.googleapis.com and tachyonPortNumber = 443
+10-31 17:46:00.536  2461  5670 D LT_OkHttpChannelBuilder: Using Spatula header keyless authentication.
+10-31 17:46:00.563  2141  2692 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+10-31 17:46:00.563  2141  2692 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+10-31 17:46:00.567  2461  2461 D LT_ClntIntrcptrFctryV12: Spatula header: CjYKFmNvbS5nb29nbGUuYW5kcm9pZC5nbXMaHFdPSEVFejkwUWV3OUxDY0NjS0ZJQXRwSHVnND0Y4+6Q0rff2ow/
+10-31 17:46:00.604  2461  5673 I LT_PhenotypeApiImplV12: Retrieve experiment configurations for:
+10-31 17:46:00.608  2461  2461 I LT_PhenotypeApiImplV12: Phenotype registration succeeded
+10-31 17:46:00.610  2461  5670 D LT_Lighter: finalizing
+10-31 17:46:00.610  2461  5670 D LT_LiMsgController: No accounts with open bind channel
+10-31 17:46:00.933  5525  5525 W dev.rescata.ap: Accessing hidden field Landroid/graphics/Insets;->left:I (light greylist, linking)
+10-31 17:46:00.933  5525  5525 W dev.rescata.ap: Accessing hidden field Landroid/graphics/Insets;->top:I (light greylist, linking)
+10-31 17:46:00.933  5525  5525 W dev.rescata.ap: Accessing hidden field Landroid/graphics/Insets;->right:I (light greylist, linking)
+10-31 17:46:00.933  5525  5525 W dev.rescata.ap: Accessing hidden field Landroid/graphics/Insets;->bottom:I (light greylist, linking)
+10-31 17:46:00.995  5525  5525 W dev.rescata.ap: Accessing hidden field Landroid/view/WindowInsets;->CONSUMED:Landroid/view/WindowInsets; (light greylist, reflection)
+10-31 17:46:00.997  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/View;->getViewRootImpl()Landroid/view/ViewRootImpl; (light greylist, reflection)
+10-31 17:46:00.998  5525  5525 W dev.rescata.ap: Accessing hidden field Landroid/view/View$AttachInfo;->mVisibleInsets:Landroid/graphics/Rect; (light greylist, reflection)
+10-31 17:46:00.998  5525  5525 W dev.rescata.ap: Accessing hidden field Landroid/view/ViewRootImpl;->mAttachInfo:Landroid/view/View$AttachInfo; (light greylist, reflection)
+10-31 17:46:01.115  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/text/SpannableStringInternal;->length()I (light greylist, linking)
+10-31 17:46:01.140  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->create(Ljava/lang/String;Landroid/view/View;)Landroid/view/RenderNode; (light greylist, linking)
+10-31 17:46:01.140  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->getScaleX()F (dark greylist, linking)
+10-31 17:46:01.140  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setClipToBounds(Z)Z (light greylist, linking)
+10-31 17:46:01.140  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+10-31 17:46:01.140  5525  5525 I chatty  : uid=10086(dev.rescata.app) identical 1 line
+10-31 17:46:01.140  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+10-31 17:46:01.140  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-31 17:46:01.140  5525  5525 I chatty  : uid=10086(dev.rescata.app) identical 1 line
+10-31 17:46:01.140  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-31 17:46:01.140  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->getMatrix(Landroid/graphics/Matrix;)V (dark greylist, linking)
+10-31 17:46:01.140  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/DisplayListCanvas;->drawRenderNode(Landroid/view/RenderNode;)V (light greylist, linking)
+10-31 17:46:01.141  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->isValid()Z (light greylist, linking)
+10-31 17:46:01.141  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->start(II)Landroid/view/DisplayListCanvas; (light greylist, linking)
+10-31 17:46:01.141  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->end(Landroid/view/DisplayListCanvas;)V (light greylist, linking)
+10-31 17:46:01.142  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setAlpha(F)Z (dark greylist, linking)
+10-31 17:46:01.142  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setCameraDistance(F)Z (dark greylist, linking)
+10-31 17:46:01.142  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setLayerPaint(Landroid/graphics/Paint;)Z (dark greylist, linking)
+10-31 17:46:01.142  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setOutline(Landroid/graphics/Outline;)Z (dark greylist, linking)
+10-31 17:46:01.142  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-31 17:46:01.142  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-31 17:46:01.142  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setLeftTopRightBottom(IIII)Z (light greylist, linking)
+10-31 17:46:01.142  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-31 17:46:01.142  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setRotationX(F)Z (dark greylist, linking)
+10-31 17:46:01.142  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setRotationY(F)Z (dark greylist, linking)
+10-31 17:46:01.142  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setRotation(F)Z (dark greylist, linking)
+10-31 17:46:01.142  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setScaleX(F)Z (dark greylist, linking)
+10-31 17:46:01.142  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setScaleY(F)Z (dark greylist, linking)
+10-31 17:46:01.143  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setElevation(F)Z (dark greylist, linking)
+10-31 17:46:01.143  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setTranslationX(F)Z (dark greylist, linking)
+10-31 17:46:01.143  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->setTranslationY(F)Z (dark greylist, linking)
+10-31 17:46:01.143  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/view/RenderNode;->getScaleX()F (dark greylist, linking)
+10-31 17:46:01.167  2267  2267 D ImsResolver: maybeAddedImsService, packageName: com.google.android.googlequicksearchbox
+10-31 17:46:01.183  3395  3395 I CarrierServices: [2] RcsAutoStartReceiver.b: carrierServicesJibeServiceEnabled changed from true to true
+10-31 17:46:01.194  3395  3395 I CarrierServices: [2] RcsAutoStartReceiver.b: enableRcs changed from true to true
+10-31 17:46:01.195  3395  3395 I CarrierServices: [2] RcsAutoStartReceiver.b: RcsAutoStartReceiver triggered. Fetching RCS State. Action: android.intent.action.PACKAGE_CHANGED
+10-31 17:46:01.211  3395  3395 I CarrierServices: [2] aws.a: Migration binding to RcsMigrationService
+10-31 17:46:01.270  1970  2042 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-31 17:46:01.270  1970  2042 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-31 17:46:01.281  3308  3308 I Bugle   : returning RCS state provider.
+10-31 17:46:01.285  3395  3395 I CarrierServices: [2] RcsAutoStartReceiver.b: carrierServicesJibeServiceEnabled changed from true to true
+10-31 17:46:01.287  3395  3395 I CarrierServices: [2] RcsAutoStartReceiver.b: enableRcs changed from true to true
+10-31 17:46:01.288  3395  3395 I CarrierServices: [2] RcsAutoStartReceiver.b: RcsAutoStartReceiver triggered. Fetching RCS State. Action: android.intent.action.PACKAGE_CHANGED
+10-31 17:46:01.292  3395  3395 I CarrierServices: [2] aws.a: Migration binding to RcsMigrationService
+10-31 17:46:01.306  2141  5444 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package:com.google.android.googlequicksearchbox flg=0x45000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) } [CONTEXT service_id=17 ]
+10-31 17:46:01.313  3308  4360 I CarrierServices: [149] inq.shouldUseCarrierServicesApkForV1Apis: Checking if using CarrierServices.apk is possible. Enabled: true, isAtLeastM: true, runningInsideBugle: true
+10-31 17:46:01.323  3308  4360 I CarrierServices: [149] inq.e: Network Operator: 310260
+10-31 17:46:01.323  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@a3d703b)
+10-31 17:46:01.325  3308  4360 I CarrierServices: [149] inq.e: carrierWithOldEcApis: false
+10-31 17:46:01.325  3308  4360 I CarrierServices: [149] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:01.331  2141  5442 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+10-31 17:46:01.339  2141  5442 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package:com.google.android.gms flg=0x45000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) } [CONTEXT service_id=17 ]
+10-31 17:46:01.374  3308  4360 W RcsProvisioning: Failed to read configuration: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:01.375  3308  4360 W RcsProvisioning: java.io.FileNotFoundException: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:01.375  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.open0(Native Method)
+10-31 17:46:01.375  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.open(FileInputStream.java:231)
+10-31 17:46:01.375  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.<init>(FileInputStream.java:165)
+10-31 17:46:01.375  3308  4360 W RcsProvisioning: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:560)
+10-31 17:46:01.375  3308  4360 W RcsProvisioning: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:202)
+10-31 17:46:01.375  3308  4360 W RcsProvisioning: 	at ion.a(SourceFile:2)
+10-31 17:46:01.375  3308  4360 W RcsProvisioning: 	at idl.a(SourceFile:4)
+10-31 17:46:01.375  3308  4360 W RcsProvisioning: 	at idm.a(SourceFile:7)
+10-31 17:46:01.375  3308  4360 W RcsProvisioning: 	at com.google.android.apps.messaging.rcsmigration.RcsStateProvider.buildRcsState(SourceFile:81)
+10-31 17:46:01.375  3308  4360 W RcsProvisioning: 	at com.google.android.apps.messaging.rcsmigration.RcsStateProvider.getRcsState(SourceFile:6)
+10-31 17:46:01.375  3308  4360 W RcsProvisioning: 	at com.google.android.ims.rcsmigration.IRcsStateProvider$Stub.dispatchTransaction(SourceFile:10)
+10-31 17:46:01.375  3308  4360 W RcsProvisioning: 	at com.google.android.aidl.BaseStub.onTransact(SourceFile:18)
+10-31 17:46:01.375  3308  4360 W RcsProvisioning: 	at android.os.Binder.execTransact(Binder.java:731)
+10-31 17:46:01.375  3308  4360 D RcsProvisioning: Retrieving backup token
+10-31 17:46:01.376  3308  4360 D RcsProvisioning: Exception while getting subscriber Id. Using default
+10-31 17:46:01.378  2141  5689 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+10-31 17:46:01.406  2267  2267 D CarrierSvcBindHelper: No carrier app for: 0
+10-31 17:46:01.414  2267  2267 D CarrierSvcBindHelper: No carrier app for: 0
+10-31 17:46:01.414  2267  2267 D ImsResolver: maybeAddedImsService, packageName: com.google.android.gms
+10-31 17:46:01.507  2461  4996 I Icing   : updateResources: need to parse acek{com.google.android.gms}
+10-31 17:46:01.514  3308  4360 D RcsProvisioning: No backup token found
+10-31 17:46:01.514  3308  4360 D RcsProvisioning: Retrieving backup token
+10-31 17:46:01.514  3308  4360 D RcsProvisioning: Exception while getting subscriber Id. Using default
+10-31 17:46:01.534  2907  2907 I BgTaskExecutorImpl: Starting NONEXCLUSIVE background task smartspace_update.
+10-31 17:46:01.545  2907  3281 W VelvetNetworkClient: Cannot connect to server without account
+10-31 17:46:01.588  2890  3028 W QsbUiManager: Doodle is not valid.
+10-31 17:46:01.588  2890  3028 W QsbUiManager: Doodle bitmap is not valid.
+10-31 17:46:01.603  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@a3d703b)
+10-31 17:46:01.618  1970  1984 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+10-31 17:46:01.618  1970  1984 W Binder  : java.lang.Throwable
+10-31 17:46:01.618  1970  1984 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:1114)
+10-31 17:46:01.618  1970  1984 W Binder  : 	at com.android.internal.location.ILocationProvider$Stub$Proxy.getProperties(ILocationProvider.java:236)
+10-31 17:46:01.618  1970  1984 W Binder  : 	at com.android.server.location.LocationProviderProxy$1$1.run(LocationProviderProxy.java:117)
+10-31 17:46:01.618  1970  1984 W Binder  : 	at com.android.server.ServiceWatcher.runOnBinder(ServiceWatcher.java:425)
+10-31 17:46:01.618  1970  1984 W Binder  : 	at com.android.server.location.LocationProviderProxy$1.run(LocationProviderProxy.java:111)
+10-31 17:46:01.618  1970  1984 W Binder  : 	at android.os.Handler.handleCallback(Handler.java:873)
+10-31 17:46:01.618  1970  1984 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-31 17:46:01.618  1970  1984 W Binder  : 	at android.os.Looper.loop(Looper.java:193)
+10-31 17:46:01.618  1970  1984 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:65)
+10-31 17:46:01.619  1970  1984 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+10-31 17:46:01.619  1970  1984 W Binder  : java.lang.Throwable
+10-31 17:46:01.619  1970  1984 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:1114)
+10-31 17:46:01.619  1970  1984 W Binder  : 	at com.android.internal.location.ILocationProvider$Stub$Proxy.getProperties(ILocationProvider.java:236)
+10-31 17:46:01.619  1970  1984 W Binder  : 	at com.android.server.location.LocationProviderProxy$1$1.run(LocationProviderProxy.java:117)
+10-31 17:46:01.619  1970  1984 W Binder  : 	at com.android.server.ServiceWatcher.runOnBinder(ServiceWatcher.java:425)
+10-31 17:46:01.619  1970  1984 W Binder  : 	at com.android.server.location.LocationProviderProxy$1.run(LocationProviderProxy.java:111)
+10-31 17:46:01.619  1970  1984 W Binder  : 	at android.os.Handler.handleCallback(Handler.java:873)
+10-31 17:46:01.619  1970  1984 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-31 17:46:01.619  1970  1984 W Binder  : 	at android.os.Looper.loop(Looper.java:193)
+10-31 17:46:01.619  1970  1984 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:65)
+10-31 17:46:01.644  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 13032(1463KB) AllocSpace objects, 0(0B) LOS objects, 49% free, 4MB/9MB, paused 603us total 277.429ms
+10-31 17:46:01.654  3308  4360 D RcsProvisioning: No backup token found
+10-31 17:46:01.662  1596  1596 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 17:46:01.662  5525  5668 D HostConnection: HostConnection::get() New Host Connection established 0x79ca1ec432c0, tid 5668
+10-31 17:46:01.671  1596  1596 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 17:46:01.671  1596  1644 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 17:46:01.672  5525  5668 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_YUV420_888_to_NV21 ANDROID_EMU_YUV_Cache ANDROID_EMU_sync_buffer_data ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: Failed to read configuration: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: java.io.FileNotFoundException: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.open0(Native Method)
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.open(FileInputStream.java:231)
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.<init>(FileInputStream.java:165)
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:560)
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:202)
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: 	at ion.a(SourceFile:2)
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: 	at idl.a(SourceFile:4)
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: 	at idm.a(SourceFile:7)
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: 	at iez.buildConferencesFileName(SourceFile:30)
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: 	at com.google.android.apps.messaging.rcsmigration.RcsStateProvider.buildRcsState(SourceFile:129)
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: 	at com.google.android.apps.messaging.rcsmigration.RcsStateProvider.getRcsState(SourceFile:6)
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: 	at com.google.android.ims.rcsmigration.IRcsStateProvider$Stub.dispatchTransaction(SourceFile:10)
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: 	at com.google.android.aidl.BaseStub.onTransact(SourceFile:18)
+10-31 17:46:01.708  3308  4360 W RcsProvisioning: 	at android.os.Binder.execTransact(Binder.java:731)
+10-31 17:46:01.708  3308  4360 D RcsProvisioning: Retrieving backup token
+10-31 17:46:01.708  3308  4360 D RcsProvisioning: Exception while getting subscriber Id. Using default
+10-31 17:46:01.763  5525  5668 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasWideColorDisplay retrieved: 0
+10-31 17:46:01.763  5525  5668 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasHDRDisplay retrieved: 0
+10-31 17:46:01.763  5525  5668 I OpenGLRenderer: Initialized EGL, version 1.4
+10-31 17:46:01.763  5525  5668 D OpenGLRenderer: Swap behavior 1
+10-31 17:46:01.764  5525  5668 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 0 0
+10-31 17:46:01.764  5525  5668 D EGL_emulation: eglCreateContext: 0x79ca1ec43540: maj 3 min 0 rcv 3
+10-31 17:46:01.765  5525  5668 D EGL_emulation: eglMakeCurrent: 0x79ca1ec43540: ver 3 0 (tinfo 0x79ca1ec0de60)
+10-31 17:46:01.765  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/os/Trace;->asyncTraceBegin(JLjava/lang/String;I)V (light greylist, reflection)
+10-31 17:46:01.765  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/os/Trace;->asyncTraceEnd(JLjava/lang/String;I)V (light greylist, reflection)
+10-31 17:46:01.765  5525  5525 W dev.rescata.ap: Accessing hidden method Landroid/os/Trace;->traceCounter(JLjava/lang/String;I)V (light greylist, reflection)
+10-31 17:46:01.767  1917  2037 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 17:46:01.798  5525  5668 D HostConnection: createUnique: call
+10-31 17:46:01.799  5525  5668 D HostConnection: HostConnection::get() New Host Connection established 0x79ca1ec437c0, tid 5668
+10-31 17:46:01.801  5525  5668 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_YUV420_888_to_NV21 ANDROID_EMU_YUV_Cache ANDROID_EMU_sync_buffer_data ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 17:46:01.801  5525  5668 E eglCodecCommon: GoldfishAddressSpaceHostMemoryAllocator: ioctl_ping failed for device_type=5, ret=-1
+10-31 17:46:01.830  5525  5668 D EGL_emulation: eglMakeCurrent: 0x79ca1ec43540: ver 3 0 (tinfo 0x79ca1ec0de60)
+10-31 17:46:01.832  5525  5668 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 3 2
+10-31 17:46:01.854  3308  4360 D RcsProvisioning: No backup token found
+10-31 17:46:01.854  3308  4360 E CarrierServices: [149] iez.getFile: File not found.: /data/user/0/com.google.android.apps.messaging/files/httpft_pending (No such file or directory)
+10-31 17:46:01.854  3308  4360 E CarrierServices: 	java.io.FileInputStream.open0(Native Method)
+10-31 17:46:01.854  3308  4360 E CarrierServices: 	java.io.FileInputStream.open(FileInputStream.java:231)
+10-31 17:46:01.854  3308  4360 E CarrierServices: 	java.io.FileInputStream.<init>(FileInputStream.java:165)
+10-31 17:46:01.854  3308  4360 E CarrierServices: 	android.app.ContextImpl.openFileInput(ContextImpl.java:560)
+10-31 17:46:01.854  3308  4360 E CarrierServices: 	android.content.ContextWrapper.openFileInput(ContextWrapper.java:202)
+10-31 17:46:01.854  3308  4360 E CarrierServices: 	iez.getFile(SourceFile:20)
+10-31 17:46:01.854  3308  4360 E CarrierServices: 	com.google.android.apps.messaging.rcsmigration.RcsStateProvider.buildRcsState(SourceFile:136)
+10-31 17:46:01.854  3308  4360 E CarrierServices: 	com.google.android.apps.messaging.rcsmigration.RcsStateProvider.getRcsState(SourceFile:6)
+10-31 17:46:01.854  3308  4360 E CarrierServices: 	com.google.android.ims.rcsmigration.IRcsStateProvider$Stub.dispatchTransaction(SourceFile:10)
+10-31 17:46:01.854  3308  4360 E CarrierServices: 	com.google.android.aidl.BaseStub.onTransact(SourceFile:18)
+10-31 17:46:01.854  3308  4360 E CarrierServices: 	android.os.Binder.execTransact(Binder.java:731)
+10-31 17:46:01.887  3395  3465 I CarrierServices: [60] awt.doInBackground: Saving RCS State
+10-31 17:46:01.889  3395  3465 I CarrierServices: [60] awt.doInBackground: Old operation mode: 2
+10-31 17:46:01.889  3395  3465 I CarrierServices: [60] awt.doInBackground: New operation mode: 2
+10-31 17:46:01.891  3308  4360 I CarrierServices: [149] inq.shouldUseCarrierServicesApkForV1Apis: Checking if using CarrierServices.apk is possible. Enabled: true, isAtLeastM: true, runningInsideBugle: true
+10-31 17:46:01.914  3308  4360 I CarrierServices: [149] inq.e: Network Operator: 310260
+10-31 17:46:01.916  3308  4360 I CarrierServices: [149] inq.e: carrierWithOldEcApis: false
+10-31 17:46:01.916  3308  4360 I CarrierServices: [149] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:01.919  3308  4360 W RcsProvisioning: Failed to read configuration: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:01.919  3308  4360 W RcsProvisioning: java.io.FileNotFoundException: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:01.919  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.open0(Native Method)
+10-31 17:46:01.919  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.open(FileInputStream.java:231)
+10-31 17:46:01.919  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.<init>(FileInputStream.java:165)
+10-31 17:46:01.919  3308  4360 W RcsProvisioning: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:560)
+10-31 17:46:01.919  3308  4360 W RcsProvisioning: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:202)
+10-31 17:46:01.919  3308  4360 W RcsProvisioning: 	at ion.a(SourceFile:2)
+10-31 17:46:01.919  3308  4360 W RcsProvisioning: 	at idl.a(SourceFile:4)
+10-31 17:46:01.919  3308  4360 W RcsProvisioning: 	at idm.a(SourceFile:7)
+10-31 17:46:01.919  3308  4360 W RcsProvisioning: 	at com.google.android.apps.messaging.rcsmigration.RcsStateProvider.buildRcsState(SourceFile:81)
+10-31 17:46:01.919  3308  4360 W RcsProvisioning: 	at com.google.android.apps.messaging.rcsmigration.RcsStateProvider.getRcsState(SourceFile:6)
+10-31 17:46:01.919  3308  4360 W RcsProvisioning: 	at com.google.android.ims.rcsmigration.IRcsStateProvider$Stub.dispatchTransaction(SourceFile:10)
+10-31 17:46:01.919  3308  4360 W RcsProvisioning: 	at com.google.android.aidl.BaseStub.onTransact(SourceFile:18)
+10-31 17:46:01.919  3308  4360 W RcsProvisioning: 	at android.os.Binder.execTransact(Binder.java:731)
+10-31 17:46:01.919  3308  4360 D RcsProvisioning: Retrieving backup token
+10-31 17:46:01.919  3308  4360 D RcsProvisioning: Exception while getting subscriber Id. Using default
+10-31 17:46:02.054  3308  4360 D RcsProvisioning: No backup token found
+10-31 17:46:02.054  3308  4360 D RcsProvisioning: Retrieving backup token
+10-31 17:46:02.054  3308  4360 D RcsProvisioning: Exception while getting subscriber Id. Using default
+10-31 17:46:02.204  3308  4360 D RcsProvisioning: No backup token found
+10-31 17:46:02.231  1970  1993 I ActivityManager: Displayed dev.rescata.app/.MainActivity: +2s426ms
+10-31 17:46:02.274  1917  2037 W SurfaceFlinger: Attempting to set client state on removed layer: Splash Screen dev.rescata.app#0
+10-31 17:46:02.274  1917  2037 W SurfaceFlinger: Attempting to destroy on removed layer: Splash Screen dev.rescata.app#0
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: Failed to read configuration: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: java.io.FileNotFoundException: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.open0(Native Method)
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.open(FileInputStream.java:231)
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.<init>(FileInputStream.java:165)
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:560)
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:202)
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: 	at ion.a(SourceFile:2)
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: 	at idl.a(SourceFile:4)
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: 	at idm.a(SourceFile:7)
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: 	at iez.buildConferencesFileName(SourceFile:30)
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: 	at com.google.android.apps.messaging.rcsmigration.RcsStateProvider.buildRcsState(SourceFile:129)
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: 	at com.google.android.apps.messaging.rcsmigration.RcsStateProvider.getRcsState(SourceFile:6)
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: 	at com.google.android.ims.rcsmigration.IRcsStateProvider$Stub.dispatchTransaction(SourceFile:10)
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: 	at com.google.android.aidl.BaseStub.onTransact(SourceFile:18)
+10-31 17:46:02.288  3308  4360 W RcsProvisioning: 	at android.os.Binder.execTransact(Binder.java:731)
+10-31 17:46:02.288  3308  4360 D RcsProvisioning: Retrieving backup token
+10-31 17:46:02.288  3308  4360 D RcsProvisioning: Exception while getting subscriber Id. Using default
+10-31 17:46:02.292  1970  1984 E memtrack: Couldn't load memtrack module
+10-31 17:46:02.292  1970  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:46:02.294  2949  2949 I GoogleInputMethod: onFinishInput() : Dummy InputConnection bound
+10-31 17:46:02.304  1917  1917 W SurfaceFlinger: couldn't log to binary event log: overflow.
+10-31 17:46:02.305  1917  1917 W SurfaceFlinger: couldn't log to binary event log: overflow.
+10-31 17:46:02.327  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@7f14e84)
+10-31 17:46:02.331  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@7f14e84)
+10-31 17:46:02.363  2949  2949 I GoogleInputMethod: onStartInput() : Dummy InputConnection bound
+10-31 17:46:02.392  2153  2399 D EGL_emulation: eglMakeCurrent: 0x79ca0d62b8c0: ver 3 0 (tinfo 0x79ca1b9255c0)
+10-31 17:46:02.424  3308  4360 D RcsProvisioning: No backup token found
+10-31 17:46:02.424  3308  4360 E CarrierServices: [149] iez.getFile: File not found.: /data/user/0/com.google.android.apps.messaging/files/httpft_pending (No such file or directory)
+10-31 17:46:02.424  3308  4360 E CarrierServices: 	java.io.FileInputStream.open0(Native Method)
+10-31 17:46:02.424  3308  4360 E CarrierServices: 	java.io.FileInputStream.open(FileInputStream.java:231)
+10-31 17:46:02.424  3308  4360 E CarrierServices: 	java.io.FileInputStream.<init>(FileInputStream.java:165)
+10-31 17:46:02.424  3308  4360 E CarrierServices: 	android.app.ContextImpl.openFileInput(ContextImpl.java:560)
+10-31 17:46:02.424  3308  4360 E CarrierServices: 	android.content.ContextWrapper.openFileInput(ContextWrapper.java:202)
+10-31 17:46:02.424  3308  4360 E CarrierServices: 	iez.getFile(SourceFile:20)
+10-31 17:46:02.424  3308  4360 E CarrierServices: 	com.google.android.apps.messaging.rcsmigration.RcsStateProvider.buildRcsState(SourceFile:136)
+10-31 17:46:02.424  3308  4360 E CarrierServices: 	com.google.android.apps.messaging.rcsmigration.RcsStateProvider.getRcsState(SourceFile:6)
+10-31 17:46:02.424  3308  4360 E CarrierServices: 	com.google.android.ims.rcsmigration.IRcsStateProvider$Stub.dispatchTransaction(SourceFile:10)
+10-31 17:46:02.424  3308  4360 E CarrierServices: 	com.google.android.aidl.BaseStub.onTransact(SourceFile:18)
+10-31 17:46:02.424  3308  4360 E CarrierServices: 	android.os.Binder.execTransact(Binder.java:731)
+10-31 17:46:02.434  3395  3426 I CarrierServices: [44] awt.doInBackground: Saving RCS State
+10-31 17:46:02.434  3395  3426 I CarrierServices: [44] awt.doInBackground: Old operation mode: 2
+10-31 17:46:02.434  3395  3426 I CarrierServices: [44] awt.doInBackground: New operation mode: 2
+10-31 17:46:02.435  3308  4360 I CarrierServices: [149] RcsStateProvider.onMigrationComplete: Migration complete.
+10-31 17:46:02.436  3308  4360 I CarrierServices: [149] inq.shouldUseCarrierServicesApkForV1Apis: Checking if using CarrierServices.apk is possible. Enabled: true, isAtLeastM: true, runningInsideBugle: true
+10-31 17:46:02.438  3308  4360 I CarrierServices: [149] inq.e: Network Operator: 310260
+10-31 17:46:02.440  3308  4360 I CarrierServices: [149] inq.e: carrierWithOldEcApis: false
+10-31 17:46:02.440  3308  4360 I CarrierServices: [149] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:02.440  3308  4360 I CarrierServices: [149] RcsStateProvider.onMigrationComplete: Rcs Engine should be running in cs.apk. Stopping JibeService.
+10-31 17:46:02.462  2907  2907 I StreamRenderer: cleanUpRendererScope(nowcards--5196174168808937480)
+10-31 17:46:02.463  3308  4360 I CarrierServices: [149] RcsStateProvider.onMigrationComplete: JibeService stopped: true
+10-31 17:46:02.465  3308  4360 I CarrierServices: [149] inq.e: Network Operator: 310260
+10-31 17:46:02.466  3308  4360 I CarrierServices: [149] inq.e: carrierWithOldEcApis: false
+10-31 17:46:02.466  3308  4360 I CarrierServices: [149] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:02.468  3308  4360 I CarrierServices: [149] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:02.468  3308  4360 I CarrierServices: [149] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:02.469  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.chatsession.ChatSessionService connected. Will notify listeners: true
+10-31 17:46:02.469  3308  3308 V BugleRcs: com.google.android.rcs.client.chatsession.ChatSessionService RCS service connected
+10-31 17:46:02.471  3308  4360 I CarrierServices: [149] inq.e: Network Operator: 310260
+10-31 17:46:02.471  3308  4360 I CarrierServices: [149] inq.e: carrierWithOldEcApis: false
+10-31 17:46:02.471  3308  4360 I CarrierServices: [149] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:02.474  3308  4360 I CarrierServices: [149] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:02.474  3308  4360 I CarrierServices: [149] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:02.482  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.events.EventService connected. Will notify listeners: true
+10-31 17:46:02.482  3308  3308 V BugleRcs: com.google.android.rcs.client.events.EventService RCS service connected
+10-31 17:46:02.484  3308  4360 I CarrierServices: [149] inq.e: Network Operator: 310260
+10-31 17:46:02.485  3308  4360 I CarrierServices: [149] inq.e: carrierWithOldEcApis: false
+10-31 17:46:02.485  3308  4360 I CarrierServices: [149] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:02.488  3308  4360 I CarrierServices: [149] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:02.488  3308  4360 I CarrierServices: [149] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:02.490  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.contacts.ContactsService connected. Will notify listeners: true
+10-31 17:46:02.490  3308  3308 V BugleRcs: com.google.android.rcs.client.contacts.ContactsService RCS service connected
+10-31 17:46:02.503  3308  4360 I CarrierServices: [149] inq.e: Network Operator: 310260
+10-31 17:46:02.505  3308  4360 I CarrierServices: [149] inq.e: carrierWithOldEcApis: false
+10-31 17:46:02.505  3308  4360 I CarrierServices: [149] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:02.508  3308  4360 I CarrierServices: [149] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:02.508  3308  4360 I CarrierServices: [149] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:02.518  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.filetransfer.FileTransferService connected. Will notify listeners: true
+10-31 17:46:02.518  3308  3308 V BugleRcs: com.google.android.rcs.client.filetransfer.FileTransferService RCS service connected
+10-31 17:46:02.519  3308  4360 I CarrierServices: [149] inq.e: Network Operator: 310260
+10-31 17:46:02.520  3308  4360 I CarrierServices: [149] inq.e: carrierWithOldEcApis: false
+10-31 17:46:02.520  3308  4360 I CarrierServices: [149] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:02.521  3308  4360 I CarrierServices: [149] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:02.521  3308  4360 I CarrierServices: [149] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:02.525  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.locationsharing.LocationSharingService connected. Will notify listeners: true
+10-31 17:46:02.525  3308  3308 V BugleRcs: com.google.android.rcs.client.locationsharing.LocationSharingService RCS service connected
+10-31 17:46:02.529  3308  4360 I CarrierServices: [149] inq.e: Network Operator: 310260
+10-31 17:46:02.530  3308  4360 I CarrierServices: [149] inq.e: carrierWithOldEcApis: false
+10-31 17:46:02.530  3308  4360 I CarrierServices: [149] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:02.531  3308  4360 I CarrierServices: [149] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:02.531  3308  4360 I CarrierServices: [149] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:02.547  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.ims.ImsConnectionTrackerService connected. Will notify listeners: true
+10-31 17:46:02.547  3308  3308 V BugleRcs: com.google.android.rcs.client.ims.ImsConnectionTrackerService RCS service connected
+10-31 17:46:02.548  3308  3308 V BugleRcs: kicking off RCS sending/receiving
+10-31 17:46:02.553  3308  3308 V BugleAction: no RCS because we're not registered
+10-31 17:46:02.553  3308  4360 I CarrierServices: [149] inq.e: Network Operator: 310260
+10-31 17:46:02.554  3308  4360 I CarrierServices: [149] inq.e: carrierWithOldEcApis: false
+10-31 17:46:02.554  3308  4360 I CarrierServices: [149] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:02.555  3308  4360 I CarrierServices: [149] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:02.555  3308  4360 I CarrierServices: [149] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:02.564  3308  4360 I CarrierServices: [149] inq.e: Network Operator: 310260
+10-31 17:46:02.565  3308  4360 I CarrierServices: [149] inq.e: carrierWithOldEcApis: false
+10-31 17:46:02.565  3308  4360 I CarrierServices: [149] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:02.567  3308  4360 I CarrierServices: [149] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:02.567  3308  4360 I CarrierServices: [149] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:02.571  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.profile.RcsProfileService connected. Will notify listeners: true
+10-31 17:46:02.571  3308  3308 V BugleRcs: com.google.android.rcs.client.profile.RcsProfileService RCS service connected
+10-31 17:46:02.572  3308  3308 V BugleRcs: kicking off RCS sending/receiving
+10-31 17:46:02.572  3308  3308 V BugleAction: no RCS because we're not registered
+10-31 17:46:02.583  3308  4360 W RcsProvisioning: Failed to read configuration: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:02.583  3308  4360 W RcsProvisioning: java.io.FileNotFoundException: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:02.583  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.open0(Native Method)
+10-31 17:46:02.583  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.open(FileInputStream.java:231)
+10-31 17:46:02.583  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.<init>(FileInputStream.java:165)
+10-31 17:46:02.583  3308  4360 W RcsProvisioning: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:560)
+10-31 17:46:02.583  3308  4360 W RcsProvisioning: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:202)
+10-31 17:46:02.583  3308  4360 W RcsProvisioning: 	at ion.a(SourceFile:2)
+10-31 17:46:02.583  3308  4360 W RcsProvisioning: 	at idl.a(SourceFile:4)
+10-31 17:46:02.583  3308  4360 W RcsProvisioning: 	at idm.a(SourceFile:7)
+10-31 17:46:02.583  3308  4360 W RcsProvisioning: 	at com.google.android.apps.messaging.rcsmigration.RcsStateProvider.onMigrationComplete(SourceFile:27)
+10-31 17:46:02.583  3308  4360 W RcsProvisioning: 	at com.google.android.ims.rcsmigration.IRcsStateProvider$Stub.dispatchTransaction(SourceFile:14)
+10-31 17:46:02.583  3308  4360 W RcsProvisioning: 	at com.google.android.aidl.BaseStub.onTransact(SourceFile:18)
+10-31 17:46:02.583  3308  4360 W RcsProvisioning: 	at android.os.Binder.execTransact(Binder.java:731)
+10-31 17:46:02.583  3308  4360 D RcsProvisioning: Retrieving backup token
+10-31 17:46:02.583  3308  4360 D RcsProvisioning: Exception while getting subscriber Id. Using default
+10-31 17:46:02.602  3395  4492 W CarrierServices: [80] bmc.a: No config URL. RCS will be disabled!
+10-31 17:46:02.608  3308  3308 I BugleRcs: RcsAvailability ACS url: null
+10-31 17:46:02.608  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.businessinfo.BusinessInfoService connected. Will notify listeners: true
+10-31 17:46:02.608  3308  3308 V BugleRcs: com.google.android.rcs.client.businessinfo.BusinessInfoService RCS service connected
+10-31 17:46:02.609  3308  3308 V BugleRcs: kicking off RCS sending/receiving
+10-31 17:46:02.614  3308  3308 V BugleAction: no RCS because we're not registered
+10-31 17:46:02.615  3395  4492 W CarrierServices: [80] bmc.a: No config URL. RCS will be disabled!
+10-31 17:46:02.615  3308  3308 I BugleRcs: RcsAvailability ACS url: null
+10-31 17:46:02.622  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 74116(6MB) AllocSpace objects, 0(0B) LOS objects, 48% free, 6MB/12MB, paused 5.433ms total 247.135ms
+10-31 17:46:02.662  2907  2907 W SearchService: Abort, client detached.
+10-31 17:46:02.662  2907  2907 W SearchService: Abort, client detached.
+10-31 17:46:02.667  2907  2907 I StreamController: cleanUpControllerScope(nowcards--5196174168808937480)
+10-31 17:46:02.707  2907  2907 W SearchService: Abort, client detached.
+10-31 17:46:02.720  3308  4360 D RcsProvisioning: No backup token found
+10-31 17:46:02.720  3308  4360 D RcsProvisioning: Clearing backup token
+10-31 17:46:02.721  3308  4360 D RcsProvisioning: Exception while getting subscriber Id. Using default
+10-31 17:46:02.746  2890  3032 D ProtoStore: deleting smartspace_current
+10-31 17:46:02.746  2890  3032 D ProtoStore: no cached data
+10-31 17:46:02.746  2890  3032 D ProtoStore: no cached data
+10-31 17:46:02.827  3308  4360 I CarrierServices: [149] RcsStateProvider.onMigrationComplete: Deleted transfers file: false
+10-31 17:46:02.830  3308  4360 W RcsProvisioning: Failed to read configuration: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:02.830  3308  4360 W RcsProvisioning: java.io.FileNotFoundException: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:02.830  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.open0(Native Method)
+10-31 17:46:02.830  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.open(FileInputStream.java:231)
+10-31 17:46:02.830  3308  4360 W RcsProvisioning: 	at java.io.FileInputStream.<init>(FileInputStream.java:165)
+10-31 17:46:02.830  3308  4360 W RcsProvisioning: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:560)
+10-31 17:46:02.830  3308  4360 W RcsProvisioning: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:202)
+10-31 17:46:02.830  3308  4360 W RcsProvisioning: 	at ion.a(SourceFile:2)
+10-31 17:46:02.830  3308  4360 W RcsProvisioning: 	at idl.a(SourceFile:4)
+10-31 17:46:02.830  3308  4360 W RcsProvisioning: 	at idm.a(SourceFile:7)
+10-31 17:46:02.830  3308  4360 W RcsProvisioning: 	at iez.buildConferencesFileName(SourceFile:30)
+10-31 17:46:02.830  3308  4360 W RcsProvisioning: 	at com.google.android.apps.messaging.rcsmigration.RcsStateProvider.onMigrationComplete(SourceFile:48)
+10-31 17:46:02.830  3308  4360 W RcsProvisioning: 	at com.google.android.ims.rcsmigration.IRcsStateProvider$Stub.dispatchTransaction(SourceFile:14)
+10-31 17:46:02.830  3308  4360 W RcsProvisioning: 	at com.google.android.aidl.BaseStub.onTransact(SourceFile:18)
+10-31 17:46:02.830  3308  4360 W RcsProvisioning: 	at android.os.Binder.execTransact(Binder.java:731)
+10-31 17:46:02.830  3308  4360 D RcsProvisioning: Retrieving backup token
+10-31 17:46:02.830  3308  4360 D RcsProvisioning: Exception while getting subscriber Id. Using default
+10-31 17:46:02.837  2633  2644 W .android.diale: Suspending all threads took: 9.298ms
+10-31 17:46:02.842  2461  5427 I Icing   : Indexing com.google.android.gms-internal.3p:MobileApplication from com.google.android.gms
+10-31 17:46:02.885  2907  3244 I WorkController: WorkProxy is not enqueued because WorkController is disposed: WorkProxy{Name=context::j, WorkerId=context, id=31eca02}
+10-31 17:46:02.885  2907  3244 I WorkController: WorkProxy is not enqueued because WorkController is disposed: WorkProxy{Name=context::m, WorkerId=context, id=534cf13}
+10-31 17:46:02.885  2907  3244 I WorkController: WorkProxy is not enqueued because WorkController is disposed: WorkProxy{Name=context::n, WorkerId=context, id=a462550}
+10-31 17:46:02.885  2907  3244 I WorkController: WorkProxy is not enqueued because WorkController is disposed: WorkProxy{Name=context::p, WorkerId=context, id=b1c7349}
+10-31 17:46:02.890  2461  5427 I Icing   : Indexing done com.google.android.gms-internal.3p:MobileApplication
+10-31 17:46:02.939  2153  2399 D EGL_emulation: eglMakeCurrent: 0x79ca0d62b8c0: ver 3 0 (tinfo 0x79ca1b9255c0)
+10-31 17:46:02.965  3308  4360 D RcsProvisioning: No backup token found
+10-31 17:46:03.000  2461  5427 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+10-31 17:46:03.032  3395  3395 I CarrierServices: [2] aww.a: Unbinding RcsMigrationService
+10-31 17:46:03.035  3308  5623 I CarrierServices: [358] RcsStateProvider.onMigrationComplete: Migration complete.
+10-31 17:46:03.038  3308  5623 I CarrierServices: [358] inq.shouldUseCarrierServicesApkForV1Apis: Checking if using CarrierServices.apk is possible. Enabled: true, isAtLeastM: true, runningInsideBugle: true
+10-31 17:46:03.040  3308  5623 I CarrierServices: [358] inq.e: Network Operator: 310260
+10-31 17:46:03.040  3308  5623 I CarrierServices: [358] inq.e: carrierWithOldEcApis: false
+10-31 17:46:03.040  3308  5623 I CarrierServices: [358] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:03.040  3308  5623 I CarrierServices: [358] RcsStateProvider.onMigrationComplete: Rcs Engine should be running in cs.apk. Stopping JibeService.
+10-31 17:46:03.072  3308  5623 I CarrierServices: [358] RcsStateProvider.onMigrationComplete: JibeService stopped: true
+10-31 17:46:03.076  3308  5623 I CarrierServices: [358] inq.e: Network Operator: 310260
+10-31 17:46:03.077  3308  5623 I CarrierServices: [358] inq.e: carrierWithOldEcApis: false
+10-31 17:46:03.077  3308  5623 I CarrierServices: [358] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:03.078  3308  5623 I CarrierServices: [358] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:03.078  3308  5623 I CarrierServices: [358] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:03.080  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.chatsession.ChatSessionService connected. Will notify listeners: true
+10-31 17:46:03.080  3308  3308 V BugleRcs: com.google.android.rcs.client.chatsession.ChatSessionService RCS service connected
+10-31 17:46:03.081  3308  5623 I CarrierServices: [358] inq.e: Network Operator: 310260
+10-31 17:46:03.082  3308  5623 I CarrierServices: [358] inq.e: carrierWithOldEcApis: false
+10-31 17:46:03.082  3308  5623 I CarrierServices: [358] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:03.083  3308  5623 I CarrierServices: [358] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:03.083  3308  5623 I CarrierServices: [358] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:03.089  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.events.EventService connected. Will notify listeners: true
+10-31 17:46:03.089  3308  3308 V BugleRcs: com.google.android.rcs.client.events.EventService RCS service connected
+10-31 17:46:03.090  3308  5623 I CarrierServices: [358] inq.e: Network Operator: 310260
+10-31 17:46:03.091  3308  5623 I CarrierServices: [358] inq.e: carrierWithOldEcApis: false
+10-31 17:46:03.091  3308  5623 I CarrierServices: [358] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:03.094  3308  5623 I CarrierServices: [358] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:03.094  3308  5623 I CarrierServices: [358] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:03.096  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.contacts.ContactsService connected. Will notify listeners: true
+10-31 17:46:03.096  3308  3308 V BugleRcs: com.google.android.rcs.client.contacts.ContactsService RCS service connected
+10-31 17:46:03.097  3308  5623 I CarrierServices: [358] inq.e: Network Operator: 310260
+10-31 17:46:03.097  3308  5623 I CarrierServices: [358] inq.e: carrierWithOldEcApis: false
+10-31 17:46:03.097  3308  5623 I CarrierServices: [358] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:03.098  3308  5623 I CarrierServices: [358] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:03.098  3308  5623 I CarrierServices: [358] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:03.101  3308  5623 I CarrierServices: [358] inq.e: Network Operator: 310260
+10-31 17:46:03.101  3308  5623 I CarrierServices: [358] inq.e: carrierWithOldEcApis: false
+10-31 17:46:03.101  3308  5623 I CarrierServices: [358] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:03.104  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.filetransfer.FileTransferService connected. Will notify listeners: true
+10-31 17:46:03.104  3308  3308 V BugleRcs: com.google.android.rcs.client.filetransfer.FileTransferService RCS service connected
+10-31 17:46:03.110  3308  5623 I CarrierServices: [358] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:03.110  3308  5623 I CarrierServices: [358] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:03.112  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.locationsharing.LocationSharingService connected. Will notify listeners: true
+10-31 17:46:03.112  3308  3308 V BugleRcs: com.google.android.rcs.client.locationsharing.LocationSharingService RCS service connected
+10-31 17:46:03.113  3308  5623 I CarrierServices: [358] inq.e: Network Operator: 310260
+10-31 17:46:03.114  3308  5623 I CarrierServices: [358] inq.e: carrierWithOldEcApis: false
+10-31 17:46:03.114  3308  5623 I CarrierServices: [358] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:03.116  3308  5623 I CarrierServices: [358] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:03.116  3308  5623 I CarrierServices: [358] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:03.139  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.ims.ImsConnectionTrackerService connected. Will notify listeners: true
+10-31 17:46:03.139  3308  3308 V BugleRcs: com.google.android.rcs.client.ims.ImsConnectionTrackerService RCS service connected
+10-31 17:46:03.144  3308  5623 I CarrierServices: [358] inq.e: Network Operator: 310260
+10-31 17:46:03.145  3308  5623 I CarrierServices: [358] inq.e: carrierWithOldEcApis: false
+10-31 17:46:03.145  3308  3308 V BugleRcs: kicking off RCS sending/receiving
+10-31 17:46:03.145  3308  5623 I CarrierServices: [358] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:03.146  3308  5623 I CarrierServices: [358] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:03.146  3308  5623 I CarrierServices: [358] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:03.148  3308  3308 V BugleAction: no RCS because we're not registered
+10-31 17:46:03.148  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.profile.RcsProfileService connected. Will notify listeners: true
+10-31 17:46:03.148  3308  3308 V BugleRcs: com.google.android.rcs.client.profile.RcsProfileService RCS service connected
+10-31 17:46:03.150  3308  3308 V BugleRcs: kicking off RCS sending/receiving
+10-31 17:46:03.151  3308  3308 V BugleAction: no RCS because we're not registered
+10-31 17:46:03.152  3395  4492 W CarrierServices: [80] bmc.a: No config URL. RCS will be disabled!
+10-31 17:46:03.153  3308  3308 I BugleRcs: RcsAvailability ACS url: null
+10-31 17:46:03.154  3308  5623 I CarrierServices: [358] inq.e: Network Operator: 310260
+10-31 17:46:03.155  3308  5623 I CarrierServices: [358] inq.e: carrierWithOldEcApis: false
+10-31 17:46:03.155  3308  5623 I CarrierServices: [358] inq.e: hasDialerThatSupportsNewEc: false
+10-31 17:46:03.157  3308  5623 I CarrierServices: [358] jsn.connect: shouldUseCarrierServicesJibeService: true, CarrierServices rcs service found: true
+10-31 17:46:03.157  3308  5623 I CarrierServices: [358] jsn.connect: Binding to JibeService in CarrierServices.
+10-31 17:46:03.164  3308  3308 D RcsClientLib: Service com.google.android.rcs.client.businessinfo.BusinessInfoService connected. Will notify listeners: true
+10-31 17:46:03.164  3308  3308 V BugleRcs: com.google.android.rcs.client.businessinfo.BusinessInfoService RCS service connected
+10-31 17:46:03.169  3308  5623 W RcsProvisioning: Failed to read configuration: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:03.169  3308  5623 W RcsProvisioning: java.io.FileNotFoundException: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:03.169  3308  5623 W RcsProvisioning: 	at java.io.FileInputStream.open0(Native Method)
+10-31 17:46:03.169  3308  5623 W RcsProvisioning: 	at java.io.FileInputStream.open(FileInputStream.java:231)
+10-31 17:46:03.169  3308  5623 W RcsProvisioning: 	at java.io.FileInputStream.<init>(FileInputStream.java:165)
+10-31 17:46:03.169  3308  5623 W RcsProvisioning: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:560)
+10-31 17:46:03.169  3308  5623 W RcsProvisioning: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:202)
+10-31 17:46:03.169  3308  5623 W RcsProvisioning: 	at ion.a(SourceFile:2)
+10-31 17:46:03.169  3308  5623 W RcsProvisioning: 	at idl.a(SourceFile:4)
+10-31 17:46:03.169  3308  5623 W RcsProvisioning: 	at idm.a(SourceFile:7)
+10-31 17:46:03.169  3308  5623 W RcsProvisioning: 	at com.google.android.apps.messaging.rcsmigration.RcsStateProvider.onMigrationComplete(SourceFile:27)
+10-31 17:46:03.169  3308  5623 W RcsProvisioning: 	at com.google.android.ims.rcsmigration.IRcsStateProvider$Stub.dispatchTransaction(SourceFile:14)
+10-31 17:46:03.169  3308  5623 W RcsProvisioning: 	at com.google.android.aidl.BaseStub.onTransact(SourceFile:18)
+10-31 17:46:03.169  3308  5623 W RcsProvisioning: 	at android.os.Binder.execTransact(Binder.java:731)
+10-31 17:46:03.169  3308  5623 D RcsProvisioning: Retrieving backup token
+10-31 17:46:03.169  3308  5623 D RcsProvisioning: Exception while getting subscriber Id. Using default
+10-31 17:46:03.173  3308  3308 V BugleRcs: kicking off RCS sending/receiving
+10-31 17:46:03.188  3308  3308 V BugleAction: no RCS because we're not registered
+10-31 17:46:03.191  3395  4492 W CarrierServices: [80] bmc.a: No config URL. RCS will be disabled!
+10-31 17:46:03.191  3308  3308 I BugleRcs: RcsAvailability ACS url: null
+10-31 17:46:03.205  2141  2498 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 17:46:03.270  3308  5623 D RcsProvisioning: No backup token found
+10-31 17:46:03.270  3308  5623 D RcsProvisioning: Clearing backup token
+10-31 17:46:03.270  3308  5623 D RcsProvisioning: Exception while getting subscriber Id. Using default
+10-31 17:46:03.272  2141  2630 I LogUtils: [Places]: ?: Couldn't find platform key file. [CONTEXT service_id=253 ]
+10-31 17:46:03.298  3308  5623 I CarrierServices: [358] RcsStateProvider.onMigrationComplete: Deleted transfers file: false
+10-31 17:46:03.299  3308  5623 W RcsProvisioning: Failed to read configuration: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:03.299  3308  5623 W RcsProvisioning: java.io.FileNotFoundException: /data/user/0/com.google.android.apps.messaging/files/rcsconfig (No such file or directory)
+10-31 17:46:03.299  3308  5623 W RcsProvisioning: 	at java.io.FileInputStream.open0(Native Method)
+10-31 17:46:03.299  3308  5623 W RcsProvisioning: 	at java.io.FileInputStream.open(FileInputStream.java:231)
+10-31 17:46:03.299  3308  5623 W RcsProvisioning: 	at java.io.FileInputStream.<init>(FileInputStream.java:165)
+10-31 17:46:03.299  3308  5623 W RcsProvisioning: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:560)
+10-31 17:46:03.299  3308  5623 W RcsProvisioning: 	at android.content.ContextWrapper.openFileInput(ContextWrapper.java:202)
+10-31 17:46:03.299  3308  5623 W RcsProvisioning: 	at ion.a(SourceFile:2)
+10-31 17:46:03.299  3308  5623 W RcsProvisioning: 	at idl.a(SourceFile:4)
+10-31 17:46:03.299  3308  5623 W RcsProvisioning: 	at idm.a(SourceFile:7)
+10-31 17:46:03.299  3308  5623 W RcsProvisioning: 	at iez.buildConferencesFileName(SourceFile:30)
+10-31 17:46:03.299  3308  5623 W RcsProvisioning: 	at com.google.android.apps.messaging.rcsmigration.RcsStateProvider.onMigrationComplete(SourceFile:48)
+10-31 17:46:03.299  3308  5623 W RcsProvisioning: 	at com.google.android.ims.rcsmigration.IRcsStateProvider$Stub.dispatchTransaction(SourceFile:14)
+10-31 17:46:03.299  3308  5623 W RcsProvisioning: 	at com.google.android.aidl.BaseStub.onTransact(SourceFile:18)
+10-31 17:46:03.299  3308  5623 W RcsProvisioning: 	at android.os.Binder.execTransact(Binder.java:731)
+10-31 17:46:03.299  3308  5623 D RcsProvisioning: Retrieving backup token
+10-31 17:46:03.299  3308  5623 D RcsProvisioning: Exception while getting subscriber Id. Using default
+10-31 17:46:03.324  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@dc2a0b9)
+10-31 17:46:03.331  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@dc2a0b9)
+10-31 17:46:03.335  5640  5654 I .apps.wallpape: Waiting for a blocking GC ProfileSaver
+10-31 17:46:03.352  5640  5654 I .apps.wallpape: WaitForGcToComplete blocked ProfileSaver on HeapTrim for 17.427ms
+10-31 17:46:03.399  3308  5623 D RcsProvisioning: No backup token found
+10-31 17:46:03.413  3395  3395 I CarrierServices: [2] aww.a: Unbinding RcsMigrationService
+10-31 17:46:03.646  2141  3467 I LogUtils: [Places]: ?: PlacesBleScanner stop() [CONTEXT service_id=253 ]
+10-31 17:46:03.675  2141  2141 I BeaconBle: Scan : No clients left, canceling alarm. [CONTEXT service_id=111 ]
+10-31 17:46:03.676  2141  2141 I BeaconBle: Scan canceled successfully. [CONTEXT service_id=111 ]
+10-31 17:46:03.686  2141  3467 I PlacesLogger: [PlaceInferenceEngine]: [anon] Changed inference mode: 1 [CONTEXT service_id=253 ]
+10-31 17:46:03.686  2141  3467 I PlacesLogger: [PlaceInferenceEngine]: [account#-29786098] Changed inference mode: 1 [CONTEXT service_id=253 ]
+10-31 17:46:03.796  2141  3467 I PlacesLogger: [PlaceInferenceEngine]: [anon] Changed inference mode: 1 [CONTEXT service_id=253 ]
+10-31 17:46:03.796  2141  3467 I PlacesLogger: [PlaceInferenceEngine]: [account#-29786098] Changed inference mode: 1 [CONTEXT service_id=253 ]
+10-31 17:46:03.815  2461  5427 I Icing   : Indexing done com.google.android.gms-apps
+10-31 17:46:04.324  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@3f02a29)
+10-31 17:46:04.325  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@3f02a29)
+10-31 17:46:04.650  2461  5687 I Vision  : Requesting optional module download of ocr.
+10-31 17:46:04.650  2461  5687 I Vision  : Exceeded maximum feature download tries for ocr
+10-31 17:46:04.651  2461  5687 W Vision  : Request of optional module download of ocr failed.
+10-31 17:46:04.654  2461  5687 I Vision  : Checking for download completion for 167460 -- ocr
+10-31 17:46:04.988  2633  3005 I Dialer  : SpamDatabaseHelper.bulkInsertNumbersToServerTable - inserted 150078 numbers into the server spam list.
+10-31 17:46:05.119  2633  3005 I Dialer  : SpamAsyncTaskUtil.onNext - updated spam list with complete list to blacklist version: 1793456985971
+10-31 17:46:05.127  2633  3005 I Dialer  : SpamAsyncTaskUtil.onCompleted - gRPC blocked list fetching completed.
+10-31 17:46:05.340  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@892aba)
+10-31 17:46:05.341  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@892aba)
+10-31 17:46:05.364  2153  2175 I ndroid.systemu: Background concurrent copying GC freed 86966(4MB) AllocSpace objects, 4(208KB) LOS objects, 49% free, 6MB/12MB, paused 722us total 117.083ms
+10-31 17:46:05.563  5581  5598 W oid.apps.photo: Suspending all threads took: 5.365ms
+10-31 17:46:06.328  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@31f561)
+10-31 17:46:06.329  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@31f561)
+10-31 17:46:07.328  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@ae6e174)
+10-31 17:46:07.333  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@ae6e174)
+10-31 17:46:08.335  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@f76bee3)
+10-31 17:46:08.371  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@f76bee3)
+10-31 17:46:08.386  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 137877(5MB) AllocSpace objects, 0(0B) LOS objects, 36% free, 10MB/16MB, paused 602us total 164.176ms
+10-31 17:46:08.687  2141  2141 I BeaconBle: Scan : No clients left, canceling alarm. [CONTEXT service_id=111 ]
+10-31 17:46:09.329  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@c0aef99)
+10-31 17:46:09.329  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@c0aef99)
+10-31 17:46:10.175  1970  1984 E memtrack: Couldn't load memtrack module
+10-31 17:46:10.175  1970  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:46:10.193  5525  5565 I EscalaE2E: Búsqueda: 7 s
+10-31 17:46:10.329  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@1e1b66a)
+10-31 17:46:10.330  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@1e1b66a)
+10-31 17:46:10.550  5525  5565 D UiDevice: Turning off screen.
+10-31 17:46:10.668  1970  1995 D HostConnection: HostConnection::get() New Host Connection established 0x79c9fc212500, tid 1995
+10-31 17:46:10.673  1970  1995 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_YUV420_888_to_NV21 ANDROID_EMU_YUV_Cache ANDROID_EMU_sync_buffer_data ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 17:46:10.679  2949  2949 I GoogleInputMethod: onFinishInput() : Dummy InputConnection bound
+10-31 17:46:10.686  2153  2153 I vol.Events: writeEvent dismiss_dialog volume_controller
+10-31 17:46:10.698  1970  1995 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasWideColorDisplay retrieved: 0
+10-31 17:46:10.705  1970  1995 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasHDRDisplay retrieved: 0
+10-31 17:46:10.712  1970  1995 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 0 0
+10-31 17:46:10.712  1970  1995 D EGL_emulation: eglCreateContext: 0x79c9fc2126e0: maj 3 min 0 rcv 3
+10-31 17:46:10.713  1596  1644 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 17:46:10.741  2949  2949 I GoogleInputMethod: onStartInput() : Dummy InputConnection bound
+10-31 17:46:10.745  1970  1995 D EGL_emulation: eglMakeCurrent: 0x79c9fc2126e0: ver 3 0 (tinfo 0x79ca1ed94820)
+10-31 17:46:10.793  1970  1995 E EGL_emulation: eglQueryContext 32c0  EGL_BAD_ATTRIBUTE
+10-31 17:46:10.793  1970  1995 E EGL_emulation: tid 1995: eglQueryContext(1902): error 0x3004 (EGL_BAD_ATTRIBUTE)
+10-31 17:46:10.794  1596  1644 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 17:46:10.828  1970  1995 D EGL_emulation: eglMakeCurrent: 0x79c9fc2126e0: ver 3 0 (tinfo 0x79ca1ed94820)
+10-31 17:46:10.839  1970  1995 D EGL_emulation: eglMakeCurrent: 0x79c9fc2126e0: ver 3 0 (tinfo 0x79ca1ed94820)
+10-31 17:46:10.875  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 185357(6MB) AllocSpace objects, 14(760KB) LOS objects, 21% free, 21MB/27MB, paused 4.514ms total 314.879ms
+10-31 17:46:11.117  1596  1644 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 17:46:11.150  1970  1995 D EGL_emulation: eglMakeCurrent: 0x79c9fc2126e0: ver 3 0 (tinfo 0x79ca1ed94820)
+10-31 17:46:11.171  2141  4894 W Nearby  : Failed attempt #3 out of 3 for RestoreDeviceName [CONTEXT service_id=49 ]
+10-31 17:46:11.171  2141  4894 W Nearby  : java.lang.IllegalStateException: BluetoothAdapter not ready yet!
+10-31 17:46:11.171  2141  4894 W Nearby  : 	at ajpy.d(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 17:46:11.171  2141  4894 W Nearby  : 	at ajpx.run(Unknown Source:0)
+10-31 17:46:11.171  2141  4894 W Nearby  : 	at bwuj.call(Unknown Source:0)
+10-31 17:46:11.171  2141  4894 W Nearby  : 	at bwuo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+10-31 17:46:11.171  2141  4894 W Nearby  : 	at bwuo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):9)
+10-31 17:46:11.171  2141  4894 W Nearby  : 	at ajpw.run(Unknown Source:0)
+10-31 17:46:11.171  2141  4894 W Nearby  : 	at java.lang.Thread.run(Thread.java:764)
+10-31 17:46:11.171  2141  4894 W Nearby  : 	at sow.run(Unknown Source:0)
+10-31 17:46:11.171  2141  4894 W Nearby  : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+10-31 17:46:11.171  2141  4894 W Nearby  : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+10-31 17:46:11.171  2141  4894 W Nearby  : 	at sux.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+10-31 17:46:11.171  2141  4894 W Nearby  : 	at java.lang.Thread.run(Thread.java:764)
+10-31 17:46:11.203  1596  1644 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 17:46:11.228  1970  1995 D EGL_emulation: eglMakeCurrent: 0x79c9fc2126e0: ver 3 0 (tinfo 0x79ca1ed94820)
+10-31 17:46:11.302  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 112267(5MB) AllocSpace objects, 97(24MB) LOS objects, 20% free, 22MB/28MB, paused 3.265ms total 200.408ms
+10-31 17:46:11.329  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@29cb887)
+10-31 17:46:11.330  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@29cb887)
+10-31 17:46:11.331  1970  1995 D EGL_emulation: eglMakeCurrent: 0x79c9fc2126e0: ver 3 0 (tinfo 0x79ca1ed94820)
+10-31 17:46:11.372  1596  1644 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 17:46:11.464  1970  1995 D EGL_emulation: eglMakeCurrent: 0x79c9fc2126e0: ver 3 0 (tinfo 0x79ca1ed94820)
+10-31 17:46:11.466  1970  1995 E Surface : getSlotFromBufferLocked: unknown buffer: 0x0
+10-31 17:46:11.466  1970  1995 E libEGL  : call to OpenGL ES API with no current context (logged once per thread)
+10-31 17:46:11.476  1970  2042 I InputReader: Reconfiguring input devices.  changes=0x00000004
+10-31 17:46:11.477  1917  1917 D SurfaceFlinger: Set power mode=0, type=0 flinger=0x759581458000
+10-31 17:46:11.489  1917  1917 D SurfaceFlinger: Finished set power mode=0, type=0
+10-31 17:46:11.493  1970  2121 I libsuspend: init_state_fd success
+10-31 17:46:11.521  1917  1928 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 17:46:11.522  1970  5734 I OpenGLRenderer: Initialized EGL, version 1.4
+10-31 17:46:11.522  1970  5734 D OpenGLRenderer: Swap behavior 1
+10-31 17:46:11.522  1970  5734 D HostConnection: HostConnection::get() New Host Connection established 0x79c9fc030420, tid 5734
+10-31 17:46:11.532  1970  5734 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_YUV420_888_to_NV21 ANDROID_EMU_YUV_Cache ANDROID_EMU_sync_buffer_data ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 17:46:11.534  1970  1970 W AlarmManager: Unrecognized alarm listener com.android.server.job.controllers.-$$Lambda$IdleController$IdlenessTracker$nTdS-lGBXcES5VWKcJFmQFgU7IU@4e8786f
+10-31 17:46:11.540  1970  5734 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 0 0
+10-31 17:46:11.540  1970  5734 D EGL_emulation: eglCreateContext: 0x79c9fc1d1ec0: maj 3 min 0 rcv 3
+10-31 17:46:11.543  1970  5734 D EGL_emulation: eglMakeCurrent: 0x79c9fc1d1ec0: ver 3 0 (tinfo 0x79ca09efafa0)
+10-31 17:46:11.545  1917  1928 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 17:46:11.549  2153  2175 I ndroid.systemu: NativeAlloc concurrent copying GC freed 58302(2MB) AllocSpace objects, 0(0B) LOS objects, 49% free, 5MB/11MB, paused 6.523ms total 86.571ms
+10-31 17:46:11.554  1970  5734 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 1 2
+10-31 17:46:11.622  2949  2949 I DeviceStatusMonitor: onReceive() : Action = android.intent.action.SCREEN_ON
+10-31 17:46:11.689  2153  2153 I vol.Events: writeEvent dismiss_dialog screen_off
+10-31 17:46:11.708  2949  2949 I DeviceStatusMonitor: onReceive() : Action = android.intent.action.SCREEN_OFF
+10-31 17:46:11.713  2949  2949 I GoogleInputMethod: onReceive() : Action = android.intent.action.SCREEN_OFF
+10-31 17:46:11.786  5525  5525 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@9e2ae2 in: PAUSED
+10-31 17:46:11.786  5525  5525 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=dev.rescata.app.MainActivity@9e2ae2
+10-31 17:46:11.826  1918  1918 I Zygote  : Process 4927 exited due to signal (9)
+10-31 17:46:11.827  1970  1988 W libprocessgroup: kill(-4927, 9) failed: No such process
+10-31 17:46:11.828  1970  1988 I libprocessgroup: Successfully killed process cgroup uid 10054 pid 4927 in 0ms
+10-31 17:46:11.840  1970  1980 I system_server: NativeAlloc concurrent copying GC freed 21311(1259KB) AllocSpace objects, 8(256KB) LOS objects, 38% free, 9MB/15MB, paused 1.392ms total 332.288ms
+10-31 17:46:11.853  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 16138(1066KB) AllocSpace objects, 28(7MB) LOS objects, 17% free, 27MB/33MB, paused 2.239ms total 317.420ms
+10-31 17:46:11.872  5525  5668 D EGL_emulation: eglMakeCurrent: 0x79ca1ec43540: ver 3 0 (tinfo 0x79ca1ec0de60)
+10-31 17:46:11.874  5525  5525 D LifecycleMonitor: Lifecycle status change: dev.rescata.app.MainActivity@9e2ae2 in: STOPPED
+10-31 17:46:11.874  5525  5525 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=dev.rescata.app.MainActivity@9e2ae2
+10-31 17:46:11.874  1918  1918 I Zygote  : Process 4242 exited due to signal (9)
+10-31 17:46:11.875  1970  1988 W libprocessgroup: kill(-4242, 9) failed: No such process
+10-31 17:46:11.875  1970  1988 I libprocessgroup: Successfully killed process cgroup uid 10085 pid 4242 in 0ms
+10-31 17:46:11.903  3308  3350 V Bugle   : Reclaiming memory.
+10-31 17:46:11.909  2907  2907 I MemoryTrimmer: Trimming objects from memory, since app is in the background.
+10-31 17:46:12.329  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@b47db9d)
+10-31 17:46:12.330  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@b47db9d)
+10-31 17:46:12.775  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 7910(742KB) AllocSpace objects, 68(17MB) LOS objects, 17% free, 27MB/33MB, paused 560us total 103.942ms
+10-31 17:46:13.330  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@5d334f4)
+10-31 17:46:13.330  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@5d334f4)
+10-31 17:46:13.790  1970  1984 E memtrack: Couldn't load memtrack module
+10-31 17:46:13.790  1970  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:46:14.058  1970  2868 V Binder  : BinderProxy map growth! bucket size = 20 total = 2330
+10-31 17:46:14.070  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 5191(421KB) AllocSpace objects, 30(7MB) LOS objects, 15% free, 33MB/39MB, paused 446us total 104.057ms
+10-31 17:46:14.095  2461  3531 W ChimeraConfigurator: Error syncing flags: qoq: COMMIT_TIMEOUT
+10-31 17:46:14.096  2461  3531 I ChmraDebugLogger: [79] COMMIT_TIMEOUT
+10-31 17:46:14.103  5581  5744 W native  : commandlineflags.cc:1511 Ignoring RegisterValidateFunction() for flag pointer 0xcf02a914: no flag found at that address
+10-31 17:46:14.104  2461  3531 I ChmraDebugLogger: [52] null
+10-31 17:46:14.126  2461  3531 I ChimeraConfigService: Scheduling checkin for one-off execution between [3300,43200] seconds from now (1793468774126)
+10-31 17:46:14.330  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@1210350)
+10-31 17:46:14.330  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@1210350)
+10-31 17:46:15.105  1970  5066 D WificondControl: Scan result ready event
+10-31 17:46:15.174  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 8096(672KB) AllocSpace objects, 56(14MB) LOS objects, 12% free, 41MB/47MB, paused 429us total 108.414ms
+10-31 17:46:15.330  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@9ee098f)
+10-31 17:46:15.330  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@9ee098f)
+10-31 17:46:16.226  1970  4891 V Binder  : BinderProxy map growth! bucket size = 30 total = 3791
+10-31 17:46:16.330  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@92001b0)
+10-31 17:46:16.330  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@92001b0)
+10-31 17:46:16.661  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 7590(760KB) AllocSpace objects, 71(18MB) LOS objects, 12% free, 42MB/48MB, paused 530us total 120.041ms
+10-31 17:46:16.990  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 10454(871KB) AllocSpace objects, 81(20MB) LOS objects, 12% free, 41MB/47MB, paused 624us total 100.977ms
+10-31 17:46:17.330  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8201084)
+10-31 17:46:17.330  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8201084)
+10-31 17:46:17.592  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 9768(793KB) AllocSpace objects, 67(17MB) LOS objects, 12% free, 40MB/46MB, paused 500us total 104.373ms
+10-31 17:46:18.228  1970  1984 E memtrack: Couldn't load memtrack module
+10-31 17:46:18.228  1970  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:46:18.330  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@966b46b)
+10-31 17:46:18.331  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@966b46b)
+10-31 17:46:18.995  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 9934(897KB) AllocSpace objects, 85(21MB) LOS objects, 13% free, 38MB/44MB, paused 506us total 144.153ms
+10-31 17:46:19.330  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8069cf2)
+10-31 17:46:19.331  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8069cf2)
+10-31 17:46:19.424  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 7979(814KB) AllocSpace objects, 78(19MB) LOS objects, 12% free, 42MB/48MB, paused 1.278ms total 121.446ms
+10-31 17:46:19.585  1970  2682 W JavaBinder: Unexpectedly many live BinderProxies: 5000
+10-31 17:46:20.059  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 9447(932KB) AllocSpace objects, 91(23MB) LOS objects, 12% free, 41MB/47MB, paused 486us total 127.750ms
+10-31 17:46:20.223  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 13708(1209KB) AllocSpace objects, 113(28MB) LOS objects, 12% free, 41MB/47MB, paused 486us total 133.426ms
+10-31 17:46:20.225  1970  1984 E memtrack: Couldn't load memtrack module
+10-31 17:46:20.225  1970  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:46:20.331  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@fe09d8)
+10-31 17:46:20.331  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@fe09d8)
+10-31 17:46:20.848  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 7753(768KB) AllocSpace objects, 76(19MB) LOS objects, 13% free, 38MB/44MB, paused 484us total 105.022ms
+10-31 17:46:21.293  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 8262(844KB) AllocSpace objects, 79(20MB) LOS objects, 12% free, 41MB/47MB, paused 486us total 107.003ms
+10-31 17:46:21.318  1970  1980 I system_server: Background concurrent copying GC freed 121770(4MB) AllocSpace objects, 3(48KB) LOS objects, 31% free, 12MB/18MB, paused 515us total 140.291ms
+10-31 17:46:21.331  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@ce97b51)
+10-31 17:46:21.331  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@ce97b51)
+10-31 17:46:21.603  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 12063(1032KB) AllocSpace objects, 98(24MB) LOS objects, 12% free, 40MB/46MB, paused 506us total 101.854ms
+10-31 17:46:21.614  1970  1984 E memtrack: Couldn't load memtrack module
+10-31 17:46:21.614  1970  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:46:21.860  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 8991(883KB) AllocSpace objects, 88(22MB) LOS objects, 11% free, 48MB/54MB, paused 788us total 126.532ms
+10-31 17:46:22.184  1970  1984 E memtrack: Couldn't load memtrack module
+10-31 17:46:22.184  1970  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:46:22.250  1970  1984 E memtrack: Couldn't load memtrack module
+10-31 17:46:22.250  1970  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:46:22.262  1970  1984 E memtrack: Couldn't load memtrack module
+10-31 17:46:22.263  1970  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:46:22.331  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@c2afe73)
+10-31 17:46:22.331  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@c2afe73)
+10-31 17:46:22.471  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 8283(739KB) AllocSpace objects, 70(17MB) LOS objects, 12% free, 42MB/48MB, paused 547us total 119.354ms
+10-31 17:46:22.652  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 11052(1010KB) AllocSpace objects, 98(27MB) LOS objects, 11% free, 48MB/54MB, paused 489us total 137.537ms
+10-31 17:46:22.788  1970  1984 E memtrack: Couldn't load memtrack module
+10-31 17:46:22.788  1970  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:46:23.194  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 9110(805KB) AllocSpace objects, 74(18MB) LOS objects, 10% free, 48MB/54MB, paused 505us total 122.664ms
+10-31 17:46:23.313  1970  2682 E memtrack: Couldn't load memtrack module
+10-31 17:46:23.314  1970  2682 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:46:23.331  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@5a78846)
+10-31 17:46:23.331  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@5a78846)
+10-31 17:46:23.426  1970  1984 E memtrack: Couldn't load memtrack module
+10-31 17:46:23.426  1970  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:46:23.661  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 9477(777KB) AllocSpace objects, 70(17MB) LOS objects, 12% free, 42MB/48MB, paused 564us total 101.410ms
+10-31 17:46:23.836  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 9926(987KB) AllocSpace objects, 95(24MB) LOS objects, 12% free, 42MB/48MB, paused 484us total 144.139ms
+10-31 17:46:24.027  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 9873(955KB) AllocSpace objects, 96(24MB) LOS objects, 11% free, 45MB/51MB, paused 483us total 147.252ms
+10-31 17:46:24.215  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 12789(1126KB) AllocSpace objects, 109(27MB) LOS objects, 12% free, 43MB/49MB, paused 516us total 121.984ms
+10-31 17:46:24.331  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@15e703e)
+10-31 17:46:24.331  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@15e703e)
+10-31 17:46:24.371  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 12067(1055KB) AllocSpace objects, 100(25MB) LOS objects, 13% free, 40MB/46MB, paused 521us total 124.212ms
+10-31 17:46:24.617  1970  2868 V Binder  : BinderProxy map growth! bucket size = 40 total = 6606
+10-31 17:46:24.732  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 6894(696KB) AllocSpace objects, 67(17MB) LOS objects, 14% free, 35MB/41MB, paused 486us total 104.054ms
+10-31 17:46:25.044  1918  1918 I Zygote  : Process 5087 exited due to signal (9)
+10-31 17:46:25.045  1970  1988 W libprocessgroup: kill(-5087, 9) failed: No such process
+10-31 17:46:25.045  1970  1988 I libprocessgroup: Successfully killed process cgroup uid 10032 pid 5087 in 0ms
+10-31 17:46:25.195  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 9413(785KB) AllocSpace objects, 72(18MB) LOS objects, 11% free, 46MB/52MB, paused 1.128ms total 116.909ms
+10-31 17:46:25.331  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@9e0106e)
+10-31 17:46:25.332  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@9e0106e)
+10-31 17:46:25.340  1970  4781 E BpBinder: Too many binder proxy objects sent to uid 1000 from uid 10014 (6000 proxies held)
+10-31 17:46:25.340  1970  4781 E Parcel  : Reading a NULL string not supported here.
+10-31 17:46:26.201  1970  4781 I chatty  : uid=1000(system) Binder:1970_1A identical 27 lines
+10-31 17:46:26.233  1970  4781 E Parcel  : Reading a NULL string not supported here.
+10-31 17:46:26.264  1917  2039 W         : reached BBinder::getInterfaceDescriptor (this=0x759581429c20)
+10-31 17:46:26.282  1970  4781 E Parcel  : Reading a NULL string not supported here.
+10-31 17:46:26.287  1970  4781 E Parcel  : Reading a NULL string not supported here.
+10-31 17:46:26.331  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@6275f21)
+10-31 17:46:26.331  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@6275f21)
+10-31 17:46:26.346  1970  4781 E Parcel  : Reading a NULL string not supported here.
+10-31 17:46:26.396  1970  4781 I chatty  : uid=1000(system) Binder:1970_1A identical 1 line
+10-31 17:46:26.426  1970  4781 E Parcel  : Reading a NULL string not supported here.
+10-31 17:46:26.466  1970  4781 V Binder  : BinderProxy descriptor histogram (top ten):
+10-31 17:46:26.469  1970  4781 V Binder  :  #1: android.app.IServiceConnection x5338
+10-31 17:46:26.469  1970  4781 V Binder  :  #2: android.database.IContentObserver x950
+10-31 17:46:26.469  1970  4781 V Binder  :  #3: android.content.IIntentReceiver x260
+10-31 17:46:26.469  1970  4781 V Binder  :  #4: android.content.IContentProvider x79
+10-31 17:46:26.469  1970  4781 V Binder  :  #5:  x47
+10-31 17:46:26.469  1970  4781 V Binder  :  #6: android.app.IApplicationThread x29
+10-31 17:46:26.469  1970  4781 V Binder  :  #7: android.hardware.display.IDisplayManagerCallback x29
+10-31 17:46:26.469  1970  4781 V Binder  :  #8: com.google.android.gms.common.internal.IGmsServiceBroker x19
+10-31 17:46:26.469  1970  4781 V Binder  :  #9: com.android.internal.os.IResultReceiver x12
+10-31 17:46:26.469  1970  4781 V Binder  :  #10: com.android.internal.telephony.IOnSubscriptionsChangedListener x12
+10-31 17:46:26.478  1970  2133 W system_server: Long monitor contention with owner Binder:1970_1B (4891) at int com.android.server.am.ActivityManagerService.bindService(android.app.IApplicationThread, android.os.IBinder, android.content.Intent, java.lang.String, android.app.IServiceConnection, int, java.lang.String, int)(ActivityManagerService.java:20516) waiters=0 in void com.android.server.am.ActivityManagerService.serviceDoneExecuting(android.os.IBinder, int, int, int) for 1.130s
+10-31 17:46:26.484  1970  1988 W libprocessgroup: kill(-2749, 9) failed: No such process
+10-31 17:46:26.524  1970  1988 W libprocessgroup: kill(-2749, 9) failed: No such process
+10-31 17:46:26.544  1918  1918 I Zygote  : Process 2749 exited due to signal (9)
+10-31 17:46:26.565  1970  1988 W libprocessgroup: kill(-2749, 9) failed: No such process
+10-31 17:46:26.565  1970  1988 I libprocessgroup: Successfully killed process cgroup uid 10014 pid 2749 in 81ms
+10-31 17:46:26.566  1970  1984 E memtrack: Couldn't load memtrack module
+10-31 17:46:26.566  1970  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-31 17:46:26.565  1970  1988 W libprocessgroup: kill(-5581, 9) failed: No such process
+10-31 17:46:26.604  5783  5783 W d.process.medi: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 17:46:26.610  1970  1988 W libprocessgroup: kill(-5581, 9) failed: No such process
+10-31 17:46:26.624  1919  1919 I Zygote  : Process 5581 exited due to signal (9)
+10-31 17:46:26.654  1970  1988 W libprocessgroup: kill(-5581, 9) failed: No such process
+10-31 17:46:26.654  1970  1988 I libprocessgroup: Successfully killed process cgroup uid 10064 pid 5581 in 88ms
+10-31 17:46:26.789  1970  1970 W system_server: Long monitor contention with owner Binder:1970_1C (5059) at void com.android.server.am.ActivityManagerService.attachApplication(android.app.IApplicationThread, long)(ActivityManagerService.java:7936) waiters=3 in boolean com.android.server.am.ActivityManagerService.unbindService(android.app.IServiceConnection) for 165ms
+10-31 17:46:26.823  5783  5783 I d.process.medi: The ClassLoaderContext is a special shared library.
+10-31 17:46:26.852  5783  5783 I d.process.medi: The ClassLoaderContext is a special shared library.
+10-31 17:46:26.919  5525  5718 I dev.rescata.ap: IncrementDisableThreadFlip blocked for 32.008ms
+10-31 17:46:27.026  1970  2131 E JavaBinder: !!! FAILED BINDER TRANSACTION !!!  (parcel size = 264)
+10-31 17:46:27.042  1970  2131 I chatty  : uid=1000(system) Binder:1970_3 identical 2 lines
+10-31 17:46:27.049  1970  2131 E JavaBinder: !!! FAILED BINDER TRANSACTION !!!  (parcel size = 264)
+10-31 17:46:27.058  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 6724(414KB) AllocSpace objects, 25(6MB) LOS objects, 17% free, 27MB/33MB, paused 471us total 176.512ms
+10-31 17:46:27.189  1970  2131 E JavaBinder: !!! FAILED BINDER TRANSACTION !!!  (parcel size = 264)
+10-31 17:46:27.216  1970  1982 W system_server: Long monitor contention with owner Binder:1970_3 (2131) at void com.android.server.am.ActivityManagerService.publishService(android.os.IBinder, android.content.Intent, android.os.IBinder)(ActivityManagerService.java:20534) waiters=1 in int com.android.server.am.ActivityManagerService.bindService(android.app.IApplicationThread, android.os.IBinder, android.content.Intent, java.lang.String, android.app.IServiceConnection, int, java.lang.String, int) for 259ms
+10-31 17:46:27.331  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@1226b76)
+10-31 17:46:27.332  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@1226b76)
+10-31 17:46:27.490  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 11309(612KB) AllocSpace objects, 33(8MB) LOS objects, 10% free, 52MB/58MB, paused 589us total 203.754ms
+10-31 17:46:27.665  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 13996(1350KB) AllocSpace objects, 128(32MB) LOS objects, 12% free, 43MB/49MB, paused 515us total 147.806ms
+10-31 17:46:28.140  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 8217(721KB) AllocSpace objects, 69(17MB) LOS objects, 8% free, 61MB/67MB, paused 431us total 203.244ms
+10-31 17:46:28.182  1970  1980 I system_server: Background concurrent copying GC freed 133427(4MB) AllocSpace objects, 4(96KB) LOS objects, 30% free, 13MB/19MB, paused 487us total 128.701ms
+10-31 17:46:28.192  1970  1977 I BpBinder: Limit reached bit reset for uid 1000 (fewer than 10014 proxies from uid 5500 held)
+10-31 17:46:28.322  5525  5537 I dev.rescata.ap: NativeAlloc concurrent copying GC freed 17378(1499KB) AllocSpace objects, 147(37MB) LOS objects, 10% free, 53MB/59MB, paused 507us total 167.034ms
+10-31 17:46:28.332  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@d84b7a3)
+10-31 17:46:28.332  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@d84b7a3)
+10-31 17:46:28.427  5819  5819 W oid.apps.photo: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 17:46:28.490  5819  5819 I oid.apps.photo: The ClassLoaderContext is a special shared library.
+10-31 17:46:28.578  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 14344(1310KB) AllocSpace objects, 128(32MB) LOS objects, 9% free, 58MB/64MB, paused 539us total 226.785ms
+10-31 17:46:28.737  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 16723(1457KB) AllocSpace objects, 146(37MB) LOS objects, 10% free, 51MB/57MB, paused 613us total 120.842ms
+10-31 17:46:28.949  5819  5824 I oid.apps.photo: Method exceeds compiler instruction limit: 17312 in void gen_binder.root.RootModule$Generated.a(android.content.Context, java.lang.Class, java.lang.Object, aeac)
+10-31 17:46:28.999  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 14712(1244KB) AllocSpace objects, 122(30MB) LOS objects, 9% free, 57MB/63MB, paused 532us total 244.139ms
+10-31 17:46:29.194  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 17376(1476KB) AllocSpace objects, 142(36MB) LOS objects, 13% free, 39MB/45MB, paused 471us total 154.678ms
+10-31 17:46:29.332  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@d7535db)
+10-31 17:46:29.333  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@d7535db)
+10-31 17:46:29.340  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 9433(831KB) AllocSpace objects, 74(18MB) LOS objects, 13% free, 37MB/43MB, paused 702us total 109.709ms
+10-31 17:46:29.514  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 8461(722KB) AllocSpace objects, 64(16MB) LOS objects, 12% free, 43MB/49MB, paused 454us total 138.457ms
+10-31 17:46:29.704  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 10381(930KB) AllocSpace objects, 88(22MB) LOS objects, 13% free, 40MB/46MB, paused 431us total 143.124ms
+10-31 17:46:29.939  5525  5537 I dev.rescata.ap: Background concurrent copying GC freed 9251(800KB) AllocSpace objects, 75(19MB) LOS objects, 10% free, 50MB/56MB, paused 429us total 193.521ms
+10-31 17:46:30.022  1970  2678 E BpBinder: Too many binder proxy objects sent to uid 1000 from uid 10086 (6000 proxies held)
+10-31 17:46:30.023  1970  2678 E Parcel  : Reading a NULL string not supported here.
+10-31 17:46:30.057  1970  2678 I chatty  : uid=1000(system) Binder:1970_A identical 19 lines
+10-31 17:46:30.071  1970  2678 E Parcel  : Reading a NULL string not supported here.
+10-31 17:46:30.080  1917  2039 W         : reached BBinder::getInterfaceDescriptor (this=0x759581429c20)
+10-31 17:46:30.083  1970  2678 E Parcel  : Reading a NULL string not supported here.
+10-31 17:46:30.097  1970  2678 I chatty  : uid=1000(system) Binder:1970_A identical 4 lines
+10-31 17:46:30.100  1970  2678 E Parcel  : Reading a NULL string not supported here.
+10-31 17:46:30.105  1970  2678 V Binder  : BinderProxy descriptor histogram (top ten):
+10-31 17:46:30.105  1970  2678 V Binder  :  #1: android.app.IServiceConnection x6019
+10-31 17:46:30.105  1970  2678 V Binder  :  #2: android.database.IContentObserver x416
+10-31 17:46:30.105  1970  2678 V Binder  :  #3: android.content.IIntentReceiver x263
+10-31 17:46:30.105  1970  2678 V Binder  :  #4: android.content.IContentProvider x80
+10-31 17:46:30.105  1970  2678 V Binder  :  #5: <cleared weak-ref> x74
+10-31 17:46:30.105  1970  2678 V Binder  :  #6:  x32
+10-31 17:46:30.105  1970  2678 V Binder  :  #7: android.hardware.display.IDisplayManagerCallback x30
+10-31 17:46:30.105  1970  2678 V Binder  :  #8: android.app.IApplicationThread x29
+10-31 17:46:30.105  1970  2678 V Binder  :  #9: com.google.android.gms.common.internal.IGmsServiceBroker x19
+10-31 17:46:30.105  1970  2678 V Binder  :  #10: com.android.internal.telephony.IOnSubscriptionsChangedListener x12
+10-31 17:46:30.108  1970  1988 W libprocessgroup: kill(-5525, 9) failed: No such process
+10-31 17:46:30.146  1970  5860 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+10-31 17:46:30.146  1970  5860 W Binder  : java.lang.Throwable
+10-31 17:46:30.146  1970  5860 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:1114)
+10-31 17:46:30.146  1970  5860 W Binder  : 	at android.app.IInstrumentationWatcher$Stub$Proxy.instrumentationFinished(IInstrumentationWatcher.java:164)
+10-31 17:46:30.146  1970  5860 W Binder  : 	at com.android.server.am.InstrumentationReporter$MyThread.run(InstrumentationReporter.java:86)
+10-31 17:46:30.147  1970  1988 W libprocessgroup: kill(-5525, 9) failed: No such process
+10-31 17:46:30.149  5514  5514 D AndroidRuntime: Shutting down VM
+10-31 17:46:30.155  1918  1918 I Zygote  : Process 5525 exited due to signal (9)
+10-31 17:46:30.193  1970  1988 W libprocessgroup: kill(-5525, 9) failed: No such process
+10-31 17:46:30.193  1970  1988 I libprocessgroup: Successfully killed process cgroup uid 10086 pid 5525 in 84ms
+10-31 17:46:30.215  1596  1644 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 17:46:30.220  1596  1644 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 17:46:30.220  1596  1596 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 17:46:30.230  1970  4781 W BinderNative: Uncaught exception from death notification
+10-31 17:46:30.230  1970  4781 W BinderNative: java.lang.NullPointerException: Attempt to read from field 'android.accessibilityservice.IAccessibilityServiceClient com.android.server.accessibility.AbstractAccessibilityServiceConnection.mServiceInterface' on a null object reference
+10-31 17:46:30.230  1970  4781 W BinderNative: 	at com.android.server.accessibility.UiAutomationManager.destroyUiAutomationService(UiAutomationManager.java:179)
+10-31 17:46:30.230  1970  4781 W BinderNative: 	at com.android.server.accessibility.UiAutomationManager.access$200(UiAutomationManager.java:41)
+10-31 17:46:30.230  1970  4781 W BinderNative: 	at com.android.server.accessibility.UiAutomationManager$UiAutomationService.binderDied(UiAutomationManager.java:230)
+10-31 17:46:30.230  1970  4781 W BinderNative: 	at android.os.BinderProxy.sendDeathNotice(Binder.java:1193)
+10-31 17:46:30.238  2907  3175 D HostConnection: HostConnection::get() New Host Connection established 0xcd7069b0, tid 3175
+10-31 17:46:30.238  2907  3175 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_YUV420_888_to_NV21 ANDROID_EMU_YUV_Cache ANDROID_EMU_sync_buffer_data ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 17:46:30.240  2907  3175 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasWideColorDisplay retrieved: 0
+10-31 17:46:30.240  2907  3175 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasHDRDisplay retrieved: 0
+10-31 17:46:30.242  2907  3175 I OpenGLRenderer: Initialized EGL, version 1.4
+10-31 17:46:30.243  2907  3175 D OpenGLRenderer: Swap behavior 1
+10-31 17:46:30.247  1917  1917 D SurfaceFlinger: duplicate layer name: changing com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity to com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#1
+10-31 17:46:30.251  1596  1596 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 17:46:30.254  1596  1596 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 17:46:30.255  1596  1644 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10371072
+10-31 17:46:30.255  2907  3175 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 0 0
+10-31 17:46:30.255  2907  3175 D EGL_emulation: eglCreateContext: 0xe4c862c0: maj 3 min 0 rcv 3
+10-31 17:46:30.256  2907  3175 D EGL_emulation: eglMakeCurrent: 0xe4c862c0: ver 3 0 (tinfo 0xe4c83ac0)
+10-31 17:46:30.263  1970  5734 I OpenGLRenderer: Initialized EGL, version 1.4
+10-31 17:46:30.263  1970  5734 D OpenGLRenderer: Swap behavior 1
+10-31 17:46:30.264  1970  5734 D HostConnection: HostConnection::get() New Host Connection established 0x79c9fc030420, tid 5734
+10-31 17:46:30.264  1970  5734 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_YUV420_888_to_NV21 ANDROID_EMU_YUV_Cache ANDROID_EMU_sync_buffer_data ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+10-31 17:46:30.265  1970  5734 D eglCodecCommon: setVertexArrayObject: set vao to 0 (0) 0 0
+10-31 17:46:30.265  1970  5734 D EGL_emulation: eglCreateContext: 0x79c9fc1d1ec0: maj 3 min 0 rcv 3
+10-31 17:46:30.265  1970  5734 D EGL_emulation: eglMakeCurrent: 0x79c9fc1d1ec0: ver 3 0 (tinfo 0x79ca09efafa0)
+10-31 17:46:30.276  1596  1644 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 2592768
+10-31 17:46:30.281  2890  3037 D EGL_emulation: eglMakeCurrent: 0x79ca0f9ee7c0: ver 3 0 (tinfo 0x79ca0f8ba780)
+10-31 17:46:30.293  2890  3037 D EGL_emulation: eglMakeCurrent: 0x79ca0f9ee7c0: ver 3 0 (tinfo 0x79ca0f8ba780)
+10-31 17:46:30.303  5783  5806 E MediaScannerService: Exception in handleMessage
+10-31 17:46:30.303  5783  5806 E MediaScannerService: android.os.DeadObjectException
+10-31 17:46:30.303  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transactNative(Native Method)
+10-31 17:46:30.303  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transact(Binder.java:1127)
+10-31 17:46:30.303  5783  5806 E MediaScannerService: 	at android.media.IMediaScannerListener$Stub$Proxy.scanCompleted(IMediaScannerListener.java:104)
+10-31 17:46:30.303  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:226)
+10-31 17:46:30.303  5783  5806 E MediaScannerService: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 17:46:30.303  5783  5806 E MediaScannerService: 	at android.os.Looper.loop(Looper.java:193)
+10-31 17:46:30.303  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 17:46:30.303  5783  5806 E MediaScannerService: 	at java.lang.Thread.run(Thread.java:764)
+10-31 17:46:30.316  2949  2949 I GoogleInputMethod: onFinishInput() : Dummy InputConnection bound
+10-31 17:46:30.317  2949  2949 I GoogleInputMethod: onStartInput() : Dummy InputConnection bound
+10-31 17:46:30.321  2907  3175 D EGL_emulation: eglMakeCurrent: 0xe4c862c0: ver 3 0 (tinfo 0xe4c83ac0)
+10-31 17:46:30.334  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@56f8abd)
+10-31 17:46:30.336  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@56f8abd)
+10-31 17:46:30.392  1970  1977 I BpBinder: Limit reached bit reset for uid 1000 (fewer than 10086 proxies from uid 5500 held)
+10-31 17:46:30.428  5783  5806 E MediaScannerService: Exception in handleMessage
+10-31 17:46:30.428  5783  5806 E MediaScannerService: android.os.DeadObjectException
+10-31 17:46:30.428  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transactNative(Native Method)
+10-31 17:46:30.428  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transact(Binder.java:1127)
+10-31 17:46:30.428  5783  5806 E MediaScannerService: 	at android.media.IMediaScannerListener$Stub$Proxy.scanCompleted(IMediaScannerListener.java:104)
+10-31 17:46:30.428  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:226)
+10-31 17:46:30.428  5783  5806 E MediaScannerService: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 17:46:30.428  5783  5806 E MediaScannerService: 	at android.os.Looper.loop(Looper.java:193)
+10-31 17:46:30.428  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 17:46:30.428  5783  5806 E MediaScannerService: 	at java.lang.Thread.run(Thread.java:764)
+10-31 17:46:30.870  5783  5806 I chatty  : uid=10014(com.android.providers.media) MediaScannerSer identical 49 lines
+10-31 17:46:30.878  5783  5806 E MediaScannerService: Exception in handleMessage
+10-31 17:46:30.878  5783  5806 E MediaScannerService: android.os.DeadObjectException
+10-31 17:46:30.878  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transactNative(Native Method)
+10-31 17:46:30.878  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transact(Binder.java:1127)
+10-31 17:46:30.878  5783  5806 E MediaScannerService: 	at android.media.IMediaScannerListener$Stub$Proxy.scanCompleted(IMediaScannerListener.java:104)
+10-31 17:46:30.878  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:226)
+10-31 17:46:30.878  5783  5806 E MediaScannerService: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 17:46:30.878  5783  5806 E MediaScannerService: 	at android.os.Looper.loop(Looper.java:193)
+10-31 17:46:30.878  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 17:46:30.878  5783  5806 E MediaScannerService: 	at java.lang.Thread.run(Thread.java:764)
+10-31 17:46:30.883  2461  5881 I Vision  : Requesting optional module download of ocr.
+10-31 17:46:30.898  2461  5881 I Vision  : Checking for download completion for 193703 -- ocr
+10-31 17:46:30.901  2461  5883 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+10-31 17:46:30.921  5783  5806 E MediaScannerService: Exception in handleMessage
+10-31 17:46:30.921  5783  5806 E MediaScannerService: android.os.DeadObjectException
+10-31 17:46:30.921  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transactNative(Native Method)
+10-31 17:46:30.921  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transact(Binder.java:1127)
+10-31 17:46:30.921  5783  5806 E MediaScannerService: 	at android.media.IMediaScannerListener$Stub$Proxy.scanCompleted(IMediaScannerListener.java:104)
+10-31 17:46:30.921  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:226)
+10-31 17:46:30.921  5783  5806 E MediaScannerService: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 17:46:30.921  5783  5806 E MediaScannerService: 	at android.os.Looper.loop(Looper.java:193)
+10-31 17:46:30.921  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 17:46:30.921  5783  5806 E MediaScannerService: 	at java.lang.Thread.run(Thread.java:764)
+10-31 17:46:31.312  5783  5806 I chatty  : uid=10014(com.android.providers.media) MediaScannerSer identical 44 lines
+10-31 17:46:31.325  5783  5806 E MediaScannerService: Exception in handleMessage
+10-31 17:46:31.325  5783  5806 E MediaScannerService: android.os.DeadObjectException
+10-31 17:46:31.325  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transactNative(Native Method)
+10-31 17:46:31.325  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transact(Binder.java:1127)
+10-31 17:46:31.325  5783  5806 E MediaScannerService: 	at android.media.IMediaScannerListener$Stub$Proxy.scanCompleted(IMediaScannerListener.java:104)
+10-31 17:46:31.325  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:226)
+10-31 17:46:31.325  5783  5806 E MediaScannerService: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 17:46:31.325  5783  5806 E MediaScannerService: 	at android.os.Looper.loop(Looper.java:193)
+10-31 17:46:31.325  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 17:46:31.325  5783  5806 E MediaScannerService: 	at java.lang.Thread.run(Thread.java:764)
+10-31 17:46:31.332  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@71ab2ae)
+10-31 17:46:31.332  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@71ab2ae)
+10-31 17:46:31.341  5783  5806 E MediaScannerService: Exception in handleMessage
+10-31 17:46:31.341  5783  5806 E MediaScannerService: android.os.DeadObjectException
+10-31 17:46:31.341  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transactNative(Native Method)
+10-31 17:46:31.341  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transact(Binder.java:1127)
+10-31 17:46:31.341  5783  5806 E MediaScannerService: 	at android.media.IMediaScannerListener$Stub$Proxy.scanCompleted(IMediaScannerListener.java:104)
+10-31 17:46:31.341  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:226)
+10-31 17:46:31.341  5783  5806 E MediaScannerService: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 17:46:31.341  5783  5806 E MediaScannerService: 	at android.os.Looper.loop(Looper.java:193)
+10-31 17:46:31.341  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 17:46:31.341  5783  5806 E MediaScannerService: 	at java.lang.Thread.run(Thread.java:764)
+10-31 17:46:32.320  5783  5806 I chatty  : uid=10014(com.android.providers.media) MediaScannerSer identical 107 lines
+10-31 17:46:32.330  5783  5806 E MediaScannerService: Exception in handleMessage
+10-31 17:46:32.330  5783  5806 E MediaScannerService: android.os.DeadObjectException
+10-31 17:46:32.330  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transactNative(Native Method)
+10-31 17:46:32.330  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transact(Binder.java:1127)
+10-31 17:46:32.330  5783  5806 E MediaScannerService: 	at android.media.IMediaScannerListener$Stub$Proxy.scanCompleted(IMediaScannerListener.java:104)
+10-31 17:46:32.330  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:226)
+10-31 17:46:32.330  5783  5806 E MediaScannerService: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 17:46:32.330  5783  5806 E MediaScannerService: 	at android.os.Looper.loop(Looper.java:193)
+10-31 17:46:32.330  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 17:46:32.330  5783  5806 E MediaScannerService: 	at java.lang.Thread.run(Thread.java:764)
+10-31 17:46:32.332  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@82abeed)
+10-31 17:46:32.332  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@82abeed)
+10-31 17:46:32.337  5783  5806 E MediaScannerService: Exception in handleMessage
+10-31 17:46:32.337  5783  5806 E MediaScannerService: android.os.DeadObjectException
+10-31 17:46:32.337  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transactNative(Native Method)
+10-31 17:46:32.337  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transact(Binder.java:1127)
+10-31 17:46:32.337  5783  5806 E MediaScannerService: 	at android.media.IMediaScannerListener$Stub$Proxy.scanCompleted(IMediaScannerListener.java:104)
+10-31 17:46:32.337  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:226)
+10-31 17:46:32.337  5783  5806 E MediaScannerService: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 17:46:32.337  5783  5806 E MediaScannerService: 	at android.os.Looper.loop(Looper.java:193)
+10-31 17:46:32.337  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 17:46:32.337  5783  5806 E MediaScannerService: 	at java.lang.Thread.run(Thread.java:764)
+10-31 17:46:32.840  5783  5806 I chatty  : uid=10014(com.android.providers.media) MediaScannerSer identical 52 lines
+10-31 17:46:32.848  5783  5806 E MediaScannerService: Exception in handleMessage
+10-31 17:46:32.848  5783  5806 E MediaScannerService: android.os.DeadObjectException
+10-31 17:46:32.848  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transactNative(Native Method)
+10-31 17:46:32.848  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transact(Binder.java:1127)
+10-31 17:46:32.848  5783  5806 E MediaScannerService: 	at android.media.IMediaScannerListener$Stub$Proxy.scanCompleted(IMediaScannerListener.java:104)
+10-31 17:46:32.848  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:226)
+10-31 17:46:32.848  5783  5806 E MediaScannerService: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 17:46:32.848  5783  5806 E MediaScannerService: 	at android.os.Looper.loop(Looper.java:193)
+10-31 17:46:32.848  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 17:46:32.848  5783  5806 E MediaScannerService: 	at java.lang.Thread.run(Thread.java:764)
+10-31 17:46:32.855  2907  3277 W GmsLocationProvider: Error removing location updates: 16
+10-31 17:46:32.860  5783  5806 E MediaScannerService: Exception in handleMessage
+10-31 17:46:32.860  5783  5806 E MediaScannerService: android.os.DeadObjectException
+10-31 17:46:32.860  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transactNative(Native Method)
+10-31 17:46:32.860  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transact(Binder.java:1127)
+10-31 17:46:32.860  5783  5806 E MediaScannerService: 	at android.media.IMediaScannerListener$Stub$Proxy.scanCompleted(IMediaScannerListener.java:104)
+10-31 17:46:32.860  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:226)
+10-31 17:46:32.860  5783  5806 E MediaScannerService: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 17:46:32.860  5783  5806 E MediaScannerService: 	at android.os.Looper.loop(Looper.java:193)
+10-31 17:46:32.860  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 17:46:32.860  5783  5806 E MediaScannerService: 	at java.lang.Thread.run(Thread.java:764)
+10-31 17:46:33.318  5783  5806 I chatty  : uid=10014(com.android.providers.media) MediaScannerSer identical 53 lines
+10-31 17:46:33.328  5783  5806 E MediaScannerService: Exception in handleMessage
+10-31 17:46:33.328  5783  5806 E MediaScannerService: android.os.DeadObjectException
+10-31 17:46:33.328  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transactNative(Native Method)
+10-31 17:46:33.328  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transact(Binder.java:1127)
+10-31 17:46:33.328  5783  5806 E MediaScannerService: 	at android.media.IMediaScannerListener$Stub$Proxy.scanCompleted(IMediaScannerListener.java:104)
+10-31 17:46:33.328  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:226)
+10-31 17:46:33.328  5783  5806 E MediaScannerService: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 17:46:33.328  5783  5806 E MediaScannerService: 	at android.os.Looper.loop(Looper.java:193)
+10-31 17:46:33.328  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 17:46:33.328  5783  5806 E MediaScannerService: 	at java.lang.Thread.run(Thread.java:764)
+10-31 17:46:33.332  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@9a1f93a)
+10-31 17:46:33.332  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@9a1f93a)
+10-31 17:46:33.342  5783  5806 E MediaScannerService: Exception in handleMessage
+10-31 17:46:33.342  5783  5806 E MediaScannerService: android.os.DeadObjectException
+10-31 17:46:33.342  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transactNative(Native Method)
+10-31 17:46:33.342  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transact(Binder.java:1127)
+10-31 17:46:33.342  5783  5806 E MediaScannerService: 	at android.media.IMediaScannerListener$Stub$Proxy.scanCompleted(IMediaScannerListener.java:104)
+10-31 17:46:33.342  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:226)
+10-31 17:46:33.342  5783  5806 E MediaScannerService: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 17:46:33.342  5783  5806 E MediaScannerService: 	at android.os.Looper.loop(Looper.java:193)
+10-31 17:46:33.342  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 17:46:33.342  5783  5806 E MediaScannerService: 	at java.lang.Thread.run(Thread.java:764)
+10-31 17:46:33.469  5783  5806 I chatty  : uid=10014(com.android.providers.media) MediaScannerSer identical 12 lines
+10-31 17:46:33.475  5783  5806 E MediaScannerService: Exception in handleMessage
+10-31 17:46:33.475  5783  5806 E MediaScannerService: android.os.DeadObjectException
+10-31 17:46:33.475  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transactNative(Native Method)
+10-31 17:46:33.475  5783  5806 E MediaScannerService: 	at android.os.BinderProxy.transact(Binder.java:1127)
+10-31 17:46:33.475  5783  5806 E MediaScannerService: 	at android.media.IMediaScannerListener$Stub$Proxy.scanCompleted(IMediaScannerListener.java:104)
+10-31 17:46:33.475  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:226)
+10-31 17:46:33.475  5783  5806 E MediaScannerService: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 17:46:33.475  5783  5806 E MediaScannerService: 	at android.os.Looper.loop(Looper.java:193)
+10-31 17:46:33.475  5783  5806 E MediaScannerService: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 17:46:33.475  5783  5806 E MediaScannerService: 	at java.lang.Thread.run(Thread.java:764)
+10-31 17:46:33.476  1970  3918 E BpBinder: Too many binder proxy objects sent to uid 1000 from uid 10014 (6000 proxies held)
+10-31 17:46:33.476  1970  3918 E Parcel  : Reading a NULL string not supported here.
+10-31 17:46:33.551  1970  3918 I chatty  : uid=1000(system) Binder:1970_16 identical 45 lines
+10-31 17:46:33.553  1970  3918 E Parcel  : Reading a NULL string not supported here.
+10-31 17:46:33.558  1917  1921 W         : reached BBinder::getInterfaceDescriptor (this=0x759581429c20)
+10-31 17:46:33.561  1970  3918 E Parcel  : Reading a NULL string not supported here.
+10-31 17:46:33.582  1970  3918 I chatty  : uid=1000(system) Binder:1970_16 identical 6 lines
+10-31 17:46:33.582  1970  3918 E Parcel  : Reading a NULL string not supported here.
+10-31 17:46:33.583  1970  3918 V Binder  : BinderProxy descriptor histogram (top ten):
+10-31 17:46:33.583  1970  3918 V Binder  :  #1: <cleared weak-ref> x3750
+10-31 17:46:33.583  1970  3918 V Binder  :  #2: android.database.IContentObserver x1062
+10-31 17:46:33.583  1970  3918 V Binder  :  #3: android.content.IIntentReceiver x261
+10-31 17:46:33.583  1970  3918 V Binder  :  #4: android.app.IServiceConnection x78
+10-31 17:46:33.583  1970  3918 V Binder  :  #5: android.content.IContentProvider x78
+10-31 17:46:33.584  1970  3918 V Binder  :  #6:  x63
+10-31 17:46:33.584  1970  3918 V Binder  :  #7: android.app.job.IJobService x31
+10-31 17:46:33.584  1970  3918 V Binder  :  #8: android.app.IApplicationThread x29
+10-31 17:46:33.584  1970  3918 V Binder  :  #9: android.hardware.display.IDisplayManagerCallback x28
+10-31 17:46:33.584  1970  3918 V Binder  :  #10: com.google.android.gms.common.internal.IGmsServiceBroker x19
+10-31 17:46:33.594  1970  1988 W libprocessgroup: kill(-5783, 9) failed: No such process
+10-31 17:46:33.628  1918  1918 I Zygote  : Process 5783 exited due to signal (9)
+10-31 17:46:33.632  5819  5840 W BulkCursor: Remote process exception when closing
+10-31 17:46:33.634  1970  1988 W libprocessgroup: kill(-5783, 9) failed: No such process
+10-31 17:46:33.634  1970  1988 I libprocessgroup: Successfully killed process cgroup uid 10014 pid 5783 in 39ms
+10-31 17:46:33.661  1970  1988 W libprocessgroup: kill(-5819, 9) failed: No such process
+10-31 17:46:33.704  1970  1988 W libprocessgroup: kill(-5819, 9) failed: No such process
+10-31 17:46:33.704  1919  1919 I Zygote  : Process 5819 exited due to signal (9)
+10-31 17:46:33.708  1605  1605 E lowmemorykiller: Error opening /proc/5819/oom_score_adj; errno=2
+10-31 17:46:33.713  1605  1605 E lowmemorykiller: Error opening /proc/5819/oom_score_adj; errno=2
+10-31 17:46:33.744  1970  1988 W libprocessgroup: kill(-5819, 9) failed: No such process
+10-31 17:46:33.744  1970  1988 I libprocessgroup: Successfully killed process cgroup uid 10064 pid 5819 in 83ms
+10-31 17:46:34.333  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@9a70f1d)
+10-31 17:46:34.333  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@9a70f1d)
+10-31 17:46:35.236  2907  2935 W System  : A resource failed to call close.
+10-31 17:46:35.333  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@2a7592)
+10-31 17:46:35.333  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@2a7592)
+10-31 17:46:36.235  3308  3308 D BugleDataModel: ActionExecutor Empty Service started
+10-31 17:46:36.242  3308  5926 I BugleDataModel: ParticipantRefresh: Start participant refresh. refreshMode: 1
+10-31 17:46:36.244  3308  3308 D BugleDataModel: ActionExecutor Empty Service destroyed
+10-31 17:46:36.275  3308  5926 I BugleDataModel: ParticipantData: update phone number for Self, from MSISDN{null} to MSISDN{+d}
+10-31 17:46:36.333  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@baa8019)
+10-31 17:46:36.333  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@baa8019)
+10-31 17:46:36.340  3308  5926 I BugleDataModel: ParticipantData: update phone number for Self, from MSISDN{null} to MSISDN{+d}
+10-31 17:46:36.362  3308  5926 I BugleDataModel: ParticipantRefresh: Number of participants refreshed: 2
+10-31 17:46:36.380  2461  2620 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.apps.messaging componentName=null serviceId=36
+10-31 17:46:36.394  2461  2499 W Icing   : No valid account for uploading user actions
+10-31 17:46:36.402  2461  2620 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.apps.messaging componentName=null serviceId=36
+10-31 17:46:36.415  2461  3245 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=null serviceId=30
+10-31 17:46:36.419  2461  3534 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.apps.messaging componentName=null serviceId=36
+10-31 17:46:36.452  2461  2499 I Icing   : Usage reports ok 1, Failed Usage reports 0, indexed 0, rejected 0
+10-31 17:46:36.457  2461  2499 W Icing   : No valid account for uploading user actions
+10-31 17:46:36.461  2461  2499 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-31 17:46:36.462  2461  2499 W Icing   : No valid account for uploading user actions
+10-31 17:46:36.476  2461  2499 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-31 17:46:36.477  2461  2499 W Icing   : No valid account for uploading user actions
+10-31 17:46:36.482  2461  2499 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-31 17:46:37.333  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@abf8c1)
+10-31 17:46:37.333  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@abf8c1)
+10-31 17:46:38.333  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@549e866)
+10-31 17:46:38.333  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@549e866)
+10-31 17:46:39.333  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@a2b37a7)
+10-31 17:46:39.334  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@a2b37a7)
+10-31 17:46:40.333  1970  2446 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@185c454)
+10-31 17:46:40.334  1970  1984 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@185c454)

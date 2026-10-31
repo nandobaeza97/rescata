@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="dev.rescata.app.EscalaE2ETest" tests="1" failures="1" errors="0" skipped="0" time="46.451" timestamp="2026-10-31T17:46:42" hostname="localhost">
+  <properties>
+    <property name="device" value="emulator-5554 - 9" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="guardaMasDeDiezMilSinRalentizarse" classname="dev.rescata.app.EscalaE2ETest" time="35.104">
+    <failure></failure>
+  </testcase>
+  <system-err>Test run failed to complete. Instrumentation run failed due to Process crashed.
+</system-err>
+</testsuite>

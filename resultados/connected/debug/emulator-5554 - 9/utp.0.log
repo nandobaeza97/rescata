@@ -1,0 +1,40 @@
+INFO: Constructing runner from config.
+INFO: Configuring Android Instrumentation driver: android_instrumentation_runtime {
+  instrumentation_info {
+    app_package: "dev.rescata.app"
+    test_package: "dev.rescata.app.test"
+    test_runner_class: "androidx.test.runner.AndroidJUnitRunner"
+  }
+  instrumentation_args {
+    args_map {
+      key: "additionalTestOutputDir"
+      value: "/storage/emulated/0/Android/data/dev.rescata.app/files/test_data"
+    }
+  }
+}
+am_instrument_timeout: 31536000
+
+INFO: Configuring AndroidTestApkInstallerPlugin: apks_to_install {
+  apk_paths: "/home/runner/work/rescata/rescata/app/build/outputs/apk/debug/app-debug.apk"
+  install_options {
+  }
+  uninstall_after_test: true
+}
+apks_to_install {
+  apk_paths: "/home/runner/work/rescata/rescata/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk"
+  install_options {
+  }
+  uninstall_after_test: true
+}
+
+INFO: No installables found in test fixture. Nothing to install.
+INFO: Installing [/home/runner/work/rescata/rescata/app/build/outputs/apk/debug/app-debug.apk] on device emulator-5554.
+INFO: Installing [/home/runner/work/rescata/rescata/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk] on device emulator-5554.
+INFO: Start logcat streaming.
+INFO: Running Android Instrumentation driver.
+INFO: Copying files from device to host: /storage/emulated/0/Android/data/dev.rescata.app/files/test_data to /home/runner/work/rescata/rescata/app/build/outputs/connected_android_test_additional_output/debugAndroidTest/connected/emulator-5554 - 9
+WARNING: Failed to retrieve logcat for some test cases. We retrieved logcat for 0 test cases out of 1 tests.
+INFO: Stop logcat streaming.
+INFO: Uninstalling dev.rescata.app for device emulator-5554.
+INFO: Uninstalling dev.rescata.app.test for device emulator-5554.
+SEVERE: Execute dev.rescata.app.EscalaE2ETest.guardaMasDeDiezMilSinRalentizarse: FAILED
