@@ -110,6 +110,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+import androidx.core.content.pm.PackageInfoCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -138,6 +139,7 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
     var details by remember { mutableStateOf<FindingRow?>(null) }
     var settingsOpen by rememberSaveable { mutableStateOf(false) }
     var limitsOpen by rememberSaveable { mutableStateOf(false) }
+    var aboutOpen by rememberSaveable { mutableStateOf(false) }
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
     // ¿Está Rescata fuera del ahorro de batería? Ya no se pide directamente (Google Play solo lo
@@ -276,6 +278,11 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
                         modifier = Modifier.padding(start = 16.dp, end = 8.dp).size(32.dp),
                     )
                 },
+                actions = {
+                    IconButton(onClick = { aboutOpen = true }) {
+                        Icon(Icons.Outlined.Info, contentDescription = "Acerca de Rescata")
+                    }
+                },
                 scrollBehavior = scrollBehavior,
             )
         },
@@ -386,6 +393,14 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
         )
     }
 
+    if (aboutOpen) {
+        AboutDialog(
+            batteryExempt = batteryExempt,
+            onBatterySettings = ::openBatterySettings,
+            onDismiss = { aboutOpen = false },
+        )
+    }
+
     details?.let { row ->
         DetailsSheet(
             row = row,
@@ -469,21 +484,107 @@ private fun AccessCard(onRequest: () -> Unit) {
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp),
     ) {
         Column(Modifier.padding(18.dp)) {
+            val ctx = LocalContext.current
             Text("Hace falta acceso a los archivos", fontWeight = FontWeight.Medium,
                 color = MaterialTheme.colorScheme.onTertiaryContainer)
             Spacer(Modifier.height(4.dp))
             Text(
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
-                    "Activa «Permitir acceso para gestionar todos los archivos». La app solo lee; " +
-                        "únicamente escribe cuando guardas (álbum «Rescata» de la galería y Download/Rescata)."
-                else "Concede el permiso de almacenamiento. La app solo lee; únicamente escribe al guardar.",
+                (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+                    "Para buscar lo que aún se puede recuperar (papeleras, miniaturas, carpetas ocultas y " +
+                        "cachés del almacenamiento compartido), Rescata necesita que actives «Permitir acceso " +
+                        "para gestionar todos los archivos». "
+                else "Para buscar lo que aún se puede recuperar, Rescata necesita el permiso de almacenamiento. ") +
+                    "Solo lee: no borra ni cambia nada y únicamente escribe cuando guardas (álbum «Rescata» " +
+                    "de la galería y Download/Rescata). No tiene acceso a Internet: nada sale de tu móvil.",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onTertiaryContainer,
             )
             Spacer(Modifier.height(10.dp))
-            Button(onClick = onRequest, shape = CircleShape) { Text("Conceder acceso") }
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Button(onClick = onRequest, shape = CircleShape) { Text("Conceder acceso") }
+                if (AppInfo.PRIVACY_URL.isNotBlank()) {
+                    Spacer(Modifier.width(8.dp))
+                    TextButton(onClick = { openSafely(ctx, Intent(Intent.ACTION_VIEW, Uri.parse(AppInfo.PRIVACY_URL))) }) {
+                        Text("Privacidad")
+                    }
+                }
+            }
         }
     }
+}
+
+/** Abre otra app (navegador, correo, Ajustes) sin fallar si no hay ninguna que lo atienda. */
+private fun openSafely(ctx: Context, intent: Intent) {
+    try {
+        ctx.startActivity(intent)
+    } catch (e: ActivityNotFoundException) {
+        // Nada que abrir: no se hace nada
+    }
+}
+
+@Composable
+private fun AboutDialog(batteryExempt: Boolean, onBatterySettings: () -> Unit, onDismiss: () -> Unit) {
+    val ctx = LocalContext.current
+    val version = remember {
+        try {
+            @Suppress("DEPRECATION")
+            val info = ctx.packageManager.getPackageInfo(ctx.packageName, 0)
+            "${info.versionName} (${PackageInfoCompat.getLongVersionCode(info)})"
+        } catch (e: PackageManager.NameNotFoundException) {
+            ""
+        }
+    }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Acerca de Rescata") },
+        text = {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
+                Text("Versión $version", style = MaterialTheme.typography.bodyMedium)
+                Spacer(Modifier.height(10.dp))
+                Text(
+                    "Rescata funciona sin conexión: no tiene permiso de Internet, así que lo que encuentra y " +
+                        "lo que guardas nunca sale de tu móvil. Solo lee; únicamente escribe cuando guardas.",
+                    style = MaterialTheme.typography.bodySmall,
+                )
+                if (AppInfo.PRIVACY_URL.isNotBlank()) {
+                    TextButton(onClick = { openSafely(ctx, Intent(Intent.ACTION_VIEW, Uri.parse(AppInfo.PRIVACY_URL))) }) {
+                        Text("Política de privacidad")
+                    }
+                }
+                if (AppInfo.SUPPORT_EMAIL.isNotBlank()) {
+                    TextButton(onClick = {
+                        // El usuario ve el mensaje en su app de correo y decide si lo envía
+                        val firma = "\n\n—\nRescata $version · Android ${Build.VERSION.RELEASE} · " +
+                            "${Build.MANUFACTURER} ${Build.MODEL}"
+                        openSafely(ctx, Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:${AppInfo.SUPPORT_EMAIL}")).apply {
+                            putExtra(Intent.EXTRA_EMAIL, arrayOf(AppInfo.SUPPORT_EMAIL))
+                            putExtra(Intent.EXTRA_SUBJECT, "Rescata: comentarios")
+                            putExtra(Intent.EXTRA_TEXT, firma)
+                        })
+                    }) {
+                        Text("Enviar comentarios")
+                    }
+                }
+                if (!batteryExempt) {
+                    Spacer(Modifier.height(10.dp))
+                    Text(
+                        "En algunas marcas, el ahorro de batería puede cortar los guardados muy largos con la " +
+                            "pantalla apagada. Si te pasa, quita Rescata del ahorro de batería y vuelve a " +
+                            "guardar: lo que ya esté guardado no se duplica.",
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                    TextButton(onClick = onBatterySettings) { Text("Ajustes de batería") }
+                }
+                Spacer(Modifier.height(10.dp))
+                Text(
+                    "Rescata no está afiliada a WhatsApp ni a Meta.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+        },
+        confirmButton = { TextButton(onClick = onDismiss) { Text("Cerrar") } },
+    )
 }
 
 @Composable
