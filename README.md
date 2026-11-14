@@ -89,7 +89,8 @@ Google Play no acepta el APK de *Releases* (firmado con la clave de depuración)
 clave de firma (*Play App Signing*). La clave de subida **nunca** se guarda en el repositorio
 (`.gitignore` excluye `*.jks`, `*.keystore`, `*.aab` y `keystore.properties`).
 
-1. Crear la clave (una sola vez, en el PC del propietario; pide dos contraseñas y datos del titular):
+1. Crear la clave (una sola vez, en el PC del propietario; pide una contraseña y los datos del titular;
+   con `keytool`, la contraseña de la clave es la misma que la del almacén):
    ```
    keytool -genkeypair -v -keystore rescata-upload.jks -alias upload -keyalg RSA -keysize 4096 -validity 10000
    ```
