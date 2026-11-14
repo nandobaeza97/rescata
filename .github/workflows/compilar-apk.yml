@@ -41,6 +41,7 @@ jobs:
         with:
           name: Rescata-apk
           path: Rescata.apk
+          retention-days: 30
       # AAB para Google Play, firmado con la clave de subida (solo si están sus secretos en GitHub)
       - name: AAB firmado para Google Play
         if: env.HAS_UPLOAD_KEY == 'true'
@@ -60,6 +61,7 @@ jobs:
         with:
           name: Rescata-aab
           path: Rescata.aab
+          retention-days: 30
 
   emulador:
     name: Emulador Android API ${{ matrix.api }}
@@ -110,6 +112,7 @@ jobs:
         if: always()
         with:
           name: emulador-api-${{ matrix.api }}
+          retention-days: 7
           path: |
             capturas/
             app/build/reports/androidTests/
