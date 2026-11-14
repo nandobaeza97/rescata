@@ -3,7 +3,6 @@
 package dev.rescata.app
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
@@ -129,8 +128,6 @@ import kotlin.math.ceil
 // ScanViewModel y en el motor, y no cambia.
 // -------------------------------------------------------------------------------------------------
 
-private const val PREF_BATTERY_ASKED = "aviso_bateria"
-
 @Composable
 fun RescataScreen(vm: ScanViewModel = viewModel()) {
     val state by vm.state.collectAsStateWithLifecycle()
@@ -143,8 +140,17 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
     var limitsOpen by rememberSaveable { mutableStateOf(false) }
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
+    // ¿Está Rescata fuera del ahorro de batería? Ya no se pide directamente (Google Play solo lo
+    // permite a ciertos tipos de app): si no lo está, se muestra un consejo con enlace a Ajustes.
+    fun ignoringBattery(): Boolean =
+        (ctx.getSystemService(Context.POWER_SERVICE) as PowerManager).isIgnoringBatteryOptimizations(ctx.packageName)
+    var batteryExempt by remember { mutableStateOf(ignoringBattery()) }
+
     // Al volver de Ajustes se comprueba de nuevo si el usuario concedió el acceso.
-    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) { vm.refreshAccess() }
+    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
+        vm.refreshAccess()
+        batteryExempt = ignoringBattery()
+    }
 
     val settingsLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         vm.refreshAccess()
@@ -163,30 +169,19 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
         afterNotificationPrompt = null
     }
 
-    // Se pide una sola vez que el ahorro de batería no cierre la app en trabajos largos (algunas
-    // marcas lo hacen aunque haya un servicio en primer plano). Pase lo que pase, la acción sigue.
-    var afterBatteryPrompt by remember { mutableStateOf<(() -> Unit)?>(null) }
-    val batteryLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        afterBatteryPrompt?.invoke()
-        afterBatteryPrompt = null
-    }
-
-    fun withBatteryExemption(action: () -> Unit) {
-        val prefs = ctx.getSharedPreferences("rescata", Context.MODE_PRIVATE)
-        val pm = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
-        if (pm.isIgnoringBatteryOptimizations(ctx.packageName) || prefs.getBoolean(PREF_BATTERY_ASKED, false)) {
-            action()
-            return
-        }
-        prefs.edit().putBoolean(PREF_BATTERY_ASKED, true).apply()
-        @SuppressLint("BatteryLife") // app instalada fuera de Google Play; es su función principal
-        val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, Uri.parse("package:${ctx.packageName}"))
+    /**
+     * Lista del ahorro de batería de Ajustes: el usuario puede quitar Rescata si su móvil corta los
+     * guardados largos con la pantalla apagada. No necesita ningún permiso.
+     */
+    fun openBatterySettings() {
         try {
-            afterBatteryPrompt = action
-            batteryLauncher.launch(intent)
+            ctx.startActivity(Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS))
         } catch (e: ActivityNotFoundException) {
-            afterBatteryPrompt = null
-            action()
+            try {
+                ctx.startActivity(Intent(Settings.ACTION_SETTINGS))
+            } catch (e2: ActivityNotFoundException) {
+                vm.showMessage("Abre Ajustes › Batería y quita Rescata del ahorro de batería")
+            }
         }
     }
 
@@ -197,10 +192,10 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
             !prefs.getBoolean("aviso_notificaciones", false)
         if (needsPrompt) {
             prefs.edit().putBoolean("aviso_notificaciones", true).apply()
-            afterNotificationPrompt = { withBatteryExemption(action) }
+            afterNotificationPrompt = action
             notificationLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
         } else {
-            withBatteryExemption(action)
+            action()
         }
     }
 
@@ -330,7 +325,7 @@ fun RescataScreen(vm: ScanViewModel = viewModel()) {
                     onToggle = { limitsOpen = !limitsOpen },
                 ) { LimitsText() }
             }
-            if (state.summary != null || state.exporting) item(key = "summary") { SummarySection(state, onCancelExport = vm::cancelExport) }
+            if (state.summary != null || state.exporting) item(key = "summary") { SummarySection(state, onCancelExport = vm::cancelExport, batteryHint = !batteryExempt, onBatterySettings = ::openBatterySettings) }
             if (state.summary != null && state.rows.isEmpty() && !state.scanning) item(key = "empty") { EmptyResults() }
             if (state.rows.isNotEmpty()) {
                 item(key = "chips") { CategoryChips(state, onFilter = vm::setFilter) }
@@ -584,7 +579,12 @@ private fun LimitsText() {
 // ------------------------------------------------------------------------------------ Resultados
 
 @Composable
-private fun SummarySection(state: UiState, onCancelExport: () -> Unit) {
+private fun SummarySection(
+    state: UiState,
+    onCancelExport: () -> Unit,
+    batteryHint: Boolean,
+    onBatterySettings: () -> Unit,
+) {
     Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 10.dp)) {
         if (state.rows.isNotEmpty()) {
             val soon = state.rows.count {
@@ -609,6 +609,18 @@ private fun SummarySection(state: UiState, onCancelExport: () -> Unit) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(state.exportProgress, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
                 OutlinedButton(onClick = onCancelExport) { Text("Cancelar") }
+            }
+            // Algunas marcas cortan los trabajos largos aunque haya un servicio en primer plano
+            if (batteryHint) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        "¿Se corta al guardar con la pantalla apagada? Quita Rescata del ahorro de batería.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.weight(1f),
+                    )
+                    TextButton(onClick = onBatterySettings) { Text("Ajustes") }
+                }
             }
             Spacer(Modifier.height(6.dp))
         }
