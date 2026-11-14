@@ -171,13 +171,17 @@ class RescataE2ETest {
             compose.onNodeWithText("Multimedia de WhatsApp").performClick()
             compose.onNodeWithTag("resultados").performScrollToNode(hasText("Buscar archivos borrados"))
             compose.onNodeWithText("Buscar archivos borrados").performClick()
-            // La primera vez se pide (diálogo del sistema) que el ahorro de batería no cierre la app
+            // Google Play no permite pedir directamente la exención del ahorro de batería: la app ya no
+            // declara ese permiso y todo lo que sigue (incluido guardar con la pantalla apagada) va sin ella
+            @Suppress("DEPRECATION")
+            val requested = ctx.packageManager
+                .getPackageInfo(ctx.packageName, android.content.pm.PackageManager.GET_PERMISSIONS)
+                .requestedPermissions.orEmpty()
+            assertFalse("La app no debe pedir REQUEST_IGNORE_BATTERY_OPTIMIZATIONS",
+                "android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" in requested)
             val power0 = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
-            val allowBattery = findSystemButton(Pattern.compile("(?i)^(allow|permitir)$"), 30_000)
-            shot("01c_bateria")
-            assertNotNull("No apareció el aviso del ahorro de batería", allowBattery)
-            allowBattery!!.click()
-            waitFor(10_000, "exclusión del ahorro de batería") { power0.isIgnoringBatteryOptimizations(ctx.packageName) }
+            assertFalse("La prueba debe hacerse sin la exención del ahorro de batería",
+                power0.isIgnoringBatteryOptimizations(ctx.packageName))
             // Se espera al estado de la app (no se sondea el árbol de la UI en bucle: provoca carreras con Espresso)
             waitFor(180_000, "fin del escaneo") { vm(scenario) { s -> !s.scanning && s.summary != null } }
             compose.waitForIdle()
