@@ -56,6 +56,17 @@ jobs:
           rm -f "$RUNNER_TEMP/upload.jks"
           cp app/build/outputs/bundle/release/app-release.aab Rescata.aab
           jarsigner -verify Rescata.aab
+      # Mientras no existan los secretos, se comprueba que la firma funciona con una clave temporal
+      # (se crea y se borra en esta ejecución; el AAB resultante no se guarda)
+      - name: Comprobar la firma con una clave temporal
+        if: env.HAS_UPLOAD_KEY != 'true'
+        run: |
+          keytool -genkeypair -keystore "$RUNNER_TEMP/temporal.jks" -alias upload -keyalg RSA -keysize 2048 \
+            -validity 1 -storepass temporal123 -keypass temporal123 -dname "CN=Prueba CI"
+          RESCATA_UPLOAD_STORE_FILE="$RUNNER_TEMP/temporal.jks" RESCATA_UPLOAD_STORE_PASSWORD=temporal123 \
+            RESCATA_UPLOAD_KEY_ALIAS=upload RESCATA_UPLOAD_KEY_PASSWORD=temporal123 ./gradlew :app:bundleRelease
+          jarsigner -verify app/build/outputs/bundle/release/app-release.aab
+          rm -f "$RUNNER_TEMP/temporal.jks" app/build/outputs/bundle/release/app-release.aab
       - uses: actions/upload-artifact@v4
         if: env.HAS_UPLOAD_KEY == 'true'
         with:
