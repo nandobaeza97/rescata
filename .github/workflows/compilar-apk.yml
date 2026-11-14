@@ -1,14 +1,22 @@
 # 1) Tests del motor + APK  2) Prueba completa en emuladores Android reales
 # 3) Solo si todo pasa, publica el APK en "Releases".
+# En los pull requests se compila y se prueba igual, pero no se publica nada ni se tocan las
+# ramas ci-resultados-api-* (los resultados quedan como artefactos de la ejecución).
 name: Compilar y probar APK
 
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: write
+
+# Un push nuevo a un pull request cancela la prueba anterior del mismo PR (ahorra minutos de CI).
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   apk:
@@ -62,7 +70,7 @@ jobs:
           disable-animations: true
           script: bash scripts/e2e.sh
       - name: Guardar resultados en una rama (capturas, informe y logs)
-        if: always()
+        if: always() && github.ref == 'refs/heads/main'
         run: |
           mkdir -p /tmp/res
           cp -r capturas /tmp/res/ 2>/dev/null || true
@@ -87,6 +95,8 @@ jobs:
   publicar:
     name: Publicar APK
     needs: [apk, emulador]
+    # Solo lo que ya está en main se publica en Releases
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/download-artifact@v4
