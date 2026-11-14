@@ -5,3 +5,8 @@ local.properties
 *.iml
 .DS_Store
 captures/
+# Clave de subida de Google Play: nunca al repositorio
+keystore.properties
+*.jks
+*.keystore
+*.aab

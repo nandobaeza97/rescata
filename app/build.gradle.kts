@@ -1,3 +1,4 @@
+import java.util.Properties
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -5,6 +6,26 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
 }
+
+// Clave de subida de Google Play (la guarda el propietario; nunca va al repositorio).
+// Se lee de variables de entorno (CI, con los secretos de GitHub) o de keystore.properties
+// (PC del propietario; está en .gitignore). Si no hay clave, la versión release se firma con la
+// clave de depuración, como siempre (APK para instalar a mano y para las pruebas).
+val keystoreProps = Properties().apply {
+    val f = rootProject.file("keystore.properties")
+    if (f.isFile) f.inputStream().use { load(it) }
+}
+
+fun signingValue(env: String, prop: String): String? =
+    System.getenv(env)?.takeIf { it.isNotBlank() } ?: keystoreProps.getProperty(prop)?.takeIf { it.isNotBlank() }
+
+val uploadStorePath: String? = signingValue("RESCATA_UPLOAD_STORE_FILE", "storeFile")
+val hasUploadKey = uploadStorePath != null && rootProject.file(uploadStorePath).isFile
+
+// Cada subida a Google Play necesita un versionCode mayor que el anterior: en el CI es el número
+// de ejecución; en el PC se puede fijar con RESCATA_VERSION_CODE. Sin nada, 1.
+val autoVersionCode = (System.getenv("RESCATA_VERSION_CODE") ?: System.getenv("GITHUB_RUN_NUMBER"))
+    ?.toIntOrNull() ?: 1
 
 android {
     namespace = "dev.rescata.app"
@@ -14,16 +35,27 @@ android {
         applicationId = "dev.rescata.app"
         minSdk = 26
         targetSdk = 36
-        versionCode = 1
+        versionCode = autoVersionCode
         versionName = "0.1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        if (hasUploadKey) {
+            create("upload") {
+                storeFile = rootProject.file(uploadStorePath!!)
+                storePassword = signingValue("RESCATA_UPLOAD_STORE_PASSWORD", "storePassword")
+                keyAlias = signingValue("RESCATA_UPLOAD_KEY_ALIAS", "keyAlias")
+                keyPassword = signingValue("RESCATA_UPLOAD_KEY_PASSWORD", "keyPassword")
+            }
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            // APK instalable directamente (sin Play Store): se firma con la clave de depuración.
-            signingConfig = signingConfigs.getByName("debug")
+            // Con la clave de subida: AAB para Google Play. Sin ella: clave de depuración (APK de pruebas).
+            signingConfig = signingConfigs.getByName(if (hasUploadKey) "upload" else "debug")
         }
     }
 
