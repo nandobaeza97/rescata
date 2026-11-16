@@ -82,6 +82,30 @@ GitHub y GitHub Actions compilará el APK en sus servidores y lo publicará en l
 **Releases**. Desde ahí se descarga en el móvil y se instala directamente. También puedes
 lanzarlo a mano en **Actions → Compilar APK → Run workflow**.
 
+### Google Play: AAB firmado con la clave de subida
+
+Google Play no acepta el APK de *Releases* (firmado con la clave de depuración). Necesita un
+**AAB** firmado con la **clave de subida** del propietario; Google firma después la app con su
+clave de firma (*Play App Signing*). La clave de subida **nunca** se guarda en el repositorio
+(`.gitignore` excluye `*.jks`, `*.keystore`, `*.aab` y `keystore.properties`).
+
+1. Crear la clave (una sola vez, en el PC del propietario; pide una contraseña y los datos del titular;
+   con `keytool`, la contraseña de la clave es la misma que la del almacén):
+   ```
+   keytool -genkeypair -v -keystore rescata-upload.jks -alias upload -keyalg RSA -keysize 4096 -validity 10000
+   ```
+   Guardar el archivo y las contraseñas en el gestor de contraseñas y una copia fuera de casa.
+2. En GitHub › Settings › Secrets and variables › Actions, crear cuatro secretos:
+   `RESCATA_UPLOAD_KEYSTORE_BASE64` (el `.jks` en base64: `base64 -w0 rescata-upload.jks`),
+   `RESCATA_UPLOAD_STORE_PASSWORD`, `RESCATA_UPLOAD_KEY_ALIAS` (`upload`) y
+   `RESCATA_UPLOAD_KEY_PASSWORD`.
+3. Desde entonces, cada ejecución del CI deja además el artefacto **Rescata-aab**, listo para
+   subir a Play Console. Su `versionCode` es el número de ejecución del CI (siempre creciente).
+
+Para compilarlo en el PC, crear `keystore.properties` en la raíz (no se sube a Git) con
+`storeFile`, `storePassword`, `keyAlias` y `keyPassword`, y ejecutar `./gradlew :app:bundleRelease`
+(con `RESCATA_VERSION_CODE=<número>` si hay que fijar el `versionCode`).
+
 ### Instalar el APK en el móvil
 
 Abre el `.apk` desde el navegador o el gestor de archivos. Android pedirá permitir «Instalar

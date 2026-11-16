@@ -1,19 +1,30 @@
 # 1) Tests del motor + APK  2) Prueba completa en emuladores Android reales
 # 3) Solo si todo pasa, publica el APK en "Releases".
+# En los pull requests se compila y se prueba igual, pero no se publica nada ni se tocan las
+# ramas ci-resultados-api-* (los resultados quedan como artefactos de la ejecución).
 name: Compilar y probar APK
 
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: write
 
+# Un push nuevo a un pull request cancela la prueba anterior del mismo PR (ahorra minutos de CI).
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   apk:
     name: Tests del motor y APK
     runs-on: ubuntu-24.04
+    env:
+      # Los secretos no se pueden usar directamente en un «if»: se pasan a una variable
+      HAS_UPLOAD_KEY: ${{ secrets.RESCATA_UPLOAD_KEYSTORE_BASE64 != '' }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-java@v5
@@ -21,6 +32,7 @@ jobs:
           distribution: temurin
           java-version: "17"
       - uses: gradle/actions/setup-gradle@v4
+      # APK de pruebas (firmado con la clave de depuración, como siempre)
       - name: Tests del motor y compilación
         run: ./gradlew :core:test :app:assembleRelease
       - name: Renombrar
@@ -29,6 +41,38 @@ jobs:
         with:
           name: Rescata-apk
           path: Rescata.apk
+          retention-days: 30
+      # AAB para Google Play, firmado con la clave de subida (solo si están sus secretos en GitHub)
+      - name: AAB firmado para Google Play
+        if: env.HAS_UPLOAD_KEY == 'true'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.RESCATA_UPLOAD_KEYSTORE_BASE64 }}
+          RESCATA_UPLOAD_STORE_PASSWORD: ${{ secrets.RESCATA_UPLOAD_STORE_PASSWORD }}
+          RESCATA_UPLOAD_KEY_ALIAS: ${{ secrets.RESCATA_UPLOAD_KEY_ALIAS }}
+          RESCATA_UPLOAD_KEY_PASSWORD: ${{ secrets.RESCATA_UPLOAD_KEY_PASSWORD }}
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/upload.jks"
+          RESCATA_UPLOAD_STORE_FILE="$RUNNER_TEMP/upload.jks" ./gradlew :app:bundleRelease
+          rm -f "$RUNNER_TEMP/upload.jks"
+          cp app/build/outputs/bundle/release/app-release.aab Rescata.aab
+          jarsigner -verify Rescata.aab
+      # Mientras no existan los secretos, se comprueba que la firma funciona con una clave temporal
+      # (se crea y se borra en esta ejecución; el AAB resultante no se guarda)
+      - name: Comprobar la firma con una clave temporal
+        if: env.HAS_UPLOAD_KEY != 'true'
+        run: |
+          keytool -genkeypair -keystore "$RUNNER_TEMP/temporal.jks" -alias upload -keyalg RSA -keysize 2048 \
+            -validity 1 -storepass temporal123 -keypass temporal123 -dname "CN=Prueba CI"
+          RESCATA_UPLOAD_STORE_FILE="$RUNNER_TEMP/temporal.jks" RESCATA_UPLOAD_STORE_PASSWORD=temporal123 \
+            RESCATA_UPLOAD_KEY_ALIAS=upload RESCATA_UPLOAD_KEY_PASSWORD=temporal123 ./gradlew :app:bundleRelease
+          jarsigner -verify app/build/outputs/bundle/release/app-release.aab
+          rm -f "$RUNNER_TEMP/temporal.jks" app/build/outputs/bundle/release/app-release.aab
+      - uses: actions/upload-artifact@v4
+        if: env.HAS_UPLOAD_KEY == 'true'
+        with:
+          name: Rescata-aab
+          path: Rescata.aab
+          retention-days: 30
 
   emulador:
     name: Emulador Android API ${{ matrix.api }}
@@ -62,7 +106,7 @@ jobs:
           disable-animations: true
           script: bash scripts/e2e.sh
       - name: Guardar resultados en una rama (capturas, informe y logs)
-        if: always()
+        if: always() && github.ref == 'refs/heads/main'
         run: |
           mkdir -p /tmp/res
           cp -r capturas /tmp/res/ 2>/dev/null || true
@@ -79,6 +123,7 @@ jobs:
         if: always()
         with:
           name: emulador-api-${{ matrix.api }}
+          retention-days: 7
           path: |
             capturas/
             app/build/reports/androidTests/
@@ -87,6 +132,8 @@ jobs:
   publicar:
     name: Publicar APK
     needs: [apk, emulador]
+    # Solo lo que ya está en main se publica en Releases
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/download-artifact@v4
