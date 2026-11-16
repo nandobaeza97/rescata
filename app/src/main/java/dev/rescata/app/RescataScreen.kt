@@ -534,6 +534,8 @@ private fun AboutDialog(batteryExempt: Boolean, onBatterySettings: () -> Unit, o
             ""
         }
     }
+    var licensesOpen by rememberSaveable { mutableStateOf(false) }
+    if (licensesOpen) LicensesDialog(onDismiss = { licensesOpen = false })
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text("Acerca de Rescata") },
@@ -575,12 +577,53 @@ private fun AboutDialog(batteryExempt: Boolean, onBatterySettings: () -> Unit, o
                     )
                     TextButton(onClick = onBatterySettings) { Text("Ajustes de batería") }
                 }
+                TextButton(onClick = { licensesOpen = true }) { Text("Licencias de código abierto") }
                 Spacer(Modifier.height(10.dp))
                 Text(
                     "Rescata no está afiliada a WhatsApp ni a Meta.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
+            }
+        },
+        confirmButton = { TextButton(onClick = onDismiss) { Text("Cerrar") } },
+    )
+}
+
+/**
+ * Avisos de las bibliotecas de código abierto que van dentro de la app. Todas usan la licencia
+ * Apache 2.0, que pide entregar una copia de la licencia a quien recibe el programa: el texto
+ * completo va en assets/licencias/apache-2.0.txt.
+ */
+@Composable
+private fun LicensesDialog(onDismiss: () -> Unit) {
+    val ctx = LocalContext.current
+    val apache = remember {
+        try {
+            ctx.assets.open("licencias/apache-2.0.txt").bufferedReader().use { it.readText() }
+        } catch (e: java.io.IOException) {
+            "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+    }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Licencias de código abierto") },
+        text = {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
+                Text(
+                    "Rescata incluye estas bibliotecas, distribuidas bajo la licencia Apache 2.0:",
+                    style = MaterialTheme.typography.bodySmall,
+                )
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    "• AndroidX (Core, Activity, Lifecycle) y Jetpack Compose (UI, Material 3, iconos de " +
+                        "Material) — © The Android Open Source Project\n" +
+                        "• Biblioteca estándar de Kotlin y kotlinx.coroutines — © JetBrains s.r.o. y " +
+                        "colaboradores de Kotlin",
+                    style = MaterialTheme.typography.bodySmall,
+                )
+                Spacer(Modifier.height(10.dp))
+                Text(apache, style = MaterialTheme.typography.labelSmall)
             }
         },
         confirmButton = { TextButton(onClick = onDismiss) { Text("Cerrar") } },
